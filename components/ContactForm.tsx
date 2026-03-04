@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Send, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import Link from "next/link";
 
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -35,6 +36,7 @@ export function ContactForm() {
           onSubmit={handleSubmit}
           className="border-foreground/10 bg-background/50 mx-auto flex w-full max-w-2xl flex-col gap-6 rounded-3xl border p-8 shadow-xl backdrop-blur-md md:p-12"
         >
+          {/* Row 1: Name + Email */}
           <div className="grid gap-6 md:grid-cols-2">
             <div className="flex flex-col gap-2">
               <label htmlFor="name" className="text-foreground/80 text-sm font-medium">
@@ -66,59 +68,55 @@ export function ContactForm() {
             </div>
           </div>
 
+          {/* Row 2: Project Type + Budget */}
           <div className="grid gap-6 md:grid-cols-2">
             <div className="flex flex-col gap-2">
-              <label htmlFor="company" className="text-foreground/80 text-sm font-medium">
-                {t("contCompany")}
+              <label htmlFor="project" className="text-foreground/80 text-sm font-medium">
+                {t("contType")}
               </label>
-              <input
-                type="text"
-                id="company"
-                name="company"
-                defaultValue=""
-                className="border-foreground/10 bg-anthracite text-foreground focus:border-primary focus:ring-primary rounded-xl border p-3 focus:ring-1 focus:outline-none"
-                placeholder="Startup Inc."
-              />
+              <div className="relative">
+                <select
+                  id="project"
+                  name="project"
+                  defaultValue="mvp"
+                  className="border-foreground/10 bg-anthracite text-foreground focus:border-primary focus:ring-primary w-full cursor-pointer appearance-none rounded-xl border p-3 pr-10 focus:ring-1 focus:outline-none"
+                >
+                  <option value="mvp">{t("contOpt1")}</option>
+                  <option value="rescue">{t("contOpt2")}</option>
+                  <option value="blockchain">{t("contOpt3")}</option>
+                  <option value="xr">{t("contOpt4")}</option>
+                </select>
+                <ChevronDown
+                  className="text-foreground/50 pointer-events-none absolute top-1/2 right-3 -translate-y-1/2"
+                  size={20}
+                />
+              </div>
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="budget" className="text-foreground/80 text-sm font-medium">
                 {t("contBudget")}
               </label>
-              <input
-                type="text"
-                id="budget"
-                name="budget"
-                defaultValue=""
-                className="border-foreground/10 bg-anthracite text-foreground focus:border-primary focus:ring-primary rounded-xl border p-3 focus:ring-1 focus:outline-none"
-                placeholder="$10k - $20k"
-              />
+              <div className="relative">
+                <select
+                  id="budget"
+                  name="budget"
+                  defaultValue="10-15"
+                  className="border-foreground/10 bg-anthracite text-foreground focus:border-primary focus:ring-primary w-full cursor-pointer appearance-none rounded-xl border p-3 pr-10 focus:ring-1 focus:outline-none"
+                >
+                  <option value="<10">{t("contBudOpt1")}</option>
+                  <option value="10-15">{t("contBudOpt2")}</option>
+                  <option value="15-20">{t("contBudOpt3")}</option>
+                  <option value=">20">{t("contBudOpt4")}</option>
+                </select>
+                <ChevronDown
+                  className="text-foreground/50 pointer-events-none absolute top-1/2 right-3 -translate-y-1/2"
+                  size={20}
+                />
+              </div>
             </div>
           </div>
 
-          <div className="flex flex-col gap-2">
-            <label htmlFor="project" className="text-foreground/80 text-sm font-medium">
-              {t("contType")}
-            </label>
-            <div className="relative">
-              <select
-                id="project"
-                name="project"
-                defaultValue="mvp"
-                className="border-foreground/10 bg-anthracite text-foreground focus:border-primary focus:ring-primary w-full cursor-pointer appearance-none rounded-xl border p-3 pr-10 focus:ring-1 focus:outline-none"
-              >
-                <option value="mvp">{t("contOpt1")}</option>
-                <option value="blockchain">{t("contOpt2")}</option>
-                <option value="mixed-reality">{t("contOpt3")}</option>
-                <option value="rescue">{t("contOpt4")}</option>
-                <option value="other">{t("contOpt5")}</option>
-              </select>
-              <ChevronDown
-                className="text-foreground/50 pointer-events-none absolute top-1/2 right-3 -translate-y-1/2"
-                size={20}
-              />
-            </div>
-          </div>
-
+          {/* Row 3: Message */}
           <div className="flex flex-col gap-2">
             <label htmlFor="message" className="text-foreground/80 text-sm font-medium">
               {t("contMessage")}
@@ -134,10 +132,29 @@ export function ContactForm() {
             />
           </div>
 
+          {/* Privacy policy checkbox */}
+          <label className="flex cursor-pointer items-start gap-3">
+            <input
+              type="checkbox"
+              name="privacy"
+              required
+              className="accent-primary mt-0.5 h-4 w-4 shrink-0 cursor-pointer"
+            />
+            <span className="text-foreground/60 text-sm">
+              {t("contPrivacy")}{" "}
+              <Link
+                href="/privacy-policy"
+                className="hover:text-primary underline-offset-2 transition-colors hover:underline"
+              >
+                {t("footPrivacy")}
+              </Link>
+            </span>
+          </label>
+
           <button
             type="submit"
             disabled={status === "loading" || status === "success"}
-            className="group bg-primary text-background hover:bg-primary/90 mt-4 flex w-full items-center justify-center gap-2 rounded-xl py-4 font-bold transition-all disabled:opacity-70 disabled:hover:scale-100"
+            className="group bg-primary text-background hover:bg-primary/90 mt-2 flex w-full items-center justify-center gap-2 rounded-xl py-4 font-bold transition-all disabled:opacity-70 disabled:hover:scale-100"
           >
             {status === "idle" && (
               <>

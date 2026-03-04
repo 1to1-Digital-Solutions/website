@@ -31,44 +31,44 @@ export default function Home() {
         gsap.fromTo(
           section.children,
           {
-            y: 50,
+            y: 40,
             opacity: 0,
           },
           {
             y: 0,
             opacity: 1,
-            duration: 0.6,
-            stagger: 0.1,
-            ease: "power3.out",
+            duration: 0.7,
+            stagger: 0.12,
+            ease: "power2.out",
             scrollTrigger: {
               trigger: section,
-              start: "top 85%",
-              toggleActions: "play none none reverse",
+              start: "top 80%",
+              toggleActions: "play none none none",
             },
           }
         );
       });
 
       // Card Stacking Effect
-      // We wrap the components in a .card-section class to easily target them
       const cards = gsap.utils.toArray<HTMLElement>(".card-section");
 
       cards.forEach((card, index) => {
-        if (index === cards.length - 1) return; // Don't scale down the last card
+        if (index === cards.length - 1) return;
 
         gsap.to(card, {
-          scale: 0.85,
+          scale: 0.88,
           opacity: 0,
           ease: "none",
           scrollTrigger: {
             trigger: card,
-            start: () => (window.innerHeight < card.offsetHeight ? "bottom bottom" : "top top"), // Scroll fully before pin if tall
+            start: () => (window.innerHeight < card.offsetHeight ? "bottom bottom" : "top top"),
             endTrigger: cards[index + 1],
-            end: "top top", // Until the next card reaches the top
-            scrub: true,
+            end: "top top",
+            scrub: 0.4,
             pin: true,
-            pinSpacing: false, // Allows the next card to overlap
-            invalidateOnRefresh: true, // Recalculate on resize
+            pinSpacing: false,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
           },
         });
       });

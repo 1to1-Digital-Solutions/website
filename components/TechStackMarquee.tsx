@@ -13,8 +13,8 @@ export function TechStackMarquee() {
     { name: "WebXR", icon: Smartphone },
   ];
 
-  // Duplicate the array for seamless infinite scrolling
-  const scrollItems = [...technologies, ...technologies, ...technologies];
+  // Two copies for seamless infinite loop (-50% is exact)
+  const scrollItems = [...technologies, ...technologies];
 
   return (
     <div className="border-foreground/5 bg-anthracite/20 relative w-full overflow-hidden border-y py-10">

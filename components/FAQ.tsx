@@ -30,7 +30,7 @@ export function FAQ() {
   return (
     <section
       id="faq"
-      className="mx-auto flex min-h-[100dvh] w-full max-w-3xl flex-col justify-center px-6 py-24"
+      className="mx-auto w-full max-w-3xl px-6 py-24"
     >
       <div className="mb-12 text-center">
         <h2 className="font-outfit text-4xl font-bold tracking-tight md:text-5xl">

@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 
 export function AboutMe() {
@@ -10,11 +11,14 @@ export function AboutMe() {
         {/* Left column: Image / Visual */}
         <div className="relative w-full flex-1">
           <div className="bg-anthracite/80 relative aspect-square w-full max-w-md overflow-hidden rounded-3xl">
-            {/* We will just use a stylized placeholder for now since we don't have an image */}
-            <div className="from-primary/20 absolute inset-0 bg-gradient-to-tr to-transparent mix-blend-overlay"></div>
-            <div className="border-foreground/10 text-foreground/20 font-outfit flex h-full w-full items-center justify-center border text-4xl font-bold">
-              [ Developer Image ]
-            </div>
+            <Image
+              src="/images/profilePicture.jpg"
+              alt="Profile picture"
+              fill
+              className="object-cover object-top"
+              priority
+            />
+            <div className="from-primary/20 absolute inset-0 bg-linear-to-tr to-transparent mix-blend-overlay"></div>
           </div>
 
           {/* Decorative element */}
