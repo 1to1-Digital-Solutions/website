@@ -14,6 +14,7 @@ import {
   Stars,
   DragControls,
   Html,
+  useProgress,
 } from "@react-three/drei";
 import { Suspense, useRef, useState, useEffect, useMemo } from "react";
 import * as THREE from "three";
@@ -275,19 +276,23 @@ function DraggableShape({
   const innerMeshRef = useRef<THREE.Mesh>(null);
   const [isPlaced, setIsPlaced] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  // Entry scale animation: lerps from 0 → 1 when shape first mounts
+  const entryScaleRef = useRef(0);
 
   // Animate distance color and fade out on allPlaced
   useFrame((state, delta) => {
     if (!groupRef.current || !innerMeshRef.current) return;
 
     if (allPlaced) {
-      // Fade out to size 0
       groupRef.current.scale.lerp(new THREE.Vector3(0, 0, 0), delta * 3);
       return;
     }
 
+    // Smooth entry: scale up from 0 → 1 on mount
+    entryScaleRef.current = THREE.MathUtils.lerp(entryScaleRef.current, 1, delta * 2.5);
+    groupRef.current.scale.setScalar(entryScaleRef.current);
+
     if (!isPlaced) {
-      // Small floating effect if not dragged (simple sine wave)
       if (!isHovered) {
         groupRef.current.rotation.x += delta * 0.5;
         groupRef.current.rotation.y += delta * 0.3;
@@ -301,12 +306,10 @@ function DraggableShape({
 
       const mat = innerMeshRef.current.material as THREE.MeshPhysicalMaterial;
       if (dist < 1.0) {
-        // Over hole -> turn primary color with high glow
         mat.color.lerp(new THREE.Color("#40E0D0"), 0.2);
         mat.emissive.lerp(new THREE.Color("#40E0D0"), 0.2);
         mat.emissiveIntensity = 2.0;
       } else {
-        // Default glass color (bluish tint)
         const baseColor = isHovered ? "#60F0E0" : "#20A0B0";
         mat.color.lerp(new THREE.Color(baseColor), 0.2);
         mat.emissive.lerp(new THREE.Color("#000000"), 0.2);
@@ -356,15 +359,15 @@ function DraggableShape({
       <group
         ref={groupRef}
         position={startPos}
-        onPointerOver={(e: THREE.Event) => {
+        onPointerOver={(e: React.PointerEvent<HTMLDivElement>) => {
           if (allPlaced) return;
-          e.stopPropagation();
+          e.stopPropagation?.();
           document.body.style.cursor = "grab";
           setIsHovered(true);
         }}
-        onPointerOut={(e: THREE.Event) => {
+        onPointerOut={(e: React.PointerEvent<HTMLDivElement>) => {
           if (allPlaced) return;
-          e.stopPropagation();
+          e.stopPropagation?.();
           document.body.style.cursor = "default";
           setIsHovered(false);
         }}
@@ -424,8 +427,12 @@ function TargetHole({
 
 export function HeroCanvas() {
   const [mounted, setMounted] = useState(false);
-  const [placed, setPlaced] = useState(BASE_SHAPES.map(() => false));
-  const allPlaced = placed.every(Boolean);
+  // Tracks which shapes have been placed (by sequential index)
+  const [placedCount, setPlacedCount] = useState(0);
+  // Tracks which shape index is currently active (visible & draggable)
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const allPlaced = placedCount === BASE_SHAPES.length;
 
   const [shapesData, setShapesData] = useState<
     Array<{
@@ -439,14 +446,9 @@ export function HeroCanvas() {
   >([]);
 
   useEffect(() => {
-    // eslint-disable-next-line
     setMounted(true);
-    
-    // Initialize randomized layout ONCE per client mount 
     const shuffledPositions = shuffleArray(FIXED_POSITIONS);
-
     const generatedShapes = BASE_SHAPES.map((shape, idx) => {
-      // Random scale between 0.7x and 1.35x
       const randomScale = 0.7 + Math.random() * 0.65;
       return {
         ...shape,
@@ -455,20 +457,14 @@ export function HeroCanvas() {
         scaleMult: randomScale,
       };
     });
-
     setShapesData(generatedShapes);
   }, []);
 
+  // When a shape is placed, reveal the next one
   const handlePlace = (id: number) => {
-    setPlaced((prev) => {
-      const next = [...prev];
-      next[id] = true;
-      if (next.every(Boolean)) {
-        // Cleanup cursor just in case
-        document.body.style.cursor = "default";
-      }
-      return next;
-    });
+    document.body.style.cursor = "default";
+    setPlacedCount((prev) => prev + 1);
+    setActiveIndex((prev) => prev + 1);
   };
 
   return (
@@ -478,12 +474,10 @@ export function HeroCanvas() {
       style={{ touchAction: "none" }}
     >
       <Suspense fallback={<CanvasLoader />}>
-        {/* Dynamic atmospheric lighting */}
         <ambientLight intensity={0.5} color="#40E0D0" />
         <directionalLight position={[10, 10, 5]} intensity={2.0} color="#40E0D0" />
         <directionalLight position={[-10, -10, -5]} intensity={1.5} color="#20A0B0" />
 
-        {/* Mouse flashlight effect */}
         <MouseSpotlight />
 
         <Stars radius={50} depth={20} count={1500} factor={3} saturation={0} fade speed={0.5} />
@@ -500,6 +494,7 @@ export function HeroCanvas() {
 
         {mounted && (
           <group>
+            {/* Target holes (backgrounds) — always visible from the start */}
             {shapesData.map((s) => (
               <TargetHole
                 key={`hole-${s.id}`}
@@ -510,19 +505,24 @@ export function HeroCanvas() {
                 allPlaced={allPlaced}
               />
             ))}
-            {shapesData.map((s) => (
-              <DraggableShape
-                key={`shape-${s.id}`}
-                id={s.id}
-                ShapeComp={s.ShapeComp}
-                args={s.args}
-                scaleMult={s.scaleMult}
-                startPos={s.startPos}
-                targetPos={s.targetPos}
-                onPlace={handlePlace}
-                allPlaced={allPlaced}
-              />
-            ))}
+
+            {/* Draggable shapes — revealed one at a time sequentially.
+                Once placed (becomes PlacedShape internally), keep mounted so it stays visible. */}
+            {shapesData.map((s, idx) =>
+              idx <= activeIndex ? (
+                <DraggableShape
+                  key={`shape-${s.id}`}
+                  id={s.id}
+                  ShapeComp={s.ShapeComp}
+                  args={s.args}
+                  scaleMult={s.scaleMult}
+                  startPos={s.startPos}
+                  targetPos={s.targetPos}
+                  onPlace={handlePlace}
+                  allPlaced={allPlaced}
+                />
+              ) : null
+            )}
           </group>
         )}
 
