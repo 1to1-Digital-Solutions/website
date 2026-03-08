@@ -4,8 +4,9 @@ import Link from "next/link";
 import { Linkedin, Github } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
+const CURRENT_YEAR = new Date().getFullYear();
+
 export function Footer() {
-  const currentYear = new Date().getFullYear();
   const { t } = useLanguage();
 
   return (
@@ -44,7 +45,7 @@ export function Footer() {
 
       <div className="text-foreground/50 mx-auto mt-12 flex w-full max-w-7xl flex-col items-center justify-between gap-4 px-6 text-xs md:flex-row">
         <p>
-          &copy; {currentYear} 1to1 Studio. {t("footRights")}
+          &copy; {CURRENT_YEAR} 1to1 Studio. {t("footRights")}
         </p>
         <div className="flex gap-4">
           <Link

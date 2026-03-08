@@ -56,6 +56,7 @@ export function SuccessCases() {
                   </span>
                   <ExternalLink
                     size={16}
+                    aria-hidden="true"
                     className="text-foreground/40 group-hover:text-primary transition-colors"
                   />
                 </div>

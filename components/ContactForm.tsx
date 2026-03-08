@@ -16,7 +16,6 @@ export function ContactForm() {
     // Simulate API call for now
     setTimeout(() => {
       setStatus("success");
-      // Reset after 3 seconds
       setTimeout(() => setStatus("idle"), 3000);
     }, 1500);
   };
@@ -29,6 +28,12 @@ export function ContactForm() {
             {t("contactTitle1")} <span className="text-primary">{t("contactTitle2")}</span>
           </h2>
           <p className="text-foreground/70 mt-4 text-lg">{t("contactSub")}</p>
+        </div>
+
+        {/* Status announcer for screen readers */}
+        <div aria-live="polite" aria-atomic="true" className="sr-only">
+          {status === "success" && t("contBtnSuccess")}
+          {status === "error" && t("contErrorMsg")}
         </div>
 
         <form
@@ -47,6 +52,7 @@ export function ContactForm() {
                 id="name"
                 name="name"
                 required
+                autoComplete="name"
                 defaultValue=""
                 className="border-foreground/10 bg-anthracite text-foreground focus:border-primary focus:ring-primary rounded-xl border p-3 focus:ring-1 focus:outline-none"
                 placeholder="John Doe"
@@ -61,6 +67,8 @@ export function ContactForm() {
                 id="email"
                 name="email"
                 required
+                autoComplete="email"
+                spellCheck="false"
                 defaultValue=""
                 className="border-foreground/10 bg-anthracite text-foreground focus:border-primary focus:ring-primary rounded-xl border p-3 focus:ring-1 focus:outline-none"
                 placeholder="john@startup.com"
@@ -128,7 +136,7 @@ export function ContactForm() {
               rows={4}
               defaultValue=""
               className="border-foreground/10 bg-anthracite text-foreground focus:border-primary focus:ring-primary resize-none rounded-xl border p-3 focus:ring-1 focus:outline-none"
-              placeholder="..."
+              placeholder={t("contMessagePlaceholder") as string}
             />
           </div>
 
@@ -177,7 +185,14 @@ export function ContactForm() {
               </span>
             )}
             {status === "success" && t("contBtnSuccess")}
+          {status === "error" && t("contBtnError")}
           </button>
+
+          {status === "error" && (
+            <p role="alert" className="text-red-400 mt-3 text-center text-sm">
+              {t("contErrorMsg") as string}
+            </p>
+          )}
         </form>
       </div>
     </section>

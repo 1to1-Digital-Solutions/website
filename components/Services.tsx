@@ -47,17 +47,6 @@ export function Services() {
       id="services"
       className="relative mx-auto w-full max-w-7xl overflow-visible px-6 py-24"
     >
-      <style>{`
-        @keyframes rocket-vibrate {
-          0%, 100% { transform: translateY(-1rem) translateX(0); }
-          25% { transform: translateY(-1rem) translateX(-2px); }
-          50% { transform: translateY(-1rem) translateX(2px); }
-          75% { transform: translateY(-1rem) translateX(-1px); }
-        }
-        .animate-rocket-vibrate {
-          animation: rocket-vibrate 0.15s ease-in-out infinite;
-        }
-      `}</style>
       <div className="mb-16 text-center md:text-left">
         <h2 className="font-outfit text-4xl font-bold tracking-tight md:text-5xl">
           {t("servicesTitle1")}
@@ -113,6 +102,7 @@ export function Services() {
               <div className="bg-primary/10 ring-primary/20 group-hover:bg-background/50 mb-6 inline-flex rounded-xl p-3 ring-1 transition-colors">
                 <service.icon
                   size={32}
+                  aria-hidden="true"
                   className={`transition-all duration-300 ${service.hoverClass}`}
                 />
               </div>

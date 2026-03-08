@@ -1,11 +1,16 @@
 "use client";
 
 import { useRef } from "react";
+import dynamic from "next/dynamic";
 import gsap from "gsap";
 import { Loader } from "@react-three/drei";
-import { HeroCanvas } from "./canvas/HeroCanvas";
 import { useLanguage } from "@/context/LanguageContext";
 import { useIsomorphicLayoutEffect } from "@/hooks/useIsomorphicLayoutEffect";
+
+const HeroCanvas = dynamic(
+  () => import("./canvas/HeroCanvas").then((m) => ({ default: m.HeroCanvas })),
+  { ssr: false }
+);
 
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);

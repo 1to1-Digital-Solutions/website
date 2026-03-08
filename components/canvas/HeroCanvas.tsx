@@ -18,6 +18,7 @@ import {
 } from "@react-three/drei";
 import { Suspense, useRef, useState, useEffect, useMemo } from "react";
 import * as THREE from "three";
+import { useLanguage } from "@/context/LanguageContext";
 
 function CanvasLoader() {
   const { progress } = useProgress();
@@ -426,6 +427,7 @@ function TargetHole({
 }
 
 export function HeroCanvas() {
+  const { t } = useLanguage();
   const [mounted, setMounted] = useState(false);
   // Tracks which shapes have been placed (by sequential index)
   const [placedCount, setPlacedCount] = useState(0);
@@ -487,7 +489,7 @@ export function HeroCanvas() {
             <p
               className={`text-primary/70 mb-4 w-max text-sm font-bold tracking-[0.2em] uppercase transition-opacity duration-1000 ${allPlaced ? "opacity-0" : "animate-pulse opacity-100"}`}
             >
-              Drag to connect
+              {t("heroDragHint")}
             </p>
           </Html>
         )}

@@ -14,6 +14,7 @@
   --animate-cpu-pulse: cpu-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-code-bg: code-bg 20s linear infinite;
   --animate-marquee: marquee 30s linear infinite;
+  --animate-rocket-vibrate: rocket-vibrate 0.15s ease-in-out infinite;
 
   @keyframes rocket-shake {
     0%,
@@ -55,6 +56,22 @@
     }
     100% {
       transform: translateX(-50%);
+    }
+  }
+
+  @keyframes rocket-vibrate {
+    0%,
+    100% {
+      transform: translateY(-1rem) translateX(0);
+    }
+    25% {
+      transform: translateY(-1rem) translateX(-2px);
+    }
+    50% {
+      transform: translateY(-1rem) translateX(2px);
+    }
+    75% {
+      transform: translateY(-1rem) translateX(-1px);
     }
   }
 }
