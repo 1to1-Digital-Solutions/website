@@ -123,15 +123,30 @@ export const translations = {
     contBudOpt3: "€15k – €20k",
     contBudOpt4: "> €20k",
     contPrivacy: "I have read and accept the",
+    contMessagePlaceholder: "Tell me about your project, goals, and timeline...",
     contBtnIdle: "Send Message",
     contBtnLoading: "Sending...",
     contBtnSuccess: "Message Sent!",
+    contBtnError: "Try Again",
+    contErrorMsg: "Something went wrong. Please try again.",
 
     // Footer
     footDesc: "Premium technical execution for startups that move fast.",
     footRights: "All rights reserved.",
     footTerms: "Terms & Conditions",
     footPrivacy: "Privacy Policy",
+
+    // Aria labels
+    ariaToggleLangToEn: "Switch to English",
+    ariaToggleLangToEs: "Switch to Spanish",
+    ariaOpenMenu: "Open menu",
+    ariaCloseMenu: "Close menu",
+
+    // TechStackMarquee
+    techStackTitle: "OUR TECH STACK",
+
+    // HeroCanvas
+    heroDragHint: "Drag to connect",
   },
   es: {
     // Navbar
@@ -252,15 +267,30 @@ export const translations = {
     contBudOpt3: "15.000 € – 20.000 €",
     contBudOpt4: "> 20.000 €",
     contPrivacy: "He leído y acepto la",
+    contMessagePlaceholder: "Cuéntame sobre tu proyecto, objetivos y plazos...",
     contBtnIdle: "Enviar Mensaje",
     contBtnLoading: "Enviando...",
     contBtnSuccess: "¡Mensaje Enviado!",
+    contBtnError: "Intentar de nuevo",
+    contErrorMsg: "Algo salió mal. Por favor, inténtalo de nuevo.",
 
     // Footer
     footDesc: "Ejecución técnica premium para startups que se mueven rápido.",
     footRights: "Todos los derechos reservados.",
     footTerms: "Términos y Condiciones",
     footPrivacy: "Política de Privacidad",
+
+    // Aria labels
+    ariaToggleLangToEn: "Cambiar a inglés",
+    ariaToggleLangToEs: "Cambiar a español",
+    ariaOpenMenu: "Abrir menú",
+    ariaCloseMenu: "Cerrar menú",
+
+    // TechStackMarquee
+    techStackTitle: "NUESTRO STACK TÉCNICO",
+
+    // HeroCanvas
+    heroDragHint: "Arrastra para conectar",
   },
 };
 

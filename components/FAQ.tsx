@@ -54,7 +54,10 @@ export function FAQ() {
             >
               <button
                 onClick={() => setOpenIndex(isOpen ? null : idx)}
-                className="flex w-full items-center justify-between p-6 text-left"
+                className="flex w-full cursor-pointer items-center justify-between p-6 text-left focus-visible:ring-primary focus-visible:ring-2 focus-visible:outline-none"
+                aria-expanded={isOpen}
+                aria-controls={`faq-answer-${idx}`}
+                id={`faq-question-${idx}`}
               >
                 <span className="font-outfit text-lg font-semibold md:text-xl">
                   {faq.question as string}
@@ -68,6 +71,9 @@ export function FAQ() {
               </button>
 
               <div
+                id={`faq-answer-${idx}`}
+                role="region"
+                aria-labelledby={`faq-question-${idx}`}
                 className={`grid transition-all duration-300 ease-in-out ${
                   isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
                 }`}
