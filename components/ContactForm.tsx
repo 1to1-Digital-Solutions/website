@@ -154,7 +154,7 @@ export function ContactForm() {
           <button
             type="submit"
             disabled={status === "loading" || status === "success"}
-            className="group bg-primary text-background hover:bg-primary/90 mt-2 flex w-full items-center justify-center gap-2 rounded-xl py-4 font-bold transition-all disabled:opacity-70 disabled:hover:scale-100"
+            className="group bg-primary text-background hover:bg-primary/90 focus-visible:ring-primary mt-2 flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl py-4 font-bold transition-all focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:scale-100"
           >
             {status === "idle" && (
               <>
@@ -162,7 +162,20 @@ export function ContactForm() {
                 <Send size={18} className="transition-transform group-hover:translate-x-1" />
               </>
             )}
-            {status === "loading" && t("contBtnLoading")}
+            {status === "loading" && (
+              <span className="flex items-center gap-2">
+                <svg
+                  className="h-4 w-4 animate-spin"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                </svg>
+                {t("contBtnLoading")}
+              </span>
+            )}
             {status === "success" && t("contBtnSuccess")}
           </button>
         </form>

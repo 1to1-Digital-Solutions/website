@@ -29,14 +29,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="es" className="dark" suppressHydrationWarning>
       <body
         className={`${inter.variable} ${outfit.variable} bg-background text-foreground selection:bg-primary/30 min-h-screen font-sans antialiased`}
         suppressHydrationWarning
       >
         <LanguageProvider>
+          <a
+            href="#main-content"
+            className="bg-primary text-background focus:not-sr-only sr-only fixed top-2 left-2 z-[100] rounded-lg px-4 py-2 font-bold focus:outline-none"
+          >
+            Skip to main content
+          </a>
           <Navbar />
-          <main className="flex flex-col">{children}</main>
+          <main id="main-content" className="flex flex-col">
+            {children}
+          </main>
           <Footer />
         </LanguageProvider>
       </body>

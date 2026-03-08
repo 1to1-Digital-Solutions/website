@@ -13,7 +13,7 @@ export function AboutMe() {
           <div className="bg-anthracite/80 relative aspect-square w-full max-w-md overflow-hidden rounded-3xl">
             <Image
               src="/images/profilePicture.jpg"
-              alt="Profile picture"
+              alt="Foto de perfil del fundador de 1to1 Studio"
               fill
               className="object-cover object-top"
               priority
@@ -51,7 +51,7 @@ export function AboutMe() {
 
           <a
             href="#contact"
-            className="group text-primary hover:text-primary/80 mt-10 inline-flex items-center gap-2 font-semibold transition-colors"
+            className="group text-primary hover:text-primary/80 focus-visible:ring-primary mt-10 inline-flex items-center gap-2 rounded font-semibold transition-colors focus-visible:ring-2 focus-visible:outline-none"
           >
             {t("aboutBtn")}{" "}
             <ArrowRight size={20} className="transition-transform group-hover:translate-x-2" />

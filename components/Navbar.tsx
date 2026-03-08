@@ -39,7 +39,7 @@ export function Navbar() {
               <li key={link.name as string}>
                 <Link
                   href={link.href}
-                  className="text-foreground/80 hover:text-primary text-sm font-medium transition-colors"
+                  className="text-foreground/80 hover:text-primary focus-visible:ring-primary rounded focus-visible:ring-2 focus-visible:outline-none text-sm font-medium transition-colors"
                 >
                   {link.name}
                 </Link>
@@ -49,14 +49,15 @@ export function Navbar() {
 
           <button
             onClick={toggleLanguage}
-            className="border-foreground/20 hover:bg-foreground/10 flex items-center gap-2 rounded-lg border px-3 py-1.5 text-xs font-bold uppercase opacity-80 transition-all hover:opacity-100"
+            className="border-foreground/20 hover:bg-foreground/10 focus-visible:ring-primary flex cursor-pointer items-center gap-2 rounded-lg border px-3 py-1.5 text-xs font-bold uppercase opacity-80 transition-all hover:opacity-100 focus-visible:ring-2 focus-visible:outline-none"
+            aria-label={t(lang === "es" ? "ariaToggleLangToEn" : "ariaToggleLangToEs") as string}
           >
             <Globe size={14} /> {lang}
           </button>
 
           <Link
             href="#contact"
-            className="bg-primary text-background rounded-full px-5 py-2 text-sm font-semibold transition-transform hover:scale-105"
+            className="bg-primary text-background focus-visible:ring-primary rounded-full px-5 py-2 text-sm font-semibold transition-transform hover:scale-105 focus-visible:ring-2 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             {t("navCTA")}
           </Link>
@@ -66,12 +67,19 @@ export function Navbar() {
         <div className="flex items-center gap-4 md:hidden">
           <button
             onClick={toggleLanguage}
-            className="border-foreground/20 hover:bg-foreground/10 flex items-center gap-2 rounded-lg border px-3 py-1 text-xs font-bold uppercase opacity-80 transition-all"
+            className="border-foreground/20 hover:bg-foreground/10 focus-visible:ring-primary flex cursor-pointer items-center gap-2 rounded-lg border px-3 py-1 text-xs font-bold uppercase opacity-80 transition-all focus-visible:ring-2 focus-visible:outline-none"
+            aria-label={t(lang === "es" ? "ariaToggleLangToEn" : "ariaToggleLangToEs") as string}
           >
             <Globe size={14} /> {lang}
           </button>
 
-          <button className="text-foreground" onClick={() => setIsOpen(!isOpen)}>
+          <button
+            className="text-foreground cursor-pointer focus-visible:ring-primary rounded-md focus-visible:ring-2 focus-visible:outline-none"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label={t(isOpen ? "ariaCloseMenu" : "ariaOpenMenu") as string}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
+          >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -79,13 +87,13 @@ export function Navbar() {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="bg-background/80 absolute top-[calc(100%+10px)] left-0 w-full rounded-2xl border border-white/10 pt-4 pb-6 shadow-lg backdrop-blur-xl md:hidden">
+        <div id="mobile-menu" className="bg-background/80 absolute top-[calc(100%+10px)] left-0 w-full rounded-2xl border border-white/10 pt-4 pb-6 shadow-lg backdrop-blur-xl md:hidden">
           <ul className="flex flex-col items-center gap-6">
             {navLinks.map((link) => (
               <li key={link.name as string}>
                 <Link
                   href={link.href}
-                  className="text-foreground/90 hover:text-primary text-lg font-medium transition-colors"
+                  className="text-foreground/90 hover:text-primary focus-visible:ring-primary rounded focus-visible:ring-2 focus-visible:outline-none text-lg font-medium transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.name}
@@ -95,7 +103,7 @@ export function Navbar() {
             <li>
               <Link
                 href="#contact"
-                className="bg-primary text-background mt-4 block rounded-full px-8 py-3 text-base font-semibold"
+                className="bg-primary text-background focus-visible:ring-primary mt-4 block rounded-full px-8 py-3 text-base font-semibold focus-visible:ring-2 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 onClick={() => setIsOpen(false)}
               >
                 {t("navCTA")}

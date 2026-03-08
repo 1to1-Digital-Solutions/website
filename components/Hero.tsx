@@ -13,12 +13,25 @@ export function Hero() {
   const { t } = useLanguage();
 
   useIsomorphicLayoutEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     const ctx = gsap.context(() => {
-      // Setup initial states
+      if (prefersReducedMotion) {
+        // Reduced motion: simple fade-in, no movement
+        gsap.set([".hero-text-line", ".hero-btn"], { opacity: 0 });
+        gsap.to([".hero-text-line", ".hero-btn"], {
+          opacity: 1,
+          duration: 0.5,
+          stagger: 0.1,
+          delay: 0.1,
+        });
+        return;
+      }
+
+      // Full animation: slide up + scale in
       gsap.set(".hero-text-line", { y: 50, opacity: 0 });
       gsap.set(".hero-btn", { scale: 0.8, opacity: 0 });
 
-      // Create entrance animation timeline
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
       tl.to(".hero-text-line", {
@@ -26,7 +39,7 @@ export function Hero() {
         opacity: 1,
         duration: 1,
         stagger: 0.15,
-        delay: 0.2, // Small delay to let the page load
+        delay: 0.2,
       }).to(
         ".hero-btn",
         {
@@ -35,11 +48,11 @@ export function Hero() {
           duration: 0.5,
           ease: "back.out(1.5)",
         },
-        "-=0.4" // Start before the text finishes
+        "-=0.4"
       );
     }, containerRef);
 
-    return () => ctx.revert();
+    return () => ctx?.revert();
   }, []);
 
   return (
@@ -77,13 +90,13 @@ export function Hero() {
         <div className="hero-btn pointer-events-none mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
             href="#contact"
-            className="bg-primary/90 text-background hover:bg-primary pointer-events-auto rounded-full px-8 py-4 text-lg font-bold backdrop-blur-md transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(64,224,208,0.4)]"
+            className="bg-primary/90 text-background hover:bg-primary focus-visible:ring-primary pointer-events-auto rounded-full px-8 py-4 text-lg font-bold backdrop-blur-md transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(64,224,208,0.4)] focus-visible:ring-2 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             {t("heroBtnStart")}
           </a>
           <a
             href="#work"
-            className="border-foreground/20 bg-background/50 hover:bg-foreground/5 hover:text-primary hover:border-primary/50 pointer-events-auto rounded-full border px-8 py-4 text-lg font-bold backdrop-blur-md transition-all"
+            className="border-foreground/20 bg-background/50 hover:bg-foreground/5 hover:text-primary hover:border-primary/50 focus-visible:ring-primary pointer-events-auto rounded-full border px-8 py-4 text-lg font-bold backdrop-blur-md transition-all focus-visible:ring-2 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             {t("heroBtnWork")}
           </a>

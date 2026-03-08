@@ -132,6 +132,12 @@ export const translations = {
     footRights: "All rights reserved.",
     footTerms: "Terms & Conditions",
     footPrivacy: "Privacy Policy",
+
+    // Aria labels
+    ariaToggleLangToEn: "Switch to English",
+    ariaToggleLangToEs: "Switch to Spanish",
+    ariaOpenMenu: "Open menu",
+    ariaCloseMenu: "Close menu",
   },
   es: {
     // Navbar
@@ -261,6 +267,12 @@ export const translations = {
     footRights: "Todos los derechos reservados.",
     footTerms: "Términos y Condiciones",
     footPrivacy: "Política de Privacidad",
+
+    // Aria labels
+    ariaToggleLangToEn: "Cambiar a inglés",
+    ariaToggleLangToEs: "Cambiar a español",
+    ariaOpenMenu: "Abrir menú",
+    ariaCloseMenu: "Cerrar menú",
   },
 };
 

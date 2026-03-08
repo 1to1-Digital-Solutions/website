@@ -23,6 +23,8 @@ export default function Home() {
   useIsomorphicLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     const ctx = gsap.context(() => {
       // Entrance animations for children
       const sections = gsap.utils.toArray<HTMLElement>("section:not(#home)");
@@ -31,13 +33,14 @@ export default function Home() {
         gsap.fromTo(
           section.children,
           {
-            y: 40,
+            // Reduced motion: only fade, no vertical movement
+            y: prefersReducedMotion ? 0 : 40,
             opacity: 0,
           },
           {
             y: 0,
             opacity: 1,
-            duration: 0.7,
+            duration: prefersReducedMotion ? 0.4 : 0.7,
             stagger: 0.12,
             ease: "power2.out",
             scrollTrigger: {
@@ -49,29 +52,31 @@ export default function Home() {
         );
       });
 
-      // Card Stacking Effect
-      const cards = gsap.utils.toArray<HTMLElement>(".card-section");
+      // Card Stacking Effect — skip if reduced motion (continuous scroll movement)
+      if (!prefersReducedMotion) {
+        const cards = gsap.utils.toArray<HTMLElement>(".card-section");
 
-      cards.forEach((card, index) => {
-        if (index === cards.length - 1) return;
+        cards.forEach((card, index) => {
+          if (index === cards.length - 1) return;
 
-        gsap.to(card, {
-          scale: 0.88,
-          opacity: 0,
-          ease: "none",
-          scrollTrigger: {
-            trigger: card,
-            start: () => (window.innerHeight < card.offsetHeight ? "bottom bottom" : "top top"),
-            endTrigger: cards[index + 1],
-            end: "top top",
-            scrub: 0.4,
-            pin: true,
-            pinSpacing: false,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-          },
+          gsap.to(card, {
+            scale: 0.88,
+            opacity: 0,
+            ease: "none",
+            scrollTrigger: {
+              trigger: card,
+              start: () => (window.innerHeight < card.offsetHeight ? "bottom bottom" : "top top"),
+              endTrigger: cards[index + 1],
+              end: "top top",
+              scrub: 0.4,
+              pin: true,
+              pinSpacing: false,
+              anticipatePin: 1,
+              invalidateOnRefresh: true,
+            },
+          });
         });
-      });
+      }
     });
 
     return () => ctx.revert();
