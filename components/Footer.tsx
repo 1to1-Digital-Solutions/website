@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Linkedin, Github } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -14,8 +15,14 @@ export function Footer() {
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 md:flex-row">
         {/* Brand */}
         <div className="flex flex-col items-center md:items-start">
-          <Link href="/" className="text-foreground hover:text-primary focus-visible:ring-primary rounded focus-visible:ring-2 focus-visible:outline-none text-2xl font-bold tracking-tighter transition-colors">
-            1to1 Studio<span className="text-primary">.</span>
+          <Link href="/" className="focus-visible:ring-primary rounded focus-visible:ring-2 focus-visible:outline-none">
+            <Image
+              src="/logo.svg"
+              alt="1to1 Studio"
+              width={222}
+              height={140}
+              className="h-14 w-auto"
+            />
           </Link>
           <p className="mt-2 max-w-xs text-center text-sm md:text-left">{t("footDesc")}</p>
         </div>
@@ -59,6 +66,12 @@ export function Footer() {
             className="hover:text-primary focus-visible:ring-primary rounded underline-offset-2 transition-colors hover:underline focus-visible:ring-2 focus-visible:outline-none"
           >
             {t("footPrivacy")}
+          </Link>
+          <Link
+            href="/cookie-policy"
+            className="hover:text-primary focus-visible:ring-primary rounded underline-offset-2 transition-colors hover:underline focus-visible:ring-2 focus-visible:outline-none"
+          >
+            {t("cookiePolicy")}
           </Link>
         </div>
       </div>
