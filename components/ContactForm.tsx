@@ -45,7 +45,7 @@ export function ContactForm() {
           <div className="grid gap-6 md:grid-cols-2">
             <div className="flex flex-col gap-2">
               <label htmlFor="name" className="text-foreground/80 text-sm font-medium">
-                {t("contName")}
+                {t("contName")} <span className="text-primary" aria-hidden="true">*</span>
               </label>
               <input
                 type="text"
@@ -60,7 +60,7 @@ export function ContactForm() {
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="email" className="text-foreground/80 text-sm font-medium">
-                {t("contEmail")}
+                {t("contEmail")} <span className="text-primary" aria-hidden="true">*</span>
               </label>
               <input
                 type="email"
@@ -108,13 +108,15 @@ export function ContactForm() {
                 <select
                   id="budget"
                   name="budget"
-                  defaultValue="10-15"
+                  defaultValue="<5"
                   className="border-foreground/10 bg-anthracite text-foreground focus:border-primary focus:ring-primary w-full cursor-pointer appearance-none rounded-xl border p-3 pr-10 focus:ring-1 focus:outline-none"
                 >
-                  <option value="<10">{t("contBudOpt1")}</option>
-                  <option value="10-15">{t("contBudOpt2")}</option>
-                  <option value="15-20">{t("contBudOpt3")}</option>
-                  <option value=">20">{t("contBudOpt4")}</option>
+                  <option value="<5">{t("contBudOptUnder5")}</option>
+                  <option value="5-10">{t("contBudOpt5to10")}</option>
+                  <option value="10-15">{t("contBudOpt1")}</option>
+                  <option value="15-20">{t("contBudOpt2")}</option>
+                  <option value="20-30">{t("contBudOpt3")}</option>
+                  <option value=">30">{t("contBudOpt4")}</option>
                 </select>
                 <ChevronDown
                   className="text-foreground/50 pointer-events-none absolute top-1/2 right-3 -translate-y-1/2"
@@ -127,7 +129,7 @@ export function ContactForm() {
           {/* Row 3: Message */}
           <div className="flex flex-col gap-2">
             <label htmlFor="message" className="text-foreground/80 text-sm font-medium">
-              {t("contMessage")}
+              {t("contMessage")} <span className="text-primary" aria-hidden="true">*</span>
             </label>
             <textarea
               id="message"
@@ -141,7 +143,7 @@ export function ContactForm() {
           </div>
 
           {/* Privacy policy checkbox */}
-          <label className="flex cursor-pointer items-start gap-3">
+          <label className="flex cursor-pointer items-start gap-3" aria-required="true">
             <input
               type="checkbox"
               name="privacy"
@@ -150,6 +152,7 @@ export function ContactForm() {
             />
             <span className="text-foreground/60 text-sm">
               {t("contPrivacy")}{" "}
+              <span className="text-primary" aria-hidden="true">*</span>{" "}
               <Link
                 href="/privacy-policy"
                 className="hover:text-primary underline-offset-2 transition-colors hover:underline"

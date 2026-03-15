@@ -1,11 +1,12 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import gsap from "gsap";
 import { Loader } from "@react-three/drei";
 import { useLanguage } from "@/context/LanguageContext";
 import { useIsomorphicLayoutEffect } from "@/hooks/useIsomorphicLayoutEffect";
+import { HeroMobileBackground } from "@/components/HeroMobileBackground";
 
 const HeroCanvas = dynamic(
   () => import("./canvas/HeroCanvas").then((m) => ({ default: m.HeroCanvas })),
@@ -16,6 +17,15 @@ export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const { t } = useLanguage();
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    setIsDesktop(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
   useIsomorphicLayoutEffect(() => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -68,9 +78,9 @@ export function Hero() {
       {/* Subtle primary background blob */}
       <div className="bg-primary/20 pointer-events-none absolute top-1/2 left-1/2 z-0 h-[60vw] w-[60vw] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[150px] md:h-[40vw] md:w-[40vw]" />
 
-      {/* 3D Canvas Background (Now interactive over the whole screen) */}
+      {/* Background: CSS on mobile (no Three.js loaded), canvas on desktop */}
       <div className="absolute inset-0 z-0">
-        <HeroCanvas />
+        {isDesktop ? <HeroCanvas /> : <HeroMobileBackground />}
       </div>
 
       {/* Foreground Content */}
@@ -107,12 +117,14 @@ export function Hero() {
           </a>
         </div>
       </div>
-      <Loader
-        containerStyles={{ background: "#0a0a0a", zIndex: 50 }}
-        innerStyles={{ width: "300px" }}
-        barStyles={{ background: "#40E0D0", height: "4px" }}
-        dataStyles={{ color: "#ededed", fontFamily: "Outfit", fontSize: "14px" }}
-      />
+      {isDesktop && (
+        <Loader
+          containerStyles={{ background: "#27272a", zIndex: 50 }}
+          innerStyles={{ width: "300px" }}
+          barStyles={{ background: "#1f957a", height: "4px" }}
+          dataStyles={{ color: "#ededed", fontFamily: "Outfit", fontSize: "14px" }}
+        />
+      )}
     </section>
   );
 }

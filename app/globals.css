@@ -7,6 +7,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
   --color-anthracite: var(--anthracite);
 
   --animate-rocket-shake: rocket-shake 0.5s ease-in-out infinite;
@@ -59,6 +60,32 @@
     }
   }
 
+  --animate-float-a: float-a 7s ease-in-out infinite;
+  --animate-float-b: float-b 9s ease-in-out infinite;
+  --animate-float-c: float-c 11s ease-in-out infinite;
+  --animate-drift: drift 14s ease-in-out infinite;
+
+  @keyframes float-a {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-18px) rotate(6deg); }
+  }
+  @keyframes float-b {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    40% { transform: translateY(14px) rotate(-8deg); }
+    80% { transform: translateY(-8px) rotate(4deg); }
+  }
+  @keyframes float-c {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    30% { transform: translateY(-22px) rotate(12deg); }
+    70% { transform: translateY(10px) rotate(-5deg); }
+  }
+  @keyframes drift {
+    0%, 100% { transform: translateX(0px) translateY(0px) rotate(0deg); }
+    25% { transform: translateX(12px) translateY(-10px) rotate(5deg); }
+    50% { transform: translateX(-8px) translateY(16px) rotate(-8deg); }
+    75% { transform: translateX(16px) translateY(6px) rotate(3deg); }
+  }
+
   @keyframes rocket-vibrate {
     0%,
     100% {
@@ -77,11 +104,11 @@
 }
 
 :root {
-  /* Default to dark mode for this project */
-  --background: #0a0a0a;
+  --background: #27272a;
   --foreground: #ededed;
-  --primary: #40e0d0; /* Turquoise */
-  --anthracite: #1a1a1a;
+  --primary: #1f957a;
+  --secondary: #ffffff;
+  --anthracite: #1e1e21;
 }
 
 body {

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X, Globe } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
@@ -22,14 +23,18 @@ export function Navbar() {
   };
 
   return (
-    <nav className="bg-background/40 fixed top-4 left-1/2 z-50 w-[95%] max-w-7xl -translate-x-1/2 rounded-full border border-white/10 p-1 shadow-lg backdrop-blur-xl">
-      <div className="flex items-center justify-between px-6 py-3">
+    <nav className="bg-background/80 fixed top-4 left-1/2 z-50 w-[95%] max-w-7xl -translate-x-1/2 rounded-full border border-white/10 p-1 shadow-lg backdrop-blur-xl md:bg-background/40">
+      <div className="flex items-center justify-between px-6 py-3 md:py-2">
         {/* Logo */}
-        <Link
-          href="/"
-          className="text-foreground hover:text-primary text-2xl font-bold tracking-tighter transition-colors"
-        >
-          1to1 Studio<span className="text-primary">.</span>
+        <Link href="/" className="focus-visible:ring-primary rounded focus-visible:ring-2 focus-visible:outline-none">
+          <Image
+            src="/logo.svg"
+            alt="1to1 Studio"
+            width={222}
+            height={140}
+            className="h-9 w-auto md:h-8"
+            priority
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -87,7 +92,7 @@ export function Navbar() {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div id="mobile-menu" className="bg-background/80 absolute top-[calc(100%+10px)] left-0 w-full rounded-2xl border border-white/10 pt-4 pb-6 shadow-lg backdrop-blur-xl md:hidden">
+        <div id="mobile-menu" className="bg-background/95 absolute top-[calc(100%+10px)] left-0 w-full rounded-2xl border border-white/10 pt-4 pb-6 shadow-lg backdrop-blur-xl md:hidden">
           <ul className="flex flex-col items-center gap-6">
             {navLinks.map((link) => (
               <li key={link.name as string}>
