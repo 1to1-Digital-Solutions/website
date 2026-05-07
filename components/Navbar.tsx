@@ -2,13 +2,18 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, Globe } from "lucide-react";
-import { useState } from "react";
+import { Menu, X, Globe, Sun, Moon } from "lucide-react";
+import { useState, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
+import { useTheme } from "@/context/ThemeContext";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const { lang, setLang, t } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
+
+  useEffect(() => setMounted(true), []);
 
   const navLinks = [
     { name: t("navServices"), href: "#services" },
@@ -18,22 +23,24 @@ export function Navbar() {
     { name: t("navFAQ"), href: "#faq" },
   ];
 
-  const toggleLanguage = () => {
-    setLang(lang === "es" ? "en" : "es");
-  };
+  const toggleLanguage = () => setLang(lang === "es" ? "en" : "es");
+
+  const logoSrc =
+    !mounted || theme === "dark" ? "/logo-negative.svg" : "/logo-positive.svg";
 
   return (
-    <nav className="bg-background/80 fixed top-4 left-1/2 z-50 w-[95%] max-w-7xl -translate-x-1/2 rounded-full border border-white/10 p-1 shadow-lg backdrop-blur-xl md:bg-background/40">
+    <nav className="bg-background/80 fixed top-4 left-1/2 z-[90] w-[95%] max-w-7xl -translate-x-1/2 rounded-full border border-foreground/10 p-1 shadow-lg backdrop-blur-xl md:bg-background/40">
       <div className="flex items-center justify-between px-6 py-3 md:py-2">
         {/* Logo */}
         <Link href="/" className="focus-visible:ring-primary rounded focus-visible:ring-2 focus-visible:outline-none">
           <Image
-            src="/logo.svg"
-            alt="1to1 Studio"
-            width={222}
-            height={140}
+            src={logoSrc}
+            alt="1to1 Digital Solutions"
+            width={246}
+            height={133}
             className="h-9 w-auto md:h-8"
             priority
+            suppressHydrationWarning
           />
         </Link>
 
@@ -52,6 +59,16 @@ export function Navbar() {
             ))}
           </ul>
 
+          {/* Theme toggle */}
+          <button
+            onClick={toggleTheme}
+            className="border-foreground/20 hover:bg-foreground/10 focus-visible:ring-primary flex cursor-pointer items-center justify-center rounded-lg border p-1.5 opacity-80 transition-all hover:opacity-100 focus-visible:ring-2 focus-visible:outline-none"
+            aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+          >
+            {mounted && theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
+          </button>
+
+          {/* Language toggle */}
           <button
             onClick={toggleLanguage}
             className="border-foreground/20 hover:bg-foreground/10 focus-visible:ring-primary flex cursor-pointer items-center gap-2 rounded-lg border px-3 py-1.5 text-xs font-bold uppercase opacity-80 transition-all hover:opacity-100 focus-visible:ring-2 focus-visible:outline-none"
@@ -68,8 +85,18 @@ export function Navbar() {
           </Link>
         </div>
 
-        {/* Mobile Menu Toggle */}
-        <div className="flex items-center gap-4 md:hidden">
+        {/* Mobile controls */}
+        <div className="flex items-center gap-3 md:hidden">
+          {/* Theme toggle */}
+          <button
+            onClick={toggleTheme}
+            className="border-foreground/20 hover:bg-foreground/10 focus-visible:ring-primary flex cursor-pointer items-center justify-center rounded-lg border p-1.5 opacity-80 transition-all focus-visible:ring-2 focus-visible:outline-none"
+            aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+          >
+            {mounted && theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
+          </button>
+
+          {/* Language toggle */}
           <button
             onClick={toggleLanguage}
             className="border-foreground/20 hover:bg-foreground/10 focus-visible:ring-primary flex cursor-pointer items-center gap-2 rounded-lg border px-3 py-1 text-xs font-bold uppercase opacity-80 transition-all focus-visible:ring-2 focus-visible:outline-none"
@@ -78,6 +105,7 @@ export function Navbar() {
             <Globe size={14} /> {lang}
           </button>
 
+          {/* Hamburger */}
           <button
             className="text-foreground cursor-pointer focus-visible:ring-primary rounded-md focus-visible:ring-2 focus-visible:outline-none"
             onClick={() => setIsOpen(!isOpen)}
@@ -92,7 +120,7 @@ export function Navbar() {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div id="mobile-menu" className="bg-background/95 absolute top-[calc(100%+10px)] left-0 w-full rounded-2xl border border-white/10 pt-4 pb-6 shadow-lg backdrop-blur-xl md:hidden">
+        <div id="mobile-menu" className="bg-background/95 absolute top-[calc(100%+10px)] left-0 w-full rounded-2xl border border-foreground/10 pt-4 pb-6 shadow-lg backdrop-blur-xl md:hidden">
           <ul className="flex flex-col items-center gap-6">
             {navLinks.map((link) => (
               <li key={link.name as string}>

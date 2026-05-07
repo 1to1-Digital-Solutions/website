@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Use .dark/.light class on <html> for dark mode variants */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-outfit: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
@@ -103,12 +106,23 @@
   }
 }
 
-:root {
+/* Dark mode (default + .dark class) */
+:root,
+.dark {
   --background: #27272a;
   --foreground: #ededed;
   --primary: #1f957a;
   --secondary: #ffffff;
   --anthracite: #1e1e21;
+}
+
+/* Light mode */
+.light {
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+  --primary: #1f957a;
+  --secondary: #27272a;
+  --anthracite: #f4f4f5;
 }
 
 body {

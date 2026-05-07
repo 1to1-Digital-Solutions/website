@@ -10,8 +10,8 @@ describe("Footer", () => {
       </LanguageProvider>
     );
 
-    // 1to1 Studio appears in part of a span/link
-    expect(screen.getAllByText(/1to1 Studio/i)[0]).toBeInTheDocument();
+    // 1to1 Digital Solutions appears in part of a span/link
+    expect(screen.getAllByText(/1to1 Digital Solutions/i)[0]).toBeInTheDocument();
 
     // Check year
     const currentYear = new Date().getFullYear();
