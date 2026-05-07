@@ -45,8 +45,8 @@ Ensure you have **Node.js** (v18+) and **npm** installed on your machine.
 
 1. Clone the repository and navigate into the project directory:
    ```bash
-   git clone <repo-url>
-   cd 1to1-digital-solutions-landing
+   git clone git@github.com:1to1-Digital-Solutions/website.git
+   cd website
    ```
 2. Install dependencies:
    ```bash
