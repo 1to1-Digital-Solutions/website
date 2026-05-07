@@ -38,7 +38,7 @@ export function Footer() {
         {/* Social Links */}
         <div className="flex items-center gap-6">
           <Link
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/c%C3%A9sar-pe%C3%B3n-lamparero/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-foreground/60 hover:text-primary focus-visible:ring-primary rounded focus-visible:ring-2 focus-visible:outline-none transition-colors"
@@ -47,7 +47,7 @@ export function Footer() {
             <span className="sr-only">LinkedIn</span>
           </Link>
           <Link
-            href="https://github.com"
+            href="https://github.com/1to1-Digital-Solutions"
             target="_blank"
             rel="noopener noreferrer"
             className="text-foreground/60 hover:text-primary focus-visible:ring-primary rounded focus-visible:ring-2 focus-visible:outline-none transition-colors"

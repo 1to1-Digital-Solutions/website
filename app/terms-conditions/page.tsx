@@ -18,7 +18,29 @@ export default function TermsConditions() {
 
         <div className="text-foreground/80 space-y-8 text-sm leading-relaxed md:text-base">
           <section>
-            <h2 className="text-foreground mb-3 text-xl font-semibold">1. Introducción</h2>
+            <h2 className="text-foreground mb-3 text-xl font-semibold">
+              1. Datos Identificativos del Titular
+            </h2>
+            <p>
+              En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la
+              Información y de Comercio Electrónico (LSSI-CE), se informa de que el titular de este
+              sitio web es:
+            </p>
+            <ul className="text-foreground/70 mt-3 list-disc space-y-1 pl-5">
+              <li><strong className="text-foreground/90">Razón social:</strong> 1TO1 DIGITAL SOLUTIONS SL.</li>
+              <li><strong className="text-foreground/90">NIF:</strong> B27630136</li>
+              <li><strong className="text-foreground/90">Domicilio social:</strong> Avda. de Buendía, 11, 19005, Guadalajara, España</li>
+              <li>
+                <strong className="text-foreground/90">Correo electrónico:</strong>{" "}
+                <a href="mailto:info@1to1digital.solutions" className="text-primary hover:underline underline-offset-2">
+                  info@1to1digital.solutions
+                </a>
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-foreground mb-3 text-xl font-semibold">2. Introducción</h2>
             <p>
               Bienvenido a 1to1 Digital Solutions. Al acceder a nuestro sitio web y utilizar nuestros
               servicios, usted acepta estar sujeto a los siguientes términos y condiciones. Si no
@@ -28,7 +50,7 @@ export default function TermsConditions() {
           </section>
 
           <section>
-            <h2 className="text-foreground mb-3 text-xl font-semibold">2. Propiedad Intelectual</h2>
+            <h2 className="text-foreground mb-3 text-xl font-semibold">3. Propiedad Intelectual</h2>
             <p>
               Todo el código fuente original, diseños y arquitectura desarrollados bajo contrato
               serán transferidos íntegramente al cliente una vez recibido el pago final acordado.
@@ -40,7 +62,7 @@ export default function TermsConditions() {
 
           <section>
             <h2 className="text-foreground mb-3 text-xl font-semibold">
-              3. Servicios y Entregables
+              4. Servicios y Entregables
             </h2>
             <p>
               Nos especializamos en Desarrollo de MVP, integraciones de Blockchain y experiencias
@@ -52,7 +74,7 @@ export default function TermsConditions() {
 
           <section>
             <h2 className="text-foreground mb-3 text-xl font-semibold">
-              4. Limitación de Responsabilidad
+              5. Limitación de Responsabilidad
             </h2>
             <p>
               1to1 Digital Solutions no será responsable de ningún daño indirecto, incidental o consecuente que

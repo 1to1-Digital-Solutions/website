@@ -23,7 +23,21 @@ export default function CookiePolicy() {
 
         <div className="text-foreground/80 space-y-8 text-sm leading-relaxed md:text-base">
           <section>
-            <h2 className="text-foreground mb-3 text-xl font-semibold">1. ¿Qué son las cookies?</h2>
+            <h2 className="text-foreground mb-3 text-xl font-semibold">1. Responsable</h2>
+            <p>
+              El responsable del uso de cookies en este sitio web es{" "}
+              <strong className="text-foreground/90">1TO1 DIGITAL SOLUTIONS SL.</strong> Puedes
+              consultar nuestros datos identificativos completos (NIF, domicilio social y datos de
+              contacto) en la{" "}
+              <Link href="/privacy-policy" className="text-primary hover:underline underline-offset-2">
+                Política de Privacidad
+              </Link>
+              .
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-foreground mb-3 text-xl font-semibold">2. ¿Qué son las cookies?</h2>
             <p>
               Las cookies son pequeños archivos de texto que un sitio web almacena en su dispositivo
               (ordenador, tableta o móvil) cuando lo visita. Permiten que el sitio recuerde sus
@@ -34,7 +48,7 @@ export default function CookiePolicy() {
 
           <section>
             <h2 className="text-foreground mb-3 text-xl font-semibold">
-              2. ¿Qué cookies utilizamos?
+              3. ¿Qué cookies utilizamos?
             </h2>
             <div className="space-y-4">
               <div className="border-foreground/10 rounded-xl border p-4">
@@ -65,7 +79,7 @@ export default function CookiePolicy() {
 
           <section>
             <h2 className="text-foreground mb-3 text-xl font-semibold">
-              3. ¿Cómo controlar las cookies?
+              4. ¿Cómo controlar las cookies?
             </h2>
             <p>
               Puedes gestionar o eliminar las cookies en cualquier momento desde la configuración de
@@ -96,7 +110,7 @@ export default function CookiePolicy() {
 
           <section>
             <h2 className="text-foreground mb-3 text-xl font-semibold">
-              4. Transferencias internacionales
+              5. Transferencias internacionales
             </h2>
             <p>
               Algunos proveedores de servicios analíticos (como Google Analytics) pueden transferir
@@ -107,7 +121,7 @@ export default function CookiePolicy() {
           </section>
 
           <section>
-            <h2 className="text-foreground mb-3 text-xl font-semibold">5. Base legal (RGPD)</h2>
+            <h2 className="text-foreground mb-3 text-xl font-semibold">6. Base legal (RGPD)</h2>
             <p>
               De conformidad con el Reglamento General de Protección de Datos (RGPD) y la Ley de
               Servicios de la Sociedad de la Información (LSSI), el uso de cookies no estrictamente
@@ -117,12 +131,12 @@ export default function CookiePolicy() {
           </section>
 
           <section>
-            <h2 className="text-foreground mb-3 text-xl font-semibold">6. Contacto</h2>
+            <h2 className="text-foreground mb-3 text-xl font-semibold">7. Contacto</h2>
             <p>
-              Si tienes preguntas sobre nuestra política de cookies, puedes contactarnos a través del{" "}
-              <Link href="/#contact" className="text-primary hover:underline underline-offset-2">
-                formulario de contacto
-              </Link>{" "}
+              Si tienes preguntas sobre nuestra política de cookies, puedes escribirnos a{" "}
+              <a href="mailto:info@1to1digital.solutions" className="text-primary hover:underline underline-offset-2">
+                info@1to1digital.solutions
+              </a>{" "}
               o consultar nuestra{" "}
               <Link href="/privacy-policy" className="text-primary hover:underline underline-offset-2">
                 Política de Privacidad

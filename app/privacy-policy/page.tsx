@@ -19,7 +19,30 @@ export default function PrivacyPolicy() {
         <div className="text-foreground/80 space-y-8 text-sm leading-relaxed md:text-base">
           <section>
             <h2 className="text-foreground mb-3 text-xl font-semibold">
-              1. Recopilación de Información
+              1. Responsable del Tratamiento
+            </h2>
+            <p>
+              De acuerdo con el Reglamento General de Protección de Datos (RGPD) y la Ley Orgánica
+              3/2018 de Protección de Datos Personales y Garantía de los Derechos Digitales (LOPDGDD),
+              le informamos de que el responsable del tratamiento de los datos personales recogidos a
+              través de este sitio web es:
+            </p>
+            <ul className="text-foreground/70 mt-3 list-disc space-y-1 pl-5">
+              <li><strong className="text-foreground/90">Razón social:</strong> 1TO1 DIGITAL SOLUTIONS SL.</li>
+              <li><strong className="text-foreground/90">NIF:</strong> B27630136</li>
+              <li><strong className="text-foreground/90">Domicilio:</strong> Avda. de Buendía, 11, 19005, Guadalajara, España</li>
+              <li>
+                <strong className="text-foreground/90">Correo electrónico:</strong>{" "}
+                <a href="mailto:info@1to1digital.solutions" className="text-primary hover:underline underline-offset-2">
+                  info@1to1digital.solutions
+                </a>
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-foreground mb-3 text-xl font-semibold">
+              2. Recopilación de Información
             </h2>
             <p>
               En 1to1 Digital Solutions valoramos enormemente su privacidad. Solo recopilamos información
@@ -31,7 +54,7 @@ export default function PrivacyPolicy() {
 
           <section>
             <h2 className="text-foreground mb-3 text-xl font-semibold">
-              2. Uso de Datos y Contacto
+              3. Uso de Datos y Contacto
             </h2>
             <p>
               Los datos que nos proporciona nunca serán vendidos, alquilados ni compartidos de forma
@@ -44,7 +67,7 @@ export default function PrivacyPolicy() {
 
           <section>
             <h2 className="text-foreground mb-3 text-xl font-semibold">
-              3. Tecnologías de Rastreo e IP
+              4. Tecnologías de Rastreo e IP
             </h2>
             <p>
               Nuestro sitio web utiliza tecnologías modernas y eficientes (Three.js/GSAP). Podemos
@@ -57,13 +80,15 @@ export default function PrivacyPolicy() {
 
           <section>
             <h2 className="text-foreground mb-3 text-xl font-semibold">
-              4. Sus Derechos Digitales
+              5. Sus Derechos Digitales
             </h2>
             <p>
               Usted tiene derecho pleno a solicitar el acceso, la rectificación o la eliminación
               total de cualquier información personal que podamos tener sobre usted en nuestras
-              bases de datos en cualquier momento. Puede ejercer este derecho contactándonos
-              directamente a través de nuestro correo electrónico oficial.
+              bases de datos en cualquier momento. Puede ejercer este derecho contactándonos en{" "}
+              <a href="mailto:info@1to1digital.solutions" className="text-primary hover:underline underline-offset-2">
+                info@1to1digital.solutions
+              </a>.
             </p>
           </section>
 

@@ -218,7 +218,7 @@ function PlacedShape({ ShapeComp, args, scaleMult, targetPos, glassMat, allPlace
 }
 
 function DraggableShape({
-  id, ShapeComp, args, scaleMult, startPos, targetPos, onPlace, allPlaced,
+  id, ShapeComp, args, scaleMult, startPos, targetPos, onPlace, allPlaced, setCursor,
 }: {
   id: number;
   ShapeComp: React.ElementType;
@@ -229,6 +229,7 @@ function DraggableShape({
   targetPos: [number, number, number];
   onPlace: (id: number) => void;
   allPlaced: boolean;
+  setCursor: (c: "default" | "grab" | "grabbing") => void;
 }) {
   const groupRef     = useRef<THREE.Group>(null);
   const innerMeshRef = useRef<THREE.Mesh>(null);
@@ -298,9 +299,9 @@ function DraggableShape({
         if (dist < 1.0) {
           setIsPlaced(true);
           onPlace(id);
-          document.body.style.cursor = "default";
+          setCursor("default");
         } else {
-          document.body.style.cursor = "grab";
+          setCursor("grab");
         }
       }}
     >
@@ -310,17 +311,17 @@ function DraggableShape({
         onPointerOver={(e: React.PointerEvent<HTMLDivElement>) => {
           if (allPlaced) return;
           e.stopPropagation?.();
-          document.body.style.cursor = "grab";
+          setCursor("grab");
           setIsHovered(true);
         }}
         onPointerOut={(e: React.PointerEvent<HTMLDivElement>) => {
           if (allPlaced) return;
           e.stopPropagation?.();
-          document.body.style.cursor = "default";
+          setCursor("default");
           setIsHovered(false);
         }}
-        onPointerDown={() => { if (!allPlaced) document.body.style.cursor = "grabbing"; }}
-        onPointerUp={()   => { if (!allPlaced) document.body.style.cursor = "grab"; }}
+        onPointerDown={() => { if (!allPlaced) setCursor("grabbing"); }}
+        onPointerUp={()   => { if (!allPlaced) setCursor("grab"); }}
       >
         <group scale={scaleMult}>
           {/* @ts-expect-error dynamic args */}
@@ -379,6 +380,7 @@ export function HeroCanvas() {
   const [mounted, setMounted]           = useState(false);
   const [placedCount, setPlacedCount]   = useState(0);
   const [activeIndex, setActiveIndex]   = useState(0);
+  const [cursor, setCursor]             = useState<"default" | "grab" | "grabbing">("default");
 
   const allPlaced = placedCount === BASE_SHAPES.length;
 
@@ -405,7 +407,7 @@ export function HeroCanvas() {
   }, []);
 
   const handlePlace = (_id: number) => {
-    document.body.style.cursor = "default";
+    setCursor("default");
     setPlacedCount((p) => p + 1);
     setActiveIndex((p)  => p + 1);
   };
@@ -414,7 +416,8 @@ export function HeroCanvas() {
     <Canvas
       dpr={[1, 1]}
       camera={{ position: [0, 0, 10], fov: 45, near: 0.1, far: 50 }}
-      style={{ touchAction: "none" }}
+      style={{ touchAction: "none", cursor }}
+      onPointerLeave={() => setCursor("default")}
     >
       <Suspense fallback={<CanvasLoader />}>
         <ambientLight intensity={0.5} color={PRIMARY} />
@@ -459,6 +462,7 @@ export function HeroCanvas() {
                   targetPos={s.targetPos}
                   onPlace={handlePlace}
                   allPlaced={allPlaced}
+                  setCursor={setCursor}
                 />
               ) : null
             )}

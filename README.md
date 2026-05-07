@@ -1,7 +1,7 @@
 <div align="center">
   <img src="public/logo-positivo.svg" alt="1to1 Digital Solutions Logo" width="80" height="80" />
   <h1>1to1 Digital Solutions Landing Page</h1>
-  <p><strong>Premium Tech Execution for Startups</strong></p>
+  <p><strong>We build your technology, you build your business.</strong></p>
   
   <p>
     Built with Next.js 15, React 19, Three.js, React Three Fiber, Framer Motion, GSAP, and Tailwind CSS v4.

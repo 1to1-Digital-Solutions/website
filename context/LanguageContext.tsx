@@ -138,7 +138,7 @@ export const translations = {
     contErrorMsg: "Something went wrong. Please try again.",
 
     // Footer
-    footDesc: "Premium technical execution for startups that move fast.",
+    footDesc: "We build your technology, you build your business.",
     footRights: "All rights reserved.",
     footTerms: "Terms & Conditions",
     footPrivacy: "Privacy Policy",
@@ -289,7 +289,7 @@ export const translations = {
     contErrorMsg: "Algo salió mal. Por favor, inténtalo de nuevo.",
 
     // Footer
-    footDesc: "Ejecución técnica premium para startups que se mueven rápido.",
+    footDesc: "Construimos tu tecnología, tú construyes tu negocio.",
     footRights: "Todos los derechos reservados.",
     footTerms: "Términos y Condiciones",
     footPrivacy: "Política de Privacidad",

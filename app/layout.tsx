@@ -18,9 +18,9 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "1to1 Digital Solutions | Premium Tech Execution",
+  title: "1to1 Digital Solutions | We build your technology, you build your business",
   description:
-    "Specialized technical execution for startups. Blockchain, Mixed Reality, and MVP Development.",
+    "We build your technology, you build your business. Specialized technical execution for startups: Blockchain, Mixed Reality, and MVP Development.",
 };
 
 // Inline script injected before hydration to avoid flash of wrong theme
