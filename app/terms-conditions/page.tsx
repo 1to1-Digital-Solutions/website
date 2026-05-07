@@ -20,7 +20,7 @@ export default function TermsConditions() {
           <section>
             <h2 className="text-foreground mb-3 text-xl font-semibold">1. Introducción</h2>
             <p>
-              Bienvenido a 1to1 Studio. Al acceder a nuestro sitio web y utilizar nuestros
+              Bienvenido a 1to1 Digital Solutions. Al acceder a nuestro sitio web y utilizar nuestros
               servicios, usted acepta estar sujeto a los siguientes términos y condiciones. Si no
               está de acuerdo con alguna parte de estos términos, le rogamos que no utilice nuestros
               servicios.
@@ -32,7 +32,7 @@ export default function TermsConditions() {
             <p>
               Todo el código fuente original, diseños y arquitectura desarrollados bajo contrato
               serán transferidos íntegramente al cliente una vez recibido el pago final acordado.
-              Hasta entonces, 1to1 Studio retiene los derechos de autor temporales que garantizan la
+              Hasta entonces, 1to1 Digital Solutions retiene los derechos de autor temporales que garantizan la
               seguridad de la transacción. Los repositorios serán entregados mediante GitHub u otra
               plataforma tras la aprobación final.
             </p>
@@ -55,7 +55,7 @@ export default function TermsConditions() {
               4. Limitación de Responsabilidad
             </h2>
             <p>
-              1to1 Studio no será responsable de ningún daño indirecto, incidental o consecuente que
+              1to1 Digital Solutions no será responsable de ningún daño indirecto, incidental o consecuente que
               resulte del uso de nuestros productos de software o de Smart Contracts una vez
               desplegados en entornos de producción verificados y controlados por el cliente,
               incluyendo pérdida de datos o interrupciones de negocio.

@@ -90,13 +90,13 @@ export function Hero() {
       >
         {/* Massive HTML Title (Replacing 3D Text) */}
         <div className="pointer-events-none select-none">
-          <h1 className="hero-text-line font-outfit text-foreground mx-auto max-w-5xl text-4xl font-black tracking-tighter drop-shadow-[0_4px_15px_rgba(0,0,0,0.8)] sm:text-5xl md:text-7xl">
+          <h1 className="hero-text-line font-outfit text-foreground mx-auto max-w-5xl text-4xl font-black tracking-tighter drop-shadow-[0_2px_6px_rgba(0,0,0,0.12)] dark:drop-shadow-[0_4px_15px_rgba(0,0,0,0.8)] sm:text-5xl md:text-7xl">
             {t("heroTitle1")} <br />
             <span className="from-primary to-primary/50 bg-gradient-to-r bg-clip-text text-transparent">
               {t("heroTitle2")}
             </span>
           </h1>
-          <p className="hero-text-line text-foreground/80 pointer-events-none mx-auto mt-6 max-w-2xl text-base font-medium drop-shadow-[0_2px_5px_rgba(0,0,0,0.8)] md:text-lg">
+          <p className="hero-text-line text-foreground/80 pointer-events-none mx-auto mt-6 max-w-2xl text-base font-medium drop-shadow-[0_1px_3px_rgba(0,0,0,0.08)] dark:drop-shadow-[0_2px_5px_rgba(0,0,0,0.8)] md:text-lg">
             {t("heroSub")}
           </p>
         </div>

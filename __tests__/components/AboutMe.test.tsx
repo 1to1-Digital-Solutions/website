@@ -12,6 +12,6 @@ describe("AboutMe", () => {
 
     expect(screen.getByText("¿Quién está")).toBeInTheDocument();
     expect(screen.getByText("Detrás?")).toBeInTheDocument();
-    expect(screen.getByText(/soy el fundador de 1to1 Studio/i)).toBeInTheDocument();
+    expect(screen.getByText(/soy el fundador de 1to1 Digital Solutions/i)).toBeInTheDocument();
   });
 });

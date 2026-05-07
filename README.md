@@ -1,6 +1,6 @@
 <div align="center">
-  <img src="public/favicon.ico" alt="1to1 Studio Logo" width="80" height="80" />
-  <h1>1to1 Studio Landing Page</h1>
+  <img src="public/logo-positivo.svg" alt="1to1 Digital Solutions Logo" width="80" height="80" />
+  <h1>1to1 Digital Solutions Landing Page</h1>
   <p><strong>Premium Tech Execution for Startups</strong></p>
   
   <p>
@@ -12,9 +12,9 @@
 
 ## 🚀 Overview
 
-The **1to1 Studio Landing Page** represents a high-end, luxury tech agency aesthetic. It strongly emphasizes performant 3D graphics, seamless scroll animations, and an interactive puzzle-driven Hero section to engage ambitious Web3 and SaaS startups.
+The **1to1 Digital Solutions Landing Page** represents a high-end, luxury tech agency aesthetic. It strongly emphasizes performant 3D graphics, seamless scroll animations, and an interactive puzzle-driven Hero section to engage ambitious Web3 and SaaS startups.
 
-The objective of this project is to communicate that “Logic Is Everything” and that 1to1 Studio provides senior-level execution, handling robust Cloud Infrastructures, MVP Development, and Mixed Reality.
+The objective of this project is to communicate that “Logic Is Everything” and that 1to1 Digital Solutions provides senior-level execution, handling robust Cloud Infrastructures, MVP Development, and Mixed Reality.
 
 ## ✨ Key Features
 
@@ -46,7 +46,7 @@ Ensure you have **Node.js** (v18+) and **npm** installed on your machine.
 1. Clone the repository and navigate into the project directory:
    ```bash
    git clone <repo-url>
-   cd 1to1Studio-landing
+   cd 1to1-digital-solutions-landing
    ```
 2. Install dependencies:
    ```bash
@@ -90,4 +90,4 @@ npm run test
 
 ## 📄 License & Legal
 
-All original source code and designs under this repository are proprietary to 1to1 Studio pending client handoffs or specific open-source releases. See the attached `terms-conditions` routing for details.
+All original source code and designs under this repository are proprietary to 1to1 Digital Solutions pending client handoffs or specific open-source releases. See the attached `terms-conditions` routing for details.

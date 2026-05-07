@@ -43,10 +43,10 @@ export const translations = {
     aboutTitle1: "Who is ",
     aboutTitle2: "Behind?",
     aboutP1:
-      "Hi, I'm the founder of 1to1 Studio. I specialize in building high-performance applications with a focus on ",
+      "Hi, I'm the founder of 1to1 Digital Solutions. I specialize in building high-performance applications with a focus on ",
     aboutP1Span: "Blockchain and Mixed Reality",
     aboutP2:
-      "I've seen too many startups fail because of slow development cycles, bad technical decisions, or bloated agency contracts. That's why I created 1to1 Studio:",
+      "I've seen too many startups fail because of slow development cycles, bad technical decisions, or bloated agency contracts. That's why I created 1to1 Digital Solutions:",
     aboutList1: "To work directly with founders.",
     aboutList2: "To ship products in weeks, not months.",
     aboutList3: "To build software that scales from day one.",
@@ -76,7 +76,7 @@ export const translations = {
     testTitle2: "Stories.",
     testSub: "Don't just take our word for it.",
     test1Quote:
-      '"1to1 Studio completely rescued our launch. The previous agency left us with a broken codebase, and within two weeks, it was fixed, deployed, and scaling."',
+      '"1to1 Digital Solutions completely rescued our launch. The previous agency left us with a broken codebase, and within two weeks, it was fixed, deployed, and scaling."',
     test1Author: "Sarah Jenkins",
     test1Role: "CEO, TechFlow",
     test2Quote:
@@ -194,10 +194,10 @@ export const translations = {
     aboutTitle1: "¿Quién está ",
     aboutTitle2: "Detrás?",
     aboutP1:
-      "Hola, soy el fundador de 1to1 Studio. Me especializo en construir aplicaciones de alto rendimiento con enfoque en ",
+      "Hola, soy el fundador de 1to1 Digital Solutions. Me especializo en construir aplicaciones de alto rendimiento con enfoque en ",
     aboutP1Span: "Blockchain y Realidad Mixta.",
     aboutP2:
-      "He visto fracasar demasiadas startups debido a ciclos de desarrollo lentos, malas decisiones técnicas o contratos inflados de agencias. Por eso creé 1to1 Studio:",
+      "He visto fracasar demasiadas startups debido a ciclos de desarrollo lentos, malas decisiones técnicas o contratos inflados de agencias. Por eso creé 1to1 Digital Solutions:",
     aboutList1: "Para trabajar directamente con los fundadores.",
     aboutList2: "Para entregar productos en semanas, no meses.",
     aboutList3: "Para construir software que escale desde el primer día.",
@@ -227,7 +227,7 @@ export const translations = {
     testTitle2: "Clientes.",
     testSub: "No te quedes solo con nuestra palabra.",
     test1Quote:
-      '"1to1 Studio rescató completamente nuestro lanzamiento. La agencia anterior nos dejó con un código roto, y en dos semanas, estaba arreglado, desplegado y escalando."',
+      '"1to1 Digital Solutions rescató completamente nuestro lanzamiento. La agencia anterior nos dejó con un código roto, y en dos semanas, estaba arreglado, desplegado y escalando."',
     test1Author: "Sarah Jenkins",
     test1Role: "CEO, TechFlow",
     test2Quote:

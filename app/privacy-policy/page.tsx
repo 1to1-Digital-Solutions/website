@@ -22,7 +22,7 @@ export default function PrivacyPolicy() {
               1. Recopilación de Información
             </h2>
             <p>
-              En 1to1 Studio valoramos enormemente su privacidad. Solo recopilamos información
+              En 1to1 Digital Solutions valoramos enormemente su privacidad. Solo recopilamos información
               personal (como nombre, correo electrónico, presupuesto y detalles del proyecto) a
               través de nuestros formularios de contacto, con el único fin de comunicarnos y
               proporcionar los presupuestos o servicios solicitados.

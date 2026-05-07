@@ -21,7 +21,7 @@ describe("Navbar", () => {
       </LanguageProvider>
     );
 
-    expect(screen.getAllByText(/1to1 Studio/i)[0]).toBeInTheDocument();
+    expect(screen.getAllByText(/1to1 Digital Solutions/i)[0]).toBeInTheDocument();
 
     // In Spanish by default
     const links = screen.queryAllByText("Servicios");

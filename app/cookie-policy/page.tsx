@@ -2,8 +2,8 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
 export const metadata = {
-  title: "Cookie Policy | 1to1 Studio",
-  description: "Learn how 1to1 Studio uses cookies and how you can control them.",
+  title: "Cookie Policy | 1to1 Digital Solutions",
+  description: "Learn how 1to1 Digital Solutions uses cookies and how you can control them.",
 };
 
 export default function CookiePolicy() {
