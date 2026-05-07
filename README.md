@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/logo-positivo.svg" alt="1to1 Digital Solutions Logo" width="80" height="80" />
+  <img src="public/logo-positive.svg" alt="1to1 Digital Solutions Logo" width="80" height="80" />
   <h1>1to1 Digital Solutions Landing Page</h1>
   <p><strong>We build your technology, you build your business.</strong></p>
   
