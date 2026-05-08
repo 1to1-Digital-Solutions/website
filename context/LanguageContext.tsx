@@ -43,7 +43,7 @@ export const translations = {
     aboutTitle1: "Who is ",
     aboutTitle2: "Behind?",
     aboutP1:
-      "Hi, I'm the founder of 1to1 Digital Solutions. I specialize in building high-performance applications with a focus on ",
+      "Hi, I'm César, the founder of 1to1 Digital Solutions. I specialize in building high-performance applications with a focus on ",
     aboutP1Span: "Blockchain and Mixed Reality",
     aboutP2:
       "I've seen too many startups fail because of slow development cycles, bad technical decisions, or bloated agency contracts. That's why I created 1to1 Digital Solutions:",
@@ -57,19 +57,19 @@ export const translations = {
     // Success Cases
     casesTitle1: "Selected ",
     casesTitle2: "Work.",
-    casesSub: "Real projects, real results. A glimpse into what we can build together.",
+    casesSub: "Real projects, real results. A glimpse of what we can build together.",
     case1Cat: "Web3",
-    case1Title: "DeFi Analytics Dashboard",
+    case1Title: "Firefly — IOTA & Shimmer Wallet",
     case1Desc:
-      "A real-time dashboard tracking on-chain metrics across multiple networks. Built with Next.js, Ethers.js, and a highly optimized custom indexer.",
+      "I was a senior developer on Firefly, the official wallet of IOTA and Shimmer. For years I shipped critical features across the IOTA ecosystem for an application that thousands of users trust to manage real digital assets — always with a focus on security, performance, and UX.",
     case2Cat: "Mixed Reality",
-    case2Title: "Virtual Art Gallery",
+    case2Title: "Numen Games — VR Platform",
     case2Desc:
-      "An immersive 3D experience allowing users to walk through an exhibition, interact with 3D models, and purchase NFTs directly from the canvas.",
+      "I built a platform to deploy virtual worlds in minutes. Powered by Three.js and Hyperfy, with integrated AI for dynamic content generation — designed so anyone can launch immersive experiences without writing code.",
     case3Cat: "MVP",
-    case3Title: "SaaS Launchpad",
+    case3Title: "Moovle — Screen Tourism App",
     case3Desc:
-      "A fully functional SaaS MVP delivered in 4 weeks, featuring authentication, Stripe billing, and AI-powered text generation.",
+      "I rescued a half-built screen tourism MVP: redesigned the visuals, implemented the responsive design, and built the native iOS and Android apps with Capacitor. From stalled to shipped on the stores.",
 
     // Testimonials
     testTitle1: "Client ",
@@ -194,7 +194,7 @@ export const translations = {
     aboutTitle1: "¿Quién está ",
     aboutTitle2: "Detrás?",
     aboutP1:
-      "Hola, soy el fundador de 1to1 Digital Solutions. Me especializo en construir aplicaciones de alto rendimiento con enfoque en ",
+      "Hola, soy César, el fundador de 1to1 Digital Solutions. Me especializo en construir aplicaciones de alto rendimiento con enfoque en ",
     aboutP1Span: "Blockchain y Realidad Mixta.",
     aboutP2:
       "He visto fracasar demasiadas startups debido a ciclos de desarrollo lentos, malas decisiones técnicas o contratos inflados de agencias. Por eso creé 1to1 Digital Solutions:",
@@ -208,19 +208,19 @@ export const translations = {
     // Success Cases
     casesTitle1: "Proyectos ",
     casesTitle2: "Destacados.",
-    casesSub: "Proyectos reales, resultados reales. Un vistazo a lo que podemos construir juntos.",
+    casesSub: "Proyectos reales, resultados reales. Un vistazo de lo que podemos construir juntos.",
     case1Cat: "Web3",
-    case1Title: "Dashboard Analítico DeFi",
+    case1Title: "Firefly — Wallet de IOTA y Shimmer",
     case1Desc:
-      "Un panel en tiempo real que rastrea métricas on-chain en múltiples redes. Construido con Next.js, Ethers.js y un indexador personalizado altamente optimizado.",
+      "Fui senior developer en Firefly, el wallet oficial de IOTA y Shimmer. Durante años construí funcionalidades críticas dentro del ecosistema IOTA para una aplicación en la que miles de usuarios confían para gestionar activos digitales reales — siempre con foco en seguridad, rendimiento y UX.",
     case2Cat: "Realidad Mixta",
-    case2Title: "Galería de Arte Virtual",
+    case2Title: "Numen Games — Plataforma VR",
     case2Desc:
-      "Una experiencia 3D inmersiva que permite a los usuarios recorrer una exposición, interactuar con modelos 3D y comprar NFTs directamente desde el canvas.",
+      "Desarrollé una plataforma para desplegar mundos virtuales en minutos. La construí con Three.js y Hyperfy, e integré IA para generación dinámica de contenido — pensada para que cualquiera pueda lanzar experiencias inmersivas sin escribir código.",
     case3Cat: "MVP",
-    case3Title: "SaaS Launchpad",
+    case3Title: "Moovle — App de Turismo de Pantalla",
     case3Desc:
-      "Un MVP SaaS completamente funcional entregado en 4 semanas, con autenticación, facturación con Stripe y generación de texto por IA.",
+      "Rescaté un MVP de turismo de pantalla a medio terminar: rediseñé la interfaz, implementé el diseño responsive y desarrollé las apps nativas iOS y Android con Capacitor. De estancado a desplegado en las stores.",
 
     // Testimonials
     testTitle1: "Historias de ",
