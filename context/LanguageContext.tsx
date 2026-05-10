@@ -76,17 +76,13 @@ export const translations = {
     testTitle2: "Stories.",
     testSub: "Don't just take our word for it.",
     test1Quote:
-      '"1to1 Digital Solutions completely rescued our launch. The previous agency left us with a broken codebase, and within two weeks, it was fixed, deployed, and scaling."',
-    test1Author: "Sarah Jenkins",
-    test1Role: "CEO, TechFlow",
+      "A real pleasure working with César. He delivered an interactive web header in record time, precisely replicating the look & feel of a pre-rendered 3D video — but with real-time interactivity, complex animations, and cross-device optimization. For his attitude, drive, and commitment, a 10. It’s a delight to collaborate with someone who quickly understands what’s needed and executes it with judgment and autonomy.",
+    test1Author: "David Torrico",
+    test1Role: "Creative Director at 3DforScience",
     test2Quote:
-      '"The 3D interactive elements they built for our landing page increased our conversion rate by 40%. The technical execution was flawless."',
-    test2Author: "Marcus Chen",
-    test2Role: "Founder, Horizon VR",
-    test3Quote:
-      '"Finding a reliable Blockchain developer is hard. Finding one who also understands product design and user experience is nearly impossible. Highly recommended."',
-    test3Author: "David Elson",
-    test3Role: "CTO, BlockTrust",
+      "After trying several development teams, thanks to César’s work we were finally able to move our project forward. We now have an MVP that lets us close deals, and we’ll soon launch our app fully operational and with the quality we needed. Thank you.",
+    test2Author: "Pedro Casado",
+    test2Role: "CEO at Moovle",
 
     // FAQ
     faqTitle1: "Common ",
@@ -227,17 +223,13 @@ export const translations = {
     testTitle2: "Clientes.",
     testSub: "No te quedes solo con nuestra palabra.",
     test1Quote:
-      '"1to1 Digital Solutions rescató completamente nuestro lanzamiento. La agencia anterior nos dejó con un código roto, y en dos semanas, estaba arreglado, desplegado y escalando."',
-    test1Author: "Sarah Jenkins",
-    test1Role: "CEO, TechFlow",
+      "Encantadísimo de haber trabajado con César. Ha resuelto en tiempo récord una cabecera interactiva para una web, replicando con precisión el look & feel de un vídeo 3D pre-renderizado, pero con interactividad en tiempo real, animaciones complejas y optimización para distintos dispositivos. Por su actitud, ganas y compromiso, un 10. Da gusto colaborar con alguien que entiende rápido lo que se necesita y lo ejecuta con criterio y autonomía.",
+    test1Author: "David Torrico",
+    test1Role: "Director Creativo en 3DforScience",
     test2Quote:
-      '"Los elementos interactivos 3D que construyeron para nuestra landing page aumentaron nuestra tasa de conversión en un 40%. La ejecución técnica fue impecable."',
-    test2Author: "Marcus Chen",
-    test2Role: "Fundador, Horizon VR",
-    test3Quote:
-      '"Encontrar un desarrollador Blockchain confiable es difícil. Encontrar uno que también entienda el diseño de productos y la experiencia del usuario es casi imposible. Altamente recomendado."',
-    test3Author: "David Elson",
-    test3Role: "CTO, BlockTrust",
+      "Después de probar con varios equipos de desarrollo, por fin y gracias al trabajo de César, conseguimos avanzar en nuestro proyecto. Tenemos un MVP que nos permite ir cerrando acuerdos y pronto lanzaremos nuestra App operativa y con la calidad que necesitábamos. Gracias.",
+    test2Author: "Pedro Casado",
+    test2Role: "CEO de Moovle",
 
     // FAQ
     faqTitle1: "Preguntas ",

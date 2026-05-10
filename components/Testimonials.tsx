@@ -15,11 +15,6 @@ export function Testimonials() {
       author: t("test2Author"),
       role: t("test2Role"),
     },
-    {
-      quote: t("test3Quote"),
-      author: t("test3Author"),
-      role: t("test3Role"),
-    },
   ];
 
   return (
@@ -31,7 +26,7 @@ export function Testimonials() {
         <p className="text-foreground/70 mt-4 text-lg">{t("testSub")}</p>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2">
         {testimonials.map((test, idx) => (
           <div
             key={idx}
