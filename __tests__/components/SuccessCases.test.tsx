@@ -14,9 +14,9 @@ describe("SuccessCases", () => {
     expect(screen.getByText("Proyectos")).toBeInTheDocument();
     expect(screen.getByText("Destacados.")).toBeInTheDocument();
 
-    // Specific projects
-    expect(screen.getByText("Dashboard Analítico DeFi")).toBeInTheDocument();
-    expect(screen.getByText("Galería de Arte Virtual")).toBeInTheDocument();
-    expect(screen.getByText("SaaS Launchpad")).toBeInTheDocument();
+    // Specific projects (titles, headings)
+    expect(screen.getByRole("heading", { name: /Firefly/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Numen Games/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Moovle/i })).toBeInTheDocument();
   });
 });

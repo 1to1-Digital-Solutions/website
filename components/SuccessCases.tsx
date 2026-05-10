@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -9,19 +10,31 @@ export function SuccessCases() {
       title: t("case1Title"),
       category: t("case1Cat"),
       description: t("case1Desc"),
-      tags: ["React", "Ethers.js", "Tailwind CSS"],
+      tags: ["Web3", "DeFi", "Svelte", "TypeScript", "Wallet"],
+      url: "https://www.iota.org/",
+      logo: "/images/cases/IOTA.png",
+      logoAlt: "IOTA",
+      logoSize: "h-4/5 w-11/12",
     },
     {
       title: t("case2Title"),
       category: t("case2Cat"),
       description: t("case2Desc"),
-      tags: ["Three.js", "React Three Fiber", "GSAP"],
+      tags: ["VR", "Next.js", "Three.js", "Hyperfy", "AI"],
+      url: "https://numen.games/en",
+      logo: "/images/cases/NumenGames.png",
+      logoAlt: "Numen Games",
+      logoSize: "h-4/5 w-11/12",
     },
     {
       title: t("case3Title"),
       category: t("case3Cat"),
       description: t("case3Desc"),
-      tags: ["Next.js", "Supabase", "Stripe"],
+      tags: ["Svelte", "Supabase", "Capacitor", "iOS", "Android"],
+      url: "https://www.moovle.app/app.html",
+      logo: "/images/cases/Moovle.png",
+      logoAlt: "Moovle",
+      logoSize: "h-1/2 w-3/4",
     },
   ];
 
@@ -37,15 +50,27 @@ export function SuccessCases() {
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {cases.map((project, idx) => (
-            <div
+            <a
               key={idx}
-              className="group bg-background hover:shadow-primary/10 flex cursor-pointer flex-col overflow-hidden rounded-2xl transition-transform hover:-translate-y-2 hover:shadow-2xl"
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group bg-background hover:shadow-primary/10 focus-visible:ring-primary flex flex-col overflow-hidden rounded-2xl transition-transform hover:-translate-y-2 hover:shadow-2xl focus-visible:ring-2 focus-visible:outline-none"
             >
               <div className="bg-anthracite relative aspect-video w-full overflow-hidden">
-                <div className="from-primary/20 absolute inset-0 bg-gradient-to-br to-transparent mix-blend-overlay"></div>
-                {/* Placeholder Image container */}
-                <div className="font-outfit text-foreground/20 flex h-full w-full items-center justify-center text-2xl font-bold">
-                  {project.category as string}
+                <div className="from-primary/20 absolute inset-0 bg-gradient-to-br to-transparent mix-blend-overlay" />
+                <div className="absolute inset-0 flex items-center justify-center p-6">
+                  <div
+                    className={`relative ${project.logoSize} brightness-0 transition-transform duration-500 group-hover:scale-105 dark:invert`}
+                  >
+                    <Image
+                      src={project.logo}
+                      alt={project.logoAlt}
+                      fill
+                      sizes="(min-width: 1024px) 25vw, (min-width: 768px) 40vw, 80vw"
+                      className="object-contain"
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -77,7 +102,7 @@ export function SuccessCases() {
                   ))}
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>

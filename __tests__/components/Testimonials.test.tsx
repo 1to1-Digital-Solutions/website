@@ -10,8 +10,7 @@ describe("Testimonials", () => {
       </LanguageProvider>
     );
 
-    expect(screen.getByText("Sarah Jenkins")).toBeInTheDocument();
-    expect(screen.getByText("Marcus Chen")).toBeInTheDocument();
-    expect(screen.getByText("David Elson")).toBeInTheDocument();
+    expect(screen.getByText("David Torrico")).toBeInTheDocument();
+    expect(screen.getByText("Pedro Casado")).toBeInTheDocument();
   });
 });
