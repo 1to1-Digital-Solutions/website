@@ -127,6 +127,12 @@ export default function PrivacyPolicy() {
                 gestión del correo electrónico recibido y almacenamiento del registro de contactos
                 en Google Sheets.
               </li>
+              <li>
+                <strong className="text-foreground/90">Google LLC (Google Analytics 4)</strong> —
+                análisis estadístico y agregado del uso del sitio web. Únicamente se activa cuando
+                el usuario otorga consentimiento previo en el banner de cookies y puede revocarse en
+                cualquier momento. Configurado con anonimización de IP y sin señales publicitarias.
+              </li>
             </ul>
             <p className="mt-3">
               No cedemos, vendemos ni alquilamos sus datos a terceros distintos de los anteriores

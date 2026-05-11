@@ -1,12 +1,15 @@
 import { render, RenderOptions } from "@testing-library/react";
 import { ReactElement, ReactNode } from "react";
+import { ConsentProvider } from "@/context/ConsentContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 
 function Providers({ children }: { children: ReactNode }) {
   return (
     <ThemeProvider>
-      <LanguageProvider>{children}</LanguageProvider>
+      <ConsentProvider>
+        <LanguageProvider>{children}</LanguageProvider>
+      </ConsentProvider>
     </ThemeProvider>
   );
 }

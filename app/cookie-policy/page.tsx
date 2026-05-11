@@ -80,9 +80,26 @@ export default function CookiePolicy() {
                   Cookies analíticas (opcionales)
                 </h3>
                 <p className="text-foreground/70 text-sm">
-                  Actualmente <strong>no utilizamos cookies analíticas ni de terceros</strong>. Si
-                  en el futuro incorporamos alguna herramienta de analítica, actualizaremos esta
-                  política y solicitaremos tu consentimiento previo antes de activarla.
+                  Nos permiten medir, de forma agregada y anonimizada, cuántas personas visitan el
+                  sitio, qué secciones consultan y cómo interactúan con la web, para mejorar la
+                  experiencia. <strong>Solo se activan si aceptas las cookies</strong> en el banner
+                  inicial; si las rechazas, no se carga ningún script de terceros.
+                </p>
+                <ul className="text-foreground/80 mt-2 list-disc space-y-1 pl-5 text-xs">
+                  <li>
+                    <strong className="text-foreground/90">_ga</strong> — Google Analytics 4.
+                    Identifica al visitante de forma anónima. Duración: 2 años.
+                  </li>
+                  <li>
+                    <strong className="text-foreground/90">_ga_&lt;ID&gt;</strong> — Google
+                    Analytics 4. Mantiene el estado de la sesión. Duración: 2 años.
+                  </li>
+                </ul>
+                <p className="text-foreground/70 mt-3 text-sm">
+                  Tenemos activado el modo IP-anonymization y desactivadas las señales publicitarias
+                  (<em>Google Signals</em> y <em>ad personalization</em>). Puedes retirar tu
+                  consentimiento en cualquier momento desde el enlace{" "}
+                  <strong>Gestionar cookies</strong> del pie de página.
                 </p>
               </div>
             </div>

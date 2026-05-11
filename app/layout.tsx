@@ -5,7 +5,9 @@ import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { CookieBanner } from "@/components/CookieBanner";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { StructuredData } from "@/components/StructuredData";
+import { ConsentProvider } from "@/context/ConsentContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 
@@ -110,20 +112,23 @@ export default async function RootLayout({
         suppressHydrationWarning
       >
         <ThemeProvider>
-          <LanguageProvider initialLang={lang}>
-            <a
-              href="#main-content"
-              className="bg-primary text-background sr-only fixed top-2 left-2 z-[100] rounded-lg px-4 py-2 font-bold focus:not-sr-only focus:outline-none"
-            >
-              Skip to main content
-            </a>
-            <Navbar />
-            <main id="main-content" className="flex flex-col">
-              {children}
-            </main>
-            <Footer />
-            <CookieBanner />
-          </LanguageProvider>
+          <ConsentProvider>
+            <LanguageProvider initialLang={lang}>
+              <a
+                href="#main-content"
+                className="bg-primary text-background sr-only fixed top-2 left-2 z-[100] rounded-lg px-4 py-2 font-bold focus:not-sr-only focus:outline-none"
+              >
+                Skip to main content
+              </a>
+              <Navbar />
+              <main id="main-content" className="flex flex-col">
+                {children}
+              </main>
+              <Footer />
+              <CookieBanner />
+              <GoogleAnalytics />
+            </LanguageProvider>
+          </ConsentProvider>
         </ThemeProvider>
       </body>
     </html>

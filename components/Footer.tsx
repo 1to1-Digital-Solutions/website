@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Linkedin, Github } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useTheme } from "@/context/ThemeContext";
+import { useConsent } from "@/context/ConsentContext";
 import { useState, useEffect } from "react";
 
 const CURRENT_YEAR = new Date().getFullYear();
@@ -12,6 +13,7 @@ const CURRENT_YEAR = new Date().getFullYear();
 export function Footer() {
   const { t } = useLanguage();
   const { theme } = useTheme();
+  const { reset: resetConsent } = useConsent();
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
@@ -103,6 +105,13 @@ export function Footer() {
           >
             {t("cookiePolicy")}
           </Link>
+          <button
+            type="button"
+            onClick={resetConsent}
+            className="hover:text-primary focus-visible:ring-primary cursor-pointer rounded underline-offset-2 transition-colors hover:underline focus-visible:ring-2 focus-visible:outline-none"
+          >
+            {t("footManageCookies")}
+          </button>
         </div>
       </div>
     </footer>

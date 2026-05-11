@@ -33,15 +33,16 @@ const securityHeaders = [
       "default-src 'self'",
       // Inline theme-flash script + Next.js runtime requires unsafe-inline / unsafe-eval today.
       // Replace with nonces once the bootstrap script is migrated. Vercel Live needed for preview overlays.
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live",
+      // googletagmanager: gtag.js loader (gated by user consent; CSP only authorises it, doesn't load it).
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://www.googletagmanager.com",
       // Tailwind's hashing strategy and arbitrary class injections rely on inline styles.
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' data: https://fonts.gstatic.com",
-      // data:/blob: needed for Three.js textures and Next/Image blur placeholders.
-      "img-src 'self' data: blob: https:",
+      // data:/blob: needed for Three.js textures and Next/Image blur placeholders. GA beacons via google-analytics.com.
+      "img-src 'self' data: blob: https: https://www.google-analytics.com https://*.google-analytics.com",
       "media-src 'self'",
-      // Resend + Vercel Analytics endpoints. Adjust when adding GA.
-      "connect-src 'self' https://vitals.vercel-insights.com https://vercel.live wss://ws-us3.pusher.com",
+      // GA endpoints + Vercel realtime overlays.
+      "connect-src 'self' https://vitals.vercel-insights.com https://vercel.live wss://ws-us3.pusher.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com",
       "frame-ancestors 'none'",
       "form-action 'self'",
       "base-uri 'self'",

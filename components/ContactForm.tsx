@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Send, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { trackEvent } from "@/components/GoogleAnalytics";
 import Link from "next/link";
 
 type Status = "idle" | "loading" | "success" | "error";
@@ -72,6 +73,11 @@ export function ContactForm() {
         setStatus("success");
         form.reset();
         setPrivacyAccepted(false);
+        trackEvent("form_submit", {
+          form_id: "contact",
+          project_type: payload.projectType,
+          budget: payload.budget,
+        });
       } else {
         setStatus("error");
       }
