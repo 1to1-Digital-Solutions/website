@@ -25,7 +25,7 @@ export function TechStackMarquee() {
       <div className="from-background absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r to-transparent md:w-48" />
       <div className="from-background absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l to-transparent md:w-48" />
 
-      <p className="text-foreground/50 mb-6 text-center text-sm font-bold tracking-widest uppercase">
+      <p className="text-foreground/70 mb-6 text-center text-sm font-bold tracking-widest uppercase">
         {t("techStackTitle")}
       </p>
 

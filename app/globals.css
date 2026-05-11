@@ -69,24 +69,52 @@
   --animate-drift: drift 14s ease-in-out infinite;
 
   @keyframes float-a {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-18px) rotate(6deg); }
+    0%,
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-18px) rotate(6deg);
+    }
   }
   @keyframes float-b {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    40% { transform: translateY(14px) rotate(-8deg); }
-    80% { transform: translateY(-8px) rotate(4deg); }
+    0%,
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    40% {
+      transform: translateY(14px) rotate(-8deg);
+    }
+    80% {
+      transform: translateY(-8px) rotate(4deg);
+    }
   }
   @keyframes float-c {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    30% { transform: translateY(-22px) rotate(12deg); }
-    70% { transform: translateY(10px) rotate(-5deg); }
+    0%,
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    30% {
+      transform: translateY(-22px) rotate(12deg);
+    }
+    70% {
+      transform: translateY(10px) rotate(-5deg);
+    }
   }
   @keyframes drift {
-    0%, 100% { transform: translateX(0px) translateY(0px) rotate(0deg); }
-    25% { transform: translateX(12px) translateY(-10px) rotate(5deg); }
-    50% { transform: translateX(-8px) translateY(16px) rotate(-8deg); }
-    75% { transform: translateX(16px) translateY(6px) rotate(3deg); }
+    0%,
+    100% {
+      transform: translateX(0px) translateY(0px) rotate(0deg);
+    }
+    25% {
+      transform: translateX(12px) translateY(-10px) rotate(5deg);
+    }
+    50% {
+      transform: translateX(-8px) translateY(16px) rotate(-8deg);
+    }
+    75% {
+      transform: translateX(16px) translateY(6px) rotate(3deg);
+    }
   }
 
   @keyframes rocket-vibrate {

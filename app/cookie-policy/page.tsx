@@ -12,7 +12,7 @@ export default function CookiePolicy() {
       <div className="mx-auto max-w-3xl">
         <Link
           href="/"
-          className="text-foreground/60 hover:text-primary mb-8 inline-flex items-center gap-2 text-sm font-semibold transition-colors"
+          className="text-foreground/70 hover:text-primary mb-8 inline-flex items-center gap-2 text-sm font-semibold transition-colors"
         >
           <ArrowLeft size={16} /> Volver a Inicio
         </Link>
@@ -29,7 +29,10 @@ export default function CookiePolicy() {
               <strong className="text-foreground/90">1TO1 DIGITAL SOLUTIONS SL.</strong> Puedes
               consultar nuestros datos identificativos completos (NIF, domicilio social y datos de
               contacto) en la{" "}
-              <Link href="/privacy-policy" className="text-primary hover:underline underline-offset-2">
+              <Link
+                href="/privacy-policy"
+                className="text-primary underline-offset-2 hover:underline"
+              >
                 Política de Privacidad
               </Link>
               .
@@ -52,27 +55,52 @@ export default function CookiePolicy() {
             </h2>
             <div className="space-y-4">
               <div className="border-foreground/10 rounded-xl border p-4">
-                <h3 className="text-foreground mb-1 font-semibold">Cookies estrictamente necesarias</h3>
+                <h3 className="text-foreground mb-1 font-semibold">
+                  Cookies estrictamente necesarias
+                </h3>
                 <p className="text-foreground/70 text-sm">
                   Son esenciales para el funcionamiento del sitio. Sin ellas, servicios como la
-                  navegación entre secciones o el guardado de preferencias de idioma no funcionarían.
-                  No requieren consentimiento y no pueden desactivarse.
+                  navegación entre secciones o el guardado de preferencias de idioma no
+                  funcionarían. No requieren consentimiento y no pueden desactivarse.
                 </p>
-                <ul className="text-foreground/60 mt-2 list-disc pl-5 text-xs space-y-1">
-                  <li><strong className="text-foreground/80">1to1_cookie_consent</strong> — Almacena tu preferencia de consentimiento de cookies. Duración: 1 año.</li>
-                  <li><strong className="text-foreground/80">lang_preference</strong> — Guarda el idioma seleccionado (ES/EN). Duración: sesión.</li>
+                <ul className="text-foreground/80 mt-2 list-disc space-y-1 pl-5 text-xs">
+                  <li>
+                    <strong className="text-foreground/80">1to1_cookie_consent</strong> — Almacena
+                    tu preferencia de consentimiento de cookies. Duración: 1 año.
+                  </li>
+                  <li>
+                    <strong className="text-foreground/80">lang_preference</strong> — Guarda el
+                    idioma seleccionado (ES/EN). Duración: sesión.
+                  </li>
                 </ul>
               </div>
 
               <div className="border-foreground/10 rounded-xl border p-4">
-                <h3 className="text-foreground mb-1 font-semibold">Cookies analíticas (opcionales)</h3>
+                <h3 className="text-foreground mb-1 font-semibold">
+                  Cookies analíticas (opcionales)
+                </h3>
                 <p className="text-foreground/70 text-sm">
-                  Nos ayudan a entender cómo los visitantes interactúan con el sitio web, recopilando
-                  información de forma anónima. Solo se activan si aceptas todas las cookies.
+                  Nos permiten medir, de forma agregada y anonimizada, cuántas personas visitan el
+                  sitio, qué secciones consultan y cómo interactúan con la web, para mejorar la
+                  experiencia. <strong>Solo se activan si aceptas las cookies</strong> en el banner
+                  inicial; si las rechazas, no se carga ningún script de terceros.
                 </p>
-                <ul className="text-foreground/60 mt-2 list-disc pl-5 text-xs space-y-1">
-                  <li><strong className="text-foreground/80">_ga, _ga_*</strong> — Google Analytics. Miden el tráfico y comportamiento de navegación de forma anonimizada. Duración: 2 años.</li>
+                <ul className="text-foreground/80 mt-2 list-disc space-y-1 pl-5 text-xs">
+                  <li>
+                    <strong className="text-foreground/90">_ga</strong> — Google Analytics 4.
+                    Identifica al visitante de forma anónima. Duración: 2 años.
+                  </li>
+                  <li>
+                    <strong className="text-foreground/90">_ga_&lt;ID&gt;</strong> — Google
+                    Analytics 4. Mantiene el estado de la sesión. Duración: 2 años.
+                  </li>
                 </ul>
+                <p className="text-foreground/70 mt-3 text-sm">
+                  Tenemos activado el modo IP-anonymization y desactivadas las señales publicitarias
+                  (<em>Google Signals</em> y <em>ad personalization</em>). Puedes retirar tu
+                  consentimiento en cualquier momento desde el enlace{" "}
+                  <strong>Gestionar cookies</strong> del pie de página.
+                </p>
               </div>
             </div>
           </section>
@@ -87,18 +115,22 @@ export default function CookiePolicy() {
               funcionalidad del sitio. A continuación encontrarás instrucciones para los navegadores
               más comunes:
             </p>
-            <ul className="text-foreground/70 mt-3 list-disc pl-5 space-y-1">
+            <ul className="text-foreground/70 mt-3 list-disc space-y-1 pl-5">
               <li>
-                <strong className="text-foreground/90">Chrome:</strong> Configuración → Privacidad y seguridad → Cookies y otros datos de sitios.
+                <strong className="text-foreground/90">Chrome:</strong> Configuración → Privacidad y
+                seguridad → Cookies y otros datos de sitios.
               </li>
               <li>
-                <strong className="text-foreground/90">Firefox:</strong> Opciones → Privacidad y seguridad → Cookies y datos del sitio.
+                <strong className="text-foreground/90">Firefox:</strong> Opciones → Privacidad y
+                seguridad → Cookies y datos del sitio.
               </li>
               <li>
-                <strong className="text-foreground/90">Safari:</strong> Preferencias → Privacidad → Gestionar datos de sitios web.
+                <strong className="text-foreground/90">Safari:</strong> Preferencias → Privacidad →
+                Gestionar datos de sitios web.
               </li>
               <li>
-                <strong className="text-foreground/90">Edge:</strong> Configuración → Cookies y permisos del sitio.
+                <strong className="text-foreground/90">Edge:</strong> Configuración → Cookies y
+                permisos del sitio.
               </li>
             </ul>
             <p className="mt-4">
@@ -115,8 +147,8 @@ export default function CookiePolicy() {
             <p>
               Algunos proveedores de servicios analíticos (como Google Analytics) pueden transferir
               datos a servidores ubicados fuera del Espacio Económico Europeo. Estas transferencias
-              están cubiertas por las Cláusulas Contractuales Tipo aprobadas por la Comisión Europea,
-              garantizando un nivel de protección adecuado.
+              están cubiertas por las Cláusulas Contractuales Tipo aprobadas por la Comisión
+              Europea, garantizando un nivel de protección adecuado.
             </p>
           </section>
 
@@ -134,19 +166,25 @@ export default function CookiePolicy() {
             <h2 className="text-foreground mb-3 text-xl font-semibold">7. Contacto</h2>
             <p>
               Si tienes preguntas sobre nuestra política de cookies, puedes escribirnos a{" "}
-              <a href="mailto:info@1to1digital.solutions" className="text-primary hover:underline underline-offset-2">
+              <a
+                href="mailto:info@1to1digital.solutions"
+                className="text-primary underline-offset-2 hover:underline"
+              >
                 info@1to1digital.solutions
               </a>{" "}
               o consultar nuestra{" "}
-              <Link href="/privacy-policy" className="text-primary hover:underline underline-offset-2">
+              <Link
+                href="/privacy-policy"
+                className="text-primary underline-offset-2 hover:underline"
+              >
                 Política de Privacidad
               </Link>
               .
             </p>
           </section>
 
-          <p className="text-foreground/50 border-foreground/10 border-t pt-8 text-xs">
-            Última actualización: Marzo 2026
+          <p className="text-foreground/70 border-foreground/10 border-t pt-8 text-xs">
+            Última actualización: Mayo 2026
           </p>
         </div>
       </div>

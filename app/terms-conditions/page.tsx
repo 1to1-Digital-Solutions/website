@@ -1,13 +1,20 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
+export const metadata = {
+  title: "Términos y Condiciones",
+  description:
+    "Condiciones de uso del sitio web de 1to1 Digital Solutions: datos identificativos del titular, propiedad intelectual, servicios y limitación de responsabilidad.",
+  alternates: { canonical: "/terms-conditions" },
+};
+
 export default function TermsConditions() {
   return (
     <main className="bg-background relative min-h-screen w-full overflow-hidden px-6 pt-32 pb-24">
       <div className="mx-auto max-w-3xl">
         <Link
           href="/"
-          className="text-foreground/60 hover:text-primary mb-8 inline-flex items-center gap-2 text-sm font-semibold transition-colors"
+          className="text-foreground/70 hover:text-primary mb-8 inline-flex items-center gap-2 text-sm font-semibold transition-colors"
         >
           <ArrowLeft size={16} /> Volver a Inicio
         </Link>
@@ -27,12 +34,23 @@ export default function TermsConditions() {
               sitio web es:
             </p>
             <ul className="text-foreground/70 mt-3 list-disc space-y-1 pl-5">
-              <li><strong className="text-foreground/90">Razón social:</strong> 1TO1 DIGITAL SOLUTIONS SL.</li>
-              <li><strong className="text-foreground/90">NIF:</strong> B27630136</li>
-              <li><strong className="text-foreground/90">Domicilio social:</strong> Avda. de Buendía, 11, 19005, Guadalajara, España</li>
+              <li>
+                <strong className="text-foreground/90">Razón social:</strong> 1TO1 DIGITAL SOLUTIONS
+                SL.
+              </li>
+              <li>
+                <strong className="text-foreground/90">NIF:</strong> B27630136
+              </li>
+              <li>
+                <strong className="text-foreground/90">Domicilio social:</strong> Avda. de Buendía,
+                11, 19005, Guadalajara, España
+              </li>
               <li>
                 <strong className="text-foreground/90">Correo electrónico:</strong>{" "}
-                <a href="mailto:info@1to1digital.solutions" className="text-primary hover:underline underline-offset-2">
+                <a
+                  href="mailto:info@1to1digital.solutions"
+                  className="text-primary underline-offset-2 hover:underline"
+                >
                   info@1to1digital.solutions
                 </a>
               </li>
@@ -42,10 +60,10 @@ export default function TermsConditions() {
           <section>
             <h2 className="text-foreground mb-3 text-xl font-semibold">2. Introducción</h2>
             <p>
-              Bienvenido a 1to1 Digital Solutions. Al acceder a nuestro sitio web y utilizar nuestros
-              servicios, usted acepta estar sujeto a los siguientes términos y condiciones. Si no
-              está de acuerdo con alguna parte de estos términos, le rogamos que no utilice nuestros
-              servicios.
+              Bienvenido a 1to1 Digital Solutions. Al acceder a nuestro sitio web y utilizar
+              nuestros servicios, usted acepta estar sujeto a los siguientes términos y condiciones.
+              Si no está de acuerdo con alguna parte de estos términos, le rogamos que no utilice
+              nuestros servicios.
             </p>
           </section>
 
@@ -54,9 +72,9 @@ export default function TermsConditions() {
             <p>
               Todo el código fuente original, diseños y arquitectura desarrollados bajo contrato
               serán transferidos íntegramente al cliente una vez recibido el pago final acordado.
-              Hasta entonces, 1to1 Digital Solutions retiene los derechos de autor temporales que garantizan la
-              seguridad de la transacción. Los repositorios serán entregados mediante GitHub u otra
-              plataforma tras la aprobación final.
+              Hasta entonces, 1to1 Digital Solutions retiene los derechos de autor temporales que
+              garantizan la seguridad de la transacción. Los repositorios serán entregados mediante
+              GitHub u otra plataforma tras la aprobación final.
             </p>
           </section>
 
@@ -74,18 +92,31 @@ export default function TermsConditions() {
 
           <section>
             <h2 className="text-foreground mb-3 text-xl font-semibold">
-              5. Limitación de Responsabilidad
+              5. Formulario de Contacto
             </h2>
             <p>
-              1to1 Digital Solutions no será responsable de ningún daño indirecto, incidental o consecuente que
-              resulte del uso de nuestros productos de software o de Smart Contracts una vez
-              desplegados en entornos de producción verificados y controlados por el cliente,
-              incluyendo pérdida de datos o interrupciones de negocio.
+              El envío del formulario de contacto disponible en este sitio web constituye una{" "}
+              <strong>solicitud de información o de presupuesto</strong> sin coste alguno. La
+              respuesta que le proporcionemos tendrá carácter meramente informativo y orientativo, y
+              cualquier oferta de servicios sólo será efectiva cuando se formalice mediante contrato
+              o aceptación expresa de presupuesto por escrito.
             </p>
           </section>
 
-          <p className="text-foreground/50 border-foreground/10 border-t pt-8 text-xs">
-            Última actualización: Noviembre 2026
+          <section>
+            <h2 className="text-foreground mb-3 text-xl font-semibold">
+              6. Limitación de Responsabilidad
+            </h2>
+            <p>
+              1to1 Digital Solutions no será responsable de ningún daño indirecto, incidental o
+              consecuente que resulte del uso de nuestros productos de software o de Smart Contracts
+              una vez desplegados en entornos de producción verificados y controlados por el
+              cliente, incluyendo pérdida de datos o interrupciones de negocio.
+            </p>
+          </section>
+
+          <p className="text-foreground/70 border-foreground/10 border-t pt-8 text-xs">
+            Última actualización: Mayo 2026
           </p>
         </div>
       </div>

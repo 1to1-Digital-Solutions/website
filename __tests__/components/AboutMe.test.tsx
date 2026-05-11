@@ -1,17 +1,13 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import { AboutMe } from "@/components/AboutMe";
-import { LanguageProvider } from "@/context/LanguageContext";
+import { renderWithProviders } from "../test-utils";
 
 describe("AboutMe", () => {
   it("renders content correctly", () => {
-    render(
-      <LanguageProvider>
-        <AboutMe />
-      </LanguageProvider>
-    );
+    renderWithProviders(<AboutMe />);
 
     expect(screen.getByText("¿Quién está")).toBeInTheDocument();
     expect(screen.getByText("Detrás?")).toBeInTheDocument();
-    expect(screen.getByText(/soy el fundador de 1to1 Digital Solutions/i)).toBeInTheDocument();
+    expect(screen.getByText(/Hola, soy César/i)).toBeInTheDocument();
   });
 });

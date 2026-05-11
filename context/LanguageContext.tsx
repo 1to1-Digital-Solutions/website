@@ -1,8 +1,11 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 
 type Language = "en" | "es";
+
+const LANG_COOKIE = "lang";
+const LANG_COOKIE_MAX_AGE = 60 * 60 * 24 * 365; // 1 year
 
 export const translations = {
   en: {
@@ -121,7 +124,8 @@ export const translations = {
     contBudOpt3: "€20k – €30k",
     contBudOpt4: "> €30k",
     // Cookie banner
-    cookieMessage: "We use cookies to improve your experience and analyze traffic. By accepting, you consent to our use of cookies.",
+    cookieMessage:
+      "We use cookies to improve your experience and analyze traffic. By accepting, you consent to our use of cookies.",
     cookieAccept: "Accept all",
     cookieDecline: "Decline",
     cookiePolicy: "Cookie Policy",
@@ -132,12 +136,20 @@ export const translations = {
     contBtnSuccess: "Message Sent!",
     contBtnError: "Try Again",
     contErrorMsg: "Something went wrong. Please try again.",
+    contErrName: "Please enter your name.",
+    contErrEmail: "Please enter a valid email address.",
+    contErrMessage: "Tell us briefly about your idea.",
+    contErrPrivacy: "You must accept the privacy policy.",
 
     // Footer
     footDesc: "We build your technology, you build your business.",
     footRights: "All rights reserved.",
     footTerms: "Terms & Conditions",
     footPrivacy: "Privacy Policy",
+    footManageCookies: "Manage cookies",
+    footIncibeAlt: "INCIBE Ciberemprende seal",
+    footIncibeCaption:
+      "Participant in the INCIBE Emprende incubation programme. Not a certification or accreditation.",
 
     // Aria labels
     ariaToggleLangToEn: "Switch to English",
@@ -268,7 +280,8 @@ export const translations = {
     contBudOpt3: "20.000 € – 30.000 €",
     contBudOpt4: "> 30.000 €",
     // Cookie banner
-    cookieMessage: "Usamos cookies para mejorar tu experiencia y analizar el tráfico. Al aceptar, consientes el uso de cookies.",
+    cookieMessage:
+      "Usamos cookies para mejorar tu experiencia y analizar el tráfico. Al aceptar, consientes el uso de cookies.",
     cookieAccept: "Aceptar todo",
     cookieDecline: "Rechazar",
     cookiePolicy: "Política de Cookies",
@@ -279,12 +292,20 @@ export const translations = {
     contBtnSuccess: "¡Mensaje Enviado!",
     contBtnError: "Intentar de nuevo",
     contErrorMsg: "Algo salió mal. Por favor, inténtalo de nuevo.",
+    contErrName: "Por favor, indica tu nombre.",
+    contErrEmail: "Introduce un correo electrónico válido.",
+    contErrMessage: "Cuéntanos brevemente tu idea.",
+    contErrPrivacy: "Debes aceptar la política de privacidad.",
 
     // Footer
     footDesc: "Construimos tu tecnología, tú construyes tu negocio.",
     footRights: "Todos los derechos reservados.",
     footTerms: "Términos y Condiciones",
     footPrivacy: "Política de Privacidad",
+    footManageCookies: "Gestionar cookies",
+    footIncibeAlt: "Sello INCIBE Ciberemprende",
+    footIncibeCaption:
+      "Participante en el programa de incubación INCIBE Emprende. No constituye certificación ni acreditación.",
 
     // Aria labels
     ariaToggleLangToEn: "Cambiar a inglés",
@@ -310,8 +331,21 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Language>("es");
+export function LanguageProvider({
+  children,
+  initialLang = "es",
+}: {
+  children: ReactNode;
+  initialLang?: Language;
+}) {
+  const [lang, setLang] = useState<Language>(initialLang);
+
+  // Persist language as a cookie so the server can render <html lang> correctly on next request.
+  // Also keep document.documentElement.lang in sync for current session (SR / locale-aware features).
+  useEffect(() => {
+    document.cookie = `${LANG_COOKIE}=${lang}; path=/; max-age=${LANG_COOKIE_MAX_AGE}; samesite=lax`;
+    document.documentElement.lang = lang;
+  }, [lang]);
 
   const t = (key: keyof Translations) => {
     return translations[lang][key] || key;

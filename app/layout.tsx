@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
+import { cookies } from "next/headers";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { CookieBanner } from "@/components/CookieBanner";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { StructuredData } from "@/components/StructuredData";
+import { ConsentProvider } from "@/context/ConsentContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 
@@ -17,10 +21,63 @@ const outfit = Outfit({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://1to1digital.solutions";
+const siteName = "1to1 Digital Solutions";
+const siteTagline = "We build your technology, you build your business";
+const siteDescription =
+  "We build your technology, you build your business. Specialized technical execution for startups: Blockchain, Mixed Reality, and MVP Development.";
+
 export const metadata: Metadata = {
-  title: "1to1 Digital Solutions | We build your technology, you build your business",
-  description:
-    "We build your technology, you build your business. Specialized technical execution for startups: Blockchain, Mixed Reality, and MVP Development.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: `${siteName} | ${siteTagline}`,
+    template: `%s | ${siteName}`,
+  },
+  description: siteDescription,
+  applicationName: siteName,
+  authors: [{ name: siteName, url: siteUrl }],
+  creator: siteName,
+  publisher: siteName,
+  keywords: [
+    "freelance developer",
+    "MVP development",
+    "Web3",
+    "Blockchain",
+    "Mixed Reality",
+    "VR",
+    "Next.js",
+    "React",
+    "Three.js",
+    "tech rescue",
+    "España",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    siteName,
+    title: `${siteName} | ${siteTagline}`,
+    description: siteDescription,
+    locale: "es_ES",
+    alternateLocale: ["en_US"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteName} | ${siteTagline}`,
+    description: siteDescription,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 // Inline script injected before hydration to avoid flash of wrong theme
@@ -35,35 +92,43 @@ const themeScript = `
   }
 `;
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const langCookie = cookieStore.get("lang")?.value;
+  const lang: "es" | "en" = langCookie === "en" ? "en" : "es";
+
   return (
-    <html lang="es" suppressHydrationWarning>
+    <html lang={lang} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <StructuredData />
       </head>
       <body
         className={`${inter.variable} ${outfit.variable} bg-background text-foreground selection:bg-primary/30 min-h-screen font-sans antialiased`}
         suppressHydrationWarning
       >
         <ThemeProvider>
-          <LanguageProvider>
-            <a
-              href="#main-content"
-              className="bg-primary text-background focus:not-sr-only sr-only fixed top-2 left-2 z-[100] rounded-lg px-4 py-2 font-bold focus:outline-none"
-            >
-              Skip to main content
-            </a>
-            <Navbar />
-            <main id="main-content" className="flex flex-col">
-              {children}
-            </main>
-            <Footer />
-            <CookieBanner />
-          </LanguageProvider>
+          <ConsentProvider>
+            <LanguageProvider initialLang={lang}>
+              <a
+                href="#main-content"
+                className="bg-primary text-background sr-only fixed top-2 left-2 z-[100] rounded-lg px-4 py-2 font-bold focus:not-sr-only focus:outline-none"
+              >
+                Skip to main content
+              </a>
+              <Navbar />
+              <main id="main-content" className="flex flex-col">
+                {children}
+              </main>
+              <Footer />
+              <CookieBanner />
+              <GoogleAnalytics />
+            </LanguageProvider>
+          </ConsentProvider>
         </ThemeProvider>
       </body>
     </html>
