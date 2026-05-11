@@ -139,6 +139,9 @@ export const translations = {
     footRights: "All rights reserved.",
     footTerms: "Terms & Conditions",
     footPrivacy: "Privacy Policy",
+    footIncibeAlt: "INCIBE Ciberemprende seal",
+    footIncibeCaption:
+      "Participant in the INCIBE Emprende incubation programme. Not a certification or accreditation.",
 
     // Aria labels
     ariaToggleLangToEn: "Switch to English",
@@ -287,6 +290,9 @@ export const translations = {
     footRights: "Todos los derechos reservados.",
     footTerms: "Términos y Condiciones",
     footPrivacy: "Política de Privacidad",
+    footIncibeAlt: "Sello INCIBE Ciberemprende",
+    footIncibeCaption:
+      "Participante en el programa de incubación INCIBE Emprende. No constituye certificación ni acreditación.",
 
     // Aria labels
     ariaToggleLangToEn: "Cambiar a inglés",

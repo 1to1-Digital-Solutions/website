@@ -85,7 +85,20 @@ export default function TermsConditions() {
 
           <section>
             <h2 className="text-foreground mb-3 text-xl font-semibold">
-              5. Limitación de Responsabilidad
+              5. Formulario de Contacto
+            </h2>
+            <p>
+              El envío del formulario de contacto disponible en este sitio web constituye una{" "}
+              <strong>solicitud de información o de presupuesto</strong> sin coste alguno. La
+              respuesta que le proporcionemos tendrá carácter meramente informativo y orientativo, y
+              cualquier oferta de servicios sólo será efectiva cuando se formalice mediante contrato
+              o aceptación expresa de presupuesto por escrito.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-foreground mb-3 text-xl font-semibold">
+              6. Limitación de Responsabilidad
             </h2>
             <p>
               1to1 Digital Solutions no será responsable de ningún daño indirecto, incidental o
@@ -96,7 +109,7 @@ export default function TermsConditions() {
           </section>
 
           <p className="text-foreground/50 border-foreground/10 border-t pt-8 text-xs">
-            Última actualización: Noviembre 2026
+            Última actualización: Mayo 2026
           </p>
         </div>
       </div>

@@ -22,10 +22,10 @@ export default function PrivacyPolicy() {
               1. Responsable del Tratamiento
             </h2>
             <p>
-              De acuerdo con el Reglamento General de Protección de Datos (RGPD) y la Ley Orgánica
-              3/2018 de Protección de Datos Personales y Garantía de los Derechos Digitales
-              (LOPDGDD), le informamos de que el responsable del tratamiento de los datos personales
-              recogidos a través de este sitio web es:
+              De acuerdo con el Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 de
+              Protección de Datos Personales y Garantía de los Derechos Digitales (LOPDGDD), le
+              informamos de que el responsable del tratamiento de los datos personales recogidos a
+              través de este sitio web es:
             </p>
             <ul className="text-foreground/70 mt-3 list-disc space-y-1 pl-5">
               <li>
@@ -52,63 +52,188 @@ export default function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className="text-foreground mb-3 text-xl font-semibold">
-              2. Recopilación de Información
-            </h2>
+            <h2 className="text-foreground mb-3 text-xl font-semibold">2. Datos que recopilamos</h2>
             <p>
-              En 1to1 Digital Solutions valoramos enormemente su privacidad. Solo recopilamos
-              información personal (como nombre, correo electrónico, presupuesto y detalles del
-              proyecto) a través de nuestros formularios de contacto, con el único fin de
-              comunicarnos y proporcionar los presupuestos o servicios solicitados.
+              A través del formulario de contacto de este sitio web recopilamos exclusivamente los
+              datos que usted nos facilita voluntariamente:
+            </p>
+            <ul className="text-foreground/70 mt-3 list-disc space-y-1 pl-5">
+              <li>Nombre</li>
+              <li>Dirección de correo electrónico</li>
+              <li>Tipo de proyecto y rango de presupuesto seleccionados</li>
+              <li>Contenido del mensaje que nos envía</li>
+              <li>
+                Evidencia de la aceptación de esta Política de Privacidad (marca temporal y estado
+                de la casilla)
+              </li>
+            </ul>
+            <p className="mt-3">
+              No recopilamos datos especiales (categorías sensibles del Art. 9 RGPD) y le rogamos
+              que no los incluya en el campo de mensaje.
             </p>
           </section>
 
           <section>
             <h2 className="text-foreground mb-3 text-xl font-semibold">
-              3. Uso de Datos y Contacto
+              3. Finalidades y base legal del tratamiento
             </h2>
-            <p>
-              Los datos que nos proporciona nunca serán vendidos, alquilados ni compartidos de forma
-              masiva con terceros sin su consentimiento explícito, a menos que sea estrictamente
-              necesario para el cumplimiento de una obligación legal o para la ejecución de
-              herramientas de infraestructura imprescindibles (ej. servidores de base de datos
-              cifrados).
+            <p>Tratamos sus datos con las siguientes finalidades:</p>
+            <ul className="text-foreground/70 mt-3 list-disc space-y-1 pl-5">
+              <li>
+                Atender su consulta o solicitud, elaborar presupuestos y gestionar la relación
+                precontractual y, en su caso, contractual.
+              </li>
+              <li>
+                Llevar un registro interno de oportunidades comerciales (CRM-lite), conservando el
+                histórico de contactos.
+              </li>
+            </ul>
+            <p className="mt-3">
+              La <strong>base legal</strong> del tratamiento es su <strong>consentimiento</strong>{" "}
+              expreso al marcar la casilla de aceptación de esta Política de Privacidad en el
+              formulario (Art. 6.1.a RGPD), así como la ejecución de medidas precontractuales a
+              petición del interesado (Art. 6.1.b RGPD) cuando su consulta tenga por objeto valorar
+              la contratación de nuestros servicios.
             </p>
           </section>
 
           <section>
             <h2 className="text-foreground mb-3 text-xl font-semibold">
-              4. Tecnologías de Rastreo e IP
+              4. Encargados del tratamiento
             </h2>
             <p>
-              Nuestro sitio web utiliza tecnologías modernas y eficientes (Three.js/GSAP). Podemos
-              utilizar cookies técnicas que son estrictamente necesarias para el funcionamiento del
-              sistema, como almacenar su preferencia de idioma entre sesiones. No utilizamos
-              rastreadores publicitarios intrusivos ni vendemos métricas de su interacción con
-              nuestro lienzo 3D.
+              Para prestar el servicio utilizamos los siguientes proveedores tecnológicos
+              (encargados del tratamiento según el Art. 28 RGPD), que tratan sus datos únicamente
+              siguiendo nuestras instrucciones:
+            </p>
+            <ul className="text-foreground/70 mt-3 list-disc space-y-1 pl-5">
+              <li>
+                <strong className="text-foreground/90">Vercel Inc.</strong> — hosting y entrega del
+                sitio web.
+              </li>
+              <li>
+                <strong className="text-foreground/90">Resend (Resend, Inc.)</strong> — envío del
+                correo electrónico de aviso al responsable.
+              </li>
+              <li>
+                <strong className="text-foreground/90">Google LLC (Google Workspace)</strong> —
+                gestión del correo electrónico recibido y almacenamiento del registro de contactos
+                en Google Sheets.
+              </li>
+            </ul>
+            <p className="mt-3">
+              No cedemos, vendemos ni alquilamos sus datos a terceros distintos de los anteriores
+              salvo obligación legal.
             </p>
           </section>
 
           <section>
             <h2 className="text-foreground mb-3 text-xl font-semibold">
-              5. Sus Derechos Digitales
+              5. Transferencias internacionales
             </h2>
             <p>
-              Usted tiene derecho pleno a solicitar el acceso, la rectificación o la eliminación
-              total de cualquier información personal que podamos tener sobre usted en nuestras
-              bases de datos en cualquier momento. Puede ejercer este derecho contactándonos en{" "}
+              Vercel, Resend y Google son proveedores con sede en Estados Unidos. La transferencia
+              de sus datos fuera del Espacio Económico Europeo se realiza al amparo de las
+              salvaguardas previstas por el RGPD: <strong>EU-US Data Privacy Framework</strong> (en
+              el que dichos proveedores se han certificado) y/o las{" "}
+              <strong>Cláusulas Contractuales Tipo</strong> aprobadas por la Comisión Europea, que
+              garantizan un nivel de protección adecuado.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-foreground mb-3 text-xl font-semibold">6. Plazo de conservación</h2>
+            <p>
+              Conservaremos sus datos durante el tiempo necesario para gestionar su consulta y, en
+              caso de que se inicie una relación contractual, durante toda la vigencia de la misma y
+              los plazos legales de prescripción aplicables (en particular, los previstos en la
+              normativa mercantil y fiscal). Si no llega a formalizarse contrato, los datos se
+              conservarán por un máximo de <strong>2 años</strong> desde el último contacto, salvo
+              que usted solicite antes su supresión.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-foreground mb-3 text-xl font-semibold">
+              7. Tecnologías de rastreo e IP
+            </h2>
+            <p>
+              Nuestro sitio web utiliza únicamente cookies estrictamente necesarias para su
+              funcionamiento, como la conservación de su preferencia de idioma o el registro de su
+              consentimiento de cookies. No utilizamos rastreadores publicitarios ni elaboramos
+              perfiles. Puede consultar el detalle en nuestra{" "}
+              <Link
+                href="/cookie-policy"
+                className="text-primary underline-offset-2 hover:underline"
+              >
+                Política de Cookies
+              </Link>
+              .
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-foreground mb-3 text-xl font-semibold">8. Sus derechos</h2>
+            <p>Como interesado, le asisten los siguientes derechos:</p>
+            <ul className="text-foreground/70 mt-3 list-disc space-y-1 pl-5">
+              <li>
+                <strong className="text-foreground/90">Acceso</strong> a sus datos personales.
+              </li>
+              <li>
+                <strong className="text-foreground/90">Rectificación</strong> de datos inexactos.
+              </li>
+              <li>
+                <strong className="text-foreground/90">Supresión</strong> ("derecho al olvido").
+              </li>
+              <li>
+                <strong className="text-foreground/90">Oposición</strong> al tratamiento.
+              </li>
+              <li>
+                <strong className="text-foreground/90">Limitación</strong> del tratamiento.
+              </li>
+              <li>
+                <strong className="text-foreground/90">Portabilidad</strong> de sus datos a otro
+                responsable.
+              </li>
+              <li>
+                <strong className="text-foreground/90">Retirar el consentimiento</strong> en
+                cualquier momento, sin que ello afecte a la licitud del tratamiento previo.
+              </li>
+            </ul>
+            <p className="mt-3">
+              Puede ejercerlos enviándonos una solicitud a{" "}
               <a
                 href="mailto:info@1to1digital.solutions"
                 className="text-primary underline-offset-2 hover:underline"
               >
                 info@1to1digital.solutions
+              </a>{" "}
+              indicando el derecho que desea ejercer y adjuntando, si fuese necesario, copia de un
+              documento que acredite su identidad. Responderemos en el plazo de un mes.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-foreground mb-3 text-xl font-semibold">
+              9. Reclamaciones ante la autoridad de control
+            </h2>
+            <p>
+              Si considera que sus datos no están siendo tratados conforme a la normativa, puede
+              presentar una reclamación ante la{" "}
+              <a
+                href="https://www.aepd.es"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary underline-offset-2 hover:underline"
+              >
+                Agencia Española de Protección de Datos (AEPD)
               </a>
               .
             </p>
           </section>
 
           <p className="text-foreground/50 border-foreground/10 border-t pt-8 text-xs">
-            Última actualización: Noviembre 2026
+            Última actualización: Mayo 2026
           </p>
         </div>
       </div>

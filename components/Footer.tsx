@@ -19,7 +19,7 @@ export function Footer() {
 
   return (
     <footer className="border-foreground/10 bg-anthracite text-foreground/80 border-t py-12">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 md:flex-row">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-10 px-6 md:flex-row md:items-start">
         {/* Brand */}
         <div className="flex flex-col items-center md:items-start">
           <Link
@@ -35,6 +35,26 @@ export function Footer() {
             />
           </Link>
           <p className="mt-2 max-w-xs text-center text-sm md:text-left">{t("footDesc")}</p>
+        </div>
+
+        {/* INCIBE seal */}
+        <div className="flex max-w-xs flex-col items-center text-center">
+          <a
+            href="https://www.incibe.es"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t("footIncibeAlt") as string}
+            className="focus-visible:ring-primary rounded focus-visible:ring-2 focus-visible:outline-none"
+          >
+            <Image
+              src="/images/incibe/sello-incibe.png"
+              alt={t("footIncibeAlt") as string}
+              width={2000}
+              height={2000}
+              className="h-24 w-auto"
+            />
+          </a>
+          <p className="text-foreground/50 mt-3 text-xs leading-snug">{t("footIncibeCaption")}</p>
         </div>
 
         {/* Social Links */}
