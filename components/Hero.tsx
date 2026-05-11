@@ -90,13 +90,13 @@ export function Hero() {
       >
         {/* Massive HTML Title (Replacing 3D Text) */}
         <div className="pointer-events-none select-none">
-          <h1 className="hero-text-line font-outfit text-foreground mx-auto max-w-5xl text-4xl font-black tracking-tighter drop-shadow-[0_2px_6px_rgba(0,0,0,0.12)] dark:drop-shadow-[0_4px_15px_rgba(0,0,0,0.8)] sm:text-5xl md:text-7xl">
+          <h1 className="hero-text-line font-outfit text-foreground mx-auto max-w-5xl text-4xl font-black tracking-tighter drop-shadow-[0_2px_6px_rgba(0,0,0,0.12)] sm:text-5xl md:text-7xl dark:drop-shadow-[0_4px_15px_rgba(0,0,0,0.8)]">
             {t("heroTitle1")} <br />
             <span className="from-primary to-primary/50 bg-gradient-to-r bg-clip-text text-transparent">
               {t("heroTitle2")}
             </span>
           </h1>
-          <p className="hero-text-line text-foreground/80 pointer-events-none mx-auto mt-6 max-w-2xl text-base font-medium drop-shadow-[0_1px_3px_rgba(0,0,0,0.08)] dark:drop-shadow-[0_2px_5px_rgba(0,0,0,0.8)] md:text-lg">
+          <p className="hero-text-line text-foreground/80 pointer-events-none mx-auto mt-6 max-w-2xl text-base font-medium drop-shadow-[0_1px_3px_rgba(0,0,0,0.08)] md:text-lg dark:drop-shadow-[0_2px_5px_rgba(0,0,0,0.8)]">
             {t("heroSub")}
           </p>
         </div>
@@ -105,13 +105,13 @@ export function Hero() {
         <div className="hero-btn pointer-events-none mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
             href="#contact"
-            className="bg-primary/90 text-background hover:bg-primary focus-visible:ring-primary pointer-events-auto rounded-full px-8 py-4 text-lg font-bold backdrop-blur-md transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(64,224,208,0.4)] focus-visible:ring-2 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="bg-primary/90 text-background hover:bg-primary focus-visible:ring-primary focus-visible:ring-offset-background pointer-events-auto rounded-full px-8 py-4 text-lg font-bold backdrop-blur-md transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(64,224,208,0.4)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
           >
             {t("heroBtnStart")}
           </a>
           <a
             href="#work"
-            className="border-foreground/20 bg-background/50 hover:bg-foreground/5 hover:text-primary hover:border-primary/50 focus-visible:ring-primary pointer-events-auto rounded-full border px-8 py-4 text-lg font-bold backdrop-blur-md transition-all focus-visible:ring-2 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="border-foreground/20 bg-background/50 hover:bg-foreground/5 hover:text-primary hover:border-primary/50 focus-visible:ring-primary focus-visible:ring-offset-background pointer-events-auto rounded-full border px-8 py-4 text-lg font-bold backdrop-blur-md transition-all focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
           >
             {t("heroBtnWork")}
           </a>

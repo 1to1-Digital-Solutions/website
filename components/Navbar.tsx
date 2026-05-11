@@ -25,14 +25,16 @@ export function Navbar() {
 
   const toggleLanguage = () => setLang(lang === "es" ? "en" : "es");
 
-  const logoSrc =
-    !mounted || theme === "dark" ? "/logo-negative.svg" : "/logo-positive.svg";
+  const logoSrc = !mounted || theme === "dark" ? "/logo-negative.svg" : "/logo-positive.svg";
 
   return (
-    <nav className="bg-background/80 fixed top-4 left-1/2 z-[90] w-[95%] max-w-7xl -translate-x-1/2 rounded-full border border-foreground/10 p-1 shadow-lg backdrop-blur-xl md:bg-background/40">
+    <nav className="bg-background/80 border-foreground/10 md:bg-background/40 fixed top-4 left-1/2 z-[90] w-[95%] max-w-7xl -translate-x-1/2 rounded-full border p-1 shadow-lg backdrop-blur-xl">
       <div className="flex items-center justify-between px-6 py-3 md:py-2">
         {/* Logo */}
-        <Link href="/" className="focus-visible:ring-primary rounded focus-visible:ring-2 focus-visible:outline-none">
+        <Link
+          href="/"
+          className="focus-visible:ring-primary rounded focus-visible:ring-2 focus-visible:outline-none"
+        >
           <Image
             src={logoSrc}
             alt="1to1 Digital Solutions"
@@ -51,7 +53,7 @@ export function Navbar() {
               <li key={link.name as string}>
                 <Link
                   href={link.href}
-                  className="text-foreground/80 hover:text-primary focus-visible:ring-primary rounded focus-visible:ring-2 focus-visible:outline-none text-sm font-medium transition-colors"
+                  className="text-foreground/80 hover:text-primary focus-visible:ring-primary rounded text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:outline-none"
                 >
                   {link.name}
                 </Link>
@@ -79,7 +81,7 @@ export function Navbar() {
 
           <Link
             href="#contact"
-            className="bg-primary text-background focus-visible:ring-primary rounded-full px-5 py-2 text-sm font-semibold transition-transform hover:scale-105 focus-visible:ring-2 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="bg-primary text-background focus-visible:ring-primary focus-visible:ring-offset-background rounded-full px-5 py-2 text-sm font-semibold transition-transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
           >
             {t("navCTA")}
           </Link>
@@ -107,7 +109,7 @@ export function Navbar() {
 
           {/* Hamburger */}
           <button
-            className="text-foreground cursor-pointer focus-visible:ring-primary rounded-md focus-visible:ring-2 focus-visible:outline-none"
+            className="text-foreground focus-visible:ring-primary cursor-pointer rounded-md focus-visible:ring-2 focus-visible:outline-none"
             onClick={() => setIsOpen(!isOpen)}
             aria-label={t(isOpen ? "ariaCloseMenu" : "ariaOpenMenu") as string}
             aria-expanded={isOpen}
@@ -120,13 +122,16 @@ export function Navbar() {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div id="mobile-menu" className="bg-background/95 absolute top-[calc(100%+10px)] left-0 w-full rounded-2xl border border-foreground/10 pt-4 pb-6 shadow-lg backdrop-blur-xl md:hidden">
+        <div
+          id="mobile-menu"
+          className="bg-background/95 border-foreground/10 absolute top-[calc(100%+10px)] left-0 w-full rounded-2xl border pt-4 pb-6 shadow-lg backdrop-blur-xl md:hidden"
+        >
           <ul className="flex flex-col items-center gap-6">
             {navLinks.map((link) => (
               <li key={link.name as string}>
                 <Link
                   href={link.href}
-                  className="text-foreground/90 hover:text-primary focus-visible:ring-primary rounded focus-visible:ring-2 focus-visible:outline-none text-lg font-medium transition-colors"
+                  className="text-foreground/90 hover:text-primary focus-visible:ring-primary rounded text-lg font-medium transition-colors focus-visible:ring-2 focus-visible:outline-none"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.name}
@@ -136,7 +141,7 @@ export function Navbar() {
             <li>
               <Link
                 href="#contact"
-                className="bg-primary text-background focus-visible:ring-primary mt-4 block rounded-full px-8 py-3 text-base font-semibold focus-visible:ring-2 focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                className="bg-primary text-background focus-visible:ring-primary focus-visible:ring-offset-background mt-4 block rounded-full px-8 py-3 text-base font-semibold focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
                 onClick={() => setIsOpen(false)}
               >
                 {t("navCTA")}

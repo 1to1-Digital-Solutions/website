@@ -1,23 +1,17 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import { Services } from "@/components/Services";
-import { LanguageProvider } from "@/context/LanguageContext";
+import { renderWithProviders } from "../test-utils";
 
 describe("Services", () => {
   it("renders section title and all cards", () => {
-    render(
-      <LanguageProvider>
-        <Services />
-      </LanguageProvider>
-    );
+    renderWithProviders(<Services />);
 
-    // Title
     expect(screen.getByText("Lo Que")).toBeInTheDocument();
     expect(screen.getByText("Hacemos.")).toBeInTheDocument();
 
-    // Cards
     expect(screen.getByText("Desarrollo de MVP")).toBeInTheDocument();
     expect(screen.getByText("Integración Blockchain")).toBeInTheDocument();
     expect(screen.getByText("Realidad Mixta y 3D")).toBeInTheDocument();
-    expect(screen.getByText("Rescate Técnico (Tech Rescue)")).toBeInTheDocument();
+    expect(screen.getByText("Arquitectura y Escalabilidad")).toBeInTheDocument();
   });
 });

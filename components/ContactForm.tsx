@@ -1,15 +1,57 @@
 "use client";
 
+import { useState } from "react";
 import { Send, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import Link from "next/link";
 
+type Status = "idle" | "loading" | "success" | "error";
+
 export function ContactForm() {
   const { t } = useLanguage();
+  const [status, setStatus] = useState<Status>("idle");
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (status === "loading") return;
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    const payload = {
+      name: String(data.get("name") || ""),
+      email: String(data.get("email") || ""),
+      projectType: String(data.get("project") || ""),
+      budget: String(data.get("budget") || ""),
+      message: String(data.get("message") || ""),
+      privacy: data.get("privacy") === "on",
+      website: String(data.get("website") || ""), // honeypot
+    };
+
+    setStatus("loading");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const json = (await res.json().catch(() => ({}))) as { ok?: boolean };
+      if (res.ok && json.ok) {
+        setStatus("success");
+        form.reset();
+        setPrivacyAccepted(false);
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
+
+  const isBusy = status === "loading";
+  const isDone = status === "success";
 
   return (
     <section id="contact" className="bg-anthracite/30 w-full py-24">
@@ -21,16 +63,42 @@ export function ContactForm() {
           <p className="text-foreground/70 mt-4 text-lg">{t("contactSub")}</p>
         </div>
 
+        <div aria-live="polite" aria-atomic="true" className="sr-only">
+          {status === "success" && t("contBtnSuccess")}
+          {status === "error" && t("contErrorMsg")}
+        </div>
+
         <form
           suppressHydrationWarning
           onSubmit={handleSubmit}
+          noValidate
           className="border-foreground/10 bg-background/50 mx-auto flex w-full max-w-2xl flex-col gap-6 rounded-3xl border p-8 shadow-xl backdrop-blur-md md:p-12"
         >
+          {/* Honeypot: invisible to humans, frequently filled by bots */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute h-0 w-0 overflow-hidden opacity-0"
+            style={{ position: "absolute", left: "-9999px" }}
+          >
+            <label htmlFor="website">Website</label>
+            <input
+              type="text"
+              id="website"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              defaultValue=""
+            />
+          </div>
+
           {/* Row 1: Name + Email */}
           <div className="grid gap-6 md:grid-cols-2">
             <div className="flex flex-col gap-2">
               <label htmlFor="name" className="text-foreground/80 text-sm font-medium">
-                {t("contName")} <span className="text-primary" aria-hidden="true">*</span>
+                {t("contName")}{" "}
+                <span className="text-primary" aria-hidden="true">
+                  *
+                </span>
               </label>
               <input
                 type="text"
@@ -38,14 +106,18 @@ export function ContactForm() {
                 name="name"
                 required
                 autoComplete="name"
+                disabled={isBusy || isDone}
                 defaultValue=""
-                className="border-foreground/10 bg-anthracite text-foreground focus:border-primary focus:ring-primary rounded-xl border p-3 focus:ring-1 focus:outline-none"
+                className="border-foreground/10 bg-anthracite text-foreground focus:border-primary focus:ring-primary rounded-xl border p-3 focus:ring-1 focus:outline-none disabled:opacity-60"
                 placeholder="John Doe"
               />
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="email" className="text-foreground/80 text-sm font-medium">
-                {t("contEmail")} <span className="text-primary" aria-hidden="true">*</span>
+                {t("contEmail")}{" "}
+                <span className="text-primary" aria-hidden="true">
+                  *
+                </span>
               </label>
               <input
                 type="email"
@@ -54,8 +126,9 @@ export function ContactForm() {
                 required
                 autoComplete="email"
                 spellCheck="false"
+                disabled={isBusy || isDone}
                 defaultValue=""
-                className="border-foreground/10 bg-anthracite text-foreground focus:border-primary focus:ring-primary rounded-xl border p-3 focus:ring-1 focus:outline-none"
+                className="border-foreground/10 bg-anthracite text-foreground focus:border-primary focus:ring-primary rounded-xl border p-3 focus:ring-1 focus:outline-none disabled:opacity-60"
                 placeholder="john@startup.com"
               />
             </div>
@@ -72,7 +145,8 @@ export function ContactForm() {
                   id="project"
                   name="project"
                   defaultValue="mvp"
-                  className="border-foreground/10 bg-anthracite text-foreground focus:border-primary focus:ring-primary w-full cursor-pointer appearance-none rounded-xl border p-3 pr-10 focus:ring-1 focus:outline-none"
+                  disabled={isBusy || isDone}
+                  className="border-foreground/10 bg-anthracite text-foreground focus:border-primary focus:ring-primary w-full cursor-pointer appearance-none rounded-xl border p-3 pr-10 focus:ring-1 focus:outline-none disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   <option value="mvp">{t("contOpt1")}</option>
                   <option value="rescue">{t("contOpt2")}</option>
@@ -94,7 +168,8 @@ export function ContactForm() {
                   id="budget"
                   name="budget"
                   defaultValue="<5"
-                  className="border-foreground/10 bg-anthracite text-foreground focus:border-primary focus:ring-primary w-full cursor-pointer appearance-none rounded-xl border p-3 pr-10 focus:ring-1 focus:outline-none"
+                  disabled={isBusy || isDone}
+                  className="border-foreground/10 bg-anthracite text-foreground focus:border-primary focus:ring-primary w-full cursor-pointer appearance-none rounded-xl border p-3 pr-10 focus:ring-1 focus:outline-none disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   <option value="<5">{t("contBudOptUnder5")}</option>
                   <option value="5-10">{t("contBudOpt5to10")}</option>
@@ -114,30 +189,40 @@ export function ContactForm() {
           {/* Row 3: Message */}
           <div className="flex flex-col gap-2">
             <label htmlFor="message" className="text-foreground/80 text-sm font-medium">
-              {t("contMessage")} <span className="text-primary" aria-hidden="true">*</span>
+              {t("contMessage")}{" "}
+              <span className="text-primary" aria-hidden="true">
+                *
+              </span>
             </label>
             <textarea
               id="message"
               name="message"
               required
               rows={4}
+              disabled={isBusy || isDone}
               defaultValue=""
-              className="border-foreground/10 bg-anthracite text-foreground focus:border-primary focus:ring-primary resize-none rounded-xl border p-3 focus:ring-1 focus:outline-none"
+              className="border-foreground/10 bg-anthracite text-foreground focus:border-primary focus:ring-primary resize-none rounded-xl border p-3 focus:ring-1 focus:outline-none disabled:opacity-60"
               placeholder={t("contMessagePlaceholder") as string}
             />
           </div>
 
           {/* Privacy policy checkbox */}
-          <label className="flex cursor-pointer items-start gap-3" aria-required="true">
+          <label className="flex cursor-pointer items-start gap-3">
             <input
               type="checkbox"
               name="privacy"
               required
-              className="accent-primary mt-0.5 h-4 w-4 shrink-0 cursor-pointer"
+              aria-required="true"
+              checked={privacyAccepted}
+              onChange={(e) => setPrivacyAccepted(e.target.checked)}
+              disabled={isBusy || isDone}
+              className="accent-primary mt-0.5 h-4 w-4 shrink-0 cursor-pointer disabled:cursor-not-allowed"
             />
             <span className="text-foreground/60 text-sm">
               {t("contPrivacy")}{" "}
-              <span className="text-primary" aria-hidden="true">*</span>{" "}
+              <span className="text-primary" aria-hidden="true">
+                *
+              </span>{" "}
               <Link
                 href="/privacy-policy"
                 className="hover:text-primary underline-offset-2 transition-colors hover:underline"
@@ -149,13 +234,49 @@ export function ContactForm() {
 
           <button
             type="submit"
-            disabled
-            aria-disabled="true"
-            className="group bg-primary text-background mt-2 flex w-full items-center justify-center gap-2 rounded-xl py-4 font-bold transition-all disabled:cursor-not-allowed disabled:opacity-60"
+            disabled={isBusy || isDone || !privacyAccepted}
+            className="group bg-primary text-background hover:bg-primary/90 focus-visible:ring-primary mt-2 flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl py-4 font-bold transition-all focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:scale-100"
           >
-            {t("contBtnIdle")}{" "}
-            <Send size={18} aria-hidden="true" />
+            {status === "idle" && (
+              <>
+                {t("contBtnIdle")}{" "}
+                <Send size={18} className="transition-transform group-hover:translate-x-1" />
+              </>
+            )}
+            {status === "loading" && (
+              <span className="flex items-center gap-2">
+                <svg
+                  className="h-4 w-4 animate-spin"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  />
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                  />
+                </svg>
+                {t("contBtnLoading")}
+              </span>
+            )}
+            {status === "success" && t("contBtnSuccess")}
+            {status === "error" && t("contBtnError")}
           </button>
+
+          {status === "error" && (
+            <p role="alert" className="mt-3 text-center text-sm text-red-400">
+              {t("contErrorMsg") as string}
+            </p>
+          )}
         </form>
       </div>
     </section>

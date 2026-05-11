@@ -35,9 +35,15 @@ const PRIMARY_DARK = "#178060";
 function CanvasLoader() {
   const { progress } = useProgress();
   return (
-    <Html as="div" center style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+    <Html
+      as="div"
+      center
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
       <span className="text-primary font-outfit text-3xl font-bold">{progress.toFixed(0)}%</span>
-      <p className="text-foreground/50 mt-2 text-xs tracking-[0.3em] uppercase">Initializing WebGL</p>
+      <p className="text-foreground/50 mt-2 text-xs tracking-[0.3em] uppercase">
+        Initializing WebGL
+      </p>
     </Html>
   );
 }
@@ -89,7 +95,11 @@ function InteractiveGlobe({ allPlaced }: { allPlaced: boolean }) {
 
     speedRef.current.y = THREE.MathUtils.lerp(speedRef.current.y, targetY, delta * 1.5);
     speedRef.current.x = THREE.MathUtils.lerp(speedRef.current.x, targetX, delta * 1.5);
-    speedRef.current.distort = THREE.MathUtils.lerp(speedRef.current.distort, targetDistort, delta * 1.5);
+    speedRef.current.distort = THREE.MathUtils.lerp(
+      speedRef.current.distort,
+      targetDistort,
+      delta * 1.5
+    );
 
     meshRef.current.rotation.y += delta * speedRef.current.y;
     meshRef.current.rotation.x += delta * speedRef.current.x;
@@ -141,23 +151,23 @@ function InteractiveGlobe({ allPlaced }: { allPlaced: boolean }) {
 }
 
 const BASE_SHAPES = [
-  { id: 0, ShapeComp: Box,          args: [0.6, 0.6, 0.6] },
-  { id: 1, ShapeComp: Sphere,       args: [0.4, 16, 16]   },
-  { id: 2, ShapeComp: Cone,         args: [0.35, 1.0, 16] },
-  { id: 3, ShapeComp: Torus,        args: [0.25, 0.15, 8, 16] },
-  { id: 4, ShapeComp: Cylinder,     args: [0.25, 0.25, 0.8, 16] },
-  { id: 5, ShapeComp: Dodecahedron, args: [0.45, 0]       },
-  { id: 6, ShapeComp: Icosahedron,  args: [0.35, 0]       },
+  { id: 0, ShapeComp: Box, args: [0.6, 0.6, 0.6] },
+  { id: 1, ShapeComp: Sphere, args: [0.4, 16, 16] },
+  { id: 2, ShapeComp: Cone, args: [0.35, 1.0, 16] },
+  { id: 3, ShapeComp: Torus, args: [0.25, 0.15, 8, 16] },
+  { id: 4, ShapeComp: Cylinder, args: [0.25, 0.25, 0.8, 16] },
+  { id: 5, ShapeComp: Dodecahedron, args: [0.45, 0] },
+  { id: 6, ShapeComp: Icosahedron, args: [0.35, 0] },
 ];
 
 const FIXED_POSITIONS = [
-  { targetPos: [-3.5, 1.5, 0],  startPos: [-5.0, -1.0, 0] },
-  { targetPos: [2.0,  1.2, 0],  startPos: [0,    -1.8, 0] },
-  { targetPos: [4.2, -0.5, 0],  startPos: [3.5,   1.6, 0] },
-  { targetPos: [-2.5,-1.5, 0],  startPos: [-4.5,  1.4, 0] },
-  { targetPos: [-0.6, 0.5, 0],  startPos: [2.5,  -1.5, 0] },
-  { targetPos: [2.8, -1.6, 0],  startPos: [-1.5,  1.5, 0] },
-  { targetPos: [-4.8,-0.2, 0],  startPos: [5.0,   0.8, 0] },
+  { targetPos: [-3.5, 1.5, 0], startPos: [-5.0, -1.0, 0] },
+  { targetPos: [2.0, 1.2, 0], startPos: [0, -1.8, 0] },
+  { targetPos: [4.2, -0.5, 0], startPos: [3.5, 1.6, 0] },
+  { targetPos: [-2.5, -1.5, 0], startPos: [-4.5, 1.4, 0] },
+  { targetPos: [-0.6, 0.5, 0], startPos: [2.5, -1.5, 0] },
+  { targetPos: [2.8, -1.6, 0], startPos: [-1.5, 1.5, 0] },
+  { targetPos: [-4.8, -0.2, 0], startPos: [5.0, 0.8, 0] },
 ];
 
 function shuffleArray<T>(array: T[]): T[] {
@@ -179,10 +189,17 @@ interface PlacedShapeProps {
   allPlaced: boolean;
 }
 
-function PlacedShape({ ShapeComp, args, scaleMult, targetPos, glassMat, allPlaced }: PlacedShapeProps) {
+function PlacedShape({
+  ShapeComp,
+  args,
+  scaleMult,
+  targetPos,
+  glassMat,
+  allPlaced,
+}: PlacedShapeProps) {
   const groupRef = useRef<THREE.Group>(null);
-  const innerRef  = useRef<THREE.Mesh>(null);
-  const doneRef   = useRef(false);
+  const innerRef = useRef<THREE.Mesh>(null);
+  const doneRef = useRef(false);
 
   useFrame((_, delta) => {
     if (doneRef.current || !groupRef.current || !innerRef.current) return;
@@ -218,7 +235,15 @@ function PlacedShape({ ShapeComp, args, scaleMult, targetPos, glassMat, allPlace
 }
 
 function DraggableShape({
-  id, ShapeComp, args, scaleMult, startPos, targetPos, onPlace, allPlaced, setCursor,
+  id,
+  ShapeComp,
+  args,
+  scaleMult,
+  startPos,
+  targetPos,
+  onPlace,
+  allPlaced,
+  setCursor,
 }: {
   id: number;
   ShapeComp: React.ElementType;
@@ -231,12 +256,12 @@ function DraggableShape({
   allPlaced: boolean;
   setCursor: (c: "default" | "grab" | "grabbing") => void;
 }) {
-  const groupRef     = useRef<THREE.Group>(null);
+  const groupRef = useRef<THREE.Group>(null);
   const innerMeshRef = useRef<THREE.Mesh>(null);
-  const [isPlaced, setIsPlaced]   = useState(false);
+  const [isPlaced, setIsPlaced] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const entryScaleRef = useRef(0);
-  const doneRef       = useRef(false);
+  const doneRef = useRef(false);
 
   useFrame((_, delta) => {
     if (doneRef.current || !groupRef.current || !innerMeshRef.current) return;
@@ -259,7 +284,7 @@ function DraggableShape({
 
       groupRef.current.getWorldPosition(_v3b);
       const dist = _v3b.distanceTo(_v3a.set(targetPos[0], targetPos[1], targetPos[2]));
-      const mat  = innerMeshRef.current.material as THREE.MeshPhysicalMaterial;
+      const mat = innerMeshRef.current.material as THREE.MeshPhysicalMaterial;
 
       if (dist < 1.0) {
         _colorA.set(PRIMARY);
@@ -284,8 +309,12 @@ function DraggableShape({
   if (isPlaced) {
     return (
       <PlacedShape
-        ShapeComp={ShapeComp} args={args} scaleMult={scaleMult}
-        targetPos={targetPos} glassMat={glassMat} allPlaced={allPlaced}
+        ShapeComp={ShapeComp}
+        args={args}
+        scaleMult={scaleMult}
+        targetPos={targetPos}
+        glassMat={glassMat}
+        allPlaced={allPlaced}
       />
     );
   }
@@ -320,8 +349,12 @@ function DraggableShape({
           setCursor("default");
           setIsHovered(false);
         }}
-        onPointerDown={() => { if (!allPlaced) setCursor("grabbing"); }}
-        onPointerUp={()   => { if (!allPlaced) setCursor("grab"); }}
+        onPointerDown={() => {
+          if (!allPlaced) setCursor("grabbing");
+        }}
+        onPointerUp={() => {
+          if (!allPlaced) setCursor("grab");
+        }}
       >
         <group scale={scaleMult}>
           {/* @ts-expect-error dynamic args */}
@@ -337,7 +370,12 @@ function DraggableShape({
 }
 
 function TargetHole({
-  ShapeComp, args, scaleMult, position, allPlaced, isLightMode,
+  ShapeComp,
+  args,
+  scaleMult,
+  position,
+  allPlaced,
+  isLightMode,
 }: {
   ShapeComp: React.ElementType;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -377,21 +415,23 @@ export function HeroCanvas() {
   const { theme } = useTheme();
   const isLightMode = theme === "light";
 
-  const [mounted, setMounted]           = useState(false);
-  const [placedCount, setPlacedCount]   = useState(0);
-  const [activeIndex, setActiveIndex]   = useState(0);
-  const [cursor, setCursor]             = useState<"default" | "grab" | "grabbing">("default");
+  const [mounted, setMounted] = useState(false);
+  const [placedCount, setPlacedCount] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [cursor, setCursor] = useState<"default" | "grab" | "grabbing">("default");
 
   const allPlaced = placedCount === BASE_SHAPES.length;
 
-  const [shapesData, setShapesData] = useState<Array<{
-    id: number;
-    ShapeComp: React.ElementType;
-    args: number[];
-    targetPos: [number, number, number];
-    startPos:  [number, number, number];
-    scaleMult: number;
-  }>>([]);
+  const [shapesData, setShapesData] = useState<
+    Array<{
+      id: number;
+      ShapeComp: React.ElementType;
+      args: number[];
+      targetPos: [number, number, number];
+      startPos: [number, number, number];
+      scaleMult: number;
+    }>
+  >([]);
 
   useEffect(() => {
     setMounted(true);
@@ -400,7 +440,7 @@ export function HeroCanvas() {
       BASE_SHAPES.map((shape, idx) => ({
         ...shape,
         targetPos: shuffled[idx].targetPos as [number, number, number],
-        startPos:  shuffled[idx].startPos  as [number, number, number],
+        startPos: shuffled[idx].startPos as [number, number, number],
         scaleMult: 0.7 + Math.random() * 0.65,
       }))
     );
@@ -409,7 +449,7 @@ export function HeroCanvas() {
   const handlePlace = (_id: number) => {
     setCursor("default");
     setPlacedCount((p) => p + 1);
-    setActiveIndex((p)  => p + 1);
+    setActiveIndex((p) => p + 1);
   };
 
   return (
@@ -421,7 +461,7 @@ export function HeroCanvas() {
     >
       <Suspense fallback={<CanvasLoader />}>
         <ambientLight intensity={0.5} color={PRIMARY} />
-        <directionalLight position={[10, 10, 5]}   intensity={2.0} color={PRIMARY} />
+        <directionalLight position={[10, 10, 5]} intensity={2.0} color={PRIMARY} />
         <directionalLight position={[-10, -10, -5]} intensity={1.5} color={PRIMARY_DARK} />
 
         <MouseSpotlight />
@@ -430,7 +470,9 @@ export function HeroCanvas() {
 
         {mounted && (
           <Html center position={[0, -2.6, 0]} className="pointer-events-none select-none">
-            <p className={`text-primary/70 mb-4 w-max text-sm font-bold tracking-[0.2em] uppercase transition-opacity duration-1000 ${allPlaced ? "opacity-0" : "animate-pulse opacity-100"}`}>
+            <p
+              className={`text-primary/70 mb-4 w-max text-sm font-bold tracking-[0.2em] uppercase transition-opacity duration-1000 ${allPlaced ? "opacity-0" : "animate-pulse opacity-100"}`}
+            >
               {t("heroDragHint")}
             </p>
           </Html>

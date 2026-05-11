@@ -23,17 +23,28 @@ export default function PrivacyPolicy() {
             </h2>
             <p>
               De acuerdo con el Reglamento General de Protección de Datos (RGPD) y la Ley Orgánica
-              3/2018 de Protección de Datos Personales y Garantía de los Derechos Digitales (LOPDGDD),
-              le informamos de que el responsable del tratamiento de los datos personales recogidos a
-              través de este sitio web es:
+              3/2018 de Protección de Datos Personales y Garantía de los Derechos Digitales
+              (LOPDGDD), le informamos de que el responsable del tratamiento de los datos personales
+              recogidos a través de este sitio web es:
             </p>
             <ul className="text-foreground/70 mt-3 list-disc space-y-1 pl-5">
-              <li><strong className="text-foreground/90">Razón social:</strong> 1TO1 DIGITAL SOLUTIONS SL.</li>
-              <li><strong className="text-foreground/90">NIF:</strong> B27630136</li>
-              <li><strong className="text-foreground/90">Domicilio:</strong> Avda. de Buendía, 11, 19005, Guadalajara, España</li>
+              <li>
+                <strong className="text-foreground/90">Razón social:</strong> 1TO1 DIGITAL SOLUTIONS
+                SL.
+              </li>
+              <li>
+                <strong className="text-foreground/90">NIF:</strong> B27630136
+              </li>
+              <li>
+                <strong className="text-foreground/90">Domicilio:</strong> Avda. de Buendía, 11,
+                19005, Guadalajara, España
+              </li>
               <li>
                 <strong className="text-foreground/90">Correo electrónico:</strong>{" "}
-                <a href="mailto:info@1to1digital.solutions" className="text-primary hover:underline underline-offset-2">
+                <a
+                  href="mailto:info@1to1digital.solutions"
+                  className="text-primary underline-offset-2 hover:underline"
+                >
                   info@1to1digital.solutions
                 </a>
               </li>
@@ -45,10 +56,10 @@ export default function PrivacyPolicy() {
               2. Recopilación de Información
             </h2>
             <p>
-              En 1to1 Digital Solutions valoramos enormemente su privacidad. Solo recopilamos información
-              personal (como nombre, correo electrónico, presupuesto y detalles del proyecto) a
-              través de nuestros formularios de contacto, con el único fin de comunicarnos y
-              proporcionar los presupuestos o servicios solicitados.
+              En 1to1 Digital Solutions valoramos enormemente su privacidad. Solo recopilamos
+              información personal (como nombre, correo electrónico, presupuesto y detalles del
+              proyecto) a través de nuestros formularios de contacto, con el único fin de
+              comunicarnos y proporcionar los presupuestos o servicios solicitados.
             </p>
           </section>
 
@@ -86,9 +97,13 @@ export default function PrivacyPolicy() {
               Usted tiene derecho pleno a solicitar el acceso, la rectificación o la eliminación
               total de cualquier información personal que podamos tener sobre usted en nuestras
               bases de datos en cualquier momento. Puede ejercer este derecho contactándonos en{" "}
-              <a href="mailto:info@1to1digital.solutions" className="text-primary hover:underline underline-offset-2">
+              <a
+                href="mailto:info@1to1digital.solutions"
+                className="text-primary underline-offset-2 hover:underline"
+              >
                 info@1to1digital.solutions
-              </a>.
+              </a>
+              .
             </p>
           </section>
 

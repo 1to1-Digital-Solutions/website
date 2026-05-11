@@ -15,15 +15,17 @@ export function Footer() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
-  const logoSrc =
-    !mounted || theme === "dark" ? "/logo-negative.svg" : "/logo-positive.svg";
+  const logoSrc = !mounted || theme === "dark" ? "/logo-negative.svg" : "/logo-positive.svg";
 
   return (
     <footer className="border-foreground/10 bg-anthracite text-foreground/80 border-t py-12">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 md:flex-row">
         {/* Brand */}
         <div className="flex flex-col items-center md:items-start">
-          <Link href="/" className="focus-visible:ring-primary rounded focus-visible:ring-2 focus-visible:outline-none">
+          <Link
+            href="/"
+            className="focus-visible:ring-primary rounded focus-visible:ring-2 focus-visible:outline-none"
+          >
             <Image
               src={logoSrc}
               alt="1to1 Digital Solutions"
@@ -41,7 +43,7 @@ export function Footer() {
             href="https://www.linkedin.com/in/c%C3%A9sar-pe%C3%B3n-lamparero/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-foreground/60 hover:text-primary focus-visible:ring-primary rounded focus-visible:ring-2 focus-visible:outline-none transition-colors"
+            className="text-foreground/60 hover:text-primary focus-visible:ring-primary rounded transition-colors focus-visible:ring-2 focus-visible:outline-none"
           >
             <Linkedin size={24} />
             <span className="sr-only">LinkedIn</span>
@@ -50,7 +52,7 @@ export function Footer() {
             href="https://github.com/1to1-Digital-Solutions"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-foreground/60 hover:text-primary focus-visible:ring-primary rounded focus-visible:ring-2 focus-visible:outline-none transition-colors"
+            className="text-foreground/60 hover:text-primary focus-visible:ring-primary rounded transition-colors focus-visible:ring-2 focus-visible:outline-none"
           >
             <Github size={24} />
             <span className="sr-only">GitHub</span>

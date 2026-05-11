@@ -8,6 +8,8 @@
     "start": "next start",
     "lint": "eslint app components context hooks",
     "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit",
     "test": "jest",
     "test:watch": "jest --watch"
   },
@@ -21,6 +23,7 @@
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "resend": "^6.12.3",
     "tailwind-merge": "^3.5.0",
     "three": "^0.183.1"
   },

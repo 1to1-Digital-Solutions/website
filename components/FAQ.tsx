@@ -28,10 +28,7 @@ export function FAQ() {
   ];
 
   return (
-    <section
-      id="faq"
-      className="mx-auto w-full max-w-3xl px-6 py-24"
-    >
+    <section id="faq" className="mx-auto w-full max-w-3xl px-6 py-24">
       <div className="mb-12 text-center">
         <h2 className="font-outfit text-4xl font-bold tracking-tight md:text-5xl">
           {t("faqTitle1")} <span className="text-primary">{t("faqTitle2")}</span>
@@ -54,7 +51,7 @@ export function FAQ() {
             >
               <button
                 onClick={() => setOpenIndex(isOpen ? null : idx)}
-                className="flex w-full cursor-pointer items-center justify-between p-6 text-left focus-visible:ring-primary focus-visible:ring-2 focus-visible:outline-none"
+                className="focus-visible:ring-primary flex w-full cursor-pointer items-center justify-between p-6 text-left focus-visible:ring-2 focus-visible:outline-none"
                 aria-expanded={isOpen}
                 aria-controls={`faq-answer-${idx}`}
                 id={`faq-question-${idx}`}

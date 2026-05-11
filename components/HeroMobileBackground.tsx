@@ -6,8 +6,7 @@ export function HeroMobileBackground() {
       <div
         className="absolute inset-0 opacity-20"
         style={{
-          backgroundImage:
-            "radial-gradient(circle, #1f957a 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, #1f957a 1px, transparent 1px)",
           backgroundSize: "32px 32px",
         }}
       />
@@ -36,7 +35,7 @@ export function HeroMobileBackground() {
       />
       {/* Small ring */}
       <div
-        className="border-primary/20 absolute bottom-[28%] right-[8%] h-10 w-10 rounded-full border-2"
+        className="border-primary/20 absolute right-[8%] bottom-[28%] h-10 w-10 rounded-full border-2"
         style={{ animation: "float-a 8s ease-in-out infinite", animationDelay: "2s" }}
       />
 

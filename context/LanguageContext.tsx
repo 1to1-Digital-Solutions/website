@@ -121,7 +121,8 @@ export const translations = {
     contBudOpt3: "€20k – €30k",
     contBudOpt4: "> €30k",
     // Cookie banner
-    cookieMessage: "We use cookies to improve your experience and analyze traffic. By accepting, you consent to our use of cookies.",
+    cookieMessage:
+      "We use cookies to improve your experience and analyze traffic. By accepting, you consent to our use of cookies.",
     cookieAccept: "Accept all",
     cookieDecline: "Decline",
     cookiePolicy: "Cookie Policy",
@@ -268,7 +269,8 @@ export const translations = {
     contBudOpt3: "20.000 € – 30.000 €",
     contBudOpt4: "> 30.000 €",
     // Cookie banner
-    cookieMessage: "Usamos cookies para mejorar tu experiencia y analizar el tráfico. Al aceptar, consientes el uso de cookies.",
+    cookieMessage:
+      "Usamos cookies para mejorar tu experiencia y analizar el tráfico. Al aceptar, consientes el uso de cookies.",
     cookieAccept: "Aceptar todo",
     cookieDecline: "Rechazar",
     cookiePolicy: "Política de Cookies",

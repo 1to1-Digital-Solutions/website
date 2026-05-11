@@ -53,7 +53,7 @@ export default function RootLayout({
           <LanguageProvider>
             <a
               href="#main-content"
-              className="bg-primary text-background focus:not-sr-only sr-only fixed top-2 left-2 z-[100] rounded-lg px-4 py-2 font-bold focus:outline-none"
+              className="bg-primary text-background sr-only fixed top-2 left-2 z-[100] rounded-lg px-4 py-2 font-bold focus:not-sr-only focus:outline-none"
             >
               Skip to main content
             </a>

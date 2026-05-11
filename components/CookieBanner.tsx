@@ -31,14 +31,11 @@ export function CookieBanner() {
     <div
       role="dialog"
       aria-label="Cookie consent"
-      className="fixed bottom-0 left-0 right-0 z-[90] border-t border-foreground/10 bg-background/95 px-6 py-4 shadow-2xl backdrop-blur-md md:bottom-6 md:left-6 md:right-auto md:max-w-md md:rounded-2xl md:border"
+      className="border-foreground/10 bg-background/95 fixed right-0 bottom-0 left-0 z-[90] border-t px-6 py-4 shadow-2xl backdrop-blur-md md:right-auto md:bottom-6 md:left-6 md:max-w-md md:rounded-2xl md:border"
     >
       <p className="text-foreground/80 mb-4 text-sm leading-relaxed">
         {t("cookieMessage")}{" "}
-        <Link
-          href="/cookie-policy"
-          className="text-primary underline-offset-2 hover:underline"
-        >
+        <Link href="/cookie-policy" className="text-primary underline-offset-2 hover:underline">
           {t("cookiePolicy")}
         </Link>
         .

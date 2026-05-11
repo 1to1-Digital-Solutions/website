@@ -1,27 +1,25 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { fireEvent, screen } from "@testing-library/react";
 import { Navbar } from "@/components/Navbar";
-import { LanguageProvider } from "@/context/LanguageContext";
+import { renderWithProviders } from "../test-utils";
 
 // Mock Next.js Link
 jest.mock("next/link", () => {
-  return ({ children, href, className, onClick }: any) => {
-    return (
-      <a href={href} className={className} onClick={onClick}>
-        {children}
-      </a>
-    );
-  };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const MockLink = ({ children, href, className, onClick }: any) => (
+    <a href={href} className={className} onClick={onClick}>
+      {children}
+    </a>
+  );
+  MockLink.displayName = "MockLink";
+  return MockLink;
 });
 
 describe("Navbar", () => {
   it("renders logo and navigation links", () => {
-    render(
-      <LanguageProvider>
-        <Navbar />
-      </LanguageProvider>
-    );
+    renderWithProviders(<Navbar />);
 
-    expect(screen.getAllByText(/1to1 Digital Solutions/i)[0]).toBeInTheDocument();
+    // Brand is rendered as an image with alt text
+    expect(screen.getByAltText(/1to1 Digital Solutions/i)).toBeInTheDocument();
 
     // In Spanish by default
     const links = screen.queryAllByText("Servicios");
@@ -29,19 +27,14 @@ describe("Navbar", () => {
   });
 
   it("toggles language when globe button is clicked", () => {
-    render(
-      <LanguageProvider>
-        <Navbar />
-      </LanguageProvider>
-    );
+    renderWithProviders(<Navbar />);
 
-    // Two globe buttons present (desktop / mobile)
-    const langButtons = screen.getAllByRole("button", { name: /es/i });
+    // Two language toggle buttons present (desktop / mobile) — default lang is ES,
+    // so aria-label is "Cambiar a inglés"
+    const langButtons = screen.getAllByRole("button", { name: /cambiar a inglés/i });
 
-    // Click desktop toggle
     fireEvent.click(langButtons[0]);
 
-    // After clicking, language should toggle to EN and "Services" should appear instead of "Servicios"
     expect(screen.queryAllByText("Services").length).toBeGreaterThan(0);
     expect(screen.queryAllByText("Servicios").length).toBe(0);
   });

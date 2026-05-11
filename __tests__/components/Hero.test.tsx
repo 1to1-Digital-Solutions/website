@@ -1,26 +1,27 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import { Hero } from "@/components/Hero";
-import { LanguageProvider } from "@/context/LanguageContext";
+import { renderWithProviders } from "../test-utils";
 
 // Mock the HeroCanvas which uses Three.js
 jest.mock("@/components/canvas/HeroCanvas", () => {
-  return {
-    HeroCanvas: () => <div data-testid="hero-canvas-mock">Canvas</div>,
-  };
+  const MockHeroCanvas = () => <div data-testid="hero-canvas-mock">Canvas</div>;
+  MockHeroCanvas.displayName = "MockHeroCanvas";
+  return { HeroCanvas: MockHeroCanvas };
+});
+
+// Mock the mobile background (also touches client-only APIs)
+jest.mock("@/components/HeroMobileBackground", () => {
+  const MockMobileBg = () => <div data-testid="hero-mobile-bg-mock" />;
+  MockMobileBg.displayName = "MockMobileBg";
+  return { HeroMobileBackground: MockMobileBg };
 });
 
 describe("Hero", () => {
   it("renders title and buttons", () => {
-    render(
-      <LanguageProvider>
-        <Hero />
-      </LanguageProvider>
-    );
+    renderWithProviders(<Hero />);
 
-    // Check for the sub text from translations
     expect(screen.getByText(/Soluciones Premium de Blockchain/i)).toBeInTheDocument();
 
-    // Check for the link buttons
     expect(screen.getByRole("link", { name: /Inicia tu Proyecto/i })).toHaveAttribute(
       "href",
       "#contact"

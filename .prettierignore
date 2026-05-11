@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Lock files
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Build output
+.next/
+out/
+build/
+coverage/
+.vercel/
+
+# Generated
+next-env.d.ts
+
+# Logs
+*.log
+
+# Local notes (gitignored)
+TODO.md
