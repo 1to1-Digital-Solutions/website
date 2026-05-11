@@ -6,11 +6,20 @@ import { useLanguage } from "@/context/LanguageContext";
 import Link from "next/link";
 
 type Status = "idle" | "loading" | "success" | "error";
+type FieldErrors = {
+  name?: string;
+  email?: string;
+  message?: string;
+  privacy?: string;
+};
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function ContactForm() {
   const { t } = useLanguage();
   const [status, setStatus] = useState<Status>("idle");
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
+  const [errors, setErrors] = useState<FieldErrors>({});
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -20,15 +29,36 @@ export function ContactForm() {
     const data = new FormData(form);
 
     const payload = {
-      name: String(data.get("name") || ""),
-      email: String(data.get("email") || ""),
+      name: String(data.get("name") || "").trim(),
+      email: String(data.get("email") || "").trim(),
       projectType: String(data.get("project") || ""),
       budget: String(data.get("budget") || ""),
-      message: String(data.get("message") || ""),
-      privacy: data.get("privacy") === "on",
+      message: String(data.get("message") || "").trim(),
+      privacy: privacyAccepted,
       website: String(data.get("website") || ""), // honeypot
     };
 
+    // Client-side validation — mirrors server checks, with localized messages.
+    const nextErrors: FieldErrors = {};
+    if (!payload.name) nextErrors.name = t("contErrName") as string;
+    if (!payload.email || !EMAIL_RE.test(payload.email)) {
+      nextErrors.email = t("contErrEmail") as string;
+    }
+    if (!payload.message) nextErrors.message = t("contErrMessage") as string;
+    if (!payload.privacy) nextErrors.privacy = t("contErrPrivacy") as string;
+
+    if (Object.keys(nextErrors).length > 0) {
+      setErrors(nextErrors);
+      // Move focus to the first invalid field for keyboard / SR users.
+      const firstInvalid = (["name", "email", "message"] as const).find((k) => nextErrors[k]);
+      if (firstInvalid) {
+        const el = form.elements.namedItem(firstInvalid);
+        if (el instanceof HTMLElement) el.focus();
+      }
+      return;
+    }
+
+    setErrors({});
     setStatus("loading");
 
     try {
@@ -52,6 +82,8 @@ export function ContactForm() {
 
   const isBusy = status === "loading";
   const isDone = status === "success";
+  const clearError = (field: keyof FieldErrors) => () =>
+    setErrors((prev) => (prev[field] ? { ...prev, [field]: undefined } : prev));
 
   return (
     <section id="contact" className="bg-anthracite/30 w-full py-24">
@@ -63,6 +95,7 @@ export function ContactForm() {
           <p className="text-foreground/70 mt-4 text-lg">{t("contactSub")}</p>
         </div>
 
+        {/* Global status announcer for screen readers (success / submit error) */}
         <div aria-live="polite" aria-atomic="true" className="sr-only">
           {status === "success" && t("contBtnSuccess")}
           {status === "error" && t("contErrorMsg")}
@@ -108,9 +141,21 @@ export function ContactForm() {
                 autoComplete="name"
                 disabled={isBusy || isDone}
                 defaultValue=""
-                className="border-foreground/10 bg-anthracite text-foreground focus:border-primary focus:ring-primary rounded-xl border p-3 focus:ring-1 focus:outline-none disabled:opacity-60"
+                onChange={clearError("name")}
+                aria-invalid={errors.name ? true : undefined}
+                aria-describedby={errors.name ? "name-error" : undefined}
+                className={`bg-anthracite text-foreground focus:ring-primary rounded-xl border p-3 focus:ring-1 focus:outline-none disabled:opacity-60 ${
+                  errors.name
+                    ? "border-red-400 focus:border-red-400"
+                    : "border-foreground/10 focus:border-primary"
+                }`}
                 placeholder="John Doe"
               />
+              {errors.name && (
+                <p id="name-error" role="alert" className="text-xs text-red-400">
+                  {errors.name}
+                </p>
+              )}
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="email" className="text-foreground/80 text-sm font-medium">
@@ -128,9 +173,21 @@ export function ContactForm() {
                 spellCheck="false"
                 disabled={isBusy || isDone}
                 defaultValue=""
-                className="border-foreground/10 bg-anthracite text-foreground focus:border-primary focus:ring-primary rounded-xl border p-3 focus:ring-1 focus:outline-none disabled:opacity-60"
+                onChange={clearError("email")}
+                aria-invalid={errors.email ? true : undefined}
+                aria-describedby={errors.email ? "email-error" : undefined}
+                className={`bg-anthracite text-foreground focus:ring-primary rounded-xl border p-3 focus:ring-1 focus:outline-none disabled:opacity-60 ${
+                  errors.email
+                    ? "border-red-400 focus:border-red-400"
+                    : "border-foreground/10 focus:border-primary"
+                }`}
                 placeholder="john@startup.com"
               />
+              {errors.email && (
+                <p id="email-error" role="alert" className="text-xs text-red-400">
+                  {errors.email}
+                </p>
+              )}
             </div>
           </div>
 
@@ -154,7 +211,8 @@ export function ContactForm() {
                   <option value="xr">{t("contOpt4")}</option>
                 </select>
                 <ChevronDown
-                  className="text-foreground/50 pointer-events-none absolute top-1/2 right-3 -translate-y-1/2"
+                  aria-hidden="true"
+                  className="text-foreground/70 pointer-events-none absolute top-1/2 right-3 -translate-y-1/2"
                   size={20}
                 />
               </div>
@@ -179,7 +237,8 @@ export function ContactForm() {
                   <option value=">30">{t("contBudOpt4")}</option>
                 </select>
                 <ChevronDown
-                  className="text-foreground/50 pointer-events-none absolute top-1/2 right-3 -translate-y-1/2"
+                  aria-hidden="true"
+                  className="text-foreground/70 pointer-events-none absolute top-1/2 right-3 -translate-y-1/2"
                   size={20}
                 />
               </div>
@@ -201,36 +260,60 @@ export function ContactForm() {
               rows={4}
               disabled={isBusy || isDone}
               defaultValue=""
-              className="border-foreground/10 bg-anthracite text-foreground focus:border-primary focus:ring-primary resize-none rounded-xl border p-3 focus:ring-1 focus:outline-none disabled:opacity-60"
+              onChange={clearError("message")}
+              aria-invalid={errors.message ? true : undefined}
+              aria-describedby={errors.message ? "message-error" : undefined}
+              className={`bg-anthracite text-foreground focus:ring-primary resize-none rounded-xl border p-3 focus:ring-1 focus:outline-none disabled:opacity-60 ${
+                errors.message
+                  ? "border-red-400 focus:border-red-400"
+                  : "border-foreground/10 focus:border-primary"
+              }`}
               placeholder={t("contMessagePlaceholder") as string}
             />
+            {errors.message && (
+              <p id="message-error" role="alert" className="text-xs text-red-400">
+                {errors.message}
+              </p>
+            )}
           </div>
 
           {/* Privacy policy checkbox */}
-          <label className="flex cursor-pointer items-start gap-3">
-            <input
-              type="checkbox"
-              name="privacy"
-              required
-              aria-required="true"
-              checked={privacyAccepted}
-              onChange={(e) => setPrivacyAccepted(e.target.checked)}
-              disabled={isBusy || isDone}
-              className="accent-primary mt-0.5 h-4 w-4 shrink-0 cursor-pointer disabled:cursor-not-allowed"
-            />
-            <span className="text-foreground/60 text-sm">
-              {t("contPrivacy")}{" "}
-              <span className="text-primary" aria-hidden="true">
-                *
-              </span>{" "}
-              <Link
-                href="/privacy-policy"
-                className="hover:text-primary underline-offset-2 transition-colors hover:underline"
-              >
-                {t("footPrivacy")}
-              </Link>
-            </span>
-          </label>
+          <div className="flex flex-col gap-1">
+            <label className="flex cursor-pointer items-start gap-3">
+              <input
+                type="checkbox"
+                name="privacy"
+                required
+                aria-required="true"
+                aria-invalid={errors.privacy ? true : undefined}
+                aria-describedby={errors.privacy ? "privacy-error" : undefined}
+                checked={privacyAccepted}
+                onChange={(e) => {
+                  setPrivacyAccepted(e.target.checked);
+                  if (e.target.checked) clearError("privacy")();
+                }}
+                disabled={isBusy || isDone}
+                className="accent-primary mt-0.5 h-4 w-4 shrink-0 cursor-pointer disabled:cursor-not-allowed"
+              />
+              <span className="text-foreground/80 text-sm">
+                {t("contPrivacy")}{" "}
+                <span className="text-primary" aria-hidden="true">
+                  *
+                </span>{" "}
+                <Link
+                  href="/privacy-policy"
+                  className="hover:text-primary underline-offset-2 transition-colors hover:underline"
+                >
+                  {t("footPrivacy")}
+                </Link>
+              </span>
+            </label>
+            {errors.privacy && (
+              <p id="privacy-error" role="alert" className="text-xs text-red-400">
+                {errors.privacy}
+              </p>
+            )}
+          </div>
 
           <button
             type="submit"

@@ -71,6 +71,8 @@ export function FAQ() {
                 id={`faq-answer-${idx}`}
                 role="region"
                 aria-labelledby={`faq-question-${idx}`}
+                aria-hidden={!isOpen}
+                inert={!isOpen}
                 className={`grid transition-all duration-300 ease-in-out ${
                   isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
                 }`}

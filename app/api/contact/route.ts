@@ -34,6 +34,11 @@ type Lead = {
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const RATE_LIMIT_MAX = 3;
+const RATE_LIMIT_MAX_TRACKED_IPS = 1000;
+const MAX_BODY_BYTES = 16_384; // 16 KB — generous for a 5-field form
+
+// In-memory rate limit. Per-instance on Vercel (acceptable for low-volume marketing site).
+// Migrate to Vercel KV / Upstash if abuse seen — tracked in TODO.md.
 const requestLog = new Map<string, number[]>();
 
 function getClientIp(req: Request): string {
@@ -45,11 +50,47 @@ function getClientIp(req: Request): string {
 function withinRateLimit(ip: string): boolean {
   const now = Date.now();
   const cutoff = now - RATE_LIMIT_WINDOW_MS;
-  const recent = (requestLog.get(ip) || []).filter((t) => t > cutoff);
+
+  // Lazy GC: prune expired entries so the map can't grow unbounded.
+  for (const [storedIp, timestamps] of requestLog) {
+    const remaining = timestamps.filter((t) => t > cutoff);
+    if (remaining.length === 0) requestLog.delete(storedIp);
+    else if (remaining.length !== timestamps.length) requestLog.set(storedIp, remaining);
+  }
+
+  // Hard cap as a second safety net against memory growth.
+  if (requestLog.size >= RATE_LIMIT_MAX_TRACKED_IPS && !requestLog.has(ip)) return false;
+
+  const recent = requestLog.get(ip) ?? [];
   if (recent.length >= RATE_LIMIT_MAX) return false;
   recent.push(now);
   requestLog.set(ip, recent);
   return true;
+}
+
+function isAllowedOrigin(req: Request): boolean {
+  // Build the set of expected origins lazily so env can change between deployments.
+  const expected = new Set<string>();
+  if (process.env.NEXT_PUBLIC_SITE_URL) expected.add(process.env.NEXT_PUBLIC_SITE_URL);
+  expected.add("https://1to1digital.solutions");
+  expected.add("https://www.1to1digital.solutions");
+  if (process.env.NODE_ENV !== "production") {
+    expected.add("http://localhost:3000");
+    expected.add("http://127.0.0.1:3000");
+  }
+
+  const origin = req.headers.get("origin");
+  if (origin) return expected.has(origin);
+
+  // No Origin (some browsers omit it for same-origin POSTs in older specs) — fall back to Referer host check.
+  const referer = req.headers.get("referer");
+  if (!referer) return false;
+  try {
+    const refererOrigin = new URL(referer).origin;
+    return expected.has(refererOrigin);
+  } catch {
+    return false;
+  }
 }
 
 function isString(v: unknown): v is string {
@@ -168,15 +209,44 @@ async function appendToSheet(lead: Lead): Promise<void> {
 }
 
 export async function POST(request: Request) {
+  // 1) Origin / Referer must match an allowed deployment.
+  if (!isAllowedOrigin(request)) {
+    return NextResponse.json({ ok: false, error: "forbidden_origin" }, { status: 403 });
+  }
+
+  // 2) Only accept JSON bodies.
+  const contentType = request.headers.get("content-type") ?? "";
+  if (!contentType.toLowerCase().startsWith("application/json")) {
+    return NextResponse.json({ ok: false, error: "unsupported_media_type" }, { status: 415 });
+  }
+
+  // 3) Reject oversized bodies before parsing.
+  const contentLength = request.headers.get("content-length");
+  if (contentLength && Number.parseInt(contentLength, 10) > MAX_BODY_BYTES) {
+    return NextResponse.json({ ok: false, error: "payload_too_large" }, { status: 413 });
+  }
+
+  // 4) Read raw body with an upper byte limit (Content-Length can be missing or wrong).
+  let raw: string;
+  try {
+    raw = await request.text();
+  } catch {
+    return NextResponse.json({ ok: false, error: "invalid_body" }, { status: 400 });
+  }
+  if (raw.length > MAX_BODY_BYTES) {
+    return NextResponse.json({ ok: false, error: "payload_too_large" }, { status: 413 });
+  }
+
   let body: unknown;
   try {
-    body = await request.json();
+    body = JSON.parse(raw);
   } catch {
     return NextResponse.json({ ok: false, error: "invalid_json" }, { status: 400 });
   }
 
-  // Honeypot: if filled, silently accept and discard
-  if ((body as { website?: string })?.website) {
+  // 5) Honeypot: any non-whitespace content in the hidden field = bot. Silently accept + discard.
+  const honeypot = (body as { website?: unknown })?.website;
+  if (typeof honeypot === "string" && honeypot.trim().length > 0) {
     return NextResponse.json({ ok: true });
   }
 

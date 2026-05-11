@@ -1,13 +1,20 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
+export const metadata = {
+  title: "Términos y Condiciones",
+  description:
+    "Condiciones de uso del sitio web de 1to1 Digital Solutions: datos identificativos del titular, propiedad intelectual, servicios y limitación de responsabilidad.",
+  alternates: { canonical: "/terms-conditions" },
+};
+
 export default function TermsConditions() {
   return (
     <main className="bg-background relative min-h-screen w-full overflow-hidden px-6 pt-32 pb-24">
       <div className="mx-auto max-w-3xl">
         <Link
           href="/"
-          className="text-foreground/60 hover:text-primary mb-8 inline-flex items-center gap-2 text-sm font-semibold transition-colors"
+          className="text-foreground/70 hover:text-primary mb-8 inline-flex items-center gap-2 text-sm font-semibold transition-colors"
         >
           <ArrowLeft size={16} /> Volver a Inicio
         </Link>
@@ -108,7 +115,7 @@ export default function TermsConditions() {
             </p>
           </section>
 
-          <p className="text-foreground/50 border-foreground/10 border-t pt-8 text-xs">
+          <p className="text-foreground/70 border-foreground/10 border-t pt-8 text-xs">
             Última actualización: Mayo 2026
           </p>
         </div>

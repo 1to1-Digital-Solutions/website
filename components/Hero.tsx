@@ -78,8 +78,8 @@ export function Hero() {
       {/* Subtle primary background blob */}
       <div className="bg-primary/20 pointer-events-none absolute top-1/2 left-1/2 z-0 h-[60vw] w-[60vw] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[150px] md:h-[40vw] md:w-[40vw]" />
 
-      {/* Background: CSS on mobile (no Three.js loaded), canvas on desktop */}
-      <div className="absolute inset-0 z-0">
+      {/* Background: CSS on mobile (no Three.js loaded), canvas on desktop. Decorative — hidden from a11y tree. */}
+      <div className="absolute inset-0 z-0" aria-hidden="true">
         {isDesktop ? <HeroCanvas /> : <HeroMobileBackground />}
       </div>
 

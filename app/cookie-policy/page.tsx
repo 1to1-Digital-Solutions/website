@@ -12,7 +12,7 @@ export default function CookiePolicy() {
       <div className="mx-auto max-w-3xl">
         <Link
           href="/"
-          className="text-foreground/60 hover:text-primary mb-8 inline-flex items-center gap-2 text-sm font-semibold transition-colors"
+          className="text-foreground/70 hover:text-primary mb-8 inline-flex items-center gap-2 text-sm font-semibold transition-colors"
         >
           <ArrowLeft size={16} /> Volver a Inicio
         </Link>
@@ -63,7 +63,7 @@ export default function CookiePolicy() {
                   navegación entre secciones o el guardado de preferencias de idioma no
                   funcionarían. No requieren consentimiento y no pueden desactivarse.
                 </p>
-                <ul className="text-foreground/60 mt-2 list-disc space-y-1 pl-5 text-xs">
+                <ul className="text-foreground/80 mt-2 list-disc space-y-1 pl-5 text-xs">
                   <li>
                     <strong className="text-foreground/80">1to1_cookie_consent</strong> — Almacena
                     tu preferencia de consentimiento de cookies. Duración: 1 año.
@@ -166,7 +166,7 @@ export default function CookiePolicy() {
             </p>
           </section>
 
-          <p className="text-foreground/50 border-foreground/10 border-t pt-8 text-xs">
+          <p className="text-foreground/70 border-foreground/10 border-t pt-8 text-xs">
             Última actualización: Mayo 2026
           </p>
         </div>

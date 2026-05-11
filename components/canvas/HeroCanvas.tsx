@@ -41,7 +41,7 @@ function CanvasLoader() {
       style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
       <span className="text-primary font-outfit text-3xl font-bold">{progress.toFixed(0)}%</span>
-      <p className="text-foreground/50 mt-2 text-xs tracking-[0.3em] uppercase">
+      <p className="text-foreground/70 mt-2 text-xs tracking-[0.3em] uppercase">
         Initializing WebGL
       </p>
     </Html>

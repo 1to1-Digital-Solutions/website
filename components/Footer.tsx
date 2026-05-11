@@ -51,10 +51,10 @@ export function Footer() {
               alt={t("footIncibeAlt") as string}
               width={2000}
               height={2000}
-              className="h-24 w-auto"
+              className="h-36 w-auto"
             />
           </a>
-          <p className="text-foreground/50 mt-3 text-xs leading-snug">{t("footIncibeCaption")}</p>
+          <p className="text-foreground/70 mt-3 text-xs leading-snug">{t("footIncibeCaption")}</p>
         </div>
 
         {/* Social Links */}
@@ -63,7 +63,7 @@ export function Footer() {
             href="https://www.linkedin.com/in/c%C3%A9sar-pe%C3%B3n-lamparero/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-foreground/60 hover:text-primary focus-visible:ring-primary rounded transition-colors focus-visible:ring-2 focus-visible:outline-none"
+            className="text-foreground/70 hover:text-primary focus-visible:ring-primary rounded transition-colors focus-visible:ring-2 focus-visible:outline-none"
           >
             <Linkedin size={24} />
             <span className="sr-only">LinkedIn</span>
@@ -72,7 +72,7 @@ export function Footer() {
             href="https://github.com/1to1-Digital-Solutions"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-foreground/60 hover:text-primary focus-visible:ring-primary rounded transition-colors focus-visible:ring-2 focus-visible:outline-none"
+            className="text-foreground/70 hover:text-primary focus-visible:ring-primary rounded transition-colors focus-visible:ring-2 focus-visible:outline-none"
           >
             <Github size={24} />
             <span className="sr-only">GitHub</span>
@@ -80,7 +80,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="text-foreground/50 mx-auto mt-12 flex w-full max-w-7xl flex-col items-center justify-between gap-4 px-6 text-xs md:flex-row">
+      <div className="text-foreground/70 mx-auto mt-12 flex w-full max-w-7xl flex-col items-center justify-between gap-4 px-6 text-xs md:flex-row">
         <p>
           &copy; {CURRENT_YEAR} 1to1 Digital Solutions. {t("footRights")}
         </p>

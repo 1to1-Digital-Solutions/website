@@ -1,8 +1,11 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 
 type Language = "en" | "es";
+
+const LANG_COOKIE = "lang";
+const LANG_COOKIE_MAX_AGE = 60 * 60 * 24 * 365; // 1 year
 
 export const translations = {
   en: {
@@ -133,6 +136,10 @@ export const translations = {
     contBtnSuccess: "Message Sent!",
     contBtnError: "Try Again",
     contErrorMsg: "Something went wrong. Please try again.",
+    contErrName: "Please enter your name.",
+    contErrEmail: "Please enter a valid email address.",
+    contErrMessage: "Tell us briefly about your idea.",
+    contErrPrivacy: "You must accept the privacy policy.",
 
     // Footer
     footDesc: "We build your technology, you build your business.",
@@ -284,6 +291,10 @@ export const translations = {
     contBtnSuccess: "¡Mensaje Enviado!",
     contBtnError: "Intentar de nuevo",
     contErrorMsg: "Algo salió mal. Por favor, inténtalo de nuevo.",
+    contErrName: "Por favor, indica tu nombre.",
+    contErrEmail: "Introduce un correo electrónico válido.",
+    contErrMessage: "Cuéntanos brevemente tu idea.",
+    contErrPrivacy: "Debes aceptar la política de privacidad.",
 
     // Footer
     footDesc: "Construimos tu tecnología, tú construyes tu negocio.",
@@ -318,8 +329,21 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Language>("es");
+export function LanguageProvider({
+  children,
+  initialLang = "es",
+}: {
+  children: ReactNode;
+  initialLang?: Language;
+}) {
+  const [lang, setLang] = useState<Language>(initialLang);
+
+  // Persist language as a cookie so the server can render <html lang> correctly on next request.
+  // Also keep document.documentElement.lang in sync for current session (SR / locale-aware features).
+  useEffect(() => {
+    document.cookie = `${LANG_COOKIE}=${lang}; path=/; max-age=${LANG_COOKIE_MAX_AGE}; samesite=lax`;
+    document.documentElement.lang = lang;
+  }, [lang]);
 
   const t = (key: keyof Translations) => {
     return translations[lang][key] || key;
