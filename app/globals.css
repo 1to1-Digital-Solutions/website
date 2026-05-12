@@ -13,6 +13,15 @@
   --color-secondary: var(--secondary);
   --color-anthracite: var(--anthracite);
 
+  /* Brand palette — tokens. Same in both themes (semantic colors live in :root/.light). */
+  --color-primary-100: #14ffbc;
+  --color-primary-200: #1ac89a;
+  --color-primary-300: #1f957a;
+  --color-primary-400: #188169;
+  --color-primary-500: #116e57;
+  --color-primary-600: #0a5a46;
+  --color-primary-700: #084939;
+
   --animate-rocket-shake: rocket-shake 0.5s ease-in-out infinite;
   --animate-spin-slow: spin 4s linear infinite;
   --animate-cpu-pulse: cpu-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -132,6 +141,11 @@
       transform: translateY(-1rem) translateX(-1px);
     }
   }
+}
+
+/* Theme-invariant token: accessible foreground color for text/icons on `primary` bg. Tested vs WCAG AA. */
+:root {
+  --on-primary: #1c1c1f;
 }
 
 /* Dark mode (default + .dark class) */

@@ -20,7 +20,7 @@ export function SuccessCases() {
       title: t("case2Title"),
       category: t("case2Cat"),
       description: t("case2Desc"),
-      tags: ["VR", "Next.js", "Three.js", "Hyperfy", "AI"],
+      tags: ["VR", "Next.js", "Three.js", "Hyperfy", "AI", "AWS", "Database"],
       url: "https://numen.games/en",
       logo: "/images/cases/NumenGames.png",
       logoAlt: "Numen Games",
@@ -41,11 +41,11 @@ export function SuccessCases() {
   return (
     <section id="work" className="bg-anthracite/30 w-full py-24">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-16">
+        <div className="mb-16 text-center">
           <h2 className="font-outfit text-4xl font-bold tracking-tight md:text-5xl">
             {t("casesTitle1")} <span className="text-primary">{t("casesTitle2")}</span>
           </h2>
-          <p className="text-foreground/70 mt-4 max-w-2xl text-lg">{t("casesSub")}</p>
+          <p className="text-foreground/70 mx-auto mt-4 max-w-2xl text-lg">{t("casesSub")}</p>
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">

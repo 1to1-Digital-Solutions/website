@@ -29,8 +29,11 @@ const _colorA = new THREE.Color();
 const _colorB = new THREE.Color();
 // ──────────────────────────────────────────────────────────────────────────────
 
-const PRIMARY = "#1f957a";
-const PRIMARY_DARK = "#178060";
+// Brand palette — matches design system tokens primary-100..primary-700 in globals.css.
+const PRIMARY_100 = "#14ffbc";
+const PRIMARY_200 = "#1ac89a";
+const PRIMARY_300 = "#1f957a";
+const PRIMARY_400 = "#188169";
 
 function CanvasLoader() {
   const { progress } = useProgress();
@@ -107,10 +110,10 @@ function InteractiveGlobe({ allPlaced }: { allPlaced: boolean }) {
     const mat = meshRef.current.material as THREE.MeshStandardMaterial & { distort: number };
     if (mat.distort !== undefined) mat.distort = speedRef.current.distort;
 
-    _colorA.set(PRIMARY);
+    _colorA.set(PRIMARY_300);
     const coreMat = coreRef.current.material as THREE.MeshStandardMaterial;
     coreMat.color.lerp(_colorA, delta * 5);
-    _colorB.set(PRIMARY).multiplyScalar(hovered ? 2.5 : 1.0);
+    _colorB.set(PRIMARY_300).multiplyScalar(hovered ? 2.5 : 1.0);
     coreMat.emissive.lerp(_colorB, delta * 5);
 
     const wireMat = meshRef.current.material as THREE.MeshStandardMaterial;
@@ -123,7 +126,7 @@ function InteractiveGlobe({ allPlaced }: { allPlaced: boolean }) {
         <group onPointerOver={() => setHovered(true)} onPointerOut={() => setHovered(false)}>
           <Sphere ref={meshRef} args={[1.8, 32, 32]}>
             <MeshDistortMaterial
-              color={PRIMARY}
+              color={PRIMARY_300}
               distort={0.3}
               speed={2}
               roughness={0.2}
@@ -135,8 +138,8 @@ function InteractiveGlobe({ allPlaced }: { allPlaced: boolean }) {
           </Sphere>
           <Sphere ref={coreRef} args={[0.9, 32, 32]}>
             <meshStandardMaterial
-              color={PRIMARY}
-              emissive={PRIMARY}
+              color={PRIMARY_300}
+              emissive={PRIMARY_300}
               emissiveIntensity={1}
               roughness={0.5}
               metalness={0.5}
@@ -211,7 +214,7 @@ function PlacedShape({
       groupRef.current.rotation.x += delta * 0.2;
       groupRef.current.rotation.y += delta * 0.15;
       const mat = innerRef.current.material as THREE.MeshPhysicalMaterial;
-      _colorA.set(PRIMARY);
+      _colorA.set(PRIMARY_300);
       mat.color.lerp(_colorA, 0.1);
       mat.emissive.lerp(_colorA, 0.1);
       mat.emissiveIntensity = 1.0;
@@ -224,7 +227,7 @@ function PlacedShape({
         <group ref={groupRef} scale={scaleMult}>
           {/* @ts-expect-error dynamic args */}
           <ShapeComp args={args} scale={1.25}>
-            <meshBasicMaterial color={PRIMARY} wireframe transparent opacity={0.4} />
+            <meshBasicMaterial color={PRIMARY_300} wireframe transparent opacity={0.4} />
           </ShapeComp>
           {/* @ts-expect-error dynamic args */}
           <ShapeComp ref={innerRef} args={args} material={glassMat} />
@@ -244,6 +247,7 @@ function DraggableShape({
   onPlace,
   allPlaced,
   setCursor,
+  isLightMode,
 }: {
   id: number;
   ShapeComp: React.ElementType;
@@ -255,6 +259,7 @@ function DraggableShape({
   onPlace: (id: number) => void;
   allPlaced: boolean;
   setCursor: (c: "default" | "grab" | "grabbing") => void;
+  isLightMode: boolean;
 }) {
   const groupRef = useRef<THREE.Group>(null);
   const innerMeshRef = useRef<THREE.Mesh>(null);
@@ -287,22 +292,32 @@ function DraggableShape({
       const mat = innerMeshRef.current.material as THREE.MeshPhysicalMaterial;
 
       if (dist < 1.0) {
-        _colorA.set(PRIMARY);
+        _colorA.set(PRIMARY_300);
         mat.color.lerp(_colorA, 0.2);
         mat.emissive.lerp(_colorA, 0.2);
         mat.emissiveIntensity = 2.0;
       } else {
-        _colorA.set(isHovered ? "#28b890" : PRIMARY_DARK);
+        // Light mode keeps darker brand tones (visible on white bg).
+        // Dark mode uses brighter palette + slight emissive so shapes stand out on the anthracite bg.
+        const defaultColor = isLightMode ? PRIMARY_400 : PRIMARY_200;
+        const hoverColor = isLightMode ? PRIMARY_300 : PRIMARY_100;
+        _colorA.set(isHovered ? hoverColor : defaultColor);
         mat.color.lerp(_colorA, 0.2);
-        _colorB.set("#000000");
-        mat.emissive.lerp(_colorB, 0.2);
-        mat.emissiveIntensity = isHovered ? 0.3 : 0.0;
+        if (isHovered) {
+          _colorB.set(hoverColor);
+          mat.emissive.lerp(_colorB, 0.2);
+          mat.emissiveIntensity = isLightMode ? 0.3 : 0.6;
+        } else {
+          _colorB.set(isLightMode ? "#000000" : defaultColor);
+          mat.emissive.lerp(_colorB, 0.2);
+          mat.emissiveIntensity = isLightMode ? 0.0 : 0.25;
+        }
       }
     }
   });
 
   const glassMat = useMemo(
-    () => new THREE.MeshPhysicalMaterial({ ...glassMaterialProps, color: PRIMARY_DARK }),
+    () => new THREE.MeshPhysicalMaterial({ ...glassMaterialProps, color: PRIMARY_400 }),
     []
   );
 
@@ -359,7 +374,7 @@ function DraggableShape({
         <group scale={scaleMult}>
           {/* @ts-expect-error dynamic args */}
           <ShapeComp args={args} scale={1.25}>
-            <meshBasicMaterial color={PRIMARY} wireframe transparent opacity={0.3} />
+            <meshBasicMaterial color={PRIMARY_300} wireframe transparent opacity={0.3} />
           </ShapeComp>
           {/* @ts-expect-error dynamic args */}
           <ShapeComp ref={innerMeshRef} args={args} material={glassMat} />
@@ -460,9 +475,9 @@ export function HeroCanvas() {
       onPointerLeave={() => setCursor("default")}
     >
       <Suspense fallback={<CanvasLoader />}>
-        <ambientLight intensity={0.5} color={PRIMARY} />
-        <directionalLight position={[10, 10, 5]} intensity={2.0} color={PRIMARY} />
-        <directionalLight position={[-10, -10, -5]} intensity={1.5} color={PRIMARY_DARK} />
+        <ambientLight intensity={0.5} color={PRIMARY_300} />
+        <directionalLight position={[10, 10, 5]} intensity={2.0} color={PRIMARY_300} />
+        <directionalLight position={[-10, -10, -5]} intensity={1.5} color={PRIMARY_400} />
 
         <MouseSpotlight />
 
@@ -505,6 +520,7 @@ export function HeroCanvas() {
                   onPlace={handlePlace}
                   allPlaced={allPlaced}
                   setCursor={setCursor}
+                  isLightMode={isLightMode}
                 />
               ) : null
             )}

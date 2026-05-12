@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -35,14 +35,17 @@ export function AboutMe() {
               {t("aboutP1")} <strong>{t("aboutP1Span")}</strong>
             </p>
             <p>{t("aboutP2")}</p>
-            <ul className="text-primary ml-6 list-disc">
-              <li>
+            <ul className="flex flex-col gap-2">
+              <li className="flex items-start gap-3">
+                <Check size={20} aria-hidden="true" className="text-primary mt-1.5 shrink-0" />
                 <span className="text-foreground/80">{t("aboutList1")}</span>
               </li>
-              <li>
+              <li className="flex items-start gap-3">
+                <Check size={20} aria-hidden="true" className="text-primary mt-1.5 shrink-0" />
                 <span className="text-foreground/80">{t("aboutList2")}</span>
               </li>
-              <li>
+              <li className="flex items-start gap-3">
+                <Check size={20} aria-hidden="true" className="text-primary mt-1.5 shrink-0" />
                 <span className="text-foreground/80">{t("aboutList3")}</span>
               </li>
             </ul>
