@@ -65,12 +65,18 @@ export default function CookiePolicy() {
                 </p>
                 <ul className="text-foreground/80 mt-2 list-disc space-y-1 pl-5 text-xs">
                   <li>
-                    <strong className="text-foreground/80">1to1_cookie_consent</strong> — Almacena
-                    tu preferencia de consentimiento de cookies. Duración: 1 año.
+                    <strong className="text-foreground/80">1to1_cookie_consent</strong>: almacena tu
+                    preferencia de consentimiento de cookies. Duración: 1 año.
                   </li>
                   <li>
-                    <strong className="text-foreground/80">lang_preference</strong> — Guarda el
+                    <strong className="text-foreground/80">lang_preference</strong>: guarda el
                     idioma seleccionado (ES/EN). Duración: sesión.
+                  </li>
+                  <li>
+                    <strong className="text-foreground/80">theme</strong>: guarda tu preferencia de
+                    tema (claro/oscuro) para que se mantenga entre visitas. Almacenado en
+                    <em> localStorage</em> del navegador, sin envío al servidor. Duración:
+                    persistente hasta que la borres.
                   </li>
                 </ul>
               </div>
@@ -87,12 +93,12 @@ export default function CookiePolicy() {
                 </p>
                 <ul className="text-foreground/80 mt-2 list-disc space-y-1 pl-5 text-xs">
                   <li>
-                    <strong className="text-foreground/90">_ga</strong> — Google Analytics 4.
+                    <strong className="text-foreground/90">_ga</strong>: Google Analytics 4.
                     Identifica al visitante de forma anónima. Duración: 2 años.
                   </li>
                   <li>
-                    <strong className="text-foreground/90">_ga_&lt;ID&gt;</strong> — Google
-                    Analytics 4. Mantiene el estado de la sesión. Duración: 2 años.
+                    <strong className="text-foreground/90">_ga_&lt;ID&gt;</strong>: Google Analytics
+                    4. Mantiene el estado de la sesión. Duración: 2 años.
                   </li>
                 </ul>
                 <p className="text-foreground/70 mt-3 text-sm">

@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "1to1 Digital Solutions — We build your technology, you build your business";
+export const alt = "1to1 Digital Solutions: We build your technology, you build your business";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

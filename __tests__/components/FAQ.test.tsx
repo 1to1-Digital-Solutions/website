@@ -11,7 +11,7 @@ describe("FAQ", () => {
     );
 
     // Check first question
-    const q1 = screen.getByText("¿Qué tan rápido pueden construir un MVP?");
+    const q1 = screen.getByText("¿Cómo de rápido podemos construir un MVP?");
     expect(q1).toBeInTheDocument();
 
     // Answer to Q1 should be visible
@@ -19,7 +19,7 @@ describe("FAQ", () => {
     expect(a1).toBeInTheDocument();
 
     // Click q2 to open it
-    const q2 = screen.getByText("¿Solo trabajan con Blockchain y 3D?");
+    const q2 = screen.getByText("¿Solo trabajamos con Blockchain y 3D?");
     fireEvent.click(q2);
 
     // Q2 answer becomes visible (testing presence in document)

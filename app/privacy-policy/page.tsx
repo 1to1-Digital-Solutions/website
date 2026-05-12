@@ -115,20 +115,20 @@ export default function PrivacyPolicy() {
             </p>
             <ul className="text-foreground/70 mt-3 list-disc space-y-1 pl-5">
               <li>
-                <strong className="text-foreground/90">Vercel Inc.</strong> — hosting y entrega del
+                <strong className="text-foreground/90">Vercel Inc.</strong>: hosting y entrega del
                 sitio web.
               </li>
               <li>
-                <strong className="text-foreground/90">Resend (Resend, Inc.)</strong> — envío del
+                <strong className="text-foreground/90">Resend (Resend, Inc.)</strong>: envío del
                 correo electrónico de aviso al responsable.
               </li>
               <li>
-                <strong className="text-foreground/90">Google LLC (Google Workspace)</strong> —
+                <strong className="text-foreground/90">Google LLC (Google Workspace)</strong>:
                 gestión del correo electrónico recibido y almacenamiento del registro de contactos
                 en Google Sheets.
               </li>
               <li>
-                <strong className="text-foreground/90">Google LLC (Google Analytics 4)</strong> —
+                <strong className="text-foreground/90">Google LLC (Google Analytics 4)</strong>:
                 análisis estadístico y agregado del uso del sitio web. Únicamente se activa cuando
                 el usuario otorga consentimiento previo en el banner de cookies y puede revocarse en
                 cualquier momento. Configurado con anonimización de IP y sin señales publicitarias.

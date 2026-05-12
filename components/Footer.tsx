@@ -53,7 +53,7 @@ export function Footer() {
               alt={t("footIncibeAlt") as string}
               width={2000}
               height={2000}
-              className="h-36 w-auto"
+              className="h-36 w-auto md:h-24"
             />
           </a>
           <p className="text-foreground/70 mt-3 text-xs leading-snug">{t("footIncibeCaption")}</p>

@@ -7,7 +7,7 @@ describe("AboutMe", () => {
     renderWithProviders(<AboutMe />);
 
     expect(screen.getByText("¿Quién está")).toBeInTheDocument();
-    expect(screen.getByText("Detrás?")).toBeInTheDocument();
+    expect(screen.getByText("detrás?")).toBeInTheDocument();
     expect(screen.getByText(/Hola, soy César/i)).toBeInTheDocument();
   });
 });

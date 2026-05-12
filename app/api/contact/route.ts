@@ -3,7 +3,7 @@ import { Resend } from "resend";
 
 export const runtime = "nodejs";
 
-const PROJECT_TYPES = ["mvp", "rescue", "blockchain", "xr"] as const;
+const PROJECT_TYPES = ["mvp", "rescue", "blockchain", "xr", "other"] as const;
 const BUDGETS = ["<5", "5-10", "10-15", "15-20", "20-30", ">30"] as const;
 
 const PROJECT_TYPE_LABELS: Record<(typeof PROJECT_TYPES)[number], string> = {
@@ -11,6 +11,7 @@ const PROJECT_TYPE_LABELS: Record<(typeof PROJECT_TYPES)[number], string> = {
   rescue: "Tech Rescue",
   blockchain: "Blockchain / Web3",
   xr: "XR / Mixed Reality",
+  other: "Other",
 };
 
 const BUDGET_LABELS: Record<(typeof BUDGETS)[number], string> = {
@@ -277,7 +278,7 @@ export async function POST(request: Request) {
         from,
         to,
         replyTo: validated.lead.email,
-        subject: `Nuevo lead: ${PROJECT_TYPE_LABELS[validated.lead.projectType]} — ${validated.lead.name}`,
+        subject: `Nuevo lead (${PROJECT_TYPE_LABELS[validated.lead.projectType]}): ${validated.lead.name}`,
         html: emailHtml(validated.lead),
         text: emailText(validated.lead),
       }),

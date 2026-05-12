@@ -8,21 +8,21 @@ export function Process() {
   const steps = [
     {
       number: "01",
-      title: isEs ? "Descubrimiento y Arquitectura" : "Discovery & Architecture",
+      title: isEs ? "Descubrimiento y arquitectura" : "Discovery & architecture",
       desc: isEs
         ? "Entendemos tu visión, definimos el alcance estricto del MVP tech y diseñamos la arquitectura óptima para escalar desde el día uno."
         : "We understand your vision, define the strict MVP technical scope, and design the optimal architecture to scale from day one.",
     },
     {
       number: "02",
-      title: isEs ? "Ejecución Rápida" : "Rapid Execution",
+      title: isEs ? "Ejecución rápida" : "Rapid execution",
       desc: isEs
         ? "Sin burocracia. Escribimos código limpio, implementamos integraciones complejas (Web3, 3D, IA) y te damos actualizaciones semanales."
         : "No bureaucracy. We write clean code, implement complex integrations (Web3, 3D, AI), and provide weekly updates.",
     },
     {
       number: "03",
-      title: isEs ? "Entrega y Escala" : "Handoff & Scale",
+      title: isEs ? "Entrega y escala" : "Handoff & scale",
       desc: isEs
         ? "Desplegamos tu producto en producción, transferimos todo el código fuente al 100% y te damos soporte continuo si lo necesitas."
         : "We deploy your product to production, transfer 100% of the source code, and provide continuous support if needed.",
@@ -34,12 +34,12 @@ export function Process() {
       <div className="mb-16 md:text-center">
         <h2 className="font-outfit text-4xl font-bold tracking-tight md:text-5xl">
           {isEs ? "Cómo " : "How it "}
-          <span className="text-primary">{isEs ? "Trabajamos." : "Works."}</span>
+          <span className="text-primary">{isEs ? "trabajamos." : "works."}</span>
         </h2>
         <p className="text-foreground/70 mt-4 text-lg md:mx-auto md:max-w-2xl">
           {isEs
-            ? "Un proceso simplificado diseñado para fundadores que necesitan resultados, no excusas."
-            : "A streamlined process designed for founders who need results, not excuses."}
+            ? "A través de un proceso simplificado, diseñado para fundadores que necesitan resultados, no excusas."
+            : "Through a streamlined process designed for founders who need results, not excuses."}
         </p>
       </div>
 

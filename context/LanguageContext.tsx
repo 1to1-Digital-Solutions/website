@@ -15,36 +15,36 @@ export const translations = {
     navWork: "Work",
     navTestimonials: "Testimonials",
     navFAQ: "FAQ",
-    navCTA: "Let's Talk",
+    navCTA: "Let's talk",
 
     // Hero
     heroTitle1: "We build the tech",
     heroTitle2: "behind your idea.",
     heroSub:
-      "Premium Blockchain & Mixed Reality solutions for ambitious startups. Stop worrying about the code, start focusing on the growth.",
-    heroBtnStart: "Start Your Project",
-    heroBtnWork: "See Our Work",
+      "We offer premium Blockchain & Mixed Reality solutions for ambitious startups. Stop worrying about the code, start focusing on the growth.",
+    heroBtnStart: "Start your project",
+    heroBtnWork: "See our work",
 
     // Services
-    servicesTitle1: "What We ",
-    servicesTitle2: "Do.",
+    servicesTitle1: "What we ",
+    servicesTitle2: "do.",
     servicesSub: "Specialized technical execution for startups that can't afford to waste time.",
-    serv1Title: "MVP Development",
+    serv1Title: "MVP development",
     serv1Desc:
       "Transform your idea into a working product fast. We build scalable foundations so you can validate your market securely.",
-    serv2Title: "Blockchain Integration",
+    serv2Title: "Blockchain integration",
     serv2Desc:
       "Smart contracts, dApps, and Web3 infrastructure. Secure, efficient, and tailored to your specific use case.",
     serv3Title: "Mixed Reality & 3D",
     serv3Desc:
       "Immersive experiences using Three.js, React Three Fiber, and WebXR. Stand out with cutting-edge visual technology.",
-    serv4Title: "Architecture & Scalability",
+    serv4Title: "Architecture & scalability",
     serv4Desc:
       "We design robust cloud infrastructures and microservices that can handle millions of users without breaking a sweat.",
 
     // About
     aboutTitle1: "Who is ",
-    aboutTitle2: "Behind?",
+    aboutTitle2: "behind?",
     aboutP1:
       "Hi, I'm César, the founder of 1to1 Digital Solutions. I specialize in building high-performance applications with a focus on ",
     aboutP1Span: "Blockchain and Mixed Reality",
@@ -54,34 +54,34 @@ export const translations = {
     aboutList2: "To ship products in weeks, not months.",
     aboutList3: "To build software that scales from day one.",
     aboutP3:
-      "Whether you need a full platform from scratch, or an immersive 3D experience to wow your investors, I'm here to build it.",
-    aboutBtn: "Let's Talk Directly",
+      "If you need a full platform from scratch, an immersive 3D experience, or to rescue a stalled or slowed-down project, I'm here to build it with you.",
+    aboutBtn: "Let's talk directly",
 
     // Success Cases
     casesTitle1: "Selected ",
-    casesTitle2: "Work.",
+    casesTitle2: "work.",
     casesSub: "Real projects, real results. A glimpse of what we can build together.",
     case1Cat: "Web3",
-    case1Title: "Firefly — IOTA & Shimmer Wallet",
+    case1Title: "Firefly: IOTA & Shimmer wallet",
     case1Desc:
-      "I was a senior developer on Firefly, the official wallet of IOTA and Shimmer. For years I shipped critical features across the IOTA ecosystem for an application that thousands of users trust to manage real digital assets — always with a focus on security, performance, and UX.",
+      "I was a senior developer on Firefly, the official wallet of IOTA and Shimmer. For years I shipped critical features across the IOTA ecosystem for an application that thousands of users trust to manage real digital assets: always with a focus on security, performance, and UX.",
     case2Cat: "Mixed Reality",
-    case2Title: "Numen Games — VR Platform",
+    case2Title: "Numen Games: VR platform",
     case2Desc:
-      "I built a platform to deploy virtual worlds in minutes. Powered by Three.js and Hyperfy, with integrated AI for dynamic content generation — designed so anyone can launch immersive experiences without writing code.",
+      "I built a platform that deploys virtual worlds in minutes. The worlds themselves run on Three.js and Hyperfy, with integrated AI for dynamic content generation, so anyone can launch immersive experiences without writing code.",
     case3Cat: "MVP",
-    case3Title: "Moovle — Screen Tourism App",
+    case3Title: "Moovle: screen tourism app",
     case3Desc:
       "I rescued a half-built screen tourism MVP: redesigned the visuals, implemented the responsive design, and built the native iOS and Android apps with Capacitor. From stalled to shipped on the stores.",
 
     // Testimonials
     testTitle1: "Client ",
-    testTitle2: "Stories.",
+    testTitle2: "stories.",
     testSub: "Don't just take our word for it.",
     test1Quote:
-      "A real pleasure working with César. He delivered an interactive web header in record time, precisely replicating the look & feel of a pre-rendered 3D video — but with real-time interactivity, complex animations, and cross-device optimization. For his attitude, drive, and commitment, a 10. It’s a delight to collaborate with someone who quickly understands what’s needed and executes it with judgment and autonomy.",
+      "A real pleasure working with César. He delivered an interactive web header in record time, precisely replicating the look & feel of a pre-rendered 3D video, but with real-time interactivity, complex animations, and cross-device optimization. For his attitude, drive, and commitment, a 10. It’s a delight to collaborate with someone who quickly understands what’s needed and executes it with judgment and autonomy.",
     test1Author: "David Torrico",
-    test1Role: "Creative Director at 3DforScience",
+    test1Role: "Creative director at 3DforScience",
     test2Quote:
       "After trying several development teams, thanks to César’s work we were finally able to move our project forward. We now have an MVP that lets us close deals, and we’ll soon launch our app fully operational and with the quality we needed. Thank you.",
     test2Author: "Pedro Casado",
@@ -89,15 +89,15 @@ export const translations = {
 
     // FAQ
     faqTitle1: "Common ",
-    faqTitle2: "Questions.",
+    faqTitle2: "questions.",
     faqSub: "Everything you need to know before we start.",
-    faq1Q: "How fast can you build an MVP?",
+    faq1Q: "How fast can we build an MVP?",
     faq1A:
       "Depending on the complexity, a standard MVP can take anywhere from 3 to 6 weeks. We prioritize core features to get you to market as quickly as possible.",
-    faq2Q: "Do you only work with Blockchain and 3D?",
+    faq2Q: "Do we only work with Blockchain and 3D?",
     faq2A:
       "No! While those are our specialties, we have extensive experience building traditional Web2 SaaS platforms, mobile apps, and enterprise dashboards.",
-    faq3Q: "How does the pricing work?",
+    faq3Q: "How do we calculate your budget?",
     faq3A:
       "We offer both milestone-based project pricing and monthly retainers. We'll discuss your specific needs and propose a structure that aligns with your startup's runway.",
     faq4Q: "Will I own the code?",
@@ -106,17 +106,18 @@ export const translations = {
 
     // Contact
     contactTitle1: "Ready to ",
-    contactTitle2: "Start?",
+    contactTitle2: "start?",
     contactSub: "Let's discuss how we can build your next big idea.",
     contName: "Name",
     contEmail: "Email",
-    contBudget: "Project Budget",
-    contType: "Project Type",
+    contBudget: "Project budget",
+    contType: "Project type",
     contMessage: "Tell me about your idea",
-    contOpt1: "MVP Creation",
-    contOpt2: "Rescue Existing MVP",
-    contOpt3: "Blockchain / Web3 Project",
-    contOpt4: "Mixed Reality / WebXR Project",
+    contOpt1: "MVP creation",
+    contOpt2: "Rescue existing MVP",
+    contOpt3: "Blockchain / Web3 project",
+    contOpt4: "Mixed Reality / WebXR project",
+    contOpt5: "Other",
     contBudOptUnder5: "< €5k",
     contBudOpt5to10: "€5k – €10k",
     contBudOpt1: "€10k – €15k",
@@ -128,13 +129,13 @@ export const translations = {
       "We use cookies to improve your experience and analyze traffic. By accepting, you consent to our use of cookies.",
     cookieAccept: "Accept all",
     cookieDecline: "Decline",
-    cookiePolicy: "Cookie Policy",
+    cookiePolicy: "Cookie policy",
     contPrivacy: "I have read and accept the",
     contMessagePlaceholder: "Tell me about your project, goals, and timeline...",
-    contBtnIdle: "Send Message",
+    contBtnIdle: "Send message",
     contBtnLoading: "Sending...",
-    contBtnSuccess: "Message Sent!",
-    contBtnError: "Try Again",
+    contBtnSuccess: "Message sent!",
+    contBtnError: "Try again",
     contErrorMsg: "Something went wrong. Please try again.",
     contErrName: "Please enter your name.",
     contErrEmail: "Please enter a valid email address.",
@@ -144,8 +145,8 @@ export const translations = {
     // Footer
     footDesc: "We build your technology, you build your business.",
     footRights: "All rights reserved.",
-    footTerms: "Terms & Conditions",
-    footPrivacy: "Privacy Policy",
+    footTerms: "Terms & conditions",
+    footPrivacy: "Privacy policy",
     footManageCookies: "Manage cookies",
     footIncibeAlt: "INCIBE Ciberemprende seal",
     footIncibeCaption:
@@ -161,12 +162,12 @@ export const translations = {
     techStackTitle: "OUR TECH STACK",
 
     // HeroCanvas
-    heroDragHint: "Drag to connect",
+    heroDragHint: "Drag each shape to its slot",
   },
   es: {
     // Navbar
     navServices: "Servicios",
-    navAbout: "Sobre Mí",
+    navAbout: "Sobre mí",
     navWork: "Proyectos",
     navTestimonials: "Opiniones",
     navFAQ: "FAQ",
@@ -176,13 +177,13 @@ export const translations = {
     heroTitle1: "Construimos la tecnología",
     heroTitle2: "detrás de tu idea.",
     heroSub:
-      "Soluciones Premium de Blockchain y Realidad Mixta para startups ambiciosas. Deja de preocuparte por el código, empieza a centrarte en el crecimiento.",
-    heroBtnStart: "Inicia tu Proyecto",
-    heroBtnWork: "Ver Nuestro Trabajo",
+      "Ofrecemos soluciones premium de Blockchain y Realidad Mixta para startups ambiciosas. Deja de preocuparte por el código, empieza a centrarte en el crecimiento.",
+    heroBtnStart: "Inicia tu proyecto",
+    heroBtnWork: "Ver nuestro trabajo",
 
     // Services
-    servicesTitle1: "Lo Que ",
-    servicesTitle2: "Hacemos.",
+    servicesTitle1: "Lo que ",
+    servicesTitle2: "hacemos.",
     servicesSub:
       "Ejecución técnica especializada para startups que no pueden permitirse perder el tiempo.",
     serv1Title: "Desarrollo de MVP",
@@ -194,13 +195,13 @@ export const translations = {
     serv3Title: "Realidad Mixta y 3D",
     serv3Desc:
       "Experiencias inmersivas usando Three.js, React Three Fiber y WebXR. Destaca con tecnología visual de vanguardia.",
-    serv4Title: "Arquitectura y Escalabilidad",
+    serv4Title: "Arquitectura y escalabilidad",
     serv4Desc:
       "Diseñamos infraestructuras cloud robustas y microservicios preparados para soportar millones de usuarios sin despeinarse.",
 
     // About
     aboutTitle1: "¿Quién está ",
-    aboutTitle2: "Detrás?",
+    aboutTitle2: "detrás?",
     aboutP1:
       "Hola, soy César, el fundador de 1to1 Digital Solutions. Me especializo en construir aplicaciones de alto rendimiento con enfoque en ",
     aboutP1Span: "Blockchain y Realidad Mixta.",
@@ -210,34 +211,34 @@ export const translations = {
     aboutList2: "Para entregar productos en semanas, no meses.",
     aboutList3: "Para construir software que escale desde el primer día.",
     aboutP3:
-      "Ya sea que necesites una plataforma completa desde cero, o una experiencia 3D inmersiva para sorprender a tus inversores, estoy aquí para construirlo.",
-    aboutBtn: "Hablemos Directamente",
+      "Si necesitas una plataforma completa desde cero, una experiencia 3D inmersiva o rescatar un proyecto atascado o ralentizado, estoy aquí para construirlo contigo.",
+    aboutBtn: "Hablemos directamente",
 
     // Success Cases
     casesTitle1: "Proyectos ",
-    casesTitle2: "Destacados.",
+    casesTitle2: "destacados.",
     casesSub: "Proyectos reales, resultados reales. Un vistazo de lo que podemos construir juntos.",
     case1Cat: "Web3",
-    case1Title: "Firefly — Wallet de IOTA y Shimmer",
+    case1Title: "Firefly: wallet de IOTA y Shimmer",
     case1Desc:
-      "Fui senior developer en Firefly, el wallet oficial de IOTA y Shimmer. Durante años construí funcionalidades críticas dentro del ecosistema IOTA para una aplicación en la que miles de usuarios confían para gestionar activos digitales reales — siempre con foco en seguridad, rendimiento y UX.",
+      "Fui senior developer en Firefly, el wallet oficial de IOTA y Shimmer. Durante años construí funcionalidades críticas dentro del ecosistema IOTA para una aplicación en la que miles de usuarios confían para gestionar activos digitales reales: siempre con foco en seguridad, rendimiento y UX.",
     case2Cat: "Realidad Mixta",
-    case2Title: "Numen Games — Plataforma VR",
+    case2Title: "Numen Games: plataforma VR",
     case2Desc:
-      "Desarrollé una plataforma para desplegar mundos virtuales en minutos. La construí con Three.js y Hyperfy, e integré IA para generación dinámica de contenido — pensada para que cualquiera pueda lanzar experiencias inmersivas sin escribir código.",
+      "Desarrollé una plataforma para desplegar mundos virtuales en minutos. Los mundos en sí se ejecutan sobre Three.js y Hyperfy, con IA integrada para la generación dinámica de contenido, pensada para que cualquiera pueda lanzar experiencias inmersivas sin escribir código.",
     case3Cat: "MVP",
-    case3Title: "Moovle — App de Turismo de Pantalla",
+    case3Title: "Moovle: app de turismo de pantalla",
     case3Desc:
       "Rescaté un MVP de turismo de pantalla a medio terminar: rediseñé la interfaz, implementé el diseño responsive y desarrollé las apps nativas iOS y Android con Capacitor. De estancado a desplegado en las stores.",
 
     // Testimonials
     testTitle1: "Historias de ",
-    testTitle2: "Clientes.",
+    testTitle2: "clientes.",
     testSub: "No te quedes solo con nuestra palabra.",
     test1Quote:
       "Encantadísimo de haber trabajado con César. Ha resuelto en tiempo récord una cabecera interactiva para una web, replicando con precisión el look & feel de un vídeo 3D pre-renderizado, pero con interactividad en tiempo real, animaciones complejas y optimización para distintos dispositivos. Por su actitud, ganas y compromiso, un 10. Da gusto colaborar con alguien que entiende rápido lo que se necesita y lo ejecuta con criterio y autonomía.",
     test1Author: "David Torrico",
-    test1Role: "Director Creativo en 3DforScience",
+    test1Role: "Director creativo en 3DforScience",
     test2Quote:
       "Después de probar con varios equipos de desarrollo, por fin y gracias al trabajo de César, conseguimos avanzar en nuestro proyecto. Tenemos un MVP que nos permite ir cerrando acuerdos y pronto lanzaremos nuestra App operativa y con la calidad que necesitábamos. Gracias.",
     test2Author: "Pedro Casado",
@@ -245,15 +246,15 @@ export const translations = {
 
     // FAQ
     faqTitle1: "Preguntas ",
-    faqTitle2: "Frecuentes.",
+    faqTitle2: "frecuentes.",
     faqSub: "Todo lo que necesitas saber antes de empezar.",
-    faq1Q: "¿Qué tan rápido pueden construir un MVP?",
+    faq1Q: "¿Cómo de rápido podemos construir un MVP?",
     faq1A:
       "Dependiendo de la complejidad, un MVP estándar puede tomar de 3 a 6 semanas. Priorizamos las características principales para que salgas al mercado lo más rápido posible.",
-    faq2Q: "¿Solo trabajan con Blockchain y 3D?",
+    faq2Q: "¿Solo trabajamos con Blockchain y 3D?",
     faq2A:
       "¡No! Aunque son nuestras especialidades, tenemos amplia experiencia construyendo plataformas SaaS Web2 tradicionales, aplicaciones móviles y paneles empresariales.",
-    faq3Q: "¿Cómo funciona la estructura de precios?",
+    faq3Q: "¿Cómo calculamos tu presupuesto?",
     faq3A:
       "Ofrecemos precios por proyecto basados en hitos o contratos mensuales (retainer). Discutiremos tus necesidades específicas y propondremos una estructura que se adapte al presupuesto de tu startup.",
     faq4Q: "¿Seré dueño del código?",
@@ -262,17 +263,18 @@ export const translations = {
 
     // Contact
     contactTitle1: "¿Listo para ",
-    contactTitle2: "Empezar?",
+    contactTitle2: "empezar?",
     contactSub: "Hablemos sobre cómo podemos construir tu gran idea.",
     contName: "Nombre",
     contEmail: "Correo electrónico",
-    contBudget: "Presupuesto Estimado",
-    contType: "Tipo de Proyecto",
+    contBudget: "Presupuesto estimado",
+    contType: "Tipo de proyecto",
     contMessage: "Cuéntame sobre tu idea",
     contOpt1: "Creación de MVP",
     contOpt2: "Rescatar MVP existente",
     contOpt3: "Proyecto Blockchain / Web3",
     contOpt4: "Proyecto Realidad Mixta / WebXR",
+    contOpt5: "Otros",
     contBudOptUnder5: "< 5.000 €",
     contBudOpt5to10: "5.000 € – 10.000 €",
     contBudOpt1: "10.000 € – 15.000 €",
@@ -284,12 +286,12 @@ export const translations = {
       "Usamos cookies para mejorar tu experiencia y analizar el tráfico. Al aceptar, consientes el uso de cookies.",
     cookieAccept: "Aceptar todo",
     cookieDecline: "Rechazar",
-    cookiePolicy: "Política de Cookies",
+    cookiePolicy: "Política de cookies",
     contPrivacy: "He leído y acepto la",
     contMessagePlaceholder: "Cuéntame sobre tu proyecto, objetivos y plazos...",
-    contBtnIdle: "Enviar Mensaje",
+    contBtnIdle: "Enviar mensaje",
     contBtnLoading: "Enviando...",
-    contBtnSuccess: "¡Mensaje Enviado!",
+    contBtnSuccess: "¡Mensaje enviado!",
     contBtnError: "Intentar de nuevo",
     contErrorMsg: "Algo salió mal. Por favor, inténtalo de nuevo.",
     contErrName: "Por favor, indica tu nombre.",
@@ -300,8 +302,8 @@ export const translations = {
     // Footer
     footDesc: "Construimos tu tecnología, tú construyes tu negocio.",
     footRights: "Todos los derechos reservados.",
-    footTerms: "Términos y Condiciones",
-    footPrivacy: "Política de Privacidad",
+    footTerms: "Términos y condiciones",
+    footPrivacy: "Política de privacidad",
     footManageCookies: "Gestionar cookies",
     footIncibeAlt: "Sello INCIBE Ciberemprende",
     footIncibeCaption:
@@ -317,7 +319,7 @@ export const translations = {
     techStackTitle: "NUESTRO STACK TÉCNICO",
 
     // HeroCanvas
-    heroDragHint: "Arrastra para conectar",
+    heroDragHint: "Arrastra cada objeto a su hueco",
   },
 };
 

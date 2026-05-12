@@ -105,7 +105,7 @@ export function Hero() {
         <div className="hero-btn pointer-events-none mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
             href="#contact"
-            className="bg-primary/90 text-background hover:bg-primary focus-visible:ring-primary focus-visible:ring-offset-background pointer-events-auto rounded-full px-8 py-4 text-lg font-bold backdrop-blur-md transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(64,224,208,0.4)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+            className="bg-primary/90 hover:bg-primary focus-visible:ring-primary focus-visible:ring-offset-background pointer-events-auto rounded-full px-8 py-4 text-lg font-bold text-[var(--on-primary)] backdrop-blur-md transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(64,224,208,0.4)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
           >
             {t("heroBtnStart")}
           </a>

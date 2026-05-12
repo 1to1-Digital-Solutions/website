@@ -30,13 +30,18 @@ export function Testimonials() {
         {testimonials.map((test, idx) => (
           <div
             key={idx}
-            className="bg-anthracite/50 border-foreground/5 relative rounded-2xl border p-8 shadow-sm"
+            className="bg-anthracite/50 border-foreground/5 relative flex h-full flex-col overflow-hidden rounded-2xl border p-8 shadow-sm"
           >
-            <Quote className="text-foreground/10 absolute top-6 right-6" size={48} />
-            <p className="text-foreground/80 relative z-10 mb-8 text-lg font-medium italic">
+            {/* Decorative quote — primary-tinted, clipped to the bottom-right so it never sits under the text. */}
+            <Quote
+              aria-hidden="true"
+              className="text-primary/15 pointer-events-none absolute -right-4 -bottom-4"
+              size={120}
+            />
+            <p className="text-foreground/80 relative z-10 text-lg font-medium italic">
               {test.quote as string}
             </p>
-            <div className="relative z-10">
+            <div className="relative z-10 mt-auto pt-8">
               <p className="font-outfit text-foreground font-bold">{test.author as string}</p>
               <p className="text-primary text-sm">{test.role as string}</p>
             </div>

@@ -20,7 +20,7 @@ describe("Hero", () => {
   it("renders title and buttons", () => {
     renderWithProviders(<Hero />);
 
-    expect(screen.getByText(/Soluciones Premium de Blockchain/i)).toBeInTheDocument();
+    expect(screen.getByText(/Ofrecemos soluciones premium de Blockchain/i)).toBeInTheDocument();
 
     expect(screen.getByRole("link", { name: /Inicia tu Proyecto/i })).toHaveAttribute(
       "href",

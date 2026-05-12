@@ -215,6 +215,7 @@ export function ContactForm() {
                   <option value="rescue">{t("contOpt2")}</option>
                   <option value="blockchain">{t("contOpt3")}</option>
                   <option value="xr">{t("contOpt4")}</option>
+                  <option value="other">{t("contOpt5")}</option>
                 </select>
                 <ChevronDown
                   aria-hidden="true"
@@ -324,7 +325,7 @@ export function ContactForm() {
           <button
             type="submit"
             disabled={isBusy || isDone || !privacyAccepted}
-            className="group bg-primary text-background hover:bg-primary/90 focus-visible:ring-primary mt-2 flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl py-4 font-bold transition-all focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:scale-100"
+            className="group bg-primary hover:bg-primary/90 focus-visible:ring-primary mt-2 flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl py-4 font-bold text-[var(--on-primary)] transition-all focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:scale-100"
           >
             {status === "idle" && (
               <>

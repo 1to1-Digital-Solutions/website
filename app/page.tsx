@@ -73,6 +73,10 @@ export default function Home() {
               pinSpacing: false,
               anticipatePin: 1,
               invalidateOnRefresh: true,
+              // Stabilizes stacked-pin behavior on very fast scroll: forces end state
+              // and prevents adjacent triggers from firing simultaneously.
+              fastScrollEnd: true,
+              preventOverlaps: true,
             },
           });
         });

@@ -47,12 +47,12 @@ export function Services() {
       id="services"
       className="relative mx-auto w-full max-w-7xl overflow-visible px-6 py-24"
     >
-      <div className="mb-16 text-center md:text-left">
+      <div className="mb-16 text-center">
         <h2 className="font-outfit text-4xl font-bold tracking-tight md:text-5xl">
           {t("servicesTitle1")}
           <span className="text-primary">{t("servicesTitle2")}</span>
         </h2>
-        <p className="text-foreground/70 mt-4 max-w-2xl text-lg">{t("servicesSub")}</p>
+        <p className="text-foreground/70 mx-auto mt-4 max-w-2xl text-lg">{t("servicesSub")}</p>
       </div>
 
       <div className="grid gap-8 md:grid-cols-2">
