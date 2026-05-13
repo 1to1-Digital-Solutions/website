@@ -152,11 +152,27 @@ export const translations = {
     footIncibeCaption:
       "Participant in the INCIBE Emprende incubation programme. Not a certification or accreditation.",
 
+    // Process (migrated from inline ternaries in Process.tsx)
+    procTitle1: "How it ",
+    procTitle2: "works.",
+    procSub: "Through a streamlined process designed for founders who need results, not excuses.",
+    proc1Title: "Discovery & architecture",
+    proc1Desc:
+      "We understand your vision, define the strict MVP technical scope, and design the optimal architecture to scale from day one.",
+    proc2Title: "Rapid execution",
+    proc2Desc:
+      "No bureaucracy. We write clean code, implement complex integrations (Web3, 3D, AI), and provide weekly updates.",
+    proc3Title: "Handoff & scale",
+    proc3Desc:
+      "We deploy your product to production, transfer 100% of the source code, and provide continuous support if needed.",
+
     // Aria labels
     ariaToggleLangToEn: "Switch to English",
     ariaToggleLangToEs: "Switch to Spanish",
     ariaOpenMenu: "Open menu",
     ariaCloseMenu: "Close menu",
+    aboutImgAlt: "Portrait of the founder of 1to1 Digital Solutions",
+    srOpensInNewTab: "(opens in new tab)",
 
     // TechStackMarquee
     techStackTitle: "OUR TECH STACK",
@@ -309,11 +325,28 @@ export const translations = {
     footIncibeCaption:
       "Participante en el programa de incubación INCIBE Emprende. No constituye certificación ni acreditación.",
 
+    // Process (migrated from inline ternaries in Process.tsx)
+    procTitle1: "Cómo ",
+    procTitle2: "trabajamos.",
+    procSub:
+      "A través de un proceso simplificado, diseñado para fundadores que necesitan resultados, no excusas.",
+    proc1Title: "Descubrimiento y arquitectura",
+    proc1Desc:
+      "Entendemos tu visión, definimos el alcance estricto del MVP tech y diseñamos la arquitectura óptima para escalar desde el día uno.",
+    proc2Title: "Ejecución rápida",
+    proc2Desc:
+      "Sin burocracia. Escribimos código limpio, implementamos integraciones complejas (Web3, 3D, IA) y te damos actualizaciones semanales.",
+    proc3Title: "Entrega y escala",
+    proc3Desc:
+      "Desplegamos tu producto en producción, transferimos todo el código fuente al 100% y te damos soporte continuo si lo necesitas.",
+
     // Aria labels
     ariaToggleLangToEn: "Cambiar a inglés",
     ariaToggleLangToEs: "Cambiar a español",
     ariaOpenMenu: "Abrir menú",
     ariaCloseMenu: "Cerrar menú",
+    aboutImgAlt: "Retrato del fundador de 1to1 Digital Solutions",
+    srOpensInNewTab: "(abre en nueva pestaña)",
 
     // TechStackMarquee
     techStackTitle: "NUESTRO STACK TÉCNICO",

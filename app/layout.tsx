@@ -14,11 +14,13 @@ import { ThemeProvider } from "@/context/ThemeContext";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const outfit = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const siteUrl = "https://1to1digital.solutions";
@@ -116,9 +118,9 @@ export default async function RootLayout({
             <LanguageProvider initialLang={lang}>
               <a
                 href="#main-content"
-                className="bg-primary text-background sr-only fixed top-2 left-2 z-[100] rounded-lg px-4 py-2 font-bold focus:not-sr-only focus:outline-none"
+                className="bg-primary sr-only fixed top-2 left-2 z-[100] rounded-lg px-4 py-2 font-bold text-[var(--on-primary)] focus:not-sr-only focus:outline-none"
               >
-                Skip to main content
+                {lang === "es" ? "Saltar al contenido principal" : "Skip to main content"}
               </a>
               <Navbar />
               <main id="main-content" className="flex flex-col">

@@ -87,6 +87,7 @@ export function SuccessCases() {
                 </div>
                 <h3 className="font-outfit group-hover:text-primary mb-3 text-xl font-bold transition-colors">
                   {project.title as string}
+                  <span className="sr-only"> {t("srOpensInNewTab") as string}</span>
                 </h3>
                 <p className="text-foreground/70 mb-6 flex-1 text-sm">
                   {project.description as string}

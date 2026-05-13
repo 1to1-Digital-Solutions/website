@@ -92,7 +92,7 @@ export function ContactForm() {
     setErrors((prev) => (prev[field] ? { ...prev, [field]: undefined } : prev));
 
   return (
-    <section id="contact" className="bg-anthracite/30 w-full py-24">
+    <section className="bg-anthracite/30 w-full py-24">
       <div className="mx-auto max-w-4xl px-6">
         <div className="mb-12 text-center">
           <h2 className="font-outfit text-4xl font-bold tracking-tight md:text-5xl">
