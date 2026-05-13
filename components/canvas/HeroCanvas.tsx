@@ -461,7 +461,7 @@ export function HeroCanvas() {
     );
   }, []);
 
-  const handlePlace = (_id: number) => {
+  const handlePlace = () => {
     setCursor("default");
     setPlacedCount((p) => p + 1);
     setActiveIndex((p) => p + 1);
@@ -481,7 +481,7 @@ export function HeroCanvas() {
 
         <MouseSpotlight />
 
-        <Stars radius={50} depth={20} count={700} factor={3} saturation={0} fade speed={0.5} />
+        <Stars radius={50} depth={20} count={200} factor={3} saturation={0} fade speed={0.5} />
 
         {mounted && (
           <Html center position={[0, -2.6, 0]} className="pointer-events-none select-none">

@@ -13,7 +13,7 @@ export function AboutMe() {
           <div className="bg-anthracite/80 relative aspect-square w-full max-w-md overflow-hidden rounded-3xl">
             <Image
               src="/images/profilePicture.jpg"
-              alt="Foto de perfil del fundador de 1to1 Digital Solutions"
+              alt={t("aboutImgAlt") as string}
               fill
               className="object-cover object-top"
               priority
