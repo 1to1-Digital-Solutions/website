@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Menu, X, Globe, Sun, Moon } from "lucide-react";
 import { useState, useEffect } from "react";
@@ -15,13 +16,14 @@ export function Navbar() {
 
   useEffect(() => setMounted(true), []);
 
+  const pathname = usePathname();
+
+  // Only the inner pages: the home sections are reached by scrolling.
   const navLinks = [
-    { name: t("navServices"), href: "#services" },
-    { name: t("navWork"), href: "#work" },
-    { name: t("navTestimonials"), href: "#testimonials" },
-    { name: t("navAbout"), href: "#about" },
-    { name: t("navFAQ"), href: "#faq" },
+    { name: t("navServices"), href: "/services" },
+    { name: t("navAbout"), href: "/about" },
   ];
+  const isCurrent = (href: string) => pathname === href;
 
   const toggleLanguage = () => setLang(lang === "es" ? "en" : "es");
 
@@ -53,7 +55,8 @@ export function Navbar() {
               <li key={link.name as string}>
                 <Link
                   href={link.href}
-                  className="text-foreground/80 hover:text-primary focus-visible:ring-primary rounded text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:outline-none"
+                  aria-current={isCurrent(link.href) ? "page" : undefined}
+                  className="text-foreground/80 hover:text-primary aria-[current=page]:text-primary focus-visible:ring-primary rounded text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:outline-none"
                 >
                   {link.name}
                 </Link>
@@ -80,7 +83,7 @@ export function Navbar() {
           </button>
 
           <Link
-            href="#contact"
+            href="/#contact"
             className="bg-primary focus-visible:ring-primary focus-visible:ring-offset-background rounded-full px-5 py-2 text-sm font-semibold text-[var(--on-primary)] transition-transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
           >
             {t("navCTA")}
@@ -131,7 +134,8 @@ export function Navbar() {
               <li key={link.name as string}>
                 <Link
                   href={link.href}
-                  className="text-foreground/90 hover:text-primary focus-visible:ring-primary rounded text-lg font-medium transition-colors focus-visible:ring-2 focus-visible:outline-none"
+                  aria-current={isCurrent(link.href) ? "page" : undefined}
+                  className="text-foreground/90 hover:text-primary aria-[current=page]:text-primary focus-visible:ring-primary rounded text-lg font-medium transition-colors focus-visible:ring-2 focus-visible:outline-none"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.name}
@@ -140,7 +144,7 @@ export function Navbar() {
             ))}
             <li>
               <Link
-                href="#contact"
+                href="/#contact"
                 className="bg-primary focus-visible:ring-primary focus-visible:ring-offset-background mt-4 block rounded-full px-8 py-3 text-base font-semibold text-[var(--on-primary)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
                 onClick={() => setIsOpen(false)}
               >

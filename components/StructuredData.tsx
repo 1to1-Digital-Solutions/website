@@ -3,7 +3,7 @@ const SITE_NAME = "1to1 Digital Solutions";
 const LEGAL_NAME = "1TO1 DIGITAL SOLUTIONS SL.";
 const SLOGAN = "We build your technology, you build your business";
 const DESCRIPTION =
-  "Specialized technical execution for startups: Blockchain, Mixed Reality, and MVP Development.";
+  "Custom software development: project rescue, digital products from scratch and business digitalisation. Specialists in browser-based mixed reality and Web3.";
 
 export function StructuredData() {
   const organization = {

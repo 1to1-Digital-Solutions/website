@@ -19,11 +19,11 @@ describe("FAQ", () => {
     expect(a1).toBeInTheDocument();
 
     // Click q2 to open it
-    const q2 = screen.getByText("¿Solo trabajamos con Blockchain y 3D?");
+    const q2 = screen.getByText("¿Solo trabajáis con realidad mixta y Web3?");
     fireEvent.click(q2);
 
     // Q2 answer becomes visible (testing presence in document)
-    const a2 = screen.getByText(/Aunque son nuestras especialidades/i);
+    const a2 = screen.getByText(/Son las tecnologías en las que estamos más metidos/i);
     expect(a2).toBeInTheDocument();
   });
 });

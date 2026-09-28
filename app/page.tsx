@@ -8,7 +8,6 @@ import { Services } from "@/components/Services";
 import { SuccessCases } from "@/components/SuccessCases";
 import { Testimonials } from "@/components/Testimonials";
 import { Process } from "@/components/Process";
-import { AboutMe } from "@/components/AboutMe";
 import { FAQ } from "@/components/FAQ";
 
 // Skeleton placeholder shown while the ContactForm chunk hydrates.
@@ -182,7 +181,8 @@ export default function Home() {
     };
   }, []);
 
-  // Persuasion arc: Services → Work → Testimonials → Process → AboutMe → FAQ → Contact.
+  // Persuasion arc: Services → Work → Testimonials → Process → FAQ → Contact.
+  // About and the service details live on their own pages (/about, /services).
   return (
     <div className="bg-background flex flex-col overflow-hidden">
       <Hero />
@@ -205,16 +205,12 @@ export default function Home() {
       </div>
 
       <div className="card-section bg-background relative z-50 w-full rounded-t-[3rem] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
-        <AboutMe />
-      </div>
-
-      <div className="card-section bg-anthracite relative z-[60] w-full rounded-t-[3rem] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
         <FAQ />
       </div>
 
       <div
         id="contact"
-        className="card-section bg-background relative z-[70] w-full scroll-mt-24 rounded-t-[3rem] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]"
+        className="card-section bg-anthracite relative z-[60] w-full scroll-mt-24 rounded-t-[3rem] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]"
       >
         <ContactForm />
       </div>

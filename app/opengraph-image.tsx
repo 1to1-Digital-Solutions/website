@@ -76,7 +76,7 @@ export default async function OpengraphImage() {
             fontWeight: 500,
           }}
         >
-          Premium tech execution for startups.
+          Custom software, from rescue to digitalisation.
         </p>
       </div>
 
@@ -90,7 +90,7 @@ export default async function OpengraphImage() {
           fontWeight: 500,
         }}
       >
-        <span>Web3 · MVP · Mixed Reality</span>
+        <span>Rescue · MVP · Digitalisation · XR · Web3</span>
         <span>1to1digital.solutions</span>
       </div>
     </div>,
