@@ -12,50 +12,15 @@ export const translations = {
     // Navbar
     navServices: "Services",
     navAbout: "About",
-    navWork: "Work",
-    navTestimonials: "Testimonials",
-    navFAQ: "FAQ",
     navCTA: "Let's talk",
 
     // Hero
     heroTitle1: "We build the tech",
     heroTitle2: "behind your idea.",
     heroSub:
-      "We offer premium Blockchain & Mixed Reality solutions for ambitious startups. Stop worrying about the code, start focusing on the growth.",
+      "We rescue stuck projects, launch digital products from scratch and digitalise businesses that still run on spreadsheets and paper. With a special focus on mixed reality and Web3.",
     heroBtnStart: "Start your project",
     heroBtnWork: "See our work",
-
-    // Services
-    servicesTitle1: "What we ",
-    servicesTitle2: "do.",
-    servicesSub: "Specialized technical execution for startups that can't afford to waste time.",
-    serv1Title: "MVP development",
-    serv1Desc:
-      "Transform your idea into a working product fast. We build scalable foundations so you can validate your market securely.",
-    serv2Title: "Blockchain integration",
-    serv2Desc:
-      "Smart contracts, dApps, and Web3 infrastructure. Secure, efficient, and tailored to your specific use case.",
-    serv3Title: "Mixed Reality & 3D",
-    serv3Desc:
-      "Immersive experiences using Three.js, React Three Fiber, and WebXR. Stand out with cutting-edge visual technology.",
-    serv4Title: "Architecture & scalability",
-    serv4Desc:
-      "We design robust cloud infrastructures and microservices that can handle millions of users without breaking a sweat.",
-
-    // About
-    aboutTitle1: "Who is ",
-    aboutTitle2: "behind?",
-    aboutP1:
-      "Hi, I'm César, the founder of 1to1 Digital Solutions. I specialize in building high-performance applications with a focus on ",
-    aboutP1Span: "Blockchain and Mixed Reality",
-    aboutP2:
-      "I've seen too many startups fail because of slow development cycles, bad technical decisions, or bloated agency contracts. That's why I created 1to1 Digital Solutions:",
-    aboutList1: "To work directly with founders.",
-    aboutList2: "To ship products in weeks, not months.",
-    aboutList3: "To build software that scales from day one.",
-    aboutP3:
-      "If you need a full platform from scratch, an immersive 3D experience, or to rescue a stalled or slowed-down project, I'm here to build it with you.",
-    aboutBtn: "Let's talk directly",
 
     // Success Cases
     casesTitle1: "Selected ",
@@ -93,13 +58,13 @@ export const translations = {
     faqSub: "Everything you need to know before we start.",
     faq1Q: "How fast can we build an MVP?",
     faq1A:
-      "Depending on the complexity, a standard MVP can take anywhere from 3 to 6 weeks. We prioritize core features to get you to market as quickly as possible.",
-    faq2Q: "Do we only work with Blockchain and 3D?",
+      "Depending on the complexity, a standard MVP takes 6 to 8 weeks. We prioritize core features to get you to market as quickly as possible.",
+    faq2Q: "Do you only work with mixed reality and Web3?",
     faq2A:
-      "No! While those are our specialties, we have extensive experience building traditional Web2 SaaS platforms, mobile apps, and enterprise dashboards.",
+      "No. They're the technologies we know best, but most of our work is custom software: web platforms, mobile apps, internal tools and the automations that take manual processes off your plate.",
     faq3Q: "How do we calculate your budget?",
     faq3A:
-      "We offer both milestone-based project pricing and monthly retainers. We'll discuss your specific needs and propose a structure that aligns with your startup's runway.",
+      "It depends on the kind of project. We work on fixed projects paid by milestones, or by the hour if we join your team. After your first message I\'ll send you a ballpark range, and after our call, a fixed quote in writing.",
     faq4Q: "Will I own the code?",
     faq4A:
       "100%. Upon completion and final payment, all intellectual property and source code are transferred directly to you.",
@@ -110,20 +75,17 @@ export const translations = {
     contactSub: "Let's discuss how we can build your next big idea.",
     contName: "Name",
     contEmail: "Email",
-    contBudget: "Project budget",
-    contType: "Project type",
+    contBudgetNote:
+      "The budget depends on the kind of project. I'll write back with a ballpark range for yours, and a fixed quote after we talk.",
+    contType: "What do you need?",
+    contTech: "Any technology in particular?",
+    contTimeline: "When would you like to start?",
+    contSource: "How did you hear about us?",
+    contOptional: "optional",
+    contSelectPlaceholder: "Choose…",
     contMessage: "Tell me about your idea",
-    contOpt1: "MVP creation",
-    contOpt2: "Rescue existing MVP",
-    contOpt3: "Blockchain / Web3 project",
-    contOpt4: "Mixed Reality / WebXR project",
-    contOpt5: "Other",
-    contBudOptUnder5: "< €5k",
-    contBudOpt5to10: "€5k – €10k",
-    contBudOpt1: "€10k – €15k",
-    contBudOpt2: "€15k – €20k",
-    contBudOpt3: "€20k – €30k",
-    contBudOpt4: "> €30k",
+    contSuccessNote:
+      "Thanks. I'll read your message and get back to you within one or two working days with a ballpark range and to set up a video call.",
     // Cookie banner
     cookieMessage:
       "We use cookies to improve your experience and analyze traffic. By accepting, you consent to our use of cookies.",
@@ -171,7 +133,6 @@ export const translations = {
     ariaToggleLangToEs: "Switch to Spanish",
     ariaOpenMenu: "Open menu",
     ariaCloseMenu: "Close menu",
-    aboutImgAlt: "Portrait of the founder of 1to1 Digital Solutions",
     srOpensInNewTab: "(opens in new tab)",
 
     // TechStackMarquee
@@ -184,51 +145,15 @@ export const translations = {
     // Navbar
     navServices: "Servicios",
     navAbout: "Sobre mí",
-    navWork: "Proyectos",
-    navTestimonials: "Opiniones",
-    navFAQ: "FAQ",
     navCTA: "Hablemos",
 
     // Hero
     heroTitle1: "Construimos la tecnología",
     heroTitle2: "detrás de tu idea.",
     heroSub:
-      "Ofrecemos soluciones premium de Blockchain y Realidad Mixta para startups ambiciosas. Deja de preocuparte por el código, empieza a centrarte en el crecimiento.",
+      "Rescatamos proyectos atascados, lanzamos productos digitales desde cero y digitalizamos negocios que siguen funcionando a base de Excel y papel. Con especial foco en realidad mixta y Web3.",
     heroBtnStart: "Inicia tu proyecto",
     heroBtnWork: "Ver nuestro trabajo",
-
-    // Services
-    servicesTitle1: "Lo que ",
-    servicesTitle2: "hacemos.",
-    servicesSub:
-      "Ejecución técnica especializada para startups que no pueden permitirse perder el tiempo.",
-    serv1Title: "Desarrollo de MVP",
-    serv1Desc:
-      "Transforma tu idea en un producto funcional de foma rápida. Construimos bases escalables para que valides tu mercado de forma segura.",
-    serv2Title: "Integración Blockchain",
-    serv2Desc:
-      "Smart contracts, dApps e infraestructura Web3. Seguro, eficiente y adaptado a tu caso de uso específico.",
-    serv3Title: "Realidad Mixta y 3D",
-    serv3Desc:
-      "Experiencias inmersivas usando Three.js, React Three Fiber y WebXR. Destaca con tecnología visual de vanguardia.",
-    serv4Title: "Arquitectura y escalabilidad",
-    serv4Desc:
-      "Diseñamos infraestructuras cloud robustas y microservicios preparados para soportar millones de usuarios sin despeinarse.",
-
-    // About
-    aboutTitle1: "¿Quién está ",
-    aboutTitle2: "detrás?",
-    aboutP1:
-      "Hola, soy César, el fundador de 1to1 Digital Solutions. Me especializo en construir aplicaciones de alto rendimiento con enfoque en ",
-    aboutP1Span: "Blockchain y Realidad Mixta.",
-    aboutP2:
-      "He visto fracasar demasiadas startups debido a ciclos de desarrollo lentos, malas decisiones técnicas o contratos inflados de agencias. Por eso creé 1to1 Digital Solutions:",
-    aboutList1: "Para trabajar directamente con los fundadores.",
-    aboutList2: "Para entregar productos en semanas, no meses.",
-    aboutList3: "Para construir software que escale desde el primer día.",
-    aboutP3:
-      "Si necesitas una plataforma completa desde cero, una experiencia 3D inmersiva o rescatar un proyecto atascado o ralentizado, estoy aquí para construirlo contigo.",
-    aboutBtn: "Hablemos directamente",
 
     // Success Cases
     casesTitle1: "Proyectos ",
@@ -266,13 +191,13 @@ export const translations = {
     faqSub: "Todo lo que necesitas saber antes de empezar.",
     faq1Q: "¿Cómo de rápido podemos construir un MVP?",
     faq1A:
-      "Dependiendo de la complejidad, un MVP estándar puede tomar de 3 a 6 semanas. Priorizamos las características principales para que salgas al mercado lo más rápido posible.",
-    faq2Q: "¿Solo trabajamos con Blockchain y 3D?",
+      "Dependiendo de la complejidad, un MVP estándar lleva de 6 a 8 semanas. Priorizamos las características principales para que salgas al mercado lo más rápido posible.",
+    faq2Q: "¿Solo trabajáis con realidad mixta y Web3?",
     faq2A:
-      "¡No! Aunque son nuestras especialidades, tenemos amplia experiencia construyendo plataformas SaaS Web2 tradicionales, aplicaciones móviles y paneles empresariales.",
+      "No. Son las tecnologías en las que estamos más metidos, pero la mayor parte del trabajo es software a medida: plataformas web, apps móviles, herramientas internas y las automatizaciones que te quitan de encima los procesos que hoy se hacen a mano.",
     faq3Q: "¿Cómo calculamos tu presupuesto?",
     faq3A:
-      "Ofrecemos precios por proyecto basados en hitos o contratos mensuales (retainer). Discutiremos tus necesidades específicas y propondremos una estructura que se adapte al presupuesto de tu startup.",
+      "Depende del tipo de proyecto. Trabajamos por proyecto cerrado con pagos por hitos, o por horas si nos integramos en tu equipo. Tras tu primer mensaje te mando una horquilla orientativa y, después de la llamada, el presupuesto cerrado por escrito.",
     faq4Q: "¿Seré dueño del código?",
     faq4A:
       "Al 100%. Tras la finalización y el pago final, toda la propiedad intelectual y el código fuente se transfieren directamente a ti.",
@@ -283,20 +208,17 @@ export const translations = {
     contactSub: "Hablemos sobre cómo podemos construir tu gran idea.",
     contName: "Nombre",
     contEmail: "Correo electrónico",
-    contBudget: "Presupuesto estimado",
-    contType: "Tipo de proyecto",
+    contBudgetNote:
+      "El presupuesto depende del tipo de proyecto. Te escribo con una horquilla orientativa para el tuyo, y el presupuesto cerrado después de hablar.",
+    contType: "¿Qué necesitas?",
+    contTech: "¿Alguna tecnología en concreto?",
+    contTimeline: "¿Cuándo quieres empezar?",
+    contSource: "¿Cómo nos has conocido?",
+    contOptional: "opcional",
+    contSelectPlaceholder: "Selecciona…",
     contMessage: "Cuéntame sobre tu idea",
-    contOpt1: "Creación de MVP",
-    contOpt2: "Rescatar MVP existente",
-    contOpt3: "Proyecto Blockchain / Web3",
-    contOpt4: "Proyecto Realidad Mixta / WebXR",
-    contOpt5: "Otros",
-    contBudOptUnder5: "< 5.000 €",
-    contBudOpt5to10: "5.000 € – 10.000 €",
-    contBudOpt1: "10.000 € – 15.000 €",
-    contBudOpt2: "15.000 € – 20.000 €",
-    contBudOpt3: "20.000 € – 30.000 €",
-    contBudOpt4: "> 30.000 €",
+    contSuccessNote:
+      "Gracias. Leo tu mensaje y te escribo en uno o dos días laborables con una horquilla orientativa y para buscar un hueco para una videollamada.",
     // Cookie banner
     cookieMessage:
       "Usamos cookies para mejorar tu experiencia y analizar el tráfico. Al aceptar, consientes el uso de cookies.",
@@ -345,7 +267,6 @@ export const translations = {
     ariaToggleLangToEs: "Cambiar a español",
     ariaOpenMenu: "Abrir menú",
     ariaCloseMenu: "Cerrar menú",
-    aboutImgAlt: "Retrato del fundador de 1to1 Digital Solutions",
     srOpensInNewTab: "(abre en nueva pestaña)",
 
     // TechStackMarquee

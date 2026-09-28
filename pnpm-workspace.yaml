@@ -1,0 +1,8 @@
+# Qué dependencias pueden ejecutar sus scripts de instalación.
+#
+# pnpm 10 los bloquea por defecto y pide decidir una por una. Estas dos los necesitan de
+# verdad: `sharp` compila el binario nativo con el que Next optimiza las imágenes —sin él el
+# build falla en esta máquina—, y `unrs-resolver` es el resolvedor de imports de ESLint.
+allowBuilds:
+  sharp: true
+  unrs-resolver: true

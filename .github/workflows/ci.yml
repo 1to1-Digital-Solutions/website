@@ -5,6 +5,7 @@ on:
     branches: [main]
   push:
     branches: [main]
+  workflow_dispatch:
 
 # Cancel previous runs on the same branch when new commits arrive
 concurrency:

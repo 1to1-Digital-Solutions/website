@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { CookieBanner } from "@/components/CookieBanner";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { StructuredData } from "@/components/StructuredData";
+import { AttributionCapture } from "@/components/AttributionCapture";
 import { ConsentProvider } from "@/context/ConsentContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { ThemeProvider } from "@/context/ThemeContext";
@@ -27,7 +28,7 @@ const siteUrl = "https://1to1digital.solutions";
 const siteName = "1to1 Digital Solutions";
 const siteTagline = "We build your technology, you build your business";
 const siteDescription =
-  "We build your technology, you build your business. Specialized technical execution for startups: Blockchain, Mixed Reality, and MVP Development.";
+  "Custom software development: we rescue stuck projects, launch digital products from scratch in 6-8 weeks and digitalise businesses. Specialists in browser-based mixed reality and Web3.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -41,6 +42,11 @@ export const metadata: Metadata = {
   creator: siteName,
   publisher: siteName,
   keywords: [
+    "software a medida",
+    "desarrollo de MVP",
+    "digitalización de empresas",
+    "transformación digital",
+    "rescate de proyectos",
     "freelance developer",
     "MVP development",
     "Web3",
@@ -129,6 +135,7 @@ export default async function RootLayout({
               <Footer />
               <CookieBanner />
               <GoogleAnalytics />
+              <AttributionCapture />
             </LanguageProvider>
           </ConsentProvider>
         </ThemeProvider>
