@@ -1,42 +1,48 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import {
+  LEAD_LABELS,
+  LEAD_OPTIONS,
+  PRIVACY_POLICY_VERSION,
+  type LeadField,
+  type LeadValue,
+} from "@/content/lead-options";
+import { priceGuide } from "@/content/pricing";
+import { ATTRIBUTION_KEYS, type Attribution } from "@/lib/attribution";
 
 export const runtime = "nodejs";
 
-const PROJECT_TYPES = ["mvp", "rescue", "blockchain", "xr", "other"] as const;
-const BUDGETS = ["<5", "5-10", "10-15", "15-20", "20-30", ">30"] as const;
+type Lang = "es" | "en";
 
-const PROJECT_TYPE_LABELS: Record<(typeof PROJECT_TYPES)[number], string> = {
-  mvp: "MVP Development",
-  rescue: "Tech Rescue",
-  blockchain: "Blockchain / Web3",
-  xr: "XR / Mixed Reality",
-  other: "Other",
-};
+/** Los desplegables son opcionales: si faltan quedan en `undefined`, si traen algo raro se rechaza. */
+type Choices = { [F in LeadField]?: LeadValue<F> };
 
-const BUDGET_LABELS: Record<(typeof BUDGETS)[number], string> = {
-  "<5": "< 5k €",
-  "5-10": "5k – 10k €",
-  "10-15": "10k – 15k €",
-  "15-20": "15k – 20k €",
-  "20-30": "20k – 30k €",
-  ">30": "> 30k €",
-};
-
-type Lead = {
+type Lead = Choices & {
   name: string;
   email: string;
-  projectType: (typeof PROJECT_TYPES)[number];
-  budget: (typeof BUDGETS)[number];
   message: string;
-  privacy: boolean;
+  privacy: true;
+  lang: Lang;
+  attribution: Attribution;
 };
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const RATE_LIMIT_MAX = 3;
 const RATE_LIMIT_MAX_TRACKED_IPS = 1000;
-const MAX_BODY_BYTES = 16_384; // 16 KB — generous for a 5-field form
+const MAX_BODY_BYTES = 16_384; // 16 KB — generous for a short form
+const MAX_ATTRIBUTION_LEN = 200;
+
+// El correo a César va siempre en castellano; `lang` le dice en qué idioma contestar.
+// Al lead no se le manda nada automático: la primera respuesta, con la horquilla, es manual.
+const INTERNAL_LABELS = LEAD_LABELS.es;
+
+const FIELD_NAMES: Record<LeadField, string> = {
+  projectType: "Qué necesita",
+  tech: "Tecnología",
+  timeline: "Cuándo empezar",
+  source: "Cómo nos conoció",
+};
 
 // In-memory rate limit. Per-instance on Vercel (acceptable for low-volume marketing site).
 // Migrate to Vercel KV / Upstash if abuse seen — tracked in TODO.md.
@@ -75,6 +81,11 @@ function isAllowedOrigin(req: Request): boolean {
   if (process.env.NEXT_PUBLIC_SITE_URL) expected.add(process.env.NEXT_PUBLIC_SITE_URL);
   expected.add("https://1to1digital.solutions");
   expected.add("https://www.1to1digital.solutions");
+  // Preview deployments on Vercel answer on their own *.vercel.app host.
+  if (process.env.VERCEL_ENV === "preview" && process.env.VERCEL_URL) {
+    expected.add(`https://${process.env.VERCEL_URL}`);
+    if (process.env.VERCEL_BRANCH_URL) expected.add(`https://${process.env.VERCEL_BRANCH_URL}`);
+  }
   if (process.env.NODE_ENV !== "production") {
     expected.add("http://localhost:3000");
     expected.add("http://127.0.0.1:3000");
@@ -98,6 +109,29 @@ function isString(v: unknown): v is string {
   return typeof v === "string";
 }
 
+/** Un desplegable opcional: vacío o ausente vale; un valor fuera de la lista, no. */
+function readChoice<F extends LeadField>(
+  field: F,
+  raw: unknown
+): { ok: true; value?: LeadValue<F> } | { ok: false } {
+  if (raw === undefined || raw === null || raw === "") return { ok: true };
+  const allowed = LEAD_OPTIONS[field] as readonly string[];
+  if (!isString(raw) || !allowed.includes(raw)) return { ok: false };
+  return { ok: true, value: raw as LeadValue<F> };
+}
+
+/** Solo las claves conocidas, solo texto y recortado: esto lo escribe el navegador. */
+function readAttributionPayload(raw: unknown): Attribution {
+  if (!raw || typeof raw !== "object") return {};
+  const source = raw as Record<string, unknown>;
+  const clean: Attribution = {};
+  for (const key of ATTRIBUTION_KEYS) {
+    const value = source[key];
+    if (isString(value) && value.trim()) clean[key] = value.trim().slice(0, MAX_ATTRIBUTION_LEN);
+  }
+  return clean;
+}
+
 function validate(input: unknown): { ok: true; lead: Lead } | { ok: false; error: string } {
   if (!input || typeof input !== "object") return { ok: false, error: "invalid_body" };
   const b = input as Record<string, unknown>;
@@ -108,12 +142,6 @@ function validate(input: unknown): { ok: true; lead: Lead } | { ok: false; error
   if (!isString(b.email) || !EMAIL_RE.test(b.email) || b.email.length > 320) {
     return { ok: false, error: "invalid_email" };
   }
-  if (!isString(b.projectType) || !PROJECT_TYPES.includes(b.projectType as never)) {
-    return { ok: false, error: "invalid_project_type" };
-  }
-  if (!isString(b.budget) || !BUDGETS.includes(b.budget as never)) {
-    return { ok: false, error: "invalid_budget" };
-  }
   if (!isString(b.message) || b.message.trim().length === 0 || b.message.length > 5000) {
     return { ok: false, error: "invalid_message" };
   }
@@ -121,15 +149,23 @@ function validate(input: unknown): { ok: true; lead: Lead } | { ok: false; error
     return { ok: false, error: "privacy_required" };
   }
 
+  const choices: Choices = {};
+  for (const field of Object.keys(LEAD_OPTIONS) as LeadField[]) {
+    const read = readChoice(field, b[field]);
+    if (!read.ok) return { ok: false, error: `invalid_${field}` };
+    if (read.value) (choices as Record<string, string>)[field] = read.value;
+  }
+
   return {
     ok: true,
     lead: {
+      ...choices,
       name: b.name.trim(),
       email: b.email.trim(),
-      projectType: b.projectType as Lead["projectType"],
-      budget: b.budget as Lead["budget"],
       message: b.message.trim(),
       privacy: true,
+      lang: b.lang === "en" ? "en" : "es",
+      attribution: readAttributionPayload(b.attribution),
     },
   };
 }
@@ -143,45 +179,81 @@ function escapeHtml(s: string): string {
     .replace(/'/g, "&#39;");
 }
 
+/** Los desplegables que el lead rellenó, con su etiqueta en castellano. */
+function choiceRows(lead: Lead): [string, string][] {
+  return (Object.keys(FIELD_NAMES) as LeadField[]).map((field) => {
+    const value = lead[field];
+    const labels = INTERNAL_LABELS[field] as Record<string, string>;
+    return [FIELD_NAMES[field], value ? labels[value] : "—"];
+  });
+}
+
+function attributionRows(lead: Lead): [string, string][] {
+  return ATTRIBUTION_KEYS.flatMap((key) => {
+    const value = lead.attribution[key];
+    return value ? [[key, value] as [string, string]] : [];
+  });
+}
+
 function emailHtml(lead: Lead): string {
-  const projectLabel = PROJECT_TYPE_LABELS[lead.projectType];
-  const budgetLabel = BUDGET_LABELS[lead.budget];
+  const row = ([label, value]: [string, string]) =>
+    `<tr><td style="padding: 8px 0; color: #666; width: 160px;">${escapeHtml(label)}</td><td style="padding: 8px 0;">${escapeHtml(value)}</td></tr>`;
+  const origin = attributionRows(lead);
   return `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 600px; padding: 24px; color: #1a1a1a;">
       <h2 style="margin: 0 0 16px; font-size: 20px;">Nuevo lead desde la landing</h2>
       <table style="border-collapse: collapse; width: 100%;">
-        <tr><td style="padding: 8px 0; color: #666; width: 140px;">Nombre</td><td style="padding: 8px 0;"><strong>${escapeHtml(lead.name)}</strong></td></tr>
+        <tr><td style="padding: 8px 0; color: #666; width: 160px;">Nombre</td><td style="padding: 8px 0;"><strong>${escapeHtml(lead.name)}</strong></td></tr>
         <tr><td style="padding: 8px 0; color: #666;">Email</td><td style="padding: 8px 0;"><a href="mailto:${escapeHtml(lead.email)}">${escapeHtml(lead.email)}</a></td></tr>
-        <tr><td style="padding: 8px 0; color: #666;">Tipo de proyecto</td><td style="padding: 8px 0;">${escapeHtml(projectLabel)}</td></tr>
-        <tr><td style="padding: 8px 0; color: #666;">Presupuesto</td><td style="padding: 8px 0;">${escapeHtml(budgetLabel)}</td></tr>
+        ${choiceRows(lead).map(row).join("")}
+        <tr><td style="padding: 8px 0; color: #666;">Idioma</td><td style="padding: 8px 0;">${lead.lang}</td></tr>
       </table>
       <h3 style="margin: 24px 0 8px; font-size: 16px;">Mensaje</h3>
       <p style="margin: 0; padding: 16px; background: #f5f5f5; border-radius: 8px; white-space: pre-wrap;">${escapeHtml(lead.message)}</p>
+      <h3 style="margin: 24px 0 8px; font-size: 16px;">Horquilla orientativa para tu respuesta</h3>
+      ${priceGuide(lead.lang, lead.projectType, lead.tech)
+        .map((p) => `<p style="margin: 0 0 8px; color: #444;">${escapeHtml(p)}</p>`)
+        .join("")}
+      ${
+        origin.length
+          ? `<h3 style="margin: 24px 0 8px; font-size: 16px;">Origen de la visita</h3><table style="border-collapse: collapse; width: 100%;">${origin.map(row).join("")}</table>`
+          : ""
+      }
     </div>
   `;
 }
 
 function emailText(lead: Lead): string {
+  const origin = attributionRows(lead);
   return [
     "Nuevo lead desde la landing",
     "",
-    `Nombre:    ${lead.name}`,
-    `Email:     ${lead.email}`,
-    `Proyecto:  ${PROJECT_TYPE_LABELS[lead.projectType]}`,
-    `Budget:    ${BUDGET_LABELS[lead.budget]}`,
+    `Nombre: ${lead.name}`,
+    `Email: ${lead.email}`,
+    ...choiceRows(lead).map(([label, value]) => `${label}: ${value}`),
+    `Idioma: ${lead.lang}`,
     "",
     "Mensaje:",
     lead.message,
+    "",
+    "Horquilla orientativa para tu respuesta:",
+    ...priceGuide(lead.lang, lead.projectType, lead.tech),
+    ...(origin.length ? ["", "Origen de la visita:", ...origin.map(([k, v]) => `${k}: ${v}`)] : []),
   ].join("\n");
 }
 
-async function appendToSheet(lead: Lead): Promise<void> {
+async function appendToSheet(lead: Lead, consentAt: string): Promise<void> {
   const url = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
   const secret = process.env.GOOGLE_SHEETS_WEBHOOK_SECRET;
   if (!url || !secret) {
     console.warn("[contact] Google Sheets webhook not configured; skipping sheet append");
     return;
   }
+
+  const label = <F extends LeadField>(field: F) => {
+    const value = lead[field];
+    return value ? (INTERNAL_LABELS[field] as Record<string, string>)[value] : "";
+  };
 
   const res = await fetch(url, {
     method: "POST",
@@ -191,10 +263,17 @@ async function appendToSheet(lead: Lead): Promise<void> {
       lead: {
         name: lead.name,
         email: lead.email,
-        projectType: PROJECT_TYPE_LABELS[lead.projectType],
-        budget: BUDGET_LABELS[lead.budget],
+        projectType: label("projectType"),
         message: lead.message,
         privacyConsent: lead.privacy,
+        // Campos nuevos (septiembre 2026): el Apps Script tiene que tener columna para ellos.
+        tech: label("tech"),
+        timeline: label("timeline"),
+        source: label("source"),
+        lang: lead.lang,
+        consentAt,
+        privacyPolicyVersion: PRIVACY_POLICY_VERSION,
+        ...lead.attribution,
       },
     }),
   });
@@ -260,6 +339,8 @@ export async function POST(request: Request) {
   if (!validated.ok) {
     return NextResponse.json({ ok: false, error: validated.error }, { status: 400 });
   }
+  const lead = validated.lead;
+  const consentAt = new Date().toISOString();
 
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.RESEND_FROM_EMAIL;
@@ -271,28 +352,34 @@ export async function POST(request: Request) {
   }
 
   const resend = new Resend(apiKey);
+  const projectLabel = lead.projectType
+    ? INTERNAL_LABELS.projectType[lead.projectType]
+    : "sin especificar";
 
   try {
-    const [emailResult, _sheetResult] = await Promise.allSettled([
+    const [emailResult, sheetResult] = await Promise.allSettled([
       resend.emails.send({
         from,
         to,
-        replyTo: validated.lead.email,
-        subject: `Nuevo lead (${PROJECT_TYPE_LABELS[validated.lead.projectType]}): ${validated.lead.name}`,
-        html: emailHtml(validated.lead),
-        text: emailText(validated.lead),
+        replyTo: lead.email,
+        subject: `Nuevo lead (${projectLabel}): ${lead.name}`,
+        html: emailHtml(lead),
+        text: emailText(lead),
       }),
-      appendToSheet(validated.lead),
+      appendToSheet(lead, consentAt),
     ]);
 
-    if (emailResult.status === "rejected") {
-      console.error("[contact] Resend failed:", emailResult.reason);
+    // Resend reports API errors in the resolved value (`{ data: null, error }`), not by throwing.
+    const emailError =
+      emailResult.status === "rejected" ? emailResult.reason : emailResult.value.error;
+    if (emailError) {
+      console.error("[contact] Resend failed:", emailError);
       return NextResponse.json({ ok: false, error: "email_failed" }, { status: 500 });
     }
 
-    if (_sheetResult.status === "rejected") {
+    if (sheetResult.status === "rejected") {
       // Email already sent; log but don't fail the request to the user
-      console.error("[contact] Sheets append failed:", _sheetResult.reason);
+      console.error("[contact] Sheets append failed:", sheetResult.reason);
     }
 
     return NextResponse.json({ ok: true });

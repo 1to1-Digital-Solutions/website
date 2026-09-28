@@ -24,4 +24,20 @@ describe("ContactForm", () => {
     fireEvent.click(privacy);
     expect(submit).toBeDisabled();
   });
+
+  it("does not preselect any answer and does not ask for a budget", () => {
+    render(
+      <LanguageProvider>
+        <ContactForm />
+      </LanguageProvider>
+    );
+
+    for (const name of ["projectType", "tech", "timeline", "source"]) {
+      const select = document.querySelector<HTMLSelectElement>(`select[name="${name}"]`);
+      expect(select).not.toBeNull();
+      expect(select!.value).toBe("");
+    }
+    expect(document.querySelector('select[name="budget"]')).toBeNull();
+    expect(screen.getByText(/horquilla orientativa para el tuyo/)).toBeInTheDocument();
+  });
 });

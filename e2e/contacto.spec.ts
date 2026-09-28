@@ -93,3 +93,22 @@ test("relleno del todo, manda lo que se escribió", async ({ page }) => {
   // Y la trampa viaja vacía: es lo que dice al servidor que no es un robot.
   expect(visto.cuerpo?.website ?? "").toBe("");
 });
+
+test("manda también de dónde vino la visita y lo elegido en los desplegables", async ({ page }) => {
+  const visto = await interceptar(page);
+  // Primera página de la sesión con UTM: el formulario lo lleva aunque se envíe desde otra.
+  await page.goto("/about?utm_source=linkedin&utm_campaign=octubre");
+  const formulario = await irAlFormulario(page);
+
+  await rellenar(page);
+  await formulario.locator('select[name="projectType"]').selectOption("digitalize");
+  await formulario.locator('button[type="submit"]').click();
+
+  await expect.poll(() => visto.cuerpo, { message: "no llegó a enviarse" }).not.toBeNull();
+  expect(visto.cuerpo).toMatchObject({
+    projectType: "digitalize",
+    timeline: "",
+    lang: "es",
+    attribution: { utm_source: "linkedin", utm_campaign: "octubre", landing_page: "/about" },
+  });
+});

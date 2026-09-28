@@ -67,11 +67,20 @@ export default function PrivacyPolicy() {
             <ul className="text-foreground/70 mt-3 list-disc space-y-1 pl-5">
               <li>Nombre</li>
               <li>Dirección de correo electrónico</li>
-              <li>Tipo de proyecto y rango de presupuesto seleccionados</li>
+              <li>
+                Lo que indique en los desplegables, si los rellena: qué necesita, tecnología, cuándo
+                quiere empezar y cómo nos conoció
+              </li>
               <li>Contenido del mensaje que nos envía</li>
               <li>
-                Evidencia de la aceptación de esta Política de Privacidad (marca temporal y estado
-                de la casilla)
+                Evidencia de la aceptación de esta Política de Privacidad (marca temporal, estado de
+                la casilla y versión de la política aceptada)
+              </li>
+              <li>
+                El origen de su visita, si lo hay: parámetros de campaña de la dirección (UTM), la
+                página desde la que llegó y la primera página que visitó. Se guardan solo durante la
+                sesión en su navegador y viajan con el formulario al enviarlo, para saber por qué
+                canal nos llegan las consultas.
               </li>
             </ul>
             <p className="mt-3">
@@ -247,7 +256,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <p className="text-foreground/70 border-foreground/10 border-t pt-8 text-xs">
-            Última actualización: Mayo 2026
+            Última actualización: Septiembre 2026
           </p>
         </div>
       </div>

@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Send, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { trackEvent } from "@/components/GoogleAnalytics";
+import { LEAD_LABELS, LEAD_OPTIONS, type LeadField } from "@/content/lead-options";
+import { storedAttribution } from "@/lib/attribution";
 import Link from "next/link";
 
 type Status = "idle" | "loading" | "success" | "error";
@@ -16,8 +18,56 @@ type FieldErrors = {
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+const SELECT_CLASS =
+  "border-foreground/10 bg-anthracite text-foreground focus:border-primary focus:ring-primary w-full cursor-pointer appearance-none rounded-xl border p-3 pr-10 focus:ring-1 focus:outline-none disabled:cursor-not-allowed disabled:opacity-60";
+
+/** Un desplegable opcional, sin nada elegido de entrada: no se ancla ninguna respuesta. */
+function ChoiceSelect({
+  field,
+  label,
+  optional,
+  disabled,
+}: {
+  field: LeadField;
+  label: string;
+  optional?: string;
+  disabled: boolean;
+}) {
+  const { t, lang } = useLanguage();
+  const labels = LEAD_LABELS[lang][field] as Record<string, string>;
+  return (
+    <div className="flex flex-col gap-2">
+      <label htmlFor={field} className="text-foreground/80 text-sm font-medium">
+        {label}
+        {optional && <span className="text-foreground/50 font-normal"> ({optional})</span>}
+      </label>
+      <div className="relative">
+        <select
+          id={field}
+          name={field}
+          defaultValue=""
+          disabled={disabled}
+          className={SELECT_CLASS}
+        >
+          <option value="">{t("contSelectPlaceholder") as string}</option>
+          {LEAD_OPTIONS[field].map((value) => (
+            <option key={value} value={value}>
+              {labels[value]}
+            </option>
+          ))}
+        </select>
+        <ChevronDown
+          aria-hidden="true"
+          className="text-foreground/70 pointer-events-none absolute top-1/2 right-3 -translate-y-1/2"
+          size={20}
+        />
+      </div>
+    </div>
+  );
+}
+
 export function ContactForm() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const [status, setStatus] = useState<Status>("idle");
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const [errors, setErrors] = useState<FieldErrors>({});
@@ -32,10 +82,14 @@ export function ContactForm() {
     const payload = {
       name: String(data.get("name") || "").trim(),
       email: String(data.get("email") || "").trim(),
-      projectType: String(data.get("project") || ""),
-      budget: String(data.get("budget") || ""),
+      projectType: String(data.get("projectType") || ""),
+      tech: String(data.get("tech") || ""),
+      timeline: String(data.get("timeline") || ""),
+      source: String(data.get("source") || ""),
       message: String(data.get("message") || "").trim(),
       privacy: privacyAccepted,
+      lang,
+      attribution: storedAttribution(),
       website: String(data.get("website") || ""), // honeypot
     };
 
@@ -76,7 +130,8 @@ export function ContactForm() {
         trackEvent("form_submit", {
           form_id: "contact",
           project_type: payload.projectType,
-          budget: payload.budget,
+          timeline: payload.timeline,
+          source: payload.source,
         });
       } else {
         setStatus("error");
@@ -103,7 +158,7 @@ export function ContactForm() {
 
         {/* Global status announcer for screen readers (success / submit error) */}
         <div aria-live="polite" aria-atomic="true" className="sr-only">
-          {status === "success" && t("contBtnSuccess")}
+          {status === "success" && `${t("contBtnSuccess")} ${t("contSuccessNote")}`}
           {status === "error" && t("contErrorMsg")}
         </div>
 
@@ -197,60 +252,35 @@ export function ContactForm() {
             </div>
           </div>
 
-          {/* Row 2: Project Type + Budget */}
+          {/* Rows 2-3: what, which tech, when, how they found us — all optional */}
           <div className="grid gap-6 md:grid-cols-2">
-            <div className="flex flex-col gap-2">
-              <label htmlFor="project" className="text-foreground/80 text-sm font-medium">
-                {t("contType")}
-              </label>
-              <div className="relative">
-                <select
-                  id="project"
-                  name="project"
-                  defaultValue="mvp"
-                  disabled={isBusy || isDone}
-                  className="border-foreground/10 bg-anthracite text-foreground focus:border-primary focus:ring-primary w-full cursor-pointer appearance-none rounded-xl border p-3 pr-10 focus:ring-1 focus:outline-none disabled:cursor-not-allowed disabled:opacity-60"
-                >
-                  <option value="mvp">{t("contOpt1")}</option>
-                  <option value="rescue">{t("contOpt2")}</option>
-                  <option value="blockchain">{t("contOpt3")}</option>
-                  <option value="xr">{t("contOpt4")}</option>
-                  <option value="other">{t("contOpt5")}</option>
-                </select>
-                <ChevronDown
-                  aria-hidden="true"
-                  className="text-foreground/70 pointer-events-none absolute top-1/2 right-3 -translate-y-1/2"
-                  size={20}
-                />
-              </div>
-            </div>
-            <div className="flex flex-col gap-2">
-              <label htmlFor="budget" className="text-foreground/80 text-sm font-medium">
-                {t("contBudget")}
-              </label>
-              <div className="relative">
-                <select
-                  id="budget"
-                  name="budget"
-                  defaultValue="<5"
-                  disabled={isBusy || isDone}
-                  className="border-foreground/10 bg-anthracite text-foreground focus:border-primary focus:ring-primary w-full cursor-pointer appearance-none rounded-xl border p-3 pr-10 focus:ring-1 focus:outline-none disabled:cursor-not-allowed disabled:opacity-60"
-                >
-                  <option value="<5">{t("contBudOptUnder5")}</option>
-                  <option value="5-10">{t("contBudOpt5to10")}</option>
-                  <option value="10-15">{t("contBudOpt1")}</option>
-                  <option value="15-20">{t("contBudOpt2")}</option>
-                  <option value="20-30">{t("contBudOpt3")}</option>
-                  <option value=">30">{t("contBudOpt4")}</option>
-                </select>
-                <ChevronDown
-                  aria-hidden="true"
-                  className="text-foreground/70 pointer-events-none absolute top-1/2 right-3 -translate-y-1/2"
-                  size={20}
-                />
-              </div>
-            </div>
+            <ChoiceSelect
+              field="projectType"
+              label={t("contType") as string}
+              disabled={isBusy || isDone}
+            />
+            <ChoiceSelect
+              field="tech"
+              label={t("contTech") as string}
+              disabled={isBusy || isDone}
+            />
           </div>
+          <div className="grid gap-6 md:grid-cols-2">
+            <ChoiceSelect
+              field="timeline"
+              label={t("contTimeline") as string}
+              disabled={isBusy || isDone}
+            />
+            <ChoiceSelect
+              field="source"
+              label={t("contSource") as string}
+              optional={t("contOptional") as string}
+              disabled={isBusy || isDone}
+            />
+          </div>
+          <p className="text-foreground/60 -mt-2 text-sm leading-relaxed">
+            {t("contBudgetNote") as string}
+          </p>
 
           {/* Row 3: Message */}
           <div className="flex flex-col gap-2">
@@ -361,6 +391,12 @@ export function ContactForm() {
             {status === "success" && t("contBtnSuccess")}
             {status === "error" && t("contBtnError")}
           </button>
+
+          {status === "success" && (
+            <p className="text-foreground/80 border-primary/30 bg-primary/5 rounded-xl border p-4 text-center text-sm leading-relaxed">
+              {t("contSuccessNote") as string}
+            </p>
+          )}
 
           {status === "error" && (
             <p role="alert" className="mt-3 text-center text-sm text-red-400">
