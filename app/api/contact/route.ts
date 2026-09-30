@@ -9,6 +9,7 @@ import {
 } from "@/content/lead-options";
 import { priceGuide } from "@/content/pricing";
 import { ATTRIBUTION_KEYS, type Attribution } from "@/lib/attribution";
+import { crmConfigured, sendToCrm } from "@/lib/crm";
 
 export const runtime = "nodejs";
 
@@ -246,7 +247,9 @@ async function appendToSheet(lead: Lead, consentAt: string): Promise<void> {
   const url = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
   const secret = process.env.GOOGLE_SHEETS_WEBHOOK_SECRET;
   if (!url || !secret) {
-    console.warn("[contact] Google Sheets webhook not configured; skipping sheet append");
+    // Con el CRM configurado, que falte la hoja es lo esperado: es su sustituto.
+    if (!crmConfigured())
+      console.warn("[contact] Google Sheets webhook not configured; skipping sheet append");
     return;
   }
 
@@ -357,7 +360,7 @@ export async function POST(request: Request) {
     : "sin especificar";
 
   try {
-    const [emailResult, sheetResult] = await Promise.allSettled([
+    const [emailResult, sheetResult, crmResult] = await Promise.allSettled([
       resend.emails.send({
         from,
         to,
@@ -367,6 +370,19 @@ export async function POST(request: Request) {
         text: emailText(lead),
       }),
       appendToSheet(lead, consentAt),
+      sendToCrm({
+        name: lead.name,
+        email: lead.email,
+        message: lead.message,
+        lang: lead.lang,
+        projectType: lead.projectType,
+        tech: lead.tech,
+        timeline: lead.timeline,
+        heardFrom: lead.source ? INTERNAL_LABELS.source[lead.source] : undefined,
+        attribution: lead.attribution,
+        consentAt,
+        policyVersion: PRIVACY_POLICY_VERSION,
+      }),
     ]);
 
     // Resend reports API errors in the resolved value (`{ data: null, error }`), not by throwing.
@@ -380,6 +396,10 @@ export async function POST(request: Request) {
     if (sheetResult.status === "rejected") {
       // Email already sent; log but don't fail the request to the user
       console.error("[contact] Sheets append failed:", sheetResult.reason);
+    }
+    if (crmResult.status === "rejected") {
+      // El aviso por correo ya ha salido: el lead no se pierde, pero hay que darlo de alta a mano.
+      console.error("[contact] CRM ingest failed:", crmResult.reason);
     }
 
     return NextResponse.json({ ok: true });
