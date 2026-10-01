@@ -90,3 +90,21 @@ test("si Resend devuelve error, el envío falla", async () => {
   const res = await POST(request(valid, nextIp()));
   expect(res.status).toBe(500);
 });
+
+test("con el CRM configurado, el lead también va al CRM, y si el CRM falla el formulario no", async () => {
+  process.env.CRM_URL = "https://crm.example.com";
+  process.env.CRM_SECRET_LANDING = "secreto";
+  const fetchSpy = jest
+    .spyOn(globalThis, "fetch")
+    .mockResolvedValue(new Response("", { status: 503 }));
+  try {
+    const res = await POST(request(valid, nextIp()));
+    expect(res.status).toBe(200);
+    const [url] = fetchSpy.mock.calls[0] as [URL];
+    expect(String(url)).toBe("https://crm.example.com/api/leads");
+  } finally {
+    fetchSpy.mockRestore();
+    delete process.env.CRM_URL;
+    delete process.env.CRM_SECRET_LANDING;
+  }
+});
