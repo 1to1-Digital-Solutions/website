@@ -9,7 +9,7 @@ import {
 } from "@/content/lead-options";
 import { priceGuide } from "@/content/pricing";
 import { ATTRIBUTION_KEYS, type Attribution } from "@/lib/attribution";
-import { crmConfigured, sendToCrm } from "@/lib/crm";
+import { sendToCrm } from "@/lib/crm";
 
 export const runtime = "nodejs";
 
@@ -247,9 +247,7 @@ async function appendToSheet(lead: Lead, consentAt: string): Promise<void> {
   const url = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
   const secret = process.env.GOOGLE_SHEETS_WEBHOOK_SECRET;
   if (!url || !secret) {
-    // Con el CRM configurado, que falte la hoja es lo esperado: es su sustituto.
-    if (!crmConfigured())
-      console.warn("[contact] Google Sheets webhook not configured; skipping sheet append");
+    console.warn("[contact] Google Sheets webhook not configured; skipping sheet append");
     return;
   }
 
@@ -269,7 +267,8 @@ async function appendToSheet(lead: Lead, consentAt: string): Promise<void> {
         projectType: label("projectType"),
         message: lead.message,
         privacyConsent: lead.privacy,
-        // Campos nuevos (septiembre 2026): el Apps Script tiene que tener columna para ellos.
+        // El Apps Script (`scripts/sheets-webhook.gs`) escribe por nombre de cabecera y añade
+        // la columna que falte, así que un campo nuevo aquí no se pierde en la hoja.
         tech: label("tech"),
         timeline: label("timeline"),
         source: label("source"),

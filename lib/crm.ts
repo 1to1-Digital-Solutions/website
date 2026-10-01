@@ -7,8 +7,8 @@ import { createHash, createHmac } from "node:crypto";
  * HMAC-SHA256 y su secreto, y manda una `Idempotency-Key`. La clave sale del contenido del
  * envío, así que quien reintenta el formulario porque algo falló no deja dos leads.
  *
- * Sin `CRM_URL` o sin `CRM_SECRET_LANDING` no se envía nada: el CRM es opcional hasta que
- * esté desplegado.
+ * El lead se guarda en tres sitios a la vez y ninguno depende de otro: el correo de aviso, la
+ * hoja de Google y el CRM. Sin `CRM_URL` o sin `CRM_SECRET_LANDING` este envío se salta.
  */
 
 export type CrmLead = {
@@ -26,13 +26,10 @@ export type CrmLead = {
   policyVersion: string;
 };
 
-const TIMEOUT_MS = 5_000;
+/** Deja sitio al arranque en frío de la base del CRM sin colgar el formulario. */
+const TIMEOUT_MS = 4_000;
 /** Un reintento corto: el aviso por correo ya ha salido y el formulario no puede colgarse. */
 const ATTEMPTS = 2;
-
-export function crmConfigured(env: Record<string, string | undefined> = process.env): boolean {
-  return Boolean(env.CRM_URL && env.CRM_SECRET_LANDING);
-}
 
 export function crmPayload(lead: CrmLead) {
   const a = lead.attribution;
