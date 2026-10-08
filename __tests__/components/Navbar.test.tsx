@@ -30,7 +30,7 @@ describe("Navbar", () => {
     renderWithProviders(<Navbar />);
 
     // Two language toggle buttons present (desktop / mobile) — default lang is ES,
-    // so aria-label is "Cambiar a inglés"
+    // so aria-label is "Cambiar a inglés" (Spanish UI text)
     const langButtons = screen.getAllByRole("button", { name: /cambiar a inglés/i });
 
     fireEvent.click(langButtons[0]);

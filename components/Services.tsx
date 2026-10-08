@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { SERVICES_PAGE, servicesByGroup, type ServiceSlug } from "@/content/services";
 
-// Cada ámbito conserva su animación de fondo al pasar el ratón.
+// Each area keeps its background animation on hover.
 const SCOPE_STYLE: Record<string, { hoverClass: string; cardHoverClass: string; bg: string }> = {
   rescue: {
     hoverClass:

@@ -1,7 +1,7 @@
 /**
- * Textos de /about. Primera persona: es la página de César, no la del estudio. Salen de su
- * Acerca de de LinkedIn (v6, septiembre de 2026) y de `linkedin/contexto/00_marca_comun.md`;
- * si cambia algo allí, se cambia aquí.
+ * Copy for /about. First person: it is César's page, not the studio's. It comes from his
+ * LinkedIn About section (v6, September 2026) and the shared brand notes; if something
+ * changes there, it changes here too.
  */
 
 type Stat = { value: string; label: string };

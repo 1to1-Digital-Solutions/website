@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Page() {
   const lang = await requestLang();
-  // Cada servicio como `Service` de schema.org, colgado de la organización que declara el layout.
+  // Each service as a schema.org `Service`, provided by the organization declared in the layout.
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "ItemList",

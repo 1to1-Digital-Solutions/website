@@ -1,14 +1,14 @@
 import { defineConfig, devices } from "@playwright/test";
 
 /**
- * Los e2e de la landing.
+ * The landing's end-to-end tests.
  *
- * Contra el sitio **construido** y no contra `next dev`: lo que se publica es el build, y es
- * ahí donde se ve si una página se rompe al prerenderizarse. El servidor lo levanta el propio
- * Playwright y lo reutiliza si ya hay uno escuchando, para poder iterar sin esperar al build.
+ * They run against the **built** site, not `next dev`: the build is what gets published, and
+ * it is where a page that breaks during prerendering shows up. Playwright starts the server
+ * itself and reuses one that is already listening, so you can iterate without waiting for
+ * the build.
  *
- * `E2E_PORT` permite correr esta suite a la vez que la de otro repo sin pelearse por el
- * puerto, que es como se usan en esta máquina.
+ * `E2E_PORT` lets this suite run alongside another repo's without fighting over the port.
  */
 
 const PORT = Number(process.env.E2E_PORT ?? 3210);
@@ -26,7 +26,7 @@ export default defineConfig({
   },
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
   webServer: {
-    command: `npm run build && npm run start -- --port ${PORT} --hostname 127.0.0.1`,
+    command: `pnpm build && pnpm start --port ${PORT} --hostname 127.0.0.1`,
     url: BASE,
     reuseExistingServer: !process.env.CI,
     timeout: 180_000,
