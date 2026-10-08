@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 // Baseline security headers. CSP is intentionally permissive on `script-src`
 // because the theme-flash script in app/layout.tsx is inline; tightening that
-// (nonce-based CSP via middleware) is tracked in TODO.md.
+// (nonce-based CSP via middleware) is a pending follow-up.
 const securityHeaders = [
   { key: "X-DNS-Prefetch-Control", value: "on" },
   { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },

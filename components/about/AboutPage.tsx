@@ -11,7 +11,7 @@ export function AboutPage() {
 
   return (
     <div className="bg-background w-full pt-32">
-      {/* Presentación */}
+      {/* Introduction */}
       <section className="mx-auto w-full max-w-7xl px-6 pb-20">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-20">
           <div className="relative w-full flex-1">
@@ -79,7 +79,7 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* Cómo trabajo y por qué */}
+      {/* How I work and why */}
       <section className="mx-auto grid w-full max-w-7xl gap-12 px-6 py-24 md:grid-cols-2 md:gap-16">
         <div>
           <h2 className="font-outfit text-3xl font-bold tracking-tight md:text-4xl">

@@ -8,7 +8,7 @@ type Props = {
   secondary?: { label: string; href: string };
 };
 
-/** Cierre de las páginas interiores: una pregunta, una línea y el camino al formulario. */
+/** Closing block of the inner pages: a question, one line and the way to the form. */
 export function PageCta({ title, text, primary, secondary }: Props) {
   return (
     <section className="mx-auto w-full max-w-5xl px-6 pb-24">
