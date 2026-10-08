@@ -1,8 +1,10 @@
-# Qué dependencias pueden ejecutar sus scripts de instalación.
+# Which dependencies may run their install scripts.
 #
-# pnpm 10 los bloquea por defecto y pide decidir una por una. Estas dos los necesitan de
-# verdad: `sharp` compila el binario nativo con el que Next optimiza las imágenes —sin él el
-# build falla en esta máquina—, y `unrs-resolver` es el resolvedor de imports de ESLint.
+# pnpm 10+ blocks them by default and asks for a decision on each one. These two really need
+# them: `sharp` builds the native binary Next uses to optimise images (without it the build
+# fails), and `unrs-resolver` is ESLint's import resolver. `@parcel/watcher` (pulled in by
+# Jest's file watcher) ships prebuilt binaries, so its fallback build script stays off.
 allowBuilds:
+  "@parcel/watcher": false
   sharp: true
   unrs-resolver: true
