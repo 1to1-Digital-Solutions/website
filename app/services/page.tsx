@@ -11,7 +11,13 @@ export async function generateMetadata(): Promise<Metadata> {
     title: c.metaTitle,
     description: c.metaDescription,
     alternates: { canonical: "/services" },
-    openGraph: { title: c.metaTitle, description: c.metaDescription, url: "/services" },
+    // Redefining openGraph drops the root image: name it again.
+    openGraph: {
+      title: c.metaTitle,
+      description: c.metaDescription,
+      url: "/services",
+      images: ["/opengraph-image"],
+    },
   };
 }
 
