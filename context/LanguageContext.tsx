@@ -39,6 +39,18 @@ export const translations = {
     case3Desc:
       "I rescued a half-built screen tourism MVP: redesigned the visuals, implemented the responsive design, and built the native iOS and Android apps with Capacitor. From stalled to shipped on the stores.",
 
+    // Own products (inside the work section)
+    ownTitle: "Our own products",
+    ownSub: "We also build and run products of our own.",
+    own1Cat: "Fitness",
+    own1Title: "Hoy Entreno",
+    own1Desc:
+      "A strength and running plan made for each person, with workout logging, offline use and an app for Garmin watches.",
+    own2Cat: "AI",
+    own2Title: "Scoura",
+    own2Desc:
+      "Personalised newsletters that a team of AI agents researches, cross-checks, fact-checks and writes.",
+
     // Testimonials
     testTitle1: "Client ",
     testTitle2: "stories.",
@@ -171,6 +183,18 @@ export const translations = {
     case3Title: "Moovle: app de turismo de pantalla",
     case3Desc:
       "Rescaté un MVP de turismo de pantalla a medio terminar: rediseñé la interfaz, implementé el diseño responsive y desarrollé las apps nativas iOS y Android con Capacitor. De estancado a desplegado en las stores.",
+
+    // Productos propios (dentro de la sección de proyectos)
+    ownTitle: "Productos propios",
+    ownSub: "También construimos y mantenemos productos nuestros.",
+    own1Cat: "Fitness",
+    own1Title: "Hoy Entreno",
+    own1Desc:
+      "Un plan de fuerza y running hecho para cada persona, con registro de entrenos, uso sin conexión y app para relojes Garmin.",
+    own2Cat: "IA",
+    own2Title: "Scoura",
+    own2Desc:
+      "Newsletters personalizadas que un equipo de agentes de IA investiga, contrasta, verifica y redacta.",
 
     // Testimonials
     testTitle1: "Historias de ",
