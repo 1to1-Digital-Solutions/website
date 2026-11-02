@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { MENTORSHIP } from "@/content/services";
+import { PriceCard } from "@/components/PriceCard";
 
 /** Home page summary of the mentoring: what you take away, with a link to /services. */
 export function Services() {
@@ -38,6 +39,8 @@ export function Services() {
           </li>
         ))}
       </ul>
+
+      <PriceCard />
 
       <div className="mt-12 text-center">
         <Link

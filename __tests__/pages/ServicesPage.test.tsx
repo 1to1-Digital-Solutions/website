@@ -16,9 +16,10 @@ describe("ServicesPage", () => {
     }
   });
 
-  it("does not publish any price", () => {
-    const { container } = renderWithProviders(<ServicesPage />);
-    expect(container.textContent).not.toMatch(/€|\bEUR\b/);
+  it("shows one public price, + VAT, paid in two halves", () => {
+    renderWithProviders(<ServicesPage />);
+    expect(screen.getAllByText("1.900 €").length).toBeGreaterThan(0);
+    expect(screen.getByText(/2 pagos de 950 €/)).toBeInTheDocument();
   });
 
   it("keeps both languages in step", () => {

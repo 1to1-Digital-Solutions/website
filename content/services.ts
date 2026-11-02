@@ -3,11 +3,22 @@
  * Since November 2026 there is a single offer: an 8-week mentoring programme to understand
  * and bring AI into the client's business safely. Source of truth: the brand context of
  * 02/11/2026 and César's LinkedIn profile (headline, banner and About section). The English
- * copy is a faithful translation of the Spanish one. No prices are published.
+ * copy is a faithful translation of the Spanish one. One public price: 1.900 € + IVA, paid in
+ * two halves (at signing and after the fourth session).
  */
 
 type Step = { title: string; text: string };
 type Outcome = { title: string; text: string };
+type Price = {
+  title: string;
+  amount: string;
+  tax: string;
+  includes: string;
+  payment: string;
+};
+
+/** The price, as a number, for structured data. One single price for everyone. */
+export const PRICE_EUR = 1900;
 
 type MentorshipCopy = {
   metaTitle: string;
@@ -24,6 +35,7 @@ type MentorshipCopy = {
   steps: Step[];
   outcomesTitle: string;
   outcomes: Outcome[];
+  price: Price;
   proofTitle: string;
   proofIntro: string;
   proofs: Step[];
@@ -50,7 +62,12 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
     title2: "en tu negocio.",
     intro:
       "Te acompaño durante 8 semanas, con una sesión de 1 hora a la semana, a entender qué está pasando con la IA y a integrarla en tu negocio de forma segura. Terminas con un sistema adaptado a tu empresa para crear tus propias herramientas sin depender de nadie.",
-    facts: ["8 semanas", "1 sesión de 1 hora a la semana", "Primera reunión gratis"],
+    facts: [
+      "8 semanas",
+      "1 sesión de 1 hora a la semana",
+      "Primera reunión gratis",
+      "1.900 € + IVA",
+    ],
     forWhoTitle: "¿Para quién es?",
     forWho: [
       "Autónomos y pymes de 1 a 50 empleados, sin perfil tecnológico interno, que llevan años con el mismo sistema de trabajo y sienten que la IA va más rápido de lo que pueden seguir.",
@@ -64,7 +81,7 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       },
       {
         title: "Un plan adaptado a tu empresa",
-        text: "Te lo envío junto con el presupuesto, para que sepas qué vamos a hacer antes de empezar.",
+        text: "Te lo envío por escrito, para que sepas qué vamos a hacer antes de empezar.",
       },
       {
         title: "Lo ponemos en marcha juntos",
@@ -102,6 +119,15 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
         text: "Sin intermediarios, durante toda la mentoría.",
       },
     ],
+    price: {
+      title: "Precio",
+      amount: "1.900 €",
+      tax: "+ IVA",
+      includes:
+        "El mismo precio para todos e incluye todo lo anterior: las 8 sesiones, el plan, el sistema, las primeras herramientas, la formación del equipo y la política de uso seguro.",
+      payment:
+        "En 2 pagos de 950 €: la mitad al firmar y la otra mitad a mitad de la mentoría, después de la cuarta sesión.",
+    },
     proofTitle: "Lo que ya he hecho por otras empresas",
     proofIntro:
       "Antes de la mentoría he pasado años convirtiendo procesos anticuados en herramientas. Algunos ejemplos:",
@@ -141,7 +167,7 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
     title2: "into your business.",
     intro:
       "I'll guide you for 8 weeks, with one 1-hour session a week, to understand what's happening with AI and bring it into your business safely. You finish with a system adapted to your company to build your own tools without depending on anyone.",
-    facts: ["8 weeks", "One 1-hour session a week", "First meeting free"],
+    facts: ["8 weeks", "One 1-hour session a week", "First meeting free", "€1,900 + VAT"],
     forWhoTitle: "Who is it for?",
     forWho: [
       "Freelancers and small businesses with 1 to 50 employees, with no in-house tech profile, that have used the same way of working for years and feel AI is moving faster than they can keep up.",
@@ -155,7 +181,7 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       },
       {
         title: "A plan adapted to your company",
-        text: "I send it to you together with the quote, so you know what we'll do before we start.",
+        text: "I send it to you in writing, so you know what we'll do before we start.",
       },
       {
         title: "We put it in motion together",
@@ -193,6 +219,15 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
         text: "No middlemen, for the whole mentoring.",
       },
     ],
+    price: {
+      title: "Price",
+      amount: "€1,900",
+      tax: "+ VAT",
+      includes:
+        "The same price for everyone, and it includes everything above: the 8 sessions, the plan, the system, the first tools, the team training and the safe use policy.",
+      payment:
+        "In 2 payments of €950: half when we sign and the other half halfway through the mentoring, after the fourth session.",
+    },
     proofTitle: "What I've already done for other companies",
     proofIntro:
       "Before the mentoring I spent years turning outdated processes into tools. Some examples:",

@@ -76,7 +76,7 @@ export const translations = {
       "Yes. I work with freelancers and small businesses with 1 to 50 employees. A freelancer is a business of one.",
     faq3Q: "How much does it cost?",
     faq3A:
-      "It depends on your company and what we need to set up. After the first 15-minute meeting, which is free, I send you a plan adapted to your company together with the quote.",
+      "€1,900 + VAT, the same for everyone. You pay it in 2 halves of €950: one when we sign and the other after the fourth session. The first 15-minute meeting is free and commits you to nothing.",
     faq4Q: "What happens when the 8 weeks are over?",
     faq4A:
       "You keep the system and the first tools, with their documentation. The idea is that from then on you can build your own tools without depending on anyone, me included.",
@@ -114,8 +114,7 @@ export const translations = {
     proc1Title: "A first 15-minute meeting, free",
     proc1Desc: "To look at your situation: how you work today and where your hours go.",
     proc2Title: "A plan adapted to your company",
-    proc2Desc:
-      "I send it to you together with the quote, so you know what we'll do before we start.",
+    proc2Desc: "I send it to you in writing, so you know what we'll do before we start.",
     proc3Title: "We put it in motion together",
     proc3Desc: "You learn the concepts and we set up the first tools, one session a week.",
     proc4Title: "You finish with your own system",
@@ -196,7 +195,7 @@ export const translations = {
       "Sí. Trabajo con autónomos y pymes de 1 a 50 empleados. Un autónomo es un negocio de una persona.",
     faq3Q: "¿Cuánto cuesta?",
     faq3A:
-      "Depende de tu empresa y de lo que haya que montar. Después de la primera reunión de 15 minutos, que es gratis, te envío un plan adaptado a tu empresa junto con el presupuesto.",
+      "1.900 € + IVA, el mismo precio para todos. Se paga en 2 mitades de 950 €: una al firmar y otra después de la cuarta sesión. La primera reunión de 15 minutos es gratis y no te compromete a nada.",
     faq4Q: "¿Qué pasa cuando terminan las 8 semanas?",
     faq4A:
       "Te quedas con el sistema y las primeras herramientas, con su documentación. La idea es que a partir de ahí puedas crear tus propias herramientas sin depender de nadie, tampoco de mí.",
@@ -234,8 +233,7 @@ export const translations = {
     proc1Title: "Una primera reunión de 15 minutos, gratis",
     proc1Desc: "Para analizar tu situación: cómo trabajáis hoy y dónde se os van las horas.",
     proc2Title: "Un plan adaptado a tu empresa",
-    proc2Desc:
-      "Te lo envío junto con el presupuesto, para que sepas qué vamos a hacer antes de empezar.",
+    proc2Desc: "Te lo envío por escrito, para que sepas qué vamos a hacer antes de empezar.",
     proc3Title: "Lo ponemos en marcha juntos",
     proc3Desc:
       "Aprendes los conceptos y montamos las primeras herramientas, una sesión a la semana.",

@@ -4,6 +4,7 @@ import { Check } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { MENTORSHIP } from "@/content/services";
 import { PageCta } from "@/components/PageCta";
+import { PriceCard } from "@/components/PriceCard";
 
 export function ServicesPage() {
   const { lang } = useLanguage();
@@ -87,6 +88,7 @@ export function ServicesPage() {
             </li>
           ))}
         </ul>
+        <PriceCard />
       </section>
 
       {/* Proof: processes turned into tools */}

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ServicesPage } from "@/components/services/ServicesPage";
-import { MENTORSHIP } from "@/content/services";
+import { MENTORSHIP, PRICE_EUR } from "@/content/services";
 import { requestLang } from "@/lib/lang";
 
 const SITE_URL = "https://1to1digital.solutions";
@@ -34,6 +34,19 @@ export default async function Page() {
     serviceType: "AI mentoring",
     provider: { "@id": `${SITE_URL}/#organization` },
     areaServed: "ES",
+    offers: {
+      "@type": "Offer",
+      price: PRICE_EUR,
+      priceCurrency: "EUR",
+      // + VAT: schema.org has no flag on Offer, so it goes in the price specification.
+      priceSpecification: {
+        "@type": "PriceSpecification",
+        price: PRICE_EUR,
+        priceCurrency: "EUR",
+        valueAddedTaxIncluded: false,
+      },
+      url: `${SITE_URL}/services#price`,
+    },
   };
 
   return (
