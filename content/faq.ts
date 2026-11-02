@@ -24,7 +24,7 @@ export const FAQ: Record<"es" | "en", FaqCopy> = {
       },
       {
         q: "¿Cuánto cuesta?",
-        a: "2.900 € + IVA. Se paga en 2 mitades de 1.450 €: una al firmar y otra después de la cuarta sesión. La primera reunión de 15 minutos es gratis y no te compromete a nada.",
+        a: "2.500 € + IVA. Se paga en 2 mitades de 1.250 €: una al firmar y otra después de la cuarta sesión. La primera reunión de 15 minutos es gratis y no te compromete a nada.",
       },
       {
         q: "¿Y si no me sirve?",
@@ -55,7 +55,7 @@ export const FAQ: Record<"es" | "en", FaqCopy> = {
       },
       {
         q: "How much does it cost?",
-        a: "€2,900 + VAT. You pay it in 2 halves of €1,450: one when we sign and the other after the fourth session. The first 15-minute meeting is free and commits you to nothing.",
+        a: "€2,500 + VAT. You pay it in 2 halves of €1,250: one when we sign and the other after the fourth session. The first 15-minute meeting is free and commits you to nothing.",
       },
       {
         q: "What if it doesn't work for me?",

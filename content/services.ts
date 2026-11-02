@@ -3,7 +3,7 @@
  * Since November 2026 there is a single offer: an 8-week mentoring programme to understand
  * and bring AI into the client's business safely. Source of truth: the brand context of
  * 02/11/2026 and César's LinkedIn profile (headline, banner and About section). The English
- * copy is a faithful translation of the Spanish one. One public price: 2.900 € + IVA, paid in
+ * copy is a faithful translation of the Spanish one. One public price: 2.500 € + IVA, paid in
  * two halves (at signing and after the fourth session).
  */
 
@@ -20,7 +20,7 @@ type Price = {
 };
 
 /** The price, as a number, for structured data. One single price for everyone. */
-export const PRICE_EUR = 2900;
+export const PRICE_EUR = 2500;
 
 type MentorshipCopy = {
   metaTitle: string;
@@ -131,12 +131,12 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
     ],
     price: {
       title: "Precio",
-      amount: "2.900 €",
+      amount: "2.500 €",
       tax: "+ IVA",
       includes:
         "Incluye todo lo anterior: las 8 sesiones, el plan, el sistema, las primeras herramientas, la formación del equipo y la política de uso seguro.",
       payment:
-        "En 2 pagos de 1.450 €: la mitad al firmar y la otra mitad a mitad de la mentoría, después de la cuarta sesión.",
+        "En 2 pagos de 1.250 €: la mitad al firmar y la otra mitad a mitad de la mentoría, después de la cuarta sesión.",
       guaranteeTitle: "Garantía",
       guarantee:
         "Si después de la segunda sesión no estás conforme o ves que no te está sirviendo, te devuelvo íntegro lo que hayas pagado.",
@@ -260,12 +260,12 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
     ],
     price: {
       title: "Price",
-      amount: "€2,900",
+      amount: "€2,500",
       tax: "+ VAT",
       includes:
         "It includes everything above: the 8 sessions, the plan, the system, the first tools, the team training and the safe use policy.",
       payment:
-        "In 2 payments of €1,450: half when we sign and the other half halfway through the mentoring, after the fourth session.",
+        "In 2 payments of €1,250: half when we sign and the other half halfway through the mentoring, after the fourth session.",
       guaranteeTitle: "Guarantee",
       guarantee:
         "If after the second session you're not satisfied or you see it isn't helping you, I'll refund everything you've paid in full.",

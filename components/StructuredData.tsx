@@ -79,7 +79,7 @@ export function StructuredData({ lang = "es" }: { lang?: "es" | "en" }) {
     },
     // Sessions are online: the service covers all of Spain.
     areaServed: { "@type": "Country", name: "España" },
-    priceRange: "2.900 € + IVA",
+    priceRange: "2.500 € + IVA",
     taxID: "B27630136",
     sameAs: ["https://github.com/1to1-Digital-Solutions", LINKEDIN_URL],
   };
