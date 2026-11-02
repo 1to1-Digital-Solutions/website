@@ -12,6 +12,7 @@
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-anthracite: var(--anthracite);
+  --color-neon: var(--neon);
 
   /* Brand palette — tokens. Same in both themes (semantic colors live in :root/.light). */
   --color-primary-100: #14ffbc;
@@ -21,131 +22,20 @@
   --color-primary-500: #116e57;
   --color-primary-600: #0a5a46;
   --color-primary-700: #084939;
-
-  --animate-rocket-shake: rocket-shake 0.5s ease-in-out infinite;
-  --animate-spin-slow: spin 4s linear infinite;
-  --animate-cpu-pulse: cpu-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  --animate-code-bg: code-bg 20s linear infinite;
-  --animate-marquee: marquee 30s linear infinite;
-  --animate-rocket-vibrate: rocket-vibrate 0.15s ease-in-out infinite;
-
-  @keyframes rocket-shake {
-    0%,
-    100% {
-      transform: translateY(0) rotate(0);
-    }
-    25% {
-      transform: translateY(-2px) rotate(-5deg);
-    }
-    75% {
-      transform: translateY(2px) rotate(5deg);
-    }
-  }
-
-  @keyframes cpu-pulse {
-    0%,
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.8;
-      transform: scale(0.95);
-    }
-  }
-
-  @keyframes code-bg {
-    0% {
-      transform: translateY(0);
-    }
-    100% {
-      transform: translateY(-50%);
-    }
-  }
-
-  @keyframes marquee {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-
-  --animate-float-a: float-a 7s ease-in-out infinite;
-  --animate-float-b: float-b 9s ease-in-out infinite;
-  --animate-float-c: float-c 11s ease-in-out infinite;
-  --animate-drift: drift 14s ease-in-out infinite;
-
-  @keyframes float-a {
-    0%,
-    100% {
-      transform: translateY(0px) rotate(0deg);
-    }
-    50% {
-      transform: translateY(-18px) rotate(6deg);
-    }
-  }
-  @keyframes float-b {
-    0%,
-    100% {
-      transform: translateY(0px) rotate(0deg);
-    }
-    40% {
-      transform: translateY(14px) rotate(-8deg);
-    }
-    80% {
-      transform: translateY(-8px) rotate(4deg);
-    }
-  }
-  @keyframes float-c {
-    0%,
-    100% {
-      transform: translateY(0px) rotate(0deg);
-    }
-    30% {
-      transform: translateY(-22px) rotate(12deg);
-    }
-    70% {
-      transform: translateY(10px) rotate(-5deg);
-    }
-  }
-  @keyframes drift {
-    0%,
-    100% {
-      transform: translateX(0px) translateY(0px) rotate(0deg);
-    }
-    25% {
-      transform: translateX(12px) translateY(-10px) rotate(5deg);
-    }
-    50% {
-      transform: translateX(-8px) translateY(16px) rotate(-8deg);
-    }
-    75% {
-      transform: translateX(16px) translateY(6px) rotate(3deg);
-    }
-  }
-
-  @keyframes rocket-vibrate {
-    0%,
-    100% {
-      transform: translateY(-1rem) translateX(0);
-    }
-    25% {
-      transform: translateY(-1rem) translateX(-2px);
-    }
-    50% {
-      transform: translateY(-1rem) translateX(2px);
-    }
-    75% {
-      transform: translateY(-1rem) translateX(-1px);
-    }
-  }
 }
 
 /* Theme-invariant token: accessible foreground color for text/icons on `primary` bg. Tested vs WCAG AA. */
 :root {
   --on-primary: #1c1c1f;
+}
+
+/* Neon turquoise of the hero cloud, for the one CTA that has to stand out (navbar). */
+:root,
+.dark {
+  --neon: #3ff8ec;
+}
+.light {
+  --neon: #14c8d4;
 }
 
 /* Dark mode (default + .dark class) */

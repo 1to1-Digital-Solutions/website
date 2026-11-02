@@ -1,11 +1,11 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
-export const alt = "1to1 Digital Solutions: We build your technology, you build your business";
+export const alt =
+  "1to1 Digital Solutions: entiende e integra la IA en tu negocio, de forma segura";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const PRIMARY = "#1f957a";
+const PRIMARY = "#3ff8ec";
 const BACKGROUND = "#1e1e21";
 const FOREGROUND = "#ededed";
 const MUTED = "rgba(237, 237, 237, 0.6)";
@@ -57,16 +57,16 @@ export default async function OpengraphImage() {
         <h1
           style={{
             color: FOREGROUND,
-            fontSize: 88,
+            fontSize: 76,
             lineHeight: 1.05,
             fontWeight: 800,
             margin: 0,
             maxWidth: 1000,
           }}
         >
-          We build your <span style={{ color: PRIMARY }}>technology</span>,
+          Entiende e integra la <span style={{ color: PRIMARY }}>IA</span>
           <br />
-          you build your <span style={{ color: PRIMARY }}>business</span>.
+          en tu negocio, de forma <span style={{ color: PRIMARY }}>segura</span>.
         </h1>
         <p
           style={{
@@ -76,7 +76,7 @@ export default async function OpengraphImage() {
             fontWeight: 500,
           }}
         >
-          Custom software, from rescue to digitalisation.
+          Para autónomos y pymes sin perfil técnico
         </p>
       </div>
 
@@ -90,7 +90,7 @@ export default async function OpengraphImage() {
           fontWeight: 500,
         }}
       >
-        <span>Rescue · MVP · Digitalisation · XR · Web3</span>
+        <span>Al terminar, el control es tuyo</span>
         <span>1to1digital.solutions</span>
       </div>
     </div>,

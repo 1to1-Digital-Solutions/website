@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
-import { cookies } from "next/headers";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { CookieBanner } from "@/components/CookieBanner";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { StructuredData } from "@/components/StructuredData";
-import { AttributionCapture } from "@/components/AttributionCapture";
 import { ConsentProvider } from "@/context/ConsentContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { ThemeProvider } from "@/context/ThemeContext";
+import { requestLang } from "@/lib/lang";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -26,67 +25,74 @@ const outfit = Outfit({
 
 const siteUrl = "https://1to1digital.solutions";
 const siteName = "1to1 Digital Solutions";
-const siteTagline = "We build your technology, you build your business";
-const siteDescription =
-  "Custom software development: we rescue stuck projects, launch digital products from scratch in 6-8 weeks and digitalise businesses. Specialists in browser-based mixed reality and Web3.";
 
-export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: {
-    default: `${siteName} | ${siteTagline}`,
-    template: `%s | ${siteName}`,
-  },
-  description: siteDescription,
-  applicationName: siteName,
-  authors: [{ name: siteName, url: siteUrl }],
-  creator: siteName,
-  publisher: siteName,
-  keywords: [
-    "software a medida",
-    "desarrollo de MVP",
-    "digitalización de empresas",
-    "transformación digital",
-    "rescate de proyectos",
-    "freelance developer",
-    "MVP development",
-    "Web3",
-    "Blockchain",
-    "Mixed Reality",
-    "VR",
-    "Next.js",
-    "React",
-    "Three.js",
-    "tech rescue",
-    "España",
-  ],
-  alternates: {
-    canonical: "/",
-  },
-  openGraph: {
-    type: "website",
-    url: siteUrl,
-    siteName,
-    title: `${siteName} | ${siteTagline}`,
-    description: siteDescription,
+// Spanish first: it is the audience, and what crawlers get (they send no language cookie).
+const SEO = {
+  es: {
+    title: "IA para autónomos y pymes, de forma segura",
+    description:
+      "Entiende e integra la IA en tu negocio de forma segura, con un sistema adaptado uno a uno a tu empresa. Al terminar, el control es tuyo. Para autónomos y pymes sin perfil técnico.",
     locale: "es_ES",
     alternateLocale: ["en_US"],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: `${siteName} | ${siteTagline}`,
-    description: siteDescription,
+  en: {
+    title: "AI for freelancers and small businesses, safely",
+    description:
+      "Understand and bring AI into your business safely, with a system adapted one to one to your company. When it ends, the control is yours. For freelancers and small businesses with no tech profile.",
+    locale: "en_US",
+    alternateLocale: ["es_ES"],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+} as const;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = SEO[await requestLang()];
+  const fullTitle = `${seo.title} | ${siteName}`;
+  return {
+    metadataBase: new URL(siteUrl),
+    title: { default: fullTitle, template: `%s | ${siteName}` },
+    description: seo.description,
+    applicationName: siteName,
+    authors: [{ name: "César Peón", url: `${siteUrl}/about` }],
+    creator: "César Peón",
+    publisher: siteName,
+    keywords: [
+      "mentoría de IA",
+      "mentoría de inteligencia artificial",
+      "IA para pymes",
+      "IA para autónomos",
+      "IA para empresas",
+      "integrar la IA en mi negocio",
+      "uso seguro de la IA",
+      "política de uso de IA",
+      "formación en IA para empresas",
+      "Reglamento Europeo de IA",
+      "automatizar tareas con IA",
+      "AI mentoring",
+      "AI for small businesses",
+    ],
+    alternates: { canonical: "/" },
+    openGraph: {
+      type: "website",
+      url: siteUrl,
+      siteName,
+      title: fullTitle,
+      description: seo.description,
+      locale: seo.locale,
+      alternateLocale: [...seo.alternateLocale],
+    },
+    twitter: { card: "summary_large_image", title: fullTitle, description: seo.description },
+    robots: {
       index: true,
       follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
-  },
-};
+  };
+}
 
 // Inline script injected before hydration to avoid flash of wrong theme
 const themeScript = `
@@ -105,15 +111,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieStore = await cookies();
-  const langCookie = cookieStore.get("lang")?.value;
-  const lang: "es" | "en" = langCookie === "en" ? "en" : "es";
+  const lang = await requestLang();
 
   return (
     <html lang={lang} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-        <StructuredData />
+        <StructuredData lang={lang} />
       </head>
       <body
         className={`${inter.variable} ${outfit.variable} bg-background text-foreground selection:bg-primary/30 min-h-screen font-sans antialiased`}
@@ -135,7 +139,6 @@ export default async function RootLayout({
               <Footer />
               <CookieBanner />
               <GoogleAnalytics />
-              <AttributionCapture />
             </LanguageProvider>
           </ConsentProvider>
         </ThemeProvider>

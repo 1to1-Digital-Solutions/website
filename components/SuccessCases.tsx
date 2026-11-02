@@ -3,14 +3,15 @@ import { ExternalLink } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 export function SuccessCases() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const es = lang === "es";
 
   const cases = [
     {
       title: t("case1Title"),
       category: t("case1Cat"),
       description: t("case1Desc"),
-      tags: ["Web3", "DeFi", "Svelte", "TypeScript", "Wallet"],
+      tags: ["Blockchain", "Wallet", es ? "Seguridad" : "Security"],
       url: "https://www.iota.org/",
       logo: "/images/cases/IOTA.png",
       logoAlt: "IOTA",
@@ -20,7 +21,11 @@ export function SuccessCases() {
       title: t("case2Title"),
       category: t("case2Cat"),
       description: t("case2Desc"),
-      tags: ["VR", "Next.js", "Three.js", "Hyperfy", "AI", "AWS", "Database"],
+      tags: [
+        es ? "Realidad Virtual" : "Virtual Reality",
+        es ? "Plataforma" : "Platform",
+        es ? "IA" : "AI",
+      ],
       url: "https://numen.games/en",
       logo: "/images/cases/NumenGames.png",
       logoAlt: "Numen Games",
@@ -30,27 +35,11 @@ export function SuccessCases() {
       title: t("case3Title"),
       category: t("case3Cat"),
       description: t("case3Desc"),
-      tags: ["Svelte", "Supabase", "Capacitor", "iOS", "Android"],
+      tags: [es ? "App móvil" : "Mobile app", "iOS", "Android"],
       url: "https://www.moovle.app/app.html",
       logo: "/images/cases/Moovle.png",
       logoAlt: "Moovle",
       logoSize: "h-1/2 w-3/4",
-    },
-  ];
-
-  // Products we build and run ourselves. Plain links (no nofollow): they are ours.
-  const ownProducts = [
-    {
-      title: t("own1Title"),
-      category: t("own1Cat"),
-      description: t("own1Desc"),
-      url: "https://hoy-entreno.app/",
-    },
-    {
-      title: t("own2Title"),
-      category: t("own2Cat"),
-      description: t("own2Desc"),
-      url: "https://scoura.app/",
     },
   ];
 
@@ -121,40 +110,6 @@ export function SuccessCases() {
               </div>
             </a>
           ))}
-        </div>
-
-        <div className="mt-16">
-          <h3 className="font-outfit text-2xl font-bold tracking-tight md:text-3xl">
-            {t("ownTitle") as string}
-          </h3>
-          <p className="text-foreground/70 mt-2 text-base">{t("ownSub") as string}</p>
-          <div className="mt-6 grid gap-6 md:grid-cols-2">
-            {ownProducts.map((product) => (
-              <a
-                key={product.url}
-                href={product.url}
-                target="_blank"
-                rel="noopener"
-                className="group bg-background hover:shadow-primary/10 focus-visible:ring-primary flex flex-col rounded-2xl p-6 transition-transform hover:-translate-y-1 hover:shadow-2xl focus-visible:ring-2 focus-visible:outline-none"
-              >
-                <div className="mb-2 flex items-center justify-between">
-                  <span className="text-primary text-xs font-semibold tracking-wider uppercase">
-                    {product.category as string}
-                  </span>
-                  <ExternalLink
-                    size={16}
-                    aria-hidden="true"
-                    className="text-foreground/40 group-hover:text-primary transition-colors"
-                  />
-                </div>
-                <h4 className="font-outfit group-hover:text-primary mb-2 text-xl font-bold transition-colors">
-                  {product.title as string}
-                  <span className="sr-only"> {t("srOpensInNewTab") as string}</span>
-                </h4>
-                <p className="text-foreground/70 text-sm">{product.description as string}</p>
-              </a>
-            ))}
-          </div>
         </div>
       </div>
     </section>

@@ -22,7 +22,7 @@ describe("Navbar", () => {
     expect(screen.getByAltText(/1to1 Digital Solutions/i)).toBeInTheDocument();
 
     // In Spanish by default
-    const links = screen.queryAllByText("Servicios");
+    const links = screen.queryAllByText("Mentoría");
     expect(links.length).toBeGreaterThan(0);
   });
 
@@ -35,7 +35,7 @@ describe("Navbar", () => {
 
     fireEvent.click(langButtons[0]);
 
-    expect(screen.queryAllByText("Services").length).toBeGreaterThan(0);
-    expect(screen.queryAllByText("Servicios").length).toBe(0);
+    expect(screen.queryAllByText("Mentoring").length).toBeGreaterThan(0);
+    expect(screen.queryAllByText("Mentoría").length).toBe(0);
   });
 });

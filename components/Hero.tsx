@@ -1,15 +1,15 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
 import dynamic from "next/dynamic";
 import gsap from "gsap";
-import { Loader } from "@react-three/drei";
 import { useLanguage } from "@/context/LanguageContext";
+import { useTheme } from "@/context/ThemeContext";
 import { useIsomorphicLayoutEffect } from "@/hooks/useIsomorphicLayoutEffect";
-import { HeroMobileBackground } from "@/components/HeroMobileBackground";
 
-const HeroCanvas = dynamic(
-  () => import("./canvas/HeroCanvas").then((m) => ({ default: m.HeroCanvas })),
+// three.js stays out of the initial bundle: the cloud fades in once its chunk arrives.
+const HeroParticles = dynamic(
+  () => import("./canvas/HeroParticles").then((m) => ({ default: m.HeroParticles })),
   { ssr: false }
 );
 
@@ -17,15 +17,7 @@ export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const { t } = useLanguage();
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 768px)");
-    setIsDesktop(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
+  const { theme } = useTheme();
 
   useIsomorphicLayoutEffect(() => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -75,34 +67,34 @@ export function Hero() {
       ref={containerRef}
       className="bg-background relative flex h-[100dvh] w-full items-center justify-center overflow-hidden"
     >
-      {/* Subtle primary background blob */}
-      <div className="bg-primary/20 pointer-events-none absolute top-1/2 left-1/2 z-0 h-[60vw] w-[60vw] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[150px] md:h-[40vw] md:w-[40vw]" />
+      {/* Subtle primary glow behind the cloud */}
+      <div className="bg-primary/15 pointer-events-none absolute top-1/2 left-1/2 z-0 h-[70vw] w-[70vw] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[150px] lg:left-[72%] lg:h-[38vw] lg:w-[38vw]" />
 
-      {/* Background: CSS on mobile (no Three.js loaded), canvas on desktop. Decorative — hidden from a11y tree. */}
+      {/* Point cloud that reacts to the cursor. Decorative: hidden from the a11y tree. */}
       <div className="absolute inset-0 z-0" aria-hidden="true">
-        {isDesktop ? <HeroCanvas /> : <HeroMobileBackground />}
+        <HeroParticles theme={theme} />
       </div>
 
-      {/* Foreground Content */}
+      {/* Foreground: centred on small screens, on the left next to the cloud on wide ones */}
       <div
         ref={textRef}
-        className="pointer-events-none z-10 flex h-full w-full flex-col justify-center px-6 text-center"
+        className="pointer-events-none z-10 mx-auto flex h-full w-full max-w-7xl flex-col justify-center px-6 text-center lg:items-start lg:text-left"
       >
-        {/* Massive HTML Title (Replacing 3D Text) */}
-        <div className="pointer-events-none select-none">
-          <h1 className="hero-text-line font-outfit text-foreground mx-auto max-w-5xl text-4xl font-black tracking-tighter drop-shadow-[0_2px_6px_rgba(0,0,0,0.12)] sm:text-5xl md:text-7xl dark:drop-shadow-[0_4px_15px_rgba(0,0,0,0.8)]">
+        <div className="pointer-events-none select-none lg:max-w-[56%]">
+          <h1 className="hero-text-line font-outfit text-foreground mx-auto max-w-5xl text-4xl font-black tracking-tighter drop-shadow-[0_2px_6px_rgba(0,0,0,0.12)] sm:text-5xl md:text-7xl lg:mx-0 lg:text-6xl xl:text-7xl dark:drop-shadow-[0_4px_15px_rgba(0,0,0,0.8)]">
             {t("heroTitle1")} <br />
-            <span className="from-primary to-primary/50 bg-gradient-to-r bg-clip-text text-transparent">
+            {/* Clone decoration + a little right padding: with tight tracking the last glyph of
+                each line overhangs its box, and bg-clip-text would cut it off. */}
+            <span className="from-primary to-primary/50 bg-gradient-to-r box-decoration-clone bg-clip-text pr-[0.12em] text-transparent">
               {t("heroTitle2")}
             </span>
           </h1>
-          <p className="hero-text-line text-foreground/80 pointer-events-none mx-auto mt-6 max-w-2xl text-base font-medium drop-shadow-[0_1px_3px_rgba(0,0,0,0.08)] md:text-lg dark:drop-shadow-[0_2px_5px_rgba(0,0,0,0.8)]">
+          <p className="hero-text-line text-foreground/80 pointer-events-none mx-auto mt-6 max-w-2xl text-base font-medium drop-shadow-[0_1px_3px_rgba(0,0,0,0.08)] md:text-lg lg:mx-0 dark:drop-shadow-[0_2px_5px_rgba(0,0,0,0.8)]">
             {t("heroSub")}
           </p>
         </div>
 
-        {/* Buttons raised up to be close to text */}
-        <div className="hero-btn pointer-events-none mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <div className="hero-btn pointer-events-none mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start">
           <a
             href="#contact"
             className="bg-primary/90 hover:bg-primary focus-visible:ring-primary focus-visible:ring-offset-background pointer-events-auto rounded-full px-8 py-4 text-lg font-bold text-[var(--on-primary)] backdrop-blur-md transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(64,224,208,0.4)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
@@ -110,21 +102,13 @@ export function Hero() {
             {t("heroBtnStart")}
           </a>
           <a
-            href="#work"
+            href="#process"
             className="border-foreground/20 bg-background/50 hover:bg-foreground/5 hover:text-primary hover:border-primary/50 focus-visible:ring-primary focus-visible:ring-offset-background pointer-events-auto rounded-full border px-8 py-4 text-lg font-bold backdrop-blur-md transition-all focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
           >
             {t("heroBtnWork")}
           </a>
         </div>
       </div>
-      {isDesktop && (
-        <Loader
-          containerStyles={{ background: "#27272a", zIndex: 50 }}
-          innerStyles={{ width: "300px" }}
-          barStyles={{ background: "#1f957a", height: "4px" }}
-          dataStyles={{ color: "#ededed", fontFamily: "Outfit", fontSize: "14px" }}
-        />
-      )}
     </section>
   );
 }

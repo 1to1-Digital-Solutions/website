@@ -38,7 +38,7 @@ const securityHeaders = [
       // Tailwind's hashing strategy and arbitrary class injections rely on inline styles.
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' data: https://fonts.gstatic.com",
-      // data:/blob: needed for Three.js textures and Next/Image blur placeholders. GA beacons via google-analytics.com.
+      // data:/blob: for Next/Image blur placeholders. GA beacons via google-analytics.com.
       "img-src 'self' data: blob: https: https://www.google-analytics.com https://*.google-analytics.com",
       "media-src 'self'",
       // GA endpoints + Vercel realtime overlays.

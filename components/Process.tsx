@@ -7,6 +7,7 @@ export function Process() {
     { number: "01", title: t("proc1Title"), desc: t("proc1Desc") },
     { number: "02", title: t("proc2Title"), desc: t("proc2Desc") },
     { number: "03", title: t("proc3Title"), desc: t("proc3Desc") },
+    { number: "04", title: t("proc4Title"), desc: t("proc4Desc") },
   ];
 
   return (
@@ -19,19 +20,23 @@ export function Process() {
         <p className="text-foreground/70 mt-4 text-lg md:mx-auto md:max-w-2xl">{t("procSub")}</p>
       </div>
 
-      <div className="relative grid gap-8 md:grid-cols-3">
-        {/* Connecting line for desktop */}
-        <div className="via-primary/30 absolute top-[20%] left-[10%] -z-10 hidden h-px w-[80%] bg-gradient-to-r from-transparent to-transparent md:block" />
+      <div className="relative grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        {/* Line joining the 4 numbers when they sit in one row: from the centre of the first
+            to the centre of the last, at the height of their middle, solid all the way. */}
+        <div
+          aria-hidden="true"
+          className="bg-primary/60 absolute top-8 right-[12.5%] left-[12.5%] hidden h-0.5 lg:block"
+        />
 
         {steps.map((step, idx) => (
           <div
             key={idx}
-            className="group relative flex flex-col items-start md:items-center md:text-center"
+            className="relative flex flex-col items-start md:items-center md:text-center"
           >
-            <div className="bg-anthracite border-foreground/10 text-primary group-hover:border-primary/50 mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border text-2xl font-black shadow-[0_0_15px_rgba(64,224,208,0.1)] transition-all group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(64,224,208,0.3)]">
+            <div className="bg-anthracite border-primary/40 text-primary relative z-10 mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border text-2xl font-black shadow-[0_0_15px_rgba(64,224,208,0.1)]">
               {step.number}
             </div>
-            <h3 className="font-outfit text-foreground mb-3 text-2xl font-bold">
+            <h3 className="font-outfit text-foreground mb-3 text-xl font-bold">
               {step.title as string}
             </h3>
             <p className="text-foreground/70 leading-relaxed">{step.desc as string}</p>

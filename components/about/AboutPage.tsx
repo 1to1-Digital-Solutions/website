@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import { ExternalLink, Github } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { ABOUT } from "@/content/about";
 import { PageCta } from "@/components/PageCta";
 
 export function AboutPage() {
-  const { lang } = useLanguage();
+  const { lang, t } = useLanguage();
   const c = ABOUT[lang];
 
   return (
@@ -39,7 +40,7 @@ export function AboutPage() {
             </h1>
             <p className="text-foreground/80 mt-6 text-lg leading-relaxed md:text-xl">{c.intro}</p>
 
-            <dl className="mt-10 grid gap-4 sm:grid-cols-3">
+            <dl className="mt-10 grid gap-4 sm:grid-cols-2">
               {c.stats.map((stat) => (
                 <div
                   key={stat.value}
@@ -79,29 +80,76 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* How I work and why */}
-      <section className="mx-auto grid w-full max-w-7xl gap-12 px-6 py-24 md:grid-cols-2 md:gap-16">
-        <div>
+      {/* Why I do it */}
+      <section className="mx-auto w-full max-w-4xl px-6 py-24">
+        <h2 className="font-outfit text-3xl font-bold tracking-tight md:text-4xl">{c.whyTitle}</h2>
+        <div className="text-foreground/80 mt-6 flex flex-col gap-4 text-lg leading-relaxed">
+          {c.why.map((p) => (
+            <p key={p}>{p}</p>
+          ))}
+        </div>
+      </section>
+
+      {/* Own developments */}
+      <section className="bg-anthracite w-full py-20">
+        <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-outfit text-3xl font-bold tracking-tight md:text-4xl">
-            {c.howTitle}
+            {c.productsTitle}
           </h2>
-          <div className="text-foreground/80 mt-6 flex flex-col gap-4 text-lg leading-relaxed">
-            {c.how.map((p) => (
-              <p key={p}>{p}</p>
+          <p className="text-foreground/70 mt-3 text-lg">{c.productsSub}</p>
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {c.products.map((product) => (
+              <a
+                key={product.url}
+                href={product.url}
+                target="_blank"
+                rel="noopener"
+                className="group bg-background hover:shadow-primary/10 focus-visible:ring-primary flex flex-col rounded-2xl p-6 transition-transform hover:-translate-y-1 hover:shadow-2xl focus-visible:ring-2 focus-visible:outline-none"
+              >
+                <div className="mb-2 flex items-center justify-between">
+                  <span className="text-primary text-xs font-semibold tracking-wider uppercase">
+                    {product.category}
+                  </span>
+                  <ExternalLink
+                    size={16}
+                    aria-hidden="true"
+                    className="text-foreground/40 group-hover:text-primary transition-colors"
+                  />
+                </div>
+                <h3 className="font-outfit group-hover:text-primary mb-2 text-xl font-bold transition-colors">
+                  {product.title}
+                  <span className="sr-only"> {t("srOpensInNewTab") as string}</span>
+                </h3>
+                <p className="text-foreground/70 text-sm">{product.text}</p>
+              </a>
             ))}
           </div>
-        </div>
-        <div>
-          <h2 className="font-outfit text-3xl font-bold tracking-tight md:text-4xl">
-            {c.whyTitle}
-          </h2>
-          <div className="text-foreground/80 mt-6 flex flex-col gap-4 text-lg leading-relaxed">
-            {c.why.map((p) => (
-              <p key={p}>{p}</p>
-            ))}
+
+          <div className="mt-10 flex flex-col items-center gap-4 text-center sm:flex-row sm:justify-between sm:text-left">
+            <p className="text-foreground/75 text-lg">{c.githubText}</p>
+            <div className="flex flex-wrap justify-center gap-3">
+              {[
+                { label: c.githubPersonal, href: "https://github.com/cpl121" },
+                { label: c.githubCompany, href: "https://github.com/1to1-Digital-Solutions" },
+              ].map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener"
+                  className="border-foreground/20 hover:border-primary/60 hover:text-primary focus-visible:ring-primary inline-flex items-center gap-2 rounded-full border px-5 py-2.5 font-semibold transition-colors focus-visible:ring-2 focus-visible:outline-none"
+                >
+                  <Github size={18} aria-hidden="true" />
+                  {link.label}
+                  <span className="sr-only"> {t("srOpensInNewTab") as string}</span>
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </section>
+
+      <div className="h-24" aria-hidden="true" />
 
       <PageCta
         title={c.ctaTitle}
