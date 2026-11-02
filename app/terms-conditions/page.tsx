@@ -91,11 +91,9 @@ export default function TermsConditions() {
           </section>
 
           <section>
-            <h2 className="text-foreground mb-3 text-xl font-semibold">
-              5. Formulario de Contacto
-            </h2>
+            <h2 className="text-foreground mb-3 text-xl font-semibold">5. Contacto</h2>
             <p>
-              El envío del formulario de contacto disponible en este sitio web constituye una{" "}
+              Escribirnos por correo electrónico o por LinkedIn desde este sitio web constituye una{" "}
               <strong>solicitud de información o de presupuesto</strong> sin coste alguno. La
               respuesta que le proporcionemos tendrá carácter meramente informativo y orientativo, y
               cualquier oferta de servicios sólo será efectiva cuando se formalice mediante contrato

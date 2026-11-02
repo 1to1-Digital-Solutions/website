@@ -4,7 +4,7 @@ import { ArrowLeft } from "lucide-react";
 export const metadata = {
   title: "Política de Privacidad",
   description:
-    "Cómo trata 1to1 Digital Solutions los datos personales recabados a través del sitio web: responsable, finalidades, encargados, transferencias internacionales y derechos del interesado.",
+    "Cómo trata 1to1 Digital Solutions los datos personales de quien le escribe por correo o LinkedIn y de quien visita el sitio web: responsable, finalidades, encargados, transferencias internacionales y derechos del interesado.",
   alternates: { canonical: "/privacy-policy" },
 };
 
@@ -61,31 +61,22 @@ export default function PrivacyPolicy() {
           <section>
             <h2 className="text-foreground mb-3 text-xl font-semibold">2. Datos que recopilamos</h2>
             <p>
-              A través del formulario de contacto de este sitio web recopilamos exclusivamente los
-              datos que usted nos facilita voluntariamente:
+              Este sitio web no tiene formulario de contacto. Si decide escribirnos por correo
+              electrónico o por LinkedIn, tratamos exclusivamente los datos que usted nos facilita
+              voluntariamente en ese mensaje:
             </p>
             <ul className="text-foreground/70 mt-3 list-disc space-y-1 pl-5">
-              <li>Nombre</li>
-              <li>Dirección de correo electrónico</li>
-              <li>
-                Lo que indique en los desplegables, si los rellena: qué necesita, tecnología, cuándo
-                quiere empezar y cómo nos conoció
-              </li>
-              <li>Contenido del mensaje que nos envía</li>
-              <li>
-                Evidencia de la aceptación de esta Política de Privacidad (marca temporal, estado de
-                la casilla y versión de la política aceptada)
-              </li>
-              <li>
-                El origen de su visita, si lo hay: parámetros de campaña de la dirección (UTM), la
-                página desde la que llegó y la primera página que visitó. Se guardan solo durante la
-                sesión en su navegador y viajan con el formulario al enviarlo, para saber por qué
-                canal nos llegan las consultas.
-              </li>
+              <li>Nombre y, en su caso, la empresa para la que trabaja</li>
+              <li>Dirección de correo electrónico o perfil de LinkedIn desde el que nos escribe</li>
+              <li>El contenido del mensaje y de la conversación posterior</li>
             </ul>
             <p className="mt-3">
+              Los mensajes que nos envíe a través de LinkedIn se rigen además por la política de
+              privacidad de LinkedIn, que es responsable de su propia plataforma.
+            </p>
+            <p className="mt-3">
               No recopilamos datos especiales (categorías sensibles del Art. 9 RGPD) y le rogamos
-              que no los incluya en el campo de mensaje.
+              que no los incluya en sus mensajes.
             </p>
           </section>
 
@@ -96,20 +87,19 @@ export default function PrivacyPolicy() {
             <p>Tratamos sus datos con las siguientes finalidades:</p>
             <ul className="text-foreground/70 mt-3 list-disc space-y-1 pl-5">
               <li>
-                Atender su consulta o solicitud, elaborar presupuestos y gestionar la relación
-                precontractual y, en su caso, contractual.
+                Responder a su mensaje, organizar la primera reunión, preparar el plan y el
+                presupuesto y gestionar la relación precontractual y, en su caso, contractual.
               </li>
               <li>
-                Llevar un registro interno de oportunidades comerciales (CRM-lite), conservando el
-                histórico de contactos.
+                Llevar un registro interno de los contactos comerciales, conservando el histórico de
+                la conversación.
               </li>
             </ul>
             <p className="mt-3">
-              La <strong>base legal</strong> del tratamiento es su <strong>consentimiento</strong>{" "}
-              expreso al marcar la casilla de aceptación de esta Política de Privacidad en el
-              formulario (Art. 6.1.a RGPD), así como la ejecución de medidas precontractuales a
-              petición del interesado (Art. 6.1.b RGPD) cuando su consulta tenga por objeto valorar
-              la contratación de nuestros servicios.
+              La <strong>base legal</strong> del tratamiento es la aplicación de medidas
+              precontractuales a petición del interesado (Art. 6.1.b RGPD) cuando su mensaje tenga
+              por objeto valorar la contratación de nuestros servicios, y nuestro interés legítimo
+              en atender las comunicaciones que recibimos (Art. 6.1.f RGPD) en el resto de casos.
             </p>
           </section>
 
@@ -128,19 +118,16 @@ export default function PrivacyPolicy() {
                 sitio web.
               </li>
               <li>
-                <strong className="text-foreground/90">Resend (Resend, Inc.)</strong>: envío del
-                correo electrónico de aviso al responsable.
-              </li>
-              <li>
                 <strong className="text-foreground/90">Google LLC (Google Workspace)</strong>:
-                gestión del correo electrónico recibido y almacenamiento del registro de contactos
-                en Google Sheets.
+                gestión del correo electrónico que recibimos y enviamos.
               </li>
               <li>
                 <strong className="text-foreground/90">Google LLC (Google Analytics 4)</strong>:
-                análisis estadístico y agregado del uso del sitio web. Únicamente se activa cuando
-                el usuario otorga consentimiento previo en el banner de cookies y puede revocarse en
-                cualquier momento. Configurado con anonimización de IP y sin señales publicitarias.
+                análisis estadístico y agregado del uso del sitio web, incluidos los clics en los
+                botones de contacto (sin el contenido de ningún mensaje). Únicamente se activa
+                cuando el usuario otorga consentimiento previo en el banner de cookies y puede
+                revocarse en cualquier momento. Configurado con anonimización de IP y sin señales
+                publicitarias.
               </li>
             </ul>
             <p className="mt-3">
@@ -154,12 +141,11 @@ export default function PrivacyPolicy() {
               5. Transferencias internacionales
             </h2>
             <p>
-              Vercel, Resend y Google son proveedores con sede en Estados Unidos. La transferencia
-              de sus datos fuera del Espacio Económico Europeo se realiza al amparo de las
-              salvaguardas previstas por el RGPD: <strong>EU-US Data Privacy Framework</strong> (en
-              el que dichos proveedores se han certificado) y/o las{" "}
-              <strong>Cláusulas Contractuales Tipo</strong> aprobadas por la Comisión Europea, que
-              garantizan un nivel de protección adecuado.
+              Vercel y Google son proveedores con sede en Estados Unidos. La transferencia de sus
+              datos fuera del Espacio Económico Europeo se realiza al amparo de las salvaguardas
+              previstas por el RGPD: <strong>EU-US Data Privacy Framework</strong> (en el que dichos
+              proveedores se han certificado) y/o las <strong>Cláusulas Contractuales Tipo</strong>{" "}
+              aprobadas por la Comisión Europea, que garantizan un nivel de protección adecuado.
             </p>
           </section>
 
@@ -220,7 +206,8 @@ export default function PrivacyPolicy() {
               </li>
               <li>
                 <strong className="text-foreground/90">Retirar el consentimiento</strong> en
-                cualquier momento, sin que ello afecte a la licitud del tratamiento previo.
+                cualquier momento, sin que ello afecte a la licitud del tratamiento previo, en los
+                casos en que el tratamiento se base en él.
               </li>
             </ul>
             <p className="mt-3">
@@ -256,7 +243,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <p className="text-foreground/70 border-foreground/10 border-t pt-8 text-xs">
-            Última actualización: Septiembre 2026
+            Última actualización: Noviembre 2026
           </p>
         </div>
       </div>
