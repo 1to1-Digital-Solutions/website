@@ -84,38 +84,18 @@ export const translations = {
     // Contact
     contactTitle1: "Shall we ",
     contactTitle2: "talk?",
-    contactSub: "Write to me and we'll find a slot for the first 15-minute meeting. It's free.",
-    contName: "Name",
-    contEmail: "Email",
-    contBudgetNote:
-      "I don't publish prices: I send you the quote together with the plan adapted to your company, after the first meeting.",
-    contType: "What would you like to achieve?",
-    contSize: "How big is your business?",
-    contTimeline: "When would you like to start?",
-    contSource: "How did you hear about me?",
-    contOptional: "optional",
-    contSelectPlaceholder: "Choose…",
-    contMessage: "Tell me about your business",
-    contSuccessNote:
-      "Thanks. I'll read your message and get back to you within one or two working days to find a slot for the 15-minute meeting.",
+    contactSub:
+      "Write to me by email or on LinkedIn and we'll find a slot for the first 15-minute meeting. It's free, and I usually reply within one or two working days.",
+    contactEmailBtn: "Email me",
+    contactLinkedinBtn: "Message me on LinkedIn",
+    contactEmailNote: "Or copy my address:",
+    contactMailSubject: "First meeting about the AI mentoring",
     // Cookie banner
     cookieMessage:
       "We use cookies to improve your experience and analyze traffic. By accepting, you consent to our use of cookies.",
     cookieAccept: "Accept all",
     cookieDecline: "Decline",
     cookiePolicy: "Cookie policy",
-    contPrivacy: "I have read and accept the",
-    contMessagePlaceholder:
-      "What you do, how you work today and what you'd like AI to help you with...",
-    contBtnIdle: "Send message",
-    contBtnLoading: "Sending...",
-    contBtnSuccess: "Message sent!",
-    contBtnError: "Try again",
-    contErrorMsg: "Something went wrong. Please try again.",
-    contErrName: "Please enter your name.",
-    contErrEmail: "Please enter a valid email address.",
-    contErrMessage: "Tell me briefly about your business.",
-    contErrPrivacy: "You must accept the privacy policy.",
 
     // Footer
     footDesc: "I guide you to understand and bring AI into your business, safely.",
@@ -222,40 +202,20 @@ export const translations = {
       "Te quedas con el sistema y las primeras herramientas, con su documentación. La idea es que a partir de ahí puedas crear tus propias herramientas sin depender de nadie, tampoco de mí.",
 
     // Contact
-    contactTitle1: "¿",
-    contactTitle2: "Hablamos?",
-    contactSub: "Escríbeme y buscamos un hueco para la primera reunión de 15 minutos. Es gratis.",
-    contName: "Nombre",
-    contEmail: "Correo electrónico",
-    contBudgetNote:
-      "No publico precios: el presupuesto te lo envío junto con el plan adaptado a tu empresa, después de la primera reunión.",
-    contType: "¿Qué te gustaría conseguir?",
-    contSize: "¿Qué tamaño tiene tu negocio?",
-    contTimeline: "¿Cuándo quieres empezar?",
-    contSource: "¿Cómo me has conocido?",
-    contOptional: "opcional",
-    contSelectPlaceholder: "Selecciona…",
-    contMessage: "Cuéntame sobre tu negocio",
-    contSuccessNote:
-      "Gracias. Leo tu mensaje y te escribo en uno o dos días laborables para buscar un hueco para la reunión de 15 minutos.",
+    contactTitle1: "¿Lo ",
+    contactTitle2: "hablamos?",
+    contactSub:
+      "Escríbeme por correo o por LinkedIn y buscamos un hueco para la primera reunión de 15 minutos. Es gratis y suelo responder en uno o dos días laborables.",
+    contactEmailBtn: "Escríbeme un correo",
+    contactLinkedinBtn: "Escríbeme por LinkedIn",
+    contactEmailNote: "O copia mi dirección:",
+    contactMailSubject: "Primera reunión sobre la mentoría de IA",
     // Cookie banner
     cookieMessage:
       "Usamos cookies para mejorar tu experiencia y analizar el tráfico. Al aceptar, consientes el uso de cookies.",
     cookieAccept: "Aceptar todo",
     cookieDecline: "Rechazar",
     cookiePolicy: "Política de cookies",
-    contPrivacy: "He leído y acepto la",
-    contMessagePlaceholder:
-      "A qué te dedicas, cómo trabajáis hoy y en qué te gustaría que te ayudara la IA...",
-    contBtnIdle: "Enviar mensaje",
-    contBtnLoading: "Enviando...",
-    contBtnSuccess: "¡Mensaje enviado!",
-    contBtnError: "Intentar de nuevo",
-    contErrorMsg: "Algo salió mal. Por favor, inténtalo de nuevo.",
-    contErrName: "Por favor, indica tu nombre.",
-    contErrEmail: "Introduce un correo electrónico válido.",
-    contErrMessage: "Cuéntame brevemente sobre tu negocio.",
-    contErrPrivacy: "Debes aceptar la política de privacidad.",
 
     // Footer
     footDesc: "Te acompaño a entender e integrar la IA en tu negocio, de forma segura.",

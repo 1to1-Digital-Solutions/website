@@ -4,17 +4,20 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
 /**
- * Hero background: a point cloud that breathes, spins slowly and moves out of the cursor's way.
+ * Hero background: scattered points that come together into an ordered structure (the
+ * client's own system), while a steady stream of loose points keeps flowing in and joining it.
+ * The cursor scatters the points it touches and they fall back into place. The idea is
+ * transformation and integration: from disorder to a system that holds.
  * Plain three.js (no React Three Fiber): one Points mesh, all motion computed in the shader.
- * Brand colours only (primary-100..400). Additive glow on dark, normal blending on light.
+ * Turquoise accents. Additive glow on dark, normal blending on light.
  */
 
 type Props = { theme: "dark" | "light" };
 
-// Brand palette, same tokens as globals.css.
+// Turquoise, near neon on dark; deeper on light so it holds on a white background.
 const PALETTE = {
-  dark: { a: "#1f957a", b: "#14ffbc", hot: "#b8ffe9" },
-  light: { a: "#116e57", b: "#1f957a", hot: "#14ffbc" },
+  dark: { a: "#14c8d4", b: "#3ff8ec", hot: "#d2fffb" },
+  light: { a: "#0a8a93", b: "#0fb5b8", hot: "#2ee6e0" },
 };
 
 // Simplex 3D noise (Ashima Arts / Stefan Gustavson, MIT).
@@ -66,40 +69,66 @@ vec3 noise3(vec3 p){
 
 const VERTEX = /* glsl */ `
 uniform float uTime;
+uniform float uAssemble;
 uniform float uSize;
 uniform float uPixelRatio;
 uniform vec3 uOffset;
 uniform float uScale;
 uniform vec3 uMouse;
 uniform float uMouseForce;
+attribute vec3 aStart;
 attribute float aRand;
+attribute float aStream;
 varying float vMix;
 varying float vHeat;
+varying float vAlpha;
+varying float vOrder;
 ${NOISE}
 
 vec3 rotY(vec3 p, float a){ float c=cos(a), s=sin(a); return vec3(c*p.x+s*p.z, p.y, -s*p.x+c*p.z); }
+vec3 rotX(vec3 p, float a){ float c=cos(a), s=sin(a); return vec3(p.x, c*p.y-s*p.z, s*p.y+c*p.z); }
 
 void main(){
-  vec3 p = rotY(position, uTime * 0.06);
+  // position = the slot in the structure; aStart = where the point comes from (disorder).
+  float t;
+  float alpha = 1.0;
+  if (aStream > 0.5) {
+    // Loose points: they keep arriving, each on its own cycle, and fade as they join.
+    float u = fract(uTime * 0.09 + aRand);
+    t = smoothstep(0.0, 1.0, u);
+    alpha = smoothstep(0.0, 0.15, u) * (1.0 - smoothstep(0.88, 1.0, u)) * 1.4;
+  } else {
+    // The structure: each point starts with its own delay, so it assembles gradually.
+    float d = aRand * 0.55;
+    t = smoothstep(d, d + 0.45, uAssemble);
+  }
 
-  // Breathing: a slow, low-amplitude drift for every point.
-  vec3 n = noise3(p * 0.55 + vec3(0.0, uTime * 0.12, aRand * 3.0));
-  p += n * 0.06;
+  // Disorder drifts and swirls; order holds still.
+  vec3 start = aStart + noise3(aStart * 0.25 + vec3(uTime * 0.05)) * 0.6;
+  vec3 p = mix(start, position, t);
+  p = rotX(rotY(p, 0.6 + uTime * 0.05), -0.32);
+
+  vec3 n = noise3(p * 0.6 + vec3(0.0, uTime * 0.12, aRand * 3.0));
+  p += n * mix(0.18, 0.012, t);
 
   p = p * uScale + uOffset;
 
-  // Cursor repulsion on the screen plane, with a gaussian falloff.
+  // The cursor scatters what it touches; the structure pulls it back when it leaves.
   vec2 toM = p.xy - uMouse.xy;
   float dm = length(toM);
-  float push = exp(-dm * dm * 1.4) * uMouseForce;
-  p.xy += normalize(toM + 1e-5) * push * 0.6;
+  float push = exp(-dm * dm * 1.6) * uMouseForce;
+  p.xy += normalize(toM + 1e-5) * push * 0.55;
+  p += noise3(p * 2.0 + uTime * 0.6) * push * 0.25;
 
   vec4 mv = modelViewMatrix * vec4(p, 1.0);
   gl_Position = projectionMatrix * mv;
-  gl_PointSize = uSize * (0.45 + aRand * 0.9) * uPixelRatio * (10.0 / -mv.z);
+  float size = uSize * (0.55 + aRand * 0.8) * mix(0.8, 1.15, t);
+  gl_PointSize = size * uPixelRatio * (10.0 / -mv.z);
 
   vMix = aRand;
   vHeat = push;
+  vOrder = t;
+  vAlpha = alpha;
 }`;
 
 const FRAGMENT = /* glsl */ `
@@ -109,15 +138,19 @@ uniform vec3 uColorHot;
 uniform float uAlpha;
 varying float vMix;
 varying float vHeat;
+varying float vAlpha;
+varying float vOrder;
 void main(){
   vec2 c = gl_PointCoord - 0.5;
   float r = length(c);
   if (r > 0.5) discard;
   float core = smoothstep(0.5, 0.0, r);
   core *= core;
-  vec3 col = mix(uColorA, uColorB, smoothstep(0.45, 1.0, vMix));
+  // Loose points are dimmer and deeper; once in place they light up.
+  vec3 col = mix(uColorA, uColorB, smoothstep(0.3, 1.0, vOrder) * (0.6 + vMix * 0.4));
   col = mix(col, uColorHot, clamp(vHeat * 0.9, 0.0, 0.85));
-  gl_FragColor = vec4(col, core * uAlpha);
+  float a = core * uAlpha * vAlpha * mix(0.7, 1.0, vOrder);
+  gl_FragColor = vec4(col, a);
 }`;
 
 // Deterministic PRNG so the cloud looks the same on every visit.
@@ -132,59 +165,67 @@ function mulberry32(seed: number) {
   };
 }
 
-/** An orb: a shell of points, a soft nucleus and three tilted orbits around it. */
-function buildOrb(count: number) {
+/**
+ * The structure is a cube drawn with lines of points: its 12 edges and a grid on every face,
+ * so it reads as something built. Every point also gets a start position scattered around it.
+ */
+function buildSystem(structureCount: number, streamCount: number) {
   const rand = mulberry32(1337);
   const gauss = () =>
     Math.sqrt(-2 * Math.log(Math.max(rand(), 1e-9))) * Math.cos(2 * Math.PI * rand());
+  const count = structureCount + streamCount;
   const positions = new Float32Array(count * 3);
+  const starts = new Float32Array(count * 3);
   const randoms = new Float32Array(count);
-  const golden = Math.PI * (3 - Math.sqrt(5));
-  const shell = Math.floor(count * 0.55);
+  const stream = new Float32Array(count);
+  const H = 1.3; // half side
+  const LINES = 5; // grid lines per face and direction (edges included)
+
+  const pointOnCube = (): [number, number, number] => {
+    const along = (rand() * 2 - 1) * H;
+    if (rand() < 0.3) {
+      // An edge: two coordinates pinned to ±H.
+      const axis = Math.floor(rand() * 3);
+      const a = rand() < 0.5 ? -H : H;
+      const b = rand() < 0.5 ? -H : H;
+      return axis === 0 ? [along, a, b] : axis === 1 ? [a, along, b] : [a, b, along];
+    }
+    // A grid line on a face: one coordinate on the face, one on a grid step, one free.
+    const face = Math.floor(rand() * 3);
+    const side = rand() < 0.5 ? -H : H;
+    const step = -H + (Math.floor(rand() * LINES) / (LINES - 1)) * 2 * H;
+    const p: [number, number, number] = [0, 0, 0];
+    const [u, v] =
+      rand() < 0.5 ? [(face + 1) % 3, (face + 2) % 3] : [(face + 2) % 3, (face + 1) % 3];
+    p[face] = side;
+    p[u] = step;
+    p[v] = along;
+    return p;
+  };
+
+  const scatter = (i: number) => {
+    // An uneven cloud around the cube, leaning away from the text: the disorder it comes from.
+    const r = 2.4 + Math.abs(gauss()) * 1.5;
+    const th = rand() * Math.PI * 2;
+    const ph = Math.acos(rand() * 2 - 1);
+    starts.set(
+      [
+        Math.sin(ph) * Math.cos(th) * r * 1.2 + 0.6,
+        Math.sin(ph) * Math.sin(th) * r * 0.8,
+        Math.cos(ph) * r,
+      ],
+      i * 3
+    );
+  };
 
   for (let i = 0; i < count; i++) {
-    let x: number, y: number, z: number;
-    if (i < shell) {
-      // Fibonacci sphere: evenly spread points on the surface.
-      const yy = 1 - (i / (shell - 1)) * 2;
-      const r = Math.sqrt(1 - yy * yy);
-      const th = golden * i;
-      const R = 1.65 + gauss() * 0.02;
-      x = Math.cos(th) * r * R;
-      y = yy * R;
-      z = Math.sin(th) * r * R;
-    } else if (rand() < 0.7) {
-      // Orbits: three rings at different radii and tilts.
-      const ring = Math.floor(rand() * 3);
-      const a = rand() * Math.PI * 2;
-      const R = 2.15 + ring * 0.3 + gauss() * 0.025;
-      let rx = Math.cos(a) * R;
-      let ry = 0;
-      let rz = Math.sin(a) * R;
-      const tilt = 0.35 + ring * 0.5;
-      [ry, rz] = [
-        ry * Math.cos(tilt) - rz * Math.sin(tilt),
-        ry * Math.sin(tilt) + rz * Math.cos(tilt),
-      ];
-      const tw = ring * 1.1;
-      [rx, ry] = [rx * Math.cos(tw) - ry * Math.sin(tw), rx * Math.sin(tw) + ry * Math.cos(tw)];
-      x = rx;
-      y = ry;
-      z = rz;
-    } else {
-      // Nucleus: a soft ball inside.
-      const u = rand() * 2 - 1;
-      const th = rand() * Math.PI * 2;
-      const s = Math.sqrt(1 - u * u);
-      const R = 0.75 * Math.pow(rand(), 0.5);
-      x = s * Math.cos(th) * R;
-      y = u * R;
-      z = s * Math.sin(th) * R;
-    }
-    positions.set([x, y, z], i * 3);
+    const [x, y, z] = pointOnCube();
+    positions.set([x + gauss() * 0.008, y + gauss() * 0.008, z + gauss() * 0.008], i * 3);
+    scatter(i);
     randoms[i] = rand();
+    stream[i] = i >= structureCount ? 1 : 0;
   }
-  return { positions, randoms };
+  return { positions, starts, randoms, stream };
 }
 
 // Frame-rate independent easing towards a target.
@@ -227,14 +268,19 @@ export function HeroParticles({ theme }: Props) {
     const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
     camera.position.set(0, 0, 10);
 
-    const { positions, randoms } = buildOrb(small ? 6000 : 14000);
+    const { positions, starts, randoms, stream } = small
+      ? buildSystem(5000, 1500)
+      : buildSystem(11000, 3000);
     const geometry = new THREE.BufferGeometry();
     geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute("aStart", new THREE.BufferAttribute(starts, 3));
     geometry.setAttribute("aRand", new THREE.BufferAttribute(randoms, 1));
+    geometry.setAttribute("aStream", new THREE.BufferAttribute(stream, 1));
 
     const uniforms = {
       uTime: { value: 0 },
-      uSize: { value: small ? 3.2 : 2.6 },
+      uAssemble: { value: reducedMotion ? 1 : 0 },
+      uSize: { value: small ? 3.4 : 2.8 },
       uPixelRatio: { value: dpr },
       uOffset: { value: new THREE.Vector3() },
       uScale: { value: 1 },
@@ -285,7 +331,7 @@ export function HeroParticles({ theme }: Props) {
       const wide = w >= 1024;
       layout.x = wide ? halfW * 0.5 : 0;
       layout.y = wide ? 0 : 0.6;
-      layout.scale = wide ? 0.85 : 0.95;
+      layout.scale = wide ? 0.95 : 1.0;
       layout.alpha = wide ? 1 : 0.75;
       targetAlpha = layout.alpha;
       uniforms.uOffset.value.set(layout.x, layout.y, 0);
@@ -329,6 +375,8 @@ export function HeroParticles({ theme }: Props) {
     const frame = () => {
       const dt = Math.min(clock.getDelta(), 0.05);
       uniforms.uTime.value += dt;
+      // From disorder to the structure over the first few seconds.
+      uniforms.uAssemble.value = Math.min(1, uniforms.uAssemble.value + dt / 4);
       uniforms.uAlpha.value = damp(uniforms.uAlpha.value, targetAlpha, 2.5, dt);
       uniforms.uMouseForce.value = damp(uniforms.uMouseForce.value, mouseForceTarget, 3, dt);
 

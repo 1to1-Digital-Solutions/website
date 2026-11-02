@@ -7,7 +7,6 @@ import { Footer } from "@/components/Footer";
 import { CookieBanner } from "@/components/CookieBanner";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { StructuredData } from "@/components/StructuredData";
-import { AttributionCapture } from "@/components/AttributionCapture";
 import { ConsentProvider } from "@/context/ConsentContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { ThemeProvider } from "@/context/ThemeContext";
@@ -132,7 +131,6 @@ export default async function RootLayout({
               <Footer />
               <CookieBanner />
               <GoogleAnalytics />
-              <AttributionCapture />
             </LanguageProvider>
           </ConsentProvider>
         </ThemeProvider>

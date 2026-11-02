@@ -1,54 +1,18 @@
 "use client";
 
 import { useEffect } from "react";
-import dynamic from "next/dynamic";
 import { Hero } from "@/components/Hero";
 import { Services } from "@/components/Services";
 import { SuccessCases } from "@/components/SuccessCases";
 import { Testimonials } from "@/components/Testimonials";
 import { Process } from "@/components/Process";
 import { FAQ } from "@/components/FAQ";
-
-// Skeleton placeholder shown while the ContactForm chunk hydrates.
-// Mirrors the form's outer dimensions to prevent layout shift on swap.
-function ContactFormSkeleton() {
-  return (
-    <section className="bg-anthracite/30 w-full py-24" aria-busy="true">
-      <div className="mx-auto max-w-4xl px-6">
-        <div className="mb-12 text-center">
-          <div className="bg-foreground/10 mx-auto h-10 w-72 max-w-full animate-pulse rounded-md" />
-          <div className="bg-foreground/5 mx-auto mt-4 h-5 w-96 max-w-full animate-pulse rounded-md" />
-        </div>
-        <div className="border-foreground/10 bg-background/50 mx-auto flex w-full max-w-2xl flex-col gap-6 rounded-3xl border p-8 shadow-xl backdrop-blur-md md:p-12">
-          <div className="grid gap-6 md:grid-cols-2">
-            <div className="bg-foreground/5 h-14 animate-pulse rounded-xl" />
-            <div className="bg-foreground/5 h-14 animate-pulse rounded-xl" />
-          </div>
-          <div className="grid gap-6 md:grid-cols-2">
-            <div className="bg-foreground/5 h-14 animate-pulse rounded-xl" />
-            <div className="bg-foreground/5 h-14 animate-pulse rounded-xl" />
-          </div>
-          <div className="bg-foreground/5 h-32 animate-pulse rounded-xl" />
-          <div className="bg-foreground/5 h-5 w-3/4 animate-pulse rounded-md" />
-          <div className="bg-primary/40 h-14 animate-pulse rounded-xl" />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-const ContactForm = dynamic(
-  () => import("@/components/ContactForm").then((mod) => ({ default: mod.ContactForm })),
-  {
-    ssr: false,
-    loading: () => <ContactFormSkeleton />,
-  }
-);
+import { Contact } from "@/components/Contact";
 
 export default function Home() {
   // Initial-load #hash scroll: Next.js App Router + client-side dynamic content + the
   // CSS `scroll-behavior: smooth` rule combine into a race where a smooth scroll-to-anchor
-  // is interrupted by mid-flight layout work (font swap, ContactForm chunk load, GSAP
+  // is interrupted by mid-flight layout work (font swap, GSAP
   // ScrollTrigger init when card-sections cross the viewport during the smooth scroll).
   // Fix: do a few instant jumps over the first 400 ms to catch any layout settling.
   // Each jump only disables the CSS smooth-scroll for a single microtask, so navbar
@@ -210,7 +174,7 @@ export default function Home() {
         id="contact"
         className="card-section bg-anthracite relative z-[60] w-full scroll-mt-24 rounded-t-[3rem] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]"
       >
-        <ContactForm />
+        <Contact />
       </div>
     </div>
   );
