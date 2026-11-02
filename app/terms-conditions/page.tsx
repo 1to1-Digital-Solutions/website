@@ -96,10 +96,10 @@ export default function TermsConditions() {
               5. Precio y forma de pago
             </h2>
             <p>
-              El precio de la mentoría es de <strong>1.900 € más el IVA correspondiente</strong>,
-              igual para todos los clientes. Se paga en dos plazos de 950 € (más IVA): el primero al
-              firmar el contrato y el segundo después de la cuarta sesión. Cada pago se factura por
-              separado.
+              El precio de la mentoría es de <strong>2.900 € más el IVA correspondiente</strong>,
+              igual para todos los clientes. Se paga en dos plazos de 1.450 € (más IVA): el primero
+              al firmar el contrato y el segundo después de la cuarta sesión. Cada pago se factura
+              por separado.
             </p>
           </section>
 

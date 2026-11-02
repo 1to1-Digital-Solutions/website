@@ -18,8 +18,8 @@ describe("ServicesPage", () => {
 
   it("shows one public price, + VAT, paid in two halves", () => {
     renderWithProviders(<ServicesPage />);
-    expect(screen.getAllByText("1.900 €").length).toBeGreaterThan(0);
-    expect(screen.getByText(/2 pagos de 950 €/)).toBeInTheDocument();
+    expect(screen.getAllByText("2.900 €").length).toBeGreaterThan(0);
+    expect(screen.getByText(/2 pagos de 1.450 €/)).toBeInTheDocument();
     expect(screen.getByText(/te devuelvo íntegro lo que hayas pagado/)).toBeInTheDocument();
     expect(screen.queryByText(/mismo precio para todos/)).toBeNull();
   });
