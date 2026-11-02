@@ -109,7 +109,7 @@ export function ServicesPage() {
 
   return (
     <div className="bg-background w-full pt-32">
-      {/* Cabecera con índice */}
+      {/* Header with index */}
       <section className="mx-auto w-full max-w-7xl px-6 pb-16 text-center">
         <p className="text-primary text-sm font-semibold tracking-widest uppercase">{ui.eyebrow}</p>
         <h1 className="font-outfit mt-3 text-5xl font-bold tracking-tight md:text-6xl">
@@ -136,7 +136,7 @@ export function ServicesPage() {
         </nav>
       </section>
 
-      {/* Ámbitos */}
+      {/* Areas */}
       <section className="mx-auto w-full max-w-6xl px-6 pb-20">
         <div className="mb-10">
           <h2 className="font-outfit text-3xl font-bold tracking-tight md:text-4xl">
@@ -151,7 +151,7 @@ export function ServicesPage() {
         </div>
       </section>
 
-      {/* Tecnologías */}
+      {/* Technologies */}
       <section className="mx-auto w-full max-w-6xl px-6 pb-20">
         <div className="mb-10">
           <h2 className="font-outfit text-3xl font-bold tracking-tight md:text-4xl">

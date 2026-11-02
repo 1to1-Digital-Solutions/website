@@ -14,7 +14,7 @@ export const runtime = "nodejs";
 
 type Lang = "es" | "en";
 
-/** Los desplegables son opcionales: si faltan quedan en `undefined`, si traen algo raro se rechaza. */
+/** The dropdowns are optional: if missing they stay `undefined`; anything unexpected is rejected. */
 type Choices = { [F in LeadField]?: LeadValue<F> };
 
 type Lead = Choices & {
@@ -33,8 +33,8 @@ const RATE_LIMIT_MAX_TRACKED_IPS = 1000;
 const MAX_BODY_BYTES = 16_384; // 16 KB — generous for a short form
 const MAX_ATTRIBUTION_LEN = 200;
 
-// El correo a César va siempre en castellano; `lang` le dice en qué idioma contestar.
-// Al lead no se le manda nada automático: la primera respuesta, con la horquilla, es manual.
+// The email to César is always in Spanish; `lang` tells him which language to reply in.
+// Nothing automatic is sent to the lead: the first reply, with the price range, is manual.
 const INTERNAL_LABELS = LEAD_LABELS.es;
 
 const FIELD_NAMES: Record<LeadField, string> = {
@@ -45,7 +45,7 @@ const FIELD_NAMES: Record<LeadField, string> = {
 };
 
 // In-memory rate limit. Per-instance on Vercel (acceptable for low-volume marketing site).
-// Migrate to Vercel KV / Upstash if abuse seen — tracked in TODO.md.
+// Migrate to Vercel KV / Upstash if abuse is seen.
 const requestLog = new Map<string, number[]>();
 
 function getClientIp(req: Request): string {
@@ -109,7 +109,7 @@ function isString(v: unknown): v is string {
   return typeof v === "string";
 }
 
-/** Un desplegable opcional: vacío o ausente vale; un valor fuera de la lista, no. */
+/** An optional dropdown: empty or missing is fine; a value outside the list is not. */
 function readChoice<F extends LeadField>(
   field: F,
   raw: unknown
@@ -120,7 +120,7 @@ function readChoice<F extends LeadField>(
   return { ok: true, value: raw as LeadValue<F> };
 }
 
-/** Solo las claves conocidas, solo texto y recortado: esto lo escribe el navegador. */
+/** Only known keys, only text, truncated: the browser writes this. */
 function readAttributionPayload(raw: unknown): Attribution {
   if (!raw || typeof raw !== "object") return {};
   const source = raw as Record<string, unknown>;
@@ -179,7 +179,7 @@ function escapeHtml(s: string): string {
     .replace(/'/g, "&#39;");
 }
 
-/** Los desplegables que el lead rellenó, con su etiqueta en castellano. */
+/** The dropdowns the lead filled in, with their Spanish labels. */
 function choiceRows(lead: Lead): [string, string][] {
   return (Object.keys(FIELD_NAMES) as LeadField[]).map((field) => {
     const value = lead[field];
@@ -266,7 +266,7 @@ async function appendToSheet(lead: Lead, consentAt: string): Promise<void> {
         projectType: label("projectType"),
         message: lead.message,
         privacyConsent: lead.privacy,
-        // Campos nuevos (septiembre 2026): el Apps Script tiene que tener columna para ellos.
+        // Fields added in September 2026: the Apps Script needs a column for each of them.
         tech: label("tech"),
         timeline: label("timeline"),
         source: label("source"),

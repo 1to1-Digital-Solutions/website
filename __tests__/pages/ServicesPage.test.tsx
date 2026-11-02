@@ -9,7 +9,7 @@ describe("ServicesPage", () => {
 
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Lo que hacemos.");
     for (const service of SERVICES) {
-      // La tarjeta de la portada enlaza a /services#slug: el ancla tiene que existir.
+      // The home page card links to /services#slug: the anchor has to exist.
       expect(container.querySelector(`#${service.slug}`)).not.toBeNull();
       expect(screen.getByRole("heading", { level: 3, name: service.es.title })).toBeInTheDocument();
     }

@@ -21,7 +21,7 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const SELECT_CLASS =
   "border-foreground/10 bg-anthracite text-foreground focus:border-primary focus:ring-primary w-full cursor-pointer appearance-none rounded-xl border p-3 pr-10 focus:ring-1 focus:outline-none disabled:cursor-not-allowed disabled:opacity-60";
 
-/** Un desplegable opcional, sin nada elegido de entrada: no se ancla ninguna respuesta. */
+/** An optional dropdown with nothing preselected, so no answer is anchored. */
 function ChoiceSelect({
   field,
   label,

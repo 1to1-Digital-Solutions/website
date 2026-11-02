@@ -2,10 +2,10 @@ import { Blocks, Glasses, LifeBuoy, Rocket, Workflow } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 /**
- * Los servicios, en un solo sitio: la portada pinta el resumen (`summary`) y /services
- * el detalle. La oferta sigue la de LinkedIn (reordenada en septiembre de 2026): tres
- * ámbitos, que es lo que se contrata, y las tecnologías en las que estamos más metidos.
- * El streaming (OTT) queda fuera de la web a propósito (decisión de septiembre de 2026).
+ * The services, in one place: the home page renders the summary (`summary`) and /services
+ * the detail. The offer follows the LinkedIn one (reordered in September 2026): three
+ * areas, which is what clients hire, and the technologies we are most involved in.
+ * Streaming (OTT) is left off the website on purpose (decided in September 2026).
  */
 
 export type ServiceSlug = "rescue" | "launch" | "digitalize" | "xr" | "web3";
@@ -13,17 +13,17 @@ export type ServiceGroup = "scope" | "tech";
 
 type ServiceCopy = {
   title: string;
-  /** Una o dos líneas: la tarjeta de la portada. */
+  /** One or two lines: the home page card. */
   summary: string;
-  /** Cuándo tiene sentido, contado desde la situación del cliente. */
+  /** When it makes sense, told from the client's situation. */
   situation: string;
-  /** Cómo lo hacemos. */
+  /** How we do it. */
   approach: string;
-  /** Lo que te llevas: entregables concretos, no beneficios. */
+  /** What you get: concrete deliverables, not benefits. */
   deliverables: string[];
-  /** Dato rápido junto al título (plazo, formato…). */
+  /** Quick fact next to the title (timeframe, format…). */
   fact?: string;
-  /** La prueba: un caso real o, si no lo hay, de dónde sale lo que sabemos. */
+  /** The proof: a real case or, if there is none, where our knowledge comes from. */
   proof?: string;
 };
 
@@ -269,7 +269,7 @@ type ServicesPageCopy = {
   ctaText: string;
   ctaButton: string;
   ctaAbout: string;
-  /** Portada: enlace de cada tarjeta y botón al detalle. */
+  /** Home page: each card's link and the button to the detail. */
   cardLink: string;
   allServices: string;
   techRowTitle: string;

@@ -1,8 +1,8 @@
 /**
- * Las opciones del formulario de contacto, compartidas por el formulario (que las pinta) y
- * por `/api/contact` (que las valida y las pone en el correo). Los encargos y tecnologías
- * son los de `content/services.ts`. No se pregunta el presupuesto: el correo de confirmación
- * manda una horquilla orientativa según el tipo de proyecto (`content/pricing.ts`).
+ * The contact form options, shared by the form (which renders them) and by `/api/contact`
+ * (which validates them and puts them in the email). The engagements and technologies are
+ * the ones in `content/services.ts`. The budget is not asked: the internal notification
+ * suggests an indicative price range by project type (`content/pricing.ts`).
  */
 
 export const LEAD_OPTIONS = {
@@ -70,5 +70,5 @@ export const LEAD_LABELS: Record<"es" | "en", Labels> = {
   },
 };
 
-/** Versión de la política de privacidad que se acepta al enviar: queda en el registro. */
+/** Privacy policy version accepted on submit; it is stored with the record. */
 export const PRIVACY_POLICY_VERSION = "2026-09";
