@@ -83,7 +83,11 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       },
       {
         title: "Formación para ti y tu equipo",
-        text: "Cómo trabajar con la IA y adaptaros a los cambios que vayan llegando.",
+        text: "Tu equipo también aprende a trabajar con la IA en su día a día y a adaptarse a los cambios que vayan llegando, no solo tú.",
+      },
+      {
+        title: "Una política de uso seguro de la IA",
+        text: "Por escrito y adaptada a tu empresa: qué herramientas se usan, con qué datos y cómo, para que nadie ponga en riesgo la información de tu negocio ni la de tus clientes.",
       },
       {
         title: "Un sistema seguro, verificado por un ingeniero",
@@ -170,7 +174,11 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       },
       {
         title: "Training for you and your team",
-        text: "How to work with AI and adapt to the changes as they come.",
+        text: "Your team learns to work with AI in their day to day and to adapt to the changes as they come, not just you.",
+      },
+      {
+        title: "A policy for using AI safely",
+        text: "In writing and adapted to your company: which tools are used, with what data and how, so nobody puts your business's information or your clients' at risk.",
       },
       {
         title: "A safe system, verified by an engineer",

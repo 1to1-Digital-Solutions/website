@@ -59,7 +59,7 @@ test("the mentoring summary leads to its detail", async ({ page }) => {
   await expect(page).toHaveURL(/\/services$/);
   // The detail shows the 4 steps and what the client takes away.
   await expect(page.locator("#steps li")).toHaveCount(4);
-  await expect(page.locator("#outcomes li")).toHaveCount(5);
+  await expect(page.locator("#outcomes li")).toHaveCount(6);
 });
 
 test("the contact button on another page lands on the form", async ({ page }) => {
