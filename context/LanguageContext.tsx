@@ -147,9 +147,6 @@ export const translations = {
     ariaOpenMenu: "Open menu",
     ariaCloseMenu: "Close menu",
     srOpensInNewTab: "(opens in new tab)",
-
-    // HeroCanvas
-    heroDragHint: "Drag each shape to its slot",
   },
   es: {
     // Navbar
@@ -158,7 +155,7 @@ export const translations = {
     navCTA: "Hablemos",
 
     // Hero
-    heroTitle1: "Entiende e integra la IA",
+    heroTitle1: "Entiende e integra la\u00a0IA",
     heroTitle2: "en tu negocio, de forma segura.",
     heroSub:
       "Te acompaño en una mentoría de 8 semanas, una sesión a la semana, para montar un sistema adaptado a tu empresa y crear tus propias herramientas sin depender de nadie.",
@@ -291,9 +288,6 @@ export const translations = {
     ariaOpenMenu: "Abrir menú",
     ariaCloseMenu: "Cerrar menú",
     srOpensInNewTab: "(abre en nueva pestaña)",
-
-    // HeroCanvas
-    heroDragHint: "Arrastra cada objeto a su hueco",
   },
 };
 

@@ -2,18 +2,11 @@ import { screen } from "@testing-library/react";
 import { Hero } from "@/components/Hero";
 import { renderWithProviders } from "../test-utils";
 
-// Mock the HeroCanvas which uses Three.js
-jest.mock("@/components/canvas/HeroCanvas", () => {
-  const MockHeroCanvas = () => <div data-testid="hero-canvas-mock">Canvas</div>;
-  MockHeroCanvas.displayName = "MockHeroCanvas";
-  return { HeroCanvas: MockHeroCanvas };
-});
-
-// Mock the mobile background (also touches client-only APIs)
-jest.mock("@/components/HeroMobileBackground", () => {
-  const MockMobileBg = () => <div data-testid="hero-mobile-bg-mock" />;
-  MockMobileBg.displayName = "MockMobileBg";
-  return { HeroMobileBackground: MockMobileBg };
+// Mock the point cloud, which needs WebGL.
+jest.mock("@/components/canvas/HeroParticles", () => {
+  const MockHeroParticles = () => <div data-testid="hero-particles-mock" />;
+  MockHeroParticles.displayName = "MockHeroParticles";
+  return { HeroParticles: MockHeroParticles };
 });
 
 describe("Hero", () => {
