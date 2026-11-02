@@ -13,7 +13,7 @@ const COPY = {
   es: {
     slogan: "Entiende e integra la IA en tu negocio, de forma segura",
     description:
-      "Mentoría online de 8 semanas para pymes y autónomos: entender e integrar la IA en el negocio de forma segura, con un sistema adaptado a la empresa para crear sus propias herramientas sin depender de nadie.",
+      "Acompañamiento para que autónomos y pymes sin perfil técnico entiendan e integren la IA en su negocio de forma segura, con un sistema adaptado uno a uno a su empresa. Al terminar, el control es suyo: no dependen de nadie externo para seguir avanzando con la IA.",
     jobTitle: "Ingeniero informático y mentor de IA para pymes y autónomos",
     knowsAbout: [
       "Inteligencia artificial",
@@ -27,7 +27,7 @@ const COPY = {
   en: {
     slogan: "Understand and bring AI into your business, safely",
     description:
-      "An 8-week online mentoring for small businesses and freelancers: understand and bring AI into the business safely, with a system adapted to the company to build their own tools without depending on anyone.",
+      "Guidance so freelancers and small businesses with no tech profile understand and bring AI into their business safely, with a system adapted one to one to their company. When it ends, the control is theirs: they don't depend on anyone external to keep moving forward with AI.",
     jobTitle: "Computer engineer and AI mentor for small businesses and freelancers",
     knowsAbout: [
       "Artificial intelligence",

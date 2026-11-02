@@ -7,7 +7,7 @@ describe("Services", () => {
   it("renders the mentoring summary with everything the client takes away", () => {
     renderWithProviders(<Services />);
 
-    expect(screen.getByText("8 semanas.")).toBeInTheDocument();
+    expect(screen.getByText("bajo tu control.")).toBeInTheDocument();
     for (const outcome of MENTORSHIP.es.outcomes) {
       expect(screen.getByText(outcome.title)).toBeInTheDocument();
     }

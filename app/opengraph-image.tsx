@@ -76,7 +76,7 @@ export default async function OpengraphImage() {
             fontWeight: 500,
           }}
         >
-          Mentoría online de 8 semanas · 1.900 € + IVA
+          Para autónomos y pymes sin perfil técnico
         </p>
       </div>
 
@@ -90,7 +90,7 @@ export default async function OpengraphImage() {
           fontWeight: 500,
         }}
       >
-        <span>Para pymes y autónomos</span>
+        <span>Al terminar, el control es tuyo</span>
         <span>1to1digital.solutions</span>
       </div>
     </div>,

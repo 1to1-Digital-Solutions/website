@@ -41,7 +41,7 @@ export const ABOUT: Record<"es" | "en", AboutCopy> = {
     title1: "Hola, soy ",
     title2: "César.",
     intro:
-      "Soy ingeniero informático, con más de 8 años de experiencia en desarrollo de software y un máster de transformación digital. Acompaño a empresas y autónomos a entender e integrar la inteligencia artificial en su negocio de forma segura.",
+      "Soy ingeniero informático, con más de 8 años de experiencia en desarrollo de software y un máster de transformación digital. Si eres autónomo o tienes una empresa, te acompaño a entender e integrar la inteligencia artificial en tu negocio de forma segura, pasando de 0 a 100 en 8 semanas y creando, uno a uno, un sistema adaptado a tu negocio, para que al terminar el control sea tuyo y no necesites a nadie externo para seguir avanzando con la IA.",
     stats: [
       { value: "+8 años", label: "de experiencia en desarrollo de software" },
       { value: "+4 años", label: "desarrollando software con IA" },
@@ -68,7 +68,7 @@ export const ABOUT: Record<"es" | "en", AboutCopy> = {
     howTitle: "Cómo trabajaremos",
     how: [
       "Una mentoría de 8 semanas con una sesión de 1 hora semanal. Empezamos con una reunión de 15 minutos, gratis, para analizar tu situación, y con eso desarrollo un plan adaptado a tu empresa.",
-      "Después lo ponemos en marcha juntos: aprendes los conceptos y montamos las primeras herramientas. Terminas con un sistema propio para crear tus aplicaciones sin depender de nadie. Y hablas conmigo directamente, sin intermediarios.",
+      "Después lo ponemos en marcha juntos: aprendes los conceptos y montamos las primeras herramientas. Terminas con un sistema propio para crear tus aplicaciones, y el control es tuyo.",
     ],
     whyTitle: "Por qué lo hago",
     why: [
@@ -107,7 +107,7 @@ export const ABOUT: Record<"es" | "en", AboutCopy> = {
     title1: "Hi, I'm ",
     title2: "César.",
     intro:
-      "I'm a computer engineer with over 8 years of experience in software development and a master's degree in digital transformation. I guide companies and freelancers to understand and bring artificial intelligence into their business safely.",
+      "I'm a computer engineer with over 8 years of experience in software development and a master's degree in digital transformation. If you're a freelancer or run a company, I'll guide you to understand and bring artificial intelligence into your business safely, going from 0 to 100 in 8 weeks and building, one to one, a system adapted to your business, so that when it ends the control is yours and you don't need anyone external to keep moving forward with AI.",
     stats: [
       { value: "8+ years", label: "of experience in software development" },
       { value: "4+ years", label: "building software with AI" },
@@ -134,7 +134,7 @@ export const ABOUT: Record<"es" | "en", AboutCopy> = {
     howTitle: "How we'll work",
     how: [
       "An 8-week mentoring with one 1-hour session a week. We start with a free 15-minute meeting to look at your situation, and from there I put together a plan adapted to your company.",
-      "Then we put it in motion together: you learn the concepts and we set up the first tools. You finish with your own system to build your applications without depending on anyone. And you talk to me directly, with no middlemen.",
+      "Then we put it in motion together: you learn the concepts and we set up the first tools. You finish with your own system to build your applications, and the control is yours.",
     ],
     whyTitle: "Why I do it",
     why: [

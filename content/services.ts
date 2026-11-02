@@ -69,7 +69,7 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
     title1: "Entiende e integra la IA ",
     title2: "en tu negocio.",
     intro:
-      "Te acompaño durante 8 semanas, con una sesión de 1 hora a la semana, a entender qué está pasando con la IA y a integrarla en tu negocio de forma segura. Terminas con un sistema adaptado a tu empresa para crear tus propias herramientas sin depender de nadie.",
+      "Durante 8 semanas, con una sesión online de 1 hora a la semana, entiendes qué está pasando con la IA y la integras en tu negocio de forma segura. Creamos, uno a uno, un sistema adaptado a tu empresa, para que al terminar el control sea tuyo y no necesites a nadie externo para seguir avanzando con la IA.",
     facts: [
       "8 semanas",
       "1 sesión online de 1 hora a la semana",
@@ -103,7 +103,7 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       },
       {
         title: "Terminas con un sistema propio",
-        text: "Para crear tus aplicaciones sin depender de nadie.",
+        text: "Para crear tus aplicaciones.",
       },
     ],
     outcomesTitle: "¿Qué te llevas?",
@@ -122,15 +122,15 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       },
       {
         title: "Un sistema seguro, verificado por un ingeniero",
-        text: "Montado y adaptado a tu empresa, para que construyas tus propias herramientas (o mejores las que ya tienes) explicándolas con tus palabras.",
+        text: "Montado uno a uno sobre cómo trabaja tu empresa, para que construyas tus propias herramientas (o mejores las que ya tienes) explicándolas con tus palabras.",
       },
       {
         title: "Las primeras herramientas ya funcionando",
         text: "Automatizaciones, herramientas internas o integraciones con lo que ya usas, con su documentación.",
       },
       {
-        title: "Hablas directamente conmigo",
-        text: "Sin intermediarios, durante toda la mentoría.",
+        title: "El control es tuyo",
+        text: "Cuando termina la mentoría no necesitas a nadie externo para seguir avanzando con la IA. El sistema y las herramientas son de tu negocio.",
       },
     ],
     price: {
@@ -158,8 +158,8 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
         text: "Desde febrero de 2025 pide que quien usa la IA en una empresa tenga la formación suficiente para hacerlo. La formación del equipo y la política de uso seguro van justo en esa dirección.",
       },
       {
-        title: "Revisado por un ingeniero",
-        text: "Reviso cómo están configuradas las herramientas que vais a usar: quién tiene acceso, a qué datos y dónde se guardan.",
+        title: "Herramientas revisadas por un ingeniero",
+        text: "Las herramientas que vais a usar quedan bien configuradas: quién tiene acceso, a qué datos y dónde se guardan.",
       },
     ],
     safetyNote:
@@ -188,10 +188,10 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       "Escríbeme por LinkedIn y buscamos un hueco para la reunión de 15 minutos. Es gratis y te sirve para ver por dónde empezar.",
     ctaButton: "Hablemos",
     ctaAbout: "Quién soy",
-    homeTitle1: "Una mentoría de ",
-    homeTitle2: "8 semanas.",
+    homeTitle1: "La IA en tu negocio, ",
+    homeTitle2: "bajo tu control.",
     homeSub:
-      "Una sesión de 1 hora a la semana para entender e integrar la IA en tu negocio de forma segura.",
+      "De 0 a 100 en 8 semanas: entiendes la IA, la integras en tu negocio de forma segura y al terminar no necesitas a nadie externo para seguir avanzando.",
     homeLink: "Ver la mentoría en detalle",
   },
   en: {
@@ -202,7 +202,7 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
     title1: "Understand and bring AI ",
     title2: "into your business.",
     intro:
-      "I'll guide you for 8 weeks, with one 1-hour session a week, to understand what's happening with AI and bring it into your business safely. You finish with a system adapted to your company to build your own tools without depending on anyone.",
+      "For 8 weeks, with one 1-hour online session a week, you understand what's happening with AI and bring it into your business safely. We build, one to one, a system adapted to your company, so that when it ends the control is yours and you don't need anyone external to keep moving forward with AI.",
     facts: ["8 weeks", "One 1-hour online session a week", "First meeting free", "€1,900 + VAT"],
     forWhoTitle: "Who is it for?",
     forWho: [
@@ -231,7 +231,7 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       },
       {
         title: "You finish with your own system",
-        text: "To build your applications without depending on anyone.",
+        text: "To build your applications.",
       },
     ],
     outcomesTitle: "What do you take away?",
@@ -250,15 +250,15 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       },
       {
         title: "A safe system, verified by an engineer",
-        text: "Set up and adapted to your company, so you can build your own tools (or improve the ones you already have) by describing them in your own words.",
+        text: "Set up one to one around how your company works, so you can build your own tools (or improve the ones you already have) by describing them in your own words.",
       },
       {
         title: "The first tools already working",
         text: "Automations, internal tools or integrations with what you already use, with their documentation.",
       },
       {
-        title: "You talk directly to me",
-        text: "No middlemen, for the whole mentoring.",
+        title: "The control is yours",
+        text: "When the mentoring ends you don't need anyone external to keep moving forward with AI. The system and the tools belong to your business.",
       },
     ],
     price: {
@@ -286,8 +286,8 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
         text: "Since February 2025 it requires people who use AI in a company to have enough training to do so. The team training and the safe use policy go exactly in that direction.",
       },
       {
-        title: "Reviewed by an engineer",
-        text: "I review how the tools you'll use are configured: who has access, to what data and where it's stored.",
+        title: "Tools reviewed by an engineer",
+        text: "The tools you'll use are set up properly: who has access, to what data and where it's stored.",
       },
     ],
     safetyNote:
@@ -316,9 +316,10 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       "Message me on LinkedIn and we'll find a slot for the 15-minute meeting. It's free and it helps you see where to start.",
     ctaButton: "Let's talk",
     ctaAbout: "Who I am",
-    homeTitle1: "An ",
-    homeTitle2: "8-week mentoring.",
-    homeSub: "One 1-hour session a week to understand and bring AI into your business safely.",
+    homeTitle1: "AI in your business, ",
+    homeTitle2: "under your control.",
+    homeSub:
+      "From 0 to 100 in 8 weeks: you understand AI, bring it into your business safely and, when it ends, you don't need anyone external to keep moving forward.",
     homeLink: "See the mentoring in detail",
   },
 };

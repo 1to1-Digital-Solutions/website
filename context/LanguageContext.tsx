@@ -15,10 +15,11 @@ export const translations = {
     navCTA: "Let's talk",
 
     // Hero
+    heroEyebrow: "For freelancers and small businesses with no tech profile",
     heroTitle1: "Understand and bring AI",
     heroTitle2: "into your business, safely.",
     heroSub:
-      "Your competitors already use AI, there's something new every week and you don't even know where to start. I'll guide you to bring it into your business with a system adapted to your company, so you can build your own tools without depending on anyone.",
+      "Your competitors already use AI, there's something new every week and you don't even know where to start. I'll guide you to build, one to one, a system adapted to your business, so that when it ends the control is yours.",
     heroBtnStart: "Let's talk",
     heroBtnWork: "How we'll work",
 
@@ -44,7 +45,7 @@ export const translations = {
     whoEyebrow: "Who guides you",
     whoTitle: "I'm César Peón.",
     whoText:
-      "A computer engineer with over 8 years building software for other companies, and over 4 working with AI. In the mentoring you talk to me directly, with no middlemen.",
+      "A computer engineer with over 8 years building software for other companies, and over 4 working with AI.",
     who1: "8+ years in software development",
     who2: "4+ years building software with AI",
     who3: "Master's in digital transformation",
@@ -101,7 +102,7 @@ export const translations = {
     proc3Title: "We put it in motion together",
     proc3Desc: "You learn the concepts and we set up the first tools, one session a week.",
     proc4Title: "You finish with your own system",
-    proc4Desc: "To build your applications without depending on anyone.",
+    proc4Desc: "To build your applications.",
 
     // Aria labels
     ariaToggleLangToEn: "Switch to English",
@@ -117,10 +118,11 @@ export const translations = {
     navCTA: "Hablemos",
 
     // Hero
+    heroEyebrow: "Para autónomos y pymes sin perfil técnico",
     heroTitle1: "Entiende e integra la\u00a0IA",
     heroTitle2: "en tu negocio, de forma segura.",
     heroSub:
-      "Tu competencia ya usa la IA, cada semana sale algo nuevo y no sabes ni por dónde empezar. Te acompaño a integrarla en tu negocio con un sistema adaptado a tu empresa, para que crees tus propias herramientas sin depender de nadie.",
+      "Tu competencia ya usa la IA, cada semana sale algo nuevo y no sabes ni por dónde empezar. Te acompaño a crear, uno a uno, un sistema adaptado a tu negocio, para que al terminar el control sea tuyo.",
     heroBtnStart: "Hablemos",
     heroBtnWork: "Cómo trabajaremos",
 
@@ -146,7 +148,7 @@ export const translations = {
     whoEyebrow: "Quién te acompaña",
     whoTitle: "Soy César Peón.",
     whoText:
-      "Ingeniero informático, con más de 8 años construyendo software para otras empresas y más de 4 trabajando con IA. En la mentoría hablas directamente conmigo, sin intermediarios.",
+      "Ingeniero informático, con más de 8 años construyendo software para otras empresas y más de 4 trabajando con IA.",
     who1: "+8 años en desarrollo de software",
     who2: "+4 años desarrollando software con IA",
     who3: "Máster en transformación digital",
@@ -204,7 +206,7 @@ export const translations = {
     proc3Desc:
       "Aprendes los conceptos y montamos las primeras herramientas, una sesión a la semana.",
     proc4Title: "Terminas con un sistema propio",
-    proc4Desc: "Para crear tus aplicaciones sin depender de nadie.",
+    proc4Desc: "Para crear tus aplicaciones.",
 
     // Aria labels
     ariaToggleLangToEn: "Cambiar a inglés",

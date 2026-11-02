@@ -29,16 +29,16 @@ const siteName = "1to1 Digital Solutions";
 // Spanish first: it is the audience, and what crawlers get (they send no language cookie).
 const SEO = {
   es: {
-    title: "Mentoría de IA para pymes y autónomos",
+    title: "IA para autónomos y pymes, de forma segura",
     description:
-      "Mentoría online de 8 semanas para pymes y autónomos: entiende e integra la IA en tu negocio de forma segura y crea tus propias herramientas sin depender de nadie. 1.900 € + IVA.",
+      "Entiende e integra la IA en tu negocio de forma segura, con un sistema adaptado uno a uno a tu empresa. Al terminar, el control es tuyo. Para autónomos y pymes sin perfil técnico.",
     locale: "es_ES",
     alternateLocale: ["en_US"],
   },
   en: {
-    title: "AI mentoring for small businesses and freelancers",
+    title: "AI for freelancers and small businesses, safely",
     description:
-      "An 8-week online mentoring for small businesses and freelancers: understand and bring AI into your business safely and build your own tools without depending on anyone. €1,900 + VAT.",
+      "Understand and bring AI into your business safely, with a system adapted one to one to your company. When it ends, the control is yours. For freelancers and small businesses with no tech profile.",
     locale: "en_US",
     alternateLocale: ["es_ES"],
   },

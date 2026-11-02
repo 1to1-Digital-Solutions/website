@@ -36,7 +36,7 @@ export const FAQ: Record<"es" | "en", FaqCopy> = {
       },
       {
         q: "¿Qué pasa cuando terminan las 8 semanas?",
-        a: "Te quedas con el sistema y las primeras herramientas, con su documentación. La idea es que a partir de ahí puedas crear tus propias herramientas sin depender de nadie, tampoco de mí.",
+        a: "Te quedas con el sistema y las primeras herramientas, con su documentación. El control es tuyo: no necesitas a nadie externo para seguir avanzando con la IA, tampoco a mí.",
       },
     ],
   },
@@ -67,7 +67,7 @@ export const FAQ: Record<"es" | "en", FaqCopy> = {
       },
       {
         q: "What happens when the 8 weeks are over?",
-        a: "You keep the system and the first tools, with their documentation. The idea is that from then on you can build your own tools without depending on anyone, me included.",
+        a: "You keep the system and the first tools, with their documentation. The control is yours: you don't need anyone external to keep moving forward with AI, me included.",
       },
     ],
   },
