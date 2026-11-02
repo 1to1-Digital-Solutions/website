@@ -15,8 +15,8 @@ export const FAQ: Record<"es" | "en", FaqCopy> = {
     sub: "Lo que me suelen preguntar antes de empezar.",
     items: [
       {
-        q: "¿Necesito saber de tecnología?",
-        a: "No. La mentoría está pensada para autónomos y pymes sin perfil tecnológico interno. Partimos de lo que ya haces y te explico cada concepto según lo vamos usando.",
+        q: "¿Necesito algún conocimiento previo de IA?",
+        a: "No. Partimos de cero, de lo que ya haces en tu negocio, y cada concepto lo vemos según lo vamos usando. Está pensada para autónomos y pymes sin perfil técnico.",
       },
       {
         q: "¿Las sesiones son online?",
@@ -46,8 +46,8 @@ export const FAQ: Record<"es" | "en", FaqCopy> = {
     sub: "What people usually ask me before we start.",
     items: [
       {
-        q: "Do I need to know about technology?",
-        a: "No. The mentoring is designed for freelancers and small businesses with no in-house tech profile. We start from what you already do and I explain each concept as we use it.",
+        q: "Do I need any prior knowledge of AI?",
+        a: "No. We start from scratch, from what you already do in your business, and we go through each concept as we use it. It's designed for freelancers and small businesses with no tech profile.",
       },
       {
         q: "Are the sessions online?",

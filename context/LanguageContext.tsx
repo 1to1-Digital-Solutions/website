@@ -15,11 +15,10 @@ export const translations = {
     navCTA: "Let's talk",
 
     // Hero
-    heroEyebrow: "For freelancers and small businesses with no tech profile",
     heroTitle1: "Understand and bring AI",
     heroTitle2: "into your business, safely.",
     heroSub:
-      "Your competitors already use AI, there's something new every week and you don't even know where to start. I'll guide you to build, one to one, a system adapted to your business, so that when it ends the control is yours.",
+      "Your competitors already use AI, there's something new every week and you don't even know where to start. I'll guide you to build a system adapted to your business, one to one, so that when it ends the control is yours.",
     heroBtnStart: "Let's talk",
     heroBtnWork: "How we'll work",
 
@@ -27,7 +26,7 @@ export const translations = {
     casesTitle1: "Projects I've ",
     casesTitle2: "worked on.",
     casesSub:
-      "Before the mentoring I spent years building software for other companies. This is part of that experience.",
+      "Real applications, in production and used by thousands of people. It's the experience behind the system we set up in your business.",
     case1Cat: "Blockchain",
     case1Title: "Firefly: IOTA & Shimmer wallet",
     case1Desc:
@@ -45,17 +44,17 @@ export const translations = {
     whoEyebrow: "Who guides you",
     whoTitle: "I'm César Peón.",
     whoText:
-      "A computer engineer with over 8 years building software for other companies, and over 4 working with AI.",
-    who1: "8+ years in software development",
-    who2: "4+ years building software with AI",
-    who3: "Master's in digital transformation",
+      "A computer engineer with over 8 years of experience building software for others, and over 4 working hand in hand with AI.",
+    who1: "Senior developer on Blockchain, Virtual Reality and AI projects",
+    who2: "Master's in digital transformation (Industry 4.0, UNIR)",
+    who3: "Took part in the INCIBE Emprende incubation programme",
     whoLink: "Get to know me",
     whoImgAlt: "Portrait of César Peón",
 
     // Testimonials
     testTitle1: "What they say about ",
     testTitle2: "working with me.",
-    testSub: "Clients from my years as a developer.",
+    testSub: "Companies that already counted on me to move their projects forward.",
     test1Quote:
       "A real pleasure working with César. He delivered an interactive web header in record time, precisely replicating the look & feel of a pre-rendered 3D video, but with real-time interactivity, complex animations, and cross-device optimization. For his attitude, drive, and commitment, a 10. It’s a delight to collaborate with someone who quickly understands what’s needed and executes it with judgment and autonomy.",
     test1Author: "David Torrico",
@@ -118,11 +117,10 @@ export const translations = {
     navCTA: "Hablemos",
 
     // Hero
-    heroEyebrow: "Para autónomos y pymes sin perfil técnico",
     heroTitle1: "Entiende e integra la\u00a0IA",
     heroTitle2: "en tu negocio, de forma segura.",
     heroSub:
-      "Tu competencia ya usa la IA, cada semana sale algo nuevo y no sabes ni por dónde empezar. Te acompaño a crear, uno a uno, un sistema adaptado a tu negocio, para que al terminar el control sea tuyo.",
+      "Tu competencia ya usa la IA, cada semana sale algo nuevo y no sabes ni por dónde empezar. Te acompaño a crear un sistema adaptado a tu negocio, uno a uno, para que al terminar el control sea tuyo.",
     heroBtnStart: "Hablemos",
     heroBtnWork: "Cómo trabajaremos",
 
@@ -130,7 +128,7 @@ export const translations = {
     casesTitle1: "Proyectos en los que ",
     casesTitle2: "he trabajado.",
     casesSub:
-      "Antes de la mentoría pasé años construyendo software para otras empresas. Esto es parte de esa experiencia.",
+      "Aplicaciones reales, en producción y usadas por miles de personas. Es la experiencia que hay detrás del sistema que montamos en tu negocio.",
     case1Cat: "Blockchain",
     case1Title: "Firefly: wallet de IOTA y Shimmer",
     case1Desc:
@@ -148,17 +146,17 @@ export const translations = {
     whoEyebrow: "Quién te acompaña",
     whoTitle: "Soy César Peón.",
     whoText:
-      "Ingeniero informático, con más de 8 años construyendo software para otras empresas y más de 4 trabajando con IA.",
-    who1: "+8 años en desarrollo de software",
-    who2: "+4 años desarrollando software con IA",
-    who3: "Máster en transformación digital",
+      "Ingeniero informático, con más de 8 años de experiencia construyendo software para otros y más de 4 trabajando de la mano con la IA.",
+    who1: "Desarrollador senior en proyectos de Blockchain, Realidad Virtual e IA",
+    who2: "Máster en transformación digital (Industria 4.0, UNIR)",
+    who3: "Participante en el programa de incubación INCIBE Emprende",
     whoLink: "Conóceme mejor",
     whoImgAlt: "Retrato de César Peón",
 
     // Testimonials
     testTitle1: "Lo que dicen de ",
     testTitle2: "trabajar conmigo.",
-    testSub: "Clientes de mis años como desarrollador.",
+    testSub: "Empresas que ya contaron conmigo para sacar adelante sus proyectos.",
     test1Quote:
       "Encantadísimo de haber trabajado con César. Ha resuelto en tiempo récord una cabecera interactiva para una web, replicando con precisión el look & feel de un vídeo 3D pre-renderizado, pero con interactividad en tiempo real, animaciones complejas y optimización para distintos dispositivos. Por su actitud, ganas y compromiso, un 10. Da gusto colaborar con alguien que entiende rápido lo que se necesita y lo ejecuta con criterio y autonomía.",
     test1Author: "David Torrico",

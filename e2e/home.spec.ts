@@ -10,7 +10,16 @@ import { expect, test } from "@playwright/test";
  */
 
 /** The home page sections, with their anchors. About and the services detail are separate. */
-const SECTIONS = ["services", "who", "work", "testimonials", "faq", "contact"] as const;
+const SECTIONS = [
+  "services",
+  "who",
+  "for-who",
+  "process",
+  "work",
+  "testimonials",
+  "faq",
+  "contact",
+] as const;
 
 test("the home page loads with all its sections", async ({ page }) => {
   await page.goto("/");

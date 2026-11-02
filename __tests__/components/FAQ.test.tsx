@@ -11,12 +11,12 @@ describe("FAQ", () => {
     );
 
     // Check first question
-    const q1 = screen.getByText("¿Necesito saber de tecnología?");
+    const q1 = screen.getByText("¿Necesito algún conocimiento previo de IA?");
     expect(q1).toBeInTheDocument();
 
     // Answer to Q1 should be visible
     expect(screen.getAllByRole("button")).toHaveLength(6);
-    const a1 = screen.getByText(/pensada para autónomos y pymes sin perfil tecnológico/i);
+    const a1 = screen.getByText(/Partimos de cero/i);
     expect(a1).toBeInTheDocument();
 
     // Click q2 to open it

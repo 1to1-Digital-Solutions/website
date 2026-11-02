@@ -18,12 +18,13 @@ type AboutCopy = {
   stats: Stat[];
   pathTitle: string;
   path: Milestone[];
-  howTitle: string;
-  how: string[];
   whyTitle: string;
   why: string[];
   productsTitle: string;
   productsSub: string;
+  githubText: string;
+  githubPersonal: string;
+  githubCompany: string;
   products: Product[];
   ctaTitle: string;
   ctaText: string;
@@ -65,19 +66,17 @@ export const ABOUT: Record<"es" | "en", AboutCopy> = {
         text: "Desde agosto de 2025 trabajo por mi cuenta y en abril de 2026 constituí la empresa. Tengo un máster de transformación digital (Industria 4.0, UNIR) y he participado en el programa de incubación INCIBE Emprende.",
       },
     ],
-    howTitle: "Cómo trabajaremos",
-    how: [
-      "Una mentoría de 8 semanas con una sesión de 1 hora semanal. Empezamos con una reunión de 15 minutos, gratis, para analizar tu situación, y con eso desarrollo un plan adaptado a tu empresa.",
-      "Después lo ponemos en marcha juntos: aprendes los conceptos y montamos las primeras herramientas. Terminas con un sistema propio para crear tus aplicaciones, y el control es tuyo.",
-    ],
     whyTitle: "Por qué lo hago",
     why: [
       'En los eventos de networking lo que más me piden es "quiero usar la IA y no sé de qué va". Cuanto más avanza la IA, más complicado es que una empresa se pueda adaptar por sí sola.',
       "Yo también tuve que aprender lo que no dominaba, las ventas y el marketing, de la mano de profesionales que sabían más que yo. Ahora me toca a mí acompañar a otros. Lo que me motiva es adaptarme cada vez a un nuevo cliente, en un nuevo entorno.",
       "También soy scout, runner y me encantan los juegos de mesa, pero esto no creo que sirva para tu negocio (o sí, quién sabe).",
     ],
-    productsTitle: "Productos propios",
-    productsSub: "También construyo y mantengo productos propios.",
+    productsTitle: "Desarrollos propios",
+    productsSub: "También construyo y mantengo desarrollos propios.",
+    githubText: "Puedes encontrar más en mi GitHub y en el de la empresa.",
+    githubPersonal: "Mi GitHub",
+    githubCompany: "GitHub de 1to1",
     products: [
       {
         title: "Hoy Entreno",
@@ -131,19 +130,17 @@ export const ABOUT: Record<"es" | "en", AboutCopy> = {
         text: "I've worked on my own since August 2025, and in April 2026 I incorporated the company. I hold a master's degree in digital transformation (Industry 4.0, UNIR) and took part in the INCIBE Emprende incubation programme.",
       },
     ],
-    howTitle: "How we'll work",
-    how: [
-      "An 8-week mentoring with one 1-hour session a week. We start with a free 15-minute meeting to look at your situation, and from there I put together a plan adapted to your company.",
-      "Then we put it in motion together: you learn the concepts and we set up the first tools. You finish with your own system to build your applications, and the control is yours.",
-    ],
     whyTitle: "Why I do it",
     why: [
       "At networking events, what people ask me for most is \"I want to use AI and I don't know what it's about\". The further AI goes, the harder it is for a company to adapt on its own.",
       "I also had to learn what I didn't know, sales and marketing, from professionals who knew more than me. Now it's my turn to guide others. What motivates me is adapting every time to a new client, in a new setting.",
       "I'm also a scout and a runner, and I love board games, but I don't think that helps your business (or maybe it does, who knows).",
     ],
-    productsTitle: "My own products",
-    productsSub: "I also build and run products of my own.",
+    productsTitle: "My own developments",
+    productsSub: "I also build and run developments of my own.",
+    githubText: "You can find more on my GitHub and on the company's.",
+    githubPersonal: "My GitHub",
+    githubCompany: "1to1 GitHub",
     products: [
       {
         title: "Hoy Entreno",

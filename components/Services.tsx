@@ -19,6 +19,9 @@ export function Services() {
           {c.homeTitle1}
           <span className="text-primary">{c.homeTitle2}</span>
         </h2>
+        <p className="text-primary mt-4 text-sm font-semibold tracking-widest uppercase md:text-base">
+          {c.homeAudience}
+        </p>
         <p className="text-foreground/70 mx-auto mt-4 max-w-2xl text-lg">{c.homeSub}</p>
       </div>
 
@@ -29,7 +32,7 @@ export function Services() {
         {c.outcomes.map((o) => (
           <li
             key={o.title}
-            className="border-foreground/10 bg-anthracite/50 hover:border-primary/40 flex items-start gap-4 rounded-2xl border p-6 transition-colors"
+            className="border-foreground/10 bg-anthracite/50 flex items-start gap-4 rounded-2xl border p-6"
           >
             <Check size={22} aria-hidden="true" className="text-primary mt-1 shrink-0" />
             <div>

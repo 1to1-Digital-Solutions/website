@@ -9,6 +9,7 @@ import { Process } from "@/components/Process";
 import { FAQ } from "@/components/FAQ";
 import { Contact } from "@/components/Contact";
 import { WhoGuides } from "@/components/WhoGuides";
+import { ForWho } from "@/components/ForWho";
 
 /** The home page (client side: GSAP scroll effects). app/page.tsx adds the structured data. */
 export function HomePage() {
@@ -146,8 +147,8 @@ export function HomePage() {
     };
   }, []);
 
-  // Persuasion arc: Hero (problem) → Mentoring + price → Process → Who guides you →
-  // Work (experience) → Testimonials → FAQ → Contact.
+  // Same arc as César's LinkedIn About: Hero (the client's pain) → summary of the service +
+  // price → who I am → who it is for → how we'll work → work and reviews → FAQ → contact.
   // About and the service details live on their own pages (/about, /services).
   return (
     <div className="bg-background flex flex-col overflow-hidden">
@@ -158,28 +159,32 @@ export function HomePage() {
       </div>
 
       <div className="card-section bg-anthracite relative z-20 w-full rounded-t-[3rem] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
-        <Process />
-      </div>
-
-      <div className="card-section bg-background relative z-30 w-full rounded-t-[3rem] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
         <WhoGuides />
       </div>
 
+      <div className="card-section bg-background relative z-30 w-full rounded-t-[3rem] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
+        <ForWho />
+      </div>
+
       <div className="card-section bg-anthracite relative z-40 w-full rounded-t-[3rem] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
-        <SuccessCases />
+        <Process />
       </div>
 
       <div className="card-section bg-background relative z-50 w-full rounded-t-[3rem] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
-        <Testimonials />
+        <SuccessCases />
       </div>
 
       <div className="card-section bg-anthracite relative z-[60] w-full rounded-t-[3rem] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
+        <Testimonials />
+      </div>
+
+      <div className="card-section bg-background relative z-[70] w-full rounded-t-[3rem] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
         <FAQ />
       </div>
 
       <div
         id="contact"
-        className="card-section bg-background relative z-[70] w-full scroll-mt-24 rounded-t-[3rem] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]"
+        className="card-section bg-anthracite relative z-[80] w-full scroll-mt-24 rounded-t-[3rem] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]"
       >
         <Contact />
       </div>

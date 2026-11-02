@@ -13,7 +13,6 @@ describe("Hero", () => {
   it("states the problem and offers the Hablemos CTA", () => {
     renderWithProviders(<Hero />);
 
-    expect(screen.getByText("Para autónomos y pymes sin perfil técnico")).toBeInTheDocument();
     expect(screen.getByText(/no sabes ni por dónde empezar/i)).toBeInTheDocument();
     expect(screen.getByText(/el control sea tuyo/i)).toBeInTheDocument();
     expect(screen.queryByText(/8 semanas/i)).toBeNull();

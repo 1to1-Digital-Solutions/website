@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, ShieldCheck, X } from "lucide-react";
+import { ShieldCheck, X } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { MENTORSHIP } from "@/content/services";
 import { PageCta } from "@/components/PageCta";
@@ -87,26 +87,30 @@ export function ServicesPage() {
         </div>
       </section>
 
-      {/* What you take away */}
+      {/* What you take away. A numbered list next to a sticky title, so it doesn't look like
+          the cards of the home page summary. */}
       <section id="outcomes" className="mx-auto w-full max-w-6xl scroll-mt-24 px-6 py-20">
-        <h2 className="font-outfit text-3xl font-bold tracking-tight md:text-4xl">
-          {c.outcomesTitle}
-        </h2>
-        <ul className="mt-10 grid gap-6 md:grid-cols-2">
-          {c.outcomes.map((o) => (
-            <li
-              key={o.title}
-              className="border-foreground/10 bg-anthracite/50 flex items-start gap-4 rounded-2xl border p-6"
-            >
-              <Check size={22} aria-hidden="true" className="text-primary mt-1 shrink-0" />
-              <div>
-                <h3 className="font-outfit text-lg font-semibold">{o.title}</h3>
-                <p className="text-foreground/75 mt-1 leading-relaxed">{o.text}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
-        <PriceCard />
+        <div className="grid gap-10 lg:grid-cols-[1fr_2fr] lg:gap-16">
+          <div className="lg:sticky lg:top-32 lg:self-start">
+            <h2 className="font-outfit text-3xl font-bold tracking-tight md:text-4xl">
+              {c.outcomesTitle}
+            </h2>
+          </div>
+          <ol className="divide-foreground/10 border-foreground/10 divide-y border-y">
+            {c.outcomes.map((o, i) => (
+              <li key={o.title} className="flex gap-6 py-6">
+                <span className="font-outfit text-primary/70 w-10 shrink-0 text-3xl font-black">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div>
+                  <h3 className="font-outfit text-xl font-semibold">{o.title}</h3>
+                  <p className="text-foreground/75 mt-2 leading-relaxed">{o.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+        <PriceCard className="mt-12" />
       </section>
 
       {/* Security and regulation */}

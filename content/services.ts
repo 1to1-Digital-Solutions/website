@@ -56,6 +56,7 @@ type MentorshipCopy = {
   /** Home page block. */
   homeTitle1: string;
   homeTitle2: string;
+  homeAudience: string;
   homeSub: string;
   homeLink: string;
 };
@@ -70,12 +71,7 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
     title2: "en tu negocio.",
     intro:
       "Durante 8 semanas, con una sesión online de 1 hora a la semana, entiendes qué está pasando con la IA y la integras en tu negocio de forma segura. Creamos, uno a uno, un sistema adaptado a tu empresa, para que al terminar el control sea tuyo y no necesites a nadie externo para seguir avanzando con la IA.",
-    facts: [
-      "8 semanas",
-      "1 sesión online de 1 hora a la semana",
-      "Primera reunión gratis",
-      "1.900 € + IVA",
-    ],
+    facts: ["8 semanas", "1 sesión online de 1 hora a la semana", "Primera reunión gratis"],
     forWhoTitle: "¿Para quién es?",
     forWho: [
       "Autónomos y pymes de 1 a 50 empleados, sin perfil tecnológico interno, que llevan años con el mismo sistema de trabajo y sienten que la IA va más rápido de lo que pueden seguir.",
@@ -109,7 +105,7 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
     outcomesTitle: "¿Qué te llevas?",
     outcomes: [
       {
-        title: "Entender lo que está pasando",
+        title: "Formar parte de la revolución de la IA",
         text: "Qué es la IA, qué está ocurriendo y cómo afecta a tu empresa.",
       },
       {
@@ -191,7 +187,8 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
     homeTitle1: "La IA en tu negocio, ",
     homeTitle2: "bajo tu control.",
     homeSub:
-      "De 0 a 100 en 8 semanas: entiendes la IA, la integras en tu negocio de forma segura y al terminar no necesitas a nadie externo para seguir avanzando.",
+      "De 0 a 100 en 8 semanas: entiendes la IA, la integras en tu negocio y terminas con un sistema para construir tus propias aplicaciones de forma segura.",
+    homeAudience: "Para autónomos y pymes sin perfil técnico",
     homeLink: "Ver la mentoría en detalle",
   },
   en: {
@@ -203,7 +200,7 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
     title2: "into your business.",
     intro:
       "For 8 weeks, with one 1-hour online session a week, you understand what's happening with AI and bring it into your business safely. We build, one to one, a system adapted to your company, so that when it ends the control is yours and you don't need anyone external to keep moving forward with AI.",
-    facts: ["8 weeks", "One 1-hour online session a week", "First meeting free", "€1,900 + VAT"],
+    facts: ["8 weeks", "One 1-hour online session a week", "First meeting free"],
     forWhoTitle: "Who is it for?",
     forWho: [
       "Freelancers and small businesses with 1 to 50 employees, with no in-house tech profile, that have used the same way of working for years and feel AI is moving faster than they can keep up.",
@@ -237,7 +234,7 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
     outcomesTitle: "What do you take away?",
     outcomes: [
       {
-        title: "Understanding what's going on",
+        title: "Being part of the AI revolution",
         text: "What AI is, what's happening and how it affects your company.",
       },
       {
@@ -319,7 +316,8 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
     homeTitle1: "AI in your business, ",
     homeTitle2: "under your control.",
     homeSub:
-      "From 0 to 100 in 8 weeks: you understand AI, bring it into your business safely and, when it ends, you don't need anyone external to keep moving forward.",
+      "From 0 to 100 in 8 weeks: you understand AI, bring it into your business and finish with a system to build your own applications safely.",
+    homeAudience: "For freelancers and small businesses with no tech profile",
     homeLink: "See the mentoring in detail",
   },
 };

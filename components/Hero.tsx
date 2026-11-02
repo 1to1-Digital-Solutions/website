@@ -81,9 +81,6 @@ export function Hero() {
         className="pointer-events-none z-10 mx-auto flex h-full w-full max-w-7xl flex-col justify-center px-6 text-center lg:items-start lg:text-left"
       >
         <div className="pointer-events-none select-none lg:max-w-[56%]">
-          <p className="hero-text-line text-primary mb-5 text-sm font-semibold tracking-widest uppercase md:text-base">
-            {t("heroEyebrow")}
-          </p>
           <h1 className="hero-text-line font-outfit text-foreground mx-auto max-w-5xl text-4xl font-black tracking-tighter drop-shadow-[0_2px_6px_rgba(0,0,0,0.12)] sm:text-5xl md:text-7xl lg:mx-0 lg:text-6xl xl:text-7xl dark:drop-shadow-[0_4px_15px_rgba(0,0,0,0.8)]">
             {t("heroTitle1")} <br />
             {/* Clone decoration + a little right padding: with tight tracking the last glyph of
