@@ -4,10 +4,14 @@ import { Mail, Linkedin } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { trackEvent } from "@/components/GoogleAnalytics";
 
-export const CONTACT_EMAIL = "cesarpl@1to1digital.solutions";
-export const LINKEDIN_URL = "https://www.linkedin.com/in/c%C3%A9sar-pe%C3%B3n-lamparero/";
+import { CONTACT_EMAIL, LINKEDIN_URL } from "@/content/contact";
 
-/** Contact: no form, just the two ways César actually answers, email and LinkedIn. */
+export { CONTACT_EMAIL, LINKEDIN_URL };
+
+/**
+ * Contact: no form. LinkedIn first, because that is where César closes the mentoring (the
+ * site supports his LinkedIn); email stays as the second way.
+ */
 export function Contact() {
   const { t } = useLanguage();
   const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(t("contactMailSubject") as string)}`;
@@ -25,23 +29,23 @@ export function Contact() {
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
-            href={mailto}
-            onClick={() => trackEvent("contact_click", { channel: "email" })}
-            className="bg-primary focus-visible:ring-primary focus-visible:ring-offset-background inline-flex items-center gap-3 rounded-full px-8 py-4 text-lg font-bold text-[var(--on-primary)] transition-transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
-          >
-            <Mail size={20} aria-hidden="true" />
-            {t("contactEmailBtn")}
-          </a>
-          <a
             href={LINKEDIN_URL}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackEvent("contact_click", { channel: "linkedin" })}
-            className="border-foreground/20 hover:border-primary/60 hover:text-primary focus-visible:ring-primary inline-flex items-center gap-3 rounded-full border px-8 py-4 text-lg font-bold transition-colors focus-visible:ring-2 focus-visible:outline-none"
+            className="bg-primary focus-visible:ring-primary focus-visible:ring-offset-background inline-flex items-center gap-3 rounded-full px-8 py-4 text-lg font-bold text-[var(--on-primary)] transition-transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
           >
             <Linkedin size={20} aria-hidden="true" />
             {t("contactLinkedinBtn")}
             <span className="sr-only">{t("srOpensInNewTab")}</span>
+          </a>
+          <a
+            href={mailto}
+            onClick={() => trackEvent("contact_click", { channel: "email" })}
+            className="border-foreground/20 hover:border-primary/60 hover:text-primary focus-visible:ring-primary inline-flex items-center gap-3 rounded-full border px-8 py-4 text-lg font-bold transition-colors focus-visible:ring-2 focus-visible:outline-none"
+          >
+            <Mail size={20} aria-hidden="true" />
+            {t("contactEmailBtn")}
           </a>
         </div>
 

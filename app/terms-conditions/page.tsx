@@ -4,7 +4,7 @@ import { ArrowLeft } from "lucide-react";
 export const metadata = {
   title: "Términos y Condiciones",
   description:
-    "Condiciones de uso del sitio web de 1to1 Digital Solutions: datos identificativos del titular, propiedad intelectual, servicios y limitación de responsabilidad.",
+    "Condiciones de uso del sitio web y de contratación de la mentoría de IA de 1to1 Digital Solutions: servicio, precio, forma de pago, garantía y responsabilidad.",
   alternates: { canonical: "/terms-conditions" },
 };
 
@@ -58,63 +58,136 @@ export default function TermsConditions() {
           </section>
 
           <section>
-            <h2 className="text-foreground mb-3 text-xl font-semibold">2. Introducción</h2>
+            <h2 className="text-foreground mb-3 text-xl font-semibold">2. Objeto</h2>
             <p>
-              Bienvenido a 1to1 Digital Solutions. Al acceder a nuestro sitio web y utilizar
-              nuestros servicios, usted acepta estar sujeto a los siguientes términos y condiciones.
-              Si no está de acuerdo con alguna parte de estos términos, le rogamos que no utilice
-              nuestros servicios.
+              Estas condiciones regulan el uso de este sitio web y la contratación de la mentoría de
+              inteligencia artificial que ofrece 1TO1 DIGITAL SOLUTIONS SL (en adelante, &quot;1to1
+              Digital Solutions&quot;) a autónomos y empresas. Al navegar por el sitio o contratar
+              la mentoría, usted acepta estas condiciones.
             </p>
           </section>
 
           <section>
-            <h2 className="text-foreground mb-3 text-xl font-semibold">3. Propiedad Intelectual</h2>
+            <h2 className="text-foreground mb-3 text-xl font-semibold">3. El servicio</h2>
             <p>
-              Todo el código fuente original, diseños y arquitectura desarrollados bajo contrato
-              serán transferidos íntegramente al cliente una vez recibido el pago final acordado.
-              Hasta entonces, 1to1 Digital Solutions retiene los derechos de autor temporales que
-              garantizan la seguridad de la transacción. Los repositorios serán entregados mediante
-              GitHub u otra plataforma tras la aprobación final.
+              La mentoría dura 8 semanas, con una sesión online de 1 hora a la semana por
+              videollamada. Incluye un plan adaptado a la empresa, la puesta en marcha de un sistema
+              y de las primeras herramientas, la formación del cliente y de su equipo, y una
+              política de uso seguro de la IA por escrito. El alcance concreto de cada mentoría se
+              recoge en el plan que se envía por escrito antes de empezar.
+            </p>
+            <p className="mt-3">
+              La primera reunión, de 15 minutos, es gratuita y no obliga a contratar.
             </p>
           </section>
 
           <section>
-            <h2 className="text-foreground mb-3 text-xl font-semibold">
-              4. Servicios y Entregables
-            </h2>
+            <h2 className="text-foreground mb-3 text-xl font-semibold">4. Contratación</h2>
             <p>
-              Nos especializamos en Desarrollo de MVP, integraciones de Blockchain y experiencias
-              3D. Los plazos y entregables específicos se acuerdan de antemano mediante un contrato
-              o presupuesto detallado. Las demoras en la provisión de recursos por parte del cliente
-              pueden afectar directamente a los tiempos de entrega acordados.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-foreground mb-3 text-xl font-semibold">5. Contacto</h2>
-            <p>
-              Escribirnos por correo electrónico o por LinkedIn desde este sitio web constituye una{" "}
-              <strong>solicitud de información o de presupuesto</strong> sin coste alguno. La
-              respuesta que le proporcionemos tendrá carácter meramente informativo y orientativo, y
-              cualquier oferta de servicios sólo será efectiva cuando se formalice mediante contrato
-              o aceptación expresa de presupuesto por escrito.
+              Escribirnos por LinkedIn o por correo electrónico desde este sitio web es una
+              solicitud de información, sin coste alguno. La mentoría sólo se considera contratada
+              cuando ambas partes firman el contrato correspondiente. Si algo de lo que dice el
+              contrato difiere de estas condiciones, prevalece el contrato.
             </p>
           </section>
 
           <section>
             <h2 className="text-foreground mb-3 text-xl font-semibold">
-              6. Limitación de Responsabilidad
+              5. Precio y forma de pago
             </h2>
             <p>
-              1to1 Digital Solutions no será responsable de ningún daño indirecto, incidental o
-              consecuente que resulte del uso de nuestros productos de software o de Smart Contracts
-              una vez desplegados en entornos de producción verificados y controlados por el
-              cliente, incluyendo pérdida de datos o interrupciones de negocio.
+              El precio de la mentoría es de <strong>1.900 € más el IVA correspondiente</strong>,
+              igual para todos los clientes. Se paga en dos plazos de 950 € (más IVA): el primero al
+              firmar el contrato y el segundo después de la cuarta sesión. Cada pago se factura por
+              separado.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-foreground mb-3 text-xl font-semibold">6. Garantía</h2>
+            <p>
+              Si después de la segunda sesión el cliente no está conforme o considera que la
+              mentoría no le está sirviendo, puede comunicarlo por escrito antes de la tercera
+              sesión y se le devolverá íntegro el importe pagado. En ese caso, la mentoría termina
+              en ese momento.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-foreground mb-3 text-xl font-semibold">7. Sesiones</h2>
+            <p>
+              Las fechas de las sesiones se acuerdan entre ambas partes. Si alguna de las partes no
+              puede asistir, la sesión se cambia a otra fecha de mutuo acuerdo.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-foreground mb-3 text-xl font-semibold">
+              8. Obligaciones del cliente
+            </h2>
+            <p>
+              El cliente se compromete a facilitar la información necesaria sobre su forma de
+              trabajar y a dedicar el tiempo acordado. Las herramientas de terceros que se usen
+              durante la mentoría (por ejemplo, Claude o ChatGPT) se rigen por las condiciones de
+              sus proveedores, y su suscripción, si el cliente decide contratarla, corre a su cargo.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-foreground mb-3 text-xl font-semibold">9. Propiedad intelectual</h2>
+            <p>
+              Las herramientas, la documentación y la política de uso seguro creadas para el cliente
+              durante la mentoría son del cliente una vez abonado el precio. 1to1 Digital Solutions
+              conserva los conocimientos, métodos y materiales generales que usa en todas sus
+              mentorías.
+            </p>
+            <p className="mt-3">
+              Los textos, diseños y elementos de este sitio web pertenecen a 1to1 Digital Solutions
+              y no pueden reproducirse sin autorización.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-foreground mb-3 text-xl font-semibold">10. Confidencialidad</h2>
+            <p>
+              La información del negocio del cliente a la que se tenga acceso durante la mentoría se
+              trata como confidencial y sólo se usa para prestar el servicio. El tratamiento de los
+              datos personales se rige por la{" "}
+              <Link
+                href="/privacy-policy"
+                className="text-primary underline-offset-2 hover:underline"
+              >
+                política de privacidad
+              </Link>
+              .
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-foreground mb-3 text-xl font-semibold">
+              11. Limitación de responsabilidad
+            </h2>
+            <p>
+              La mentoría es un servicio de acompañamiento y formación. 1to1 Digital Solutions no
+              garantiza resultados económicos concretos, y el uso que el cliente haga de las
+              herramientas una vez terminada la mentoría es responsabilidad suya. Las referencias a
+              normativa (como el RGPD o el Reglamento Europeo de IA) tienen carácter informativo y
+              no constituyen asesoramiento legal.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-foreground mb-3 text-xl font-semibold">
+              12. Legislación aplicable
+            </h2>
+            <p>
+              Estas condiciones se rigen por la legislación española. Para cualquier controversia,
+              las partes se someten a los juzgados y tribunales que correspondan conforme a la ley.
             </p>
           </section>
 
           <p className="text-foreground/70 border-foreground/10 border-t pt-8 text-xs">
-            Última actualización: Mayo 2026
+            Última actualización: Noviembre 2026
           </p>
         </div>
       </div>

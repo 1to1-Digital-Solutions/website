@@ -18,5 +18,8 @@ describe("SuccessCases", () => {
     expect(screen.getByRole("heading", { name: /Firefly/i })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /Numen Games/i })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /Moovle/i })).toBeInTheDocument();
+
+    // Own products live on /about now, not on the home page
+    expect(screen.queryByText(/Hoy Entreno/)).toBeNull();
   });
 });

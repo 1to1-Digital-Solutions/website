@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import { ExternalLink } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { ABOUT } from "@/content/about";
 import { PageCta } from "@/components/PageCta";
 
 export function AboutPage() {
-  const { lang } = useLanguage();
+  const { lang, t } = useLanguage();
   const c = ABOUT[lang];
 
   return (
@@ -39,7 +40,7 @@ export function AboutPage() {
             </h1>
             <p className="text-foreground/80 mt-6 text-lg leading-relaxed md:text-xl">{c.intro}</p>
 
-            <dl className="mt-10 grid gap-4 sm:grid-cols-3">
+            <dl className="mt-10 grid gap-4 sm:grid-cols-2">
               {c.stats.map((stat) => (
                 <div
                   key={stat.value}
@@ -102,6 +103,45 @@ export function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* Own products */}
+      <section className="bg-anthracite w-full py-20">
+        <div className="mx-auto max-w-5xl px-6">
+          <h2 className="font-outfit text-3xl font-bold tracking-tight md:text-4xl">
+            {c.productsTitle}
+          </h2>
+          <p className="text-foreground/70 mt-3 text-lg">{c.productsSub}</p>
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {c.products.map((product) => (
+              <a
+                key={product.url}
+                href={product.url}
+                target="_blank"
+                rel="noopener"
+                className="group bg-background hover:shadow-primary/10 focus-visible:ring-primary flex flex-col rounded-2xl p-6 transition-transform hover:-translate-y-1 hover:shadow-2xl focus-visible:ring-2 focus-visible:outline-none"
+              >
+                <div className="mb-2 flex items-center justify-between">
+                  <span className="text-primary text-xs font-semibold tracking-wider uppercase">
+                    {product.category}
+                  </span>
+                  <ExternalLink
+                    size={16}
+                    aria-hidden="true"
+                    className="text-foreground/40 group-hover:text-primary transition-colors"
+                  />
+                </div>
+                <h3 className="font-outfit group-hover:text-primary mb-2 text-xl font-bold transition-colors">
+                  {product.title}
+                  <span className="sr-only"> {t("srOpensInNewTab") as string}</span>
+                </h3>
+                <p className="text-foreground/70 text-sm">{product.text}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="h-24" aria-hidden="true" />
 
       <PageCta
         title={c.ctaTitle}

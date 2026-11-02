@@ -1,6 +1,6 @@
 "use client";
 
-import { Check } from "lucide-react";
+import { Check, ShieldCheck, X } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { MENTORSHIP } from "@/content/services";
 import { PageCta } from "@/components/PageCta";
@@ -44,6 +44,24 @@ export function ServicesPage() {
             <p key={p}>{p}</p>
           ))}
         </div>
+
+        <h2
+          id="not-for"
+          className="font-outfit mt-14 text-3xl font-bold tracking-tight md:text-4xl"
+        >
+          {c.notForTitle}
+        </h2>
+        <ul className="mt-6 flex flex-col gap-4">
+          {c.notFor.map((item) => (
+            <li
+              key={item}
+              className="text-foreground/80 flex items-start gap-3 text-lg leading-relaxed"
+            >
+              <X size={22} aria-hidden="true" className="text-foreground/50 mt-1 shrink-0" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* The 4 steps */}
@@ -89,6 +107,27 @@ export function ServicesPage() {
           ))}
         </ul>
         <PriceCard />
+      </section>
+
+      {/* Security and regulation */}
+      <section id="safety" className="mx-auto w-full max-w-6xl scroll-mt-24 px-6 pb-20">
+        <h2 className="font-outfit text-3xl font-bold tracking-tight md:text-4xl">
+          {c.safetyTitle}
+        </h2>
+        <p className="text-foreground/75 mt-3 max-w-3xl text-lg leading-relaxed">{c.safetyIntro}</p>
+        <ul className="mt-10 grid gap-6 md:grid-cols-3">
+          {c.safety.map((item) => (
+            <li
+              key={item.title}
+              className="border-foreground/10 bg-anthracite/50 rounded-2xl border p-6"
+            >
+              <ShieldCheck size={24} aria-hidden="true" className="text-primary" />
+              <h3 className="font-outfit mt-3 text-lg font-semibold">{item.title}</h3>
+              <p className="text-foreground/75 mt-2 leading-relaxed">{item.text}</p>
+            </li>
+          ))}
+        </ul>
+        <p className="text-foreground/55 mt-6 text-sm">{c.safetyNote}</p>
       </section>
 
       {/* Proof: processes turned into tools */}

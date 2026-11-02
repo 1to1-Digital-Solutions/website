@@ -316,7 +316,8 @@ export function HeroParticles({ theme }: Props) {
     applyThemeRef.current = applyTheme;
     applyTheme(themeRef.current);
 
-    // Layout: next to the text on wide screens, behind it (and fainter) on narrow ones.
+    // Layout: next to the text on wide screens. On narrow ones it is a quiet background:
+    // centred on the screen and soft enough that the text reads first.
     const layout = { x: 0, y: 0, scale: 1, alpha: 1 };
     const resize = () => {
       const w = canvas.clientWidth;
@@ -330,9 +331,9 @@ export function HeroParticles({ theme }: Props) {
         Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * camera.position.z * camera.aspect;
       const wide = w >= 1024;
       layout.x = wide ? halfW * 0.5 : 0;
-      layout.y = wide ? 0 : 0.6;
-      layout.scale = wide ? 0.95 : 1.0;
-      layout.alpha = wide ? 1 : 0.75;
+      layout.y = 0;
+      layout.scale = wide ? 0.95 : 1.1;
+      layout.alpha = wide ? 1 : 0.32;
       targetAlpha = layout.alpha;
       uniforms.uOffset.value.set(layout.x, layout.y, 0);
       uniforms.uScale.value = layout.scale;

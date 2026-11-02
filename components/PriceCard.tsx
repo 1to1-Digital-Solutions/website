@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ShieldCheck } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { MENTORSHIP } from "@/content/services";
 
@@ -23,6 +23,13 @@ export function PriceCard() {
       <p className="text-foreground/80 mx-auto mt-5 max-w-xl leading-relaxed">{c.price.payment}</p>
       <p className="text-foreground/60 mx-auto mt-3 max-w-xl text-sm leading-relaxed">
         {c.price.includes}
+      </p>
+      <p className="border-primary/20 bg-primary/5 text-foreground/85 mx-auto mt-6 flex max-w-xl items-start gap-3 rounded-2xl border p-4 text-left text-sm leading-relaxed">
+        <ShieldCheck size={20} aria-hidden="true" className="text-primary mt-0.5 shrink-0" />
+        <span>
+          <strong className="text-foreground font-semibold">{c.price.guaranteeTitle}.</strong>{" "}
+          {c.price.guarantee}
+        </span>
       </p>
       <Link
         href="/#contact"

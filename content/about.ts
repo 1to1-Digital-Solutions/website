@@ -6,6 +6,7 @@
 
 type Stat = { value: string; label: string };
 type Milestone = { title: string; text: string };
+type Product = { title: string; category: string; text: string; url: string };
 
 type AboutCopy = {
   metaTitle: string;
@@ -21,6 +22,9 @@ type AboutCopy = {
   how: string[];
   whyTitle: string;
   why: string[];
+  productsTitle: string;
+  productsSub: string;
+  products: Product[];
   ctaTitle: string;
   ctaText: string;
   ctaButton: string;
@@ -41,7 +45,6 @@ export const ABOUT: Record<"es" | "en", AboutCopy> = {
     stats: [
       { value: "+8 años", label: "de experiencia en desarrollo de software" },
       { value: "+4 años", label: "desarrollando software con IA" },
-      { value: "8 semanas", label: "de mentoría, una sesión a la semana" },
     ],
     pathTitle: "De dónde vengo",
     path: [
@@ -73,10 +76,26 @@ export const ABOUT: Record<"es" | "en", AboutCopy> = {
       "Yo también tuve que aprender lo que no dominaba, las ventas y el marketing, de la mano de profesionales que sabían más que yo. Ahora me toca a mí acompañar a otros. Lo que me motiva es adaptarme cada vez a un nuevo cliente, en un nuevo entorno.",
       "También soy scout, runner y me encantan los juegos de mesa, pero esto no creo que sirva para tu negocio (o sí, quién sabe).",
     ],
+    productsTitle: "Productos propios",
+    productsSub: "También construyo y mantengo productos propios.",
+    products: [
+      {
+        title: "Hoy Entreno",
+        category: "Fitness",
+        text: "Un plan de fuerza y running hecho para cada persona, con registro de entrenos, uso sin conexión y app para relojes Garmin.",
+        url: "https://hoy-entreno.app/",
+      },
+      {
+        title: "Scoura",
+        category: "IA",
+        text: "Newsletters personalizadas que la IA investiga, contrasta, verifica y redacta.",
+        url: "https://scoura.app/",
+      },
+    ],
     ctaTitle: "¿Hacemos esa primera llamada?",
     ctaText:
-      "Escríbeme y buscamos un hueco para la reunión de 15 minutos. Es gratis y vemos juntos tu situación.",
-    ctaButton: "Escríbeme",
+      "Escríbeme por LinkedIn y buscamos un hueco para la reunión de 15 minutos. Es gratis y vemos juntos tu situación.",
+    ctaButton: "Hablemos",
     ctaServices: "Ver la mentoría",
     imgAlt: "Retrato de César Peón, fundador de 1to1 Digital Solutions",
   },
@@ -92,7 +111,6 @@ export const ABOUT: Record<"es" | "en", AboutCopy> = {
     stats: [
       { value: "8+ years", label: "of experience in software development" },
       { value: "4+ years", label: "building software with AI" },
-      { value: "8 weeks", label: "of mentoring, one session a week" },
     ],
     pathTitle: "Where I come from",
     path: [
@@ -124,10 +142,26 @@ export const ABOUT: Record<"es" | "en", AboutCopy> = {
       "I also had to learn what I didn't know, sales and marketing, from professionals who knew more than me. Now it's my turn to guide others. What motivates me is adapting every time to a new client, in a new setting.",
       "I'm also a scout and a runner, and I love board games, but I don't think that helps your business (or maybe it does, who knows).",
     ],
+    productsTitle: "My own products",
+    productsSub: "I also build and run products of my own.",
+    products: [
+      {
+        title: "Hoy Entreno",
+        category: "Fitness",
+        text: "A strength and running plan made for each person, with workout logging, offline use and an app for Garmin watches.",
+        url: "https://hoy-entreno.app/",
+      },
+      {
+        title: "Scoura",
+        category: "AI",
+        text: "Personalised newsletters that AI researches, cross-checks, fact-checks and writes.",
+        url: "https://scoura.app/",
+      },
+    ],
     ctaTitle: "Shall we have that first call?",
     ctaText:
-      "Write to me and we'll find a slot for the 15-minute meeting. It's free and we'll look at your situation together.",
-    ctaButton: "Write to me",
+      "Message me on LinkedIn and we'll find a slot for the 15-minute meeting. It's free and we'll look at your situation together.",
+    ctaButton: "Let's talk",
     ctaServices: "See the mentoring",
     imgAlt: "Portrait of César Peón, founder of 1to1 Digital Solutions",
   },

@@ -10,7 +10,7 @@ import { expect, test } from "@playwright/test";
  */
 
 /** The home page sections, with their anchors. About and the services detail are separate. */
-const SECTIONS = ["services", "work", "testimonials", "faq", "contact"] as const;
+const SECTIONS = ["services", "who", "work", "testimonials", "faq", "contact"] as const;
 
 test("the home page loads with all its sections", async ({ page }) => {
   await page.goto("/");
@@ -62,7 +62,7 @@ test("the mentoring summary leads to its detail", async ({ page }) => {
   await expect(page.locator("#outcomes li")).toHaveCount(6);
 });
 
-test("the contact button on another page lands on the form", async ({ page }) => {
+test("the contact button on another page lands on the contact block", async ({ page }) => {
   await page.goto("/about");
   await page.getByRole("link", { name: "Hablemos" }).last().click();
   await expect(page).toHaveURL(/\/#contact$/);

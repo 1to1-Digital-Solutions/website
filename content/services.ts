@@ -15,6 +15,8 @@ type Price = {
   tax: string;
   includes: string;
   payment: string;
+  guaranteeTitle: string;
+  guarantee: string;
 };
 
 /** The price, as a number, for structured data. One single price for everyone. */
@@ -31,11 +33,17 @@ type MentorshipCopy = {
   facts: string[];
   forWhoTitle: string;
   forWho: string[];
+  notForTitle: string;
+  notFor: string[];
   stepsTitle: string;
   steps: Step[];
   outcomesTitle: string;
   outcomes: Outcome[];
   price: Price;
+  safetyTitle: string;
+  safetyIntro: string;
+  safety: Step[];
+  safetyNote: string;
   proofTitle: string;
   proofIntro: string;
   proofs: Step[];
@@ -64,7 +72,7 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       "Te acompaño durante 8 semanas, con una sesión de 1 hora a la semana, a entender qué está pasando con la IA y a integrarla en tu negocio de forma segura. Terminas con un sistema adaptado a tu empresa para crear tus propias herramientas sin depender de nadie.",
     facts: [
       "8 semanas",
-      "1 sesión de 1 hora a la semana",
+      "1 sesión online de 1 hora a la semana",
       "Primera reunión gratis",
       "1.900 € + IVA",
     ],
@@ -72,6 +80,12 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
     forWho: [
       "Autónomos y pymes de 1 a 50 empleados, sin perfil tecnológico interno, que llevan años con el mismo sistema de trabajo y sienten que la IA va más rápido de lo que pueden seguir.",
       "Ves cómo tu competencia ya usa la IA y no sabes ni por dónde empezar. Cada semana sale una noticia nueva, todo tu círculo habla de inteligencia artificial y mientras tanto hay tareas manuales que le siguen comiendo horas a tu gente.",
+    ],
+    notForTitle: "¿Para quién no es?",
+    notFor: [
+      "Empresas que ya tienen perfiles tecnológicos en plantilla y podrían hacer esta integración por su cuenta.",
+      "Quien ya está al día de las novedades de la IA y la usa a diario en su trabajo.",
+      "Quien busca que se lo hagan todo. Aquí aprendes tú, para no depender de nadie.",
     ],
     stepsTitle: "¿Cómo trabajaremos?",
     steps: [
@@ -92,7 +106,7 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
         text: "Para crear tus aplicaciones sin depender de nadie.",
       },
     ],
-    outcomesTitle: "Qué te llevas",
+    outcomesTitle: "¿Qué te llevas?",
     outcomes: [
       {
         title: "Entender lo que está pasando",
@@ -124,10 +138,32 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       amount: "1.900 €",
       tax: "+ IVA",
       includes:
-        "El mismo precio para todos e incluye todo lo anterior: las 8 sesiones, el plan, el sistema, las primeras herramientas, la formación del equipo y la política de uso seguro.",
+        "Incluye todo lo anterior: las 8 sesiones, el plan, el sistema, las primeras herramientas, la formación del equipo y la política de uso seguro.",
       payment:
         "En 2 pagos de 950 €: la mitad al firmar y la otra mitad a mitad de la mentoría, después de la cuarta sesión.",
+      guaranteeTitle: "Garantía",
+      guarantee:
+        "Si después de la segunda sesión no estás conforme o ves que no te está sirviendo, te devuelvo íntegro lo que hayas pagado.",
     },
+    safetyTitle: "Seguridad y normativa",
+    safetyIntro:
+      "Usar la IA sin unas reglas claras es la forma más rápida de poner en riesgo los datos de tu negocio. Por eso la seguridad va desde la primera sesión.",
+    safety: [
+      {
+        title: "Tus datos y los de tus clientes (RGPD)",
+        text: "Decidimos qué información puede entrar en cada herramienta de IA y cuál no, para que los datos personales de tus clientes no acaben donde no deben.",
+      },
+      {
+        title: "El Reglamento Europeo de IA",
+        text: "Desde febrero de 2025 pide que quien usa la IA en una empresa tenga la formación suficiente para hacerlo. La formación del equipo y la política de uso seguro van justo en esa dirección.",
+      },
+      {
+        title: "Revisado por un ingeniero",
+        text: "Reviso cómo están configuradas las herramientas que vais a usar: quién tiene acceso, a qué datos y dónde se guardan.",
+      },
+    ],
+    safetyNote:
+      "No es asesoramiento legal. Si tu sector tiene requisitos propios, los tenemos en cuenta junto con tu asesor.",
     proofTitle: "Lo que ya he hecho por otras empresas",
     proofIntro:
       "Antes de la mentoría he pasado años convirtiendo procesos anticuados en herramientas. Algunos ejemplos:",
@@ -149,8 +185,8 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
     wave: "El mejor momento para adaptarse era hace un año, cuando empezó la ola de la IA. El segundo mejor momento es ahora, que estamos en la cresta. Si esperas a mañana, puede que la ola ya te haya arrastrado a la orilla.",
     ctaTitle: "¿Hacemos esa primera llamada?",
     ctaText:
-      "Escríbeme y buscamos un hueco para la reunión de 15 minutos. Es gratis y te sirve para ver por dónde empezar.",
-    ctaButton: "Escríbeme",
+      "Escríbeme por LinkedIn y buscamos un hueco para la reunión de 15 minutos. Es gratis y te sirve para ver por dónde empezar.",
+    ctaButton: "Hablemos",
     ctaAbout: "Quién soy",
     homeTitle1: "Una mentoría de ",
     homeTitle2: "8 semanas.",
@@ -167,11 +203,17 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
     title2: "into your business.",
     intro:
       "I'll guide you for 8 weeks, with one 1-hour session a week, to understand what's happening with AI and bring it into your business safely. You finish with a system adapted to your company to build your own tools without depending on anyone.",
-    facts: ["8 weeks", "One 1-hour session a week", "First meeting free", "€1,900 + VAT"],
+    facts: ["8 weeks", "One 1-hour online session a week", "First meeting free", "€1,900 + VAT"],
     forWhoTitle: "Who is it for?",
     forWho: [
       "Freelancers and small businesses with 1 to 50 employees, with no in-house tech profile, that have used the same way of working for years and feel AI is moving faster than they can keep up.",
       "You see your competitors already using AI and you don't even know where to start. Every week there's new news, everyone around you is talking about artificial intelligence, and meanwhile there are manual tasks still eating up your people's hours.",
+    ],
+    notForTitle: "Who is it not for?",
+    notFor: [
+      "Companies that already have tech profiles on staff and could do this integration on their own.",
+      "People who already keep up with AI news and use it every day in their work.",
+      "People looking for someone to do it all for them. Here you are the one who learns, so you don't depend on anyone.",
     ],
     stepsTitle: "How will we work?",
     steps: [
@@ -192,7 +234,7 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
         text: "To build your applications without depending on anyone.",
       },
     ],
-    outcomesTitle: "What you take away",
+    outcomesTitle: "What do you take away?",
     outcomes: [
       {
         title: "Understanding what's going on",
@@ -224,10 +266,32 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       amount: "€1,900",
       tax: "+ VAT",
       includes:
-        "The same price for everyone, and it includes everything above: the 8 sessions, the plan, the system, the first tools, the team training and the safe use policy.",
+        "It includes everything above: the 8 sessions, the plan, the system, the first tools, the team training and the safe use policy.",
       payment:
         "In 2 payments of €950: half when we sign and the other half halfway through the mentoring, after the fourth session.",
+      guaranteeTitle: "Guarantee",
+      guarantee:
+        "If after the second session you're not satisfied or you see it isn't helping you, I'll refund everything you've paid in full.",
     },
+    safetyTitle: "Security and regulation",
+    safetyIntro:
+      "Using AI without clear rules is the fastest way to put your business's data at risk. That's why security is there from the first session.",
+    safety: [
+      {
+        title: "Your data and your clients' (GDPR)",
+        text: "We decide what information can go into each AI tool and what can't, so your clients' personal data doesn't end up where it shouldn't.",
+      },
+      {
+        title: "The EU AI Act",
+        text: "Since February 2025 it requires people who use AI in a company to have enough training to do so. The team training and the safe use policy go exactly in that direction.",
+      },
+      {
+        title: "Reviewed by an engineer",
+        text: "I review how the tools you'll use are configured: who has access, to what data and where it's stored.",
+      },
+    ],
+    safetyNote:
+      "This isn't legal advice. If your sector has its own requirements, we take them into account together with your adviser.",
     proofTitle: "What I've already done for other companies",
     proofIntro:
       "Before the mentoring I spent years turning outdated processes into tools. Some examples:",
@@ -249,8 +313,8 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
     wave: "The best time to adapt was a year ago, when the AI wave started. The second best time is now, while we're on the crest. If you wait until tomorrow, the wave may already have dragged you to the shore.",
     ctaTitle: "Shall we have that first call?",
     ctaText:
-      "Write to me and we'll find a slot for the 15-minute meeting. It's free and it helps you see where to start.",
-    ctaButton: "Write to me",
+      "Message me on LinkedIn and we'll find a slot for the 15-minute meeting. It's free and it helps you see where to start.",
+    ctaButton: "Let's talk",
     ctaAbout: "Who I am",
     homeTitle1: "An ",
     homeTitle2: "8-week mentoring.",

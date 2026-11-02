@@ -83,7 +83,9 @@ export function Hero() {
         <div className="pointer-events-none select-none lg:max-w-[56%]">
           <h1 className="hero-text-line font-outfit text-foreground mx-auto max-w-5xl text-4xl font-black tracking-tighter drop-shadow-[0_2px_6px_rgba(0,0,0,0.12)] sm:text-5xl md:text-7xl lg:mx-0 lg:text-6xl xl:text-7xl dark:drop-shadow-[0_4px_15px_rgba(0,0,0,0.8)]">
             {t("heroTitle1")} <br />
-            <span className="from-primary to-primary/50 bg-gradient-to-r bg-clip-text text-transparent">
+            {/* Clone decoration + a little right padding: with tight tracking the last glyph of
+                each line overhangs its box, and bg-clip-text would cut it off. */}
+            <span className="from-primary to-primary/50 bg-gradient-to-r box-decoration-clone bg-clip-text pr-[0.12em] text-transparent">
               {t("heroTitle2")}
             </span>
           </h1>

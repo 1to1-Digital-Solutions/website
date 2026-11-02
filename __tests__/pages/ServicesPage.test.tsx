@@ -20,11 +20,30 @@ describe("ServicesPage", () => {
     renderWithProviders(<ServicesPage />);
     expect(screen.getAllByText("1.900 €").length).toBeGreaterThan(0);
     expect(screen.getByText(/2 pagos de 950 €/)).toBeInTheDocument();
+    expect(screen.getByText(/te devuelvo íntegro lo que hayas pagado/)).toBeInTheDocument();
+    expect(screen.queryByText(/mismo precio para todos/)).toBeNull();
+  });
+
+  it("says who it is not for and covers security and regulation", () => {
+    renderWithProviders(<ServicesPage />);
+    expect(screen.getByRole("heading", { name: "¿Para quién no es?" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Seguridad y normativa" })).toBeInTheDocument();
+    for (const item of MENTORSHIP.es.safety) {
+      expect(screen.getByRole("heading", { level: 3, name: item.title })).toBeInTheDocument();
+    }
   });
 
   it("keeps both languages in step", () => {
     const { es, en } = MENTORSHIP;
-    for (const key of ["facts", "forWho", "steps", "outcomes", "proofs"] as const) {
+    for (const key of [
+      "facts",
+      "forWho",
+      "notFor",
+      "steps",
+      "outcomes",
+      "safety",
+      "proofs",
+    ] as const) {
       expect(en[key]).toHaveLength(es[key].length);
     }
   });

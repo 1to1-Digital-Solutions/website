@@ -10,12 +10,13 @@ jest.mock("@/components/canvas/HeroParticles", () => {
 });
 
 describe("Hero", () => {
-  it("renders title and buttons", () => {
+  it("states the problem and offers the Hablemos CTA", () => {
     renderWithProviders(<Hero />);
 
-    expect(screen.getByText(/mentoría de 8 semanas/i)).toBeInTheDocument();
+    expect(screen.getByText(/no sabes ni por dónde empezar/i)).toBeInTheDocument();
+    expect(screen.queryByText(/8 semanas/i)).toBeNull();
 
-    expect(screen.getByRole("link", { name: /Escríbeme/i })).toHaveAttribute("href", "#contact");
+    expect(screen.getByRole("link", { name: /^Hablemos$/i })).toHaveAttribute("href", "#contact");
     expect(screen.getByRole("link", { name: /Cómo trabajaremos/i })).toHaveAttribute(
       "href",
       "#process"

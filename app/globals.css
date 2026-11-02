@@ -12,6 +12,7 @@
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-anthracite: var(--anthracite);
+  --color-neon: var(--neon);
 
   /* Brand palette — tokens. Same in both themes (semantic colors live in :root/.light). */
   --color-primary-100: #14ffbc;
@@ -26,6 +27,15 @@
 /* Theme-invariant token: accessible foreground color for text/icons on `primary` bg. Tested vs WCAG AA. */
 :root {
   --on-primary: #1c1c1f;
+}
+
+/* Neon turquoise of the hero cloud, for the one CTA that has to stand out (navbar). */
+:root,
+.dark {
+  --neon: #3ff8ec;
+}
+.light {
+  --neon: #14c8d4;
 }
 
 /* Dark mode (default + .dark class) */

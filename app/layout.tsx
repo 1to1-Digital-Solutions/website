@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
-import { cookies } from "next/headers";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -10,6 +9,7 @@ import { StructuredData } from "@/components/StructuredData";
 import { ConsentProvider } from "@/context/ConsentContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { ThemeProvider } from "@/context/ThemeContext";
+import { requestLang } from "@/lib/lang";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -25,64 +25,74 @@ const outfit = Outfit({
 
 const siteUrl = "https://1to1digital.solutions";
 const siteName = "1to1 Digital Solutions";
-const siteTagline = "Understand and bring AI into your business, safely";
-const siteDescription =
-  "An 8-week mentoring for small businesses and freelancers to understand and bring AI into their business safely, and finish with their own system to build their tools without depending on anyone.";
 
-export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: {
-    default: `${siteName} | ${siteTagline}`,
-    template: `%s | ${siteName}`,
-  },
-  description: siteDescription,
-  applicationName: siteName,
-  authors: [{ name: siteName, url: siteUrl }],
-  creator: siteName,
-  publisher: siteName,
-  keywords: [
-    "IA para empresas",
-    "IA para pymes",
-    "IA para autónomos",
-    "integrar la IA en mi negocio",
-    "integrar IA de forma segura",
-    "mentoría de IA",
-    "formación en IA para empresas",
-    "automatizar tareas con IA",
-    "herramientas de IA para negocios",
-    "AI for small businesses",
-    "AI mentoring",
-    "Guadalajara",
-    "España",
-  ],
-  alternates: {
-    canonical: "/",
-  },
-  openGraph: {
-    type: "website",
-    url: siteUrl,
-    siteName,
-    title: `${siteName} | ${siteTagline}`,
-    description: siteDescription,
+// Spanish first: it is the audience, and what crawlers get (they send no language cookie).
+const SEO = {
+  es: {
+    title: "Mentoría de IA para pymes y autónomos",
+    description:
+      "Mentoría online de 8 semanas para pymes y autónomos: entiende e integra la IA en tu negocio de forma segura y crea tus propias herramientas sin depender de nadie. 1.900 € + IVA.",
     locale: "es_ES",
     alternateLocale: ["en_US"],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: `${siteName} | ${siteTagline}`,
-    description: siteDescription,
+  en: {
+    title: "AI mentoring for small businesses and freelancers",
+    description:
+      "An 8-week online mentoring for small businesses and freelancers: understand and bring AI into your business safely and build your own tools without depending on anyone. €1,900 + VAT.",
+    locale: "en_US",
+    alternateLocale: ["es_ES"],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+} as const;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = SEO[await requestLang()];
+  const fullTitle = `${seo.title} | ${siteName}`;
+  return {
+    metadataBase: new URL(siteUrl),
+    title: { default: fullTitle, template: `%s | ${siteName}` },
+    description: seo.description,
+    applicationName: siteName,
+    authors: [{ name: "César Peón", url: `${siteUrl}/about` }],
+    creator: "César Peón",
+    publisher: siteName,
+    keywords: [
+      "mentoría de IA",
+      "mentoría de inteligencia artificial",
+      "IA para pymes",
+      "IA para autónomos",
+      "IA para empresas",
+      "integrar la IA en mi negocio",
+      "uso seguro de la IA",
+      "política de uso de IA",
+      "formación en IA para empresas",
+      "Reglamento Europeo de IA",
+      "automatizar tareas con IA",
+      "AI mentoring",
+      "AI for small businesses",
+    ],
+    alternates: { canonical: "/" },
+    openGraph: {
+      type: "website",
+      url: siteUrl,
+      siteName,
+      title: fullTitle,
+      description: seo.description,
+      locale: seo.locale,
+      alternateLocale: [...seo.alternateLocale],
+    },
+    twitter: { card: "summary_large_image", title: fullTitle, description: seo.description },
+    robots: {
       index: true,
       follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
-  },
-};
+  };
+}
 
 // Inline script injected before hydration to avoid flash of wrong theme
 const themeScript = `
@@ -101,15 +111,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieStore = await cookies();
-  const langCookie = cookieStore.get("lang")?.value;
-  const lang: "es" | "en" = langCookie === "en" ? "en" : "es";
+  const lang = await requestLang();
 
   return (
     <html lang={lang} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-        <StructuredData />
+        <StructuredData lang={lang} />
       </head>
       <body
         className={`${inter.variable} ${outfit.variable} bg-background text-foreground selection:bg-primary/30 min-h-screen font-sans antialiased`}

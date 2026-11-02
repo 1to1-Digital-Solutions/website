@@ -18,8 +18,8 @@ export const translations = {
     heroTitle1: "Understand and bring AI",
     heroTitle2: "into your business, safely.",
     heroSub:
-      "I'll guide you through an 8-week mentoring, one session a week, to set up a system adapted to your company and build your own tools without depending on anyone.",
-    heroBtnStart: "Write to me",
+      "Your competitors already use AI, there's something new every week and you don't even know where to start. I'll guide you to bring it into your business with a system adapted to your company, so you can build your own tools without depending on anyone.",
+    heroBtnStart: "Let's talk",
     heroBtnWork: "How we'll work",
 
     // Success Cases
@@ -40,16 +40,16 @@ export const translations = {
     case3Desc:
       "After trying several development teams, Moovle had a screen tourism app half built. I redesigned it and took it to the iOS and Android stores.",
 
-    // Own products (inside the work section)
-    ownTitle: "My own products",
-    ownSub: "I also build and run products of my own.",
-    own1Cat: "Fitness",
-    own1Title: "Hoy Entreno",
-    own1Desc:
-      "A strength and running plan made for each person, with workout logging, offline use and an app for Garmin watches.",
-    own2Cat: "AI",
-    own2Title: "Scoura",
-    own2Desc: "Personalised newsletters that AI researches, cross-checks, fact-checks and writes.",
+    // Who guides you (home)
+    whoEyebrow: "Who guides you",
+    whoTitle: "I'm César Peón.",
+    whoText:
+      "A computer engineer with over 8 years building software for other companies, and over 4 working with AI. In the mentoring you talk to me directly, with no middlemen.",
+    who1: "8+ years in software development",
+    who2: "4+ years building software with AI",
+    who3: "Master's in digital transformation",
+    whoLink: "Get to know me",
+    whoImgAlt: "Portrait of César Peón",
 
     // Testimonials
     testTitle1: "What they say about ",
@@ -64,31 +64,14 @@ export const translations = {
     test2Author: "Pedro Casado",
     test2Role: "CEO at Moovle",
 
-    // FAQ
-    faqTitle1: "Common ",
-    faqTitle2: "questions.",
-    faqSub: "What people usually ask me before we start.",
-    faq1Q: "Do I need to know about technology?",
-    faq1A:
-      "No. The mentoring is designed for businesses with no in-house tech profile. We start from what you already do and I explain each concept as we use it.",
-    faq2Q: "Is it for freelancers too?",
-    faq2A:
-      "Yes. I work with freelancers and small businesses with 1 to 50 employees. A freelancer is a business of one.",
-    faq3Q: "How much does it cost?",
-    faq3A:
-      "€1,900 + VAT, the same for everyone. You pay it in 2 halves of €950: one when we sign and the other after the fourth session. The first 15-minute meeting is free and commits you to nothing.",
-    faq4Q: "What happens when the 8 weeks are over?",
-    faq4A:
-      "You keep the system and the first tools, with their documentation. The idea is that from then on you can build your own tools without depending on anyone, me included.",
-
     // Contact
     contactTitle1: "Shall we ",
     contactTitle2: "talk?",
     contactSub:
-      "Write to me by email or on LinkedIn and we'll find a slot for the first 15-minute meeting. It's free, and I usually reply within one or two working days.",
-    contactEmailBtn: "Email me",
-    contactLinkedinBtn: "Message me on LinkedIn",
-    contactEmailNote: "Or copy my address:",
+      "Message me on LinkedIn and we'll find a slot for the first 15-minute meeting. It's free and commits you to nothing.",
+    contactEmailBtn: "I'd rather email",
+    contactLinkedinBtn: "Let's talk on LinkedIn",
+    contactEmailNote: "Or write to me at",
     contactMailSubject: "First meeting about the AI mentoring",
     // Cookie banner
     cookieMessage:
@@ -137,8 +120,8 @@ export const translations = {
     heroTitle1: "Entiende e integra la\u00a0IA",
     heroTitle2: "en tu negocio, de forma segura.",
     heroSub:
-      "Te acompaño en una mentoría de 8 semanas, una sesión a la semana, para montar un sistema adaptado a tu empresa y crear tus propias herramientas sin depender de nadie.",
-    heroBtnStart: "Escríbeme",
+      "Tu competencia ya usa la IA, cada semana sale algo nuevo y no sabes ni por dónde empezar. Te acompaño a integrarla en tu negocio con un sistema adaptado a tu empresa, para que crees tus propias herramientas sin depender de nadie.",
+    heroBtnStart: "Hablemos",
     heroBtnWork: "Cómo trabajaremos",
 
     // Success Cases
@@ -159,16 +142,16 @@ export const translations = {
     case3Desc:
       "Después de probar con varios equipos de desarrollo, Moovle tenía una app de turismo de pantalla a medio hacer. La rediseñé y la llevé hasta las tiendas de iOS y Android.",
 
-    // Productos propios (dentro de la sección de proyectos)
-    ownTitle: "Productos propios",
-    ownSub: "También construyo y mantengo productos propios.",
-    own1Cat: "Fitness",
-    own1Title: "Hoy Entreno",
-    own1Desc:
-      "Un plan de fuerza y running hecho para cada persona, con registro de entrenos, uso sin conexión y app para relojes Garmin.",
-    own2Cat: "IA",
-    own2Title: "Scoura",
-    own2Desc: "Newsletters personalizadas que la IA investiga, contrasta, verifica y redacta.",
+    // Quién te acompaña (home)
+    whoEyebrow: "Quién te acompaña",
+    whoTitle: "Soy César Peón.",
+    whoText:
+      "Ingeniero informático, con más de 8 años construyendo software para otras empresas y más de 4 trabajando con IA. En la mentoría hablas directamente conmigo, sin intermediarios.",
+    who1: "+8 años en desarrollo de software",
+    who2: "+4 años desarrollando software con IA",
+    who3: "Máster en transformación digital",
+    whoLink: "Conóceme mejor",
+    whoImgAlt: "Retrato de César Peón",
 
     // Testimonials
     testTitle1: "Lo que dicen de ",
@@ -183,31 +166,14 @@ export const translations = {
     test2Author: "Pedro Casado",
     test2Role: "CEO de Moovle",
 
-    // FAQ
-    faqTitle1: "Preguntas ",
-    faqTitle2: "frecuentes.",
-    faqSub: "Lo que me suelen preguntar antes de empezar.",
-    faq1Q: "¿Necesito saber de tecnología?",
-    faq1A:
-      "No. La mentoría está pensada para negocios sin perfil tecnológico interno. Partimos de lo que ya haces y te explico cada concepto según lo vamos usando.",
-    faq2Q: "¿Sirve también para autónomos?",
-    faq2A:
-      "Sí. Trabajo con autónomos y pymes de 1 a 50 empleados. Un autónomo es un negocio de una persona.",
-    faq3Q: "¿Cuánto cuesta?",
-    faq3A:
-      "1.900 € + IVA, el mismo precio para todos. Se paga en 2 mitades de 950 €: una al firmar y otra después de la cuarta sesión. La primera reunión de 15 minutos es gratis y no te compromete a nada.",
-    faq4Q: "¿Qué pasa cuando terminan las 8 semanas?",
-    faq4A:
-      "Te quedas con el sistema y las primeras herramientas, con su documentación. La idea es que a partir de ahí puedas crear tus propias herramientas sin depender de nadie, tampoco de mí.",
-
     // Contact
     contactTitle1: "¿Lo ",
     contactTitle2: "hablamos?",
     contactSub:
-      "Escríbeme por correo o por LinkedIn y buscamos un hueco para la primera reunión de 15 minutos. Es gratis y suelo responder en uno o dos días laborables.",
-    contactEmailBtn: "Escríbeme un correo",
-    contactLinkedinBtn: "Escríbeme por LinkedIn",
-    contactEmailNote: "O copia mi dirección:",
+      "Escríbeme por LinkedIn y buscamos un hueco para la primera reunión de 15 minutos. Es gratis y no te compromete a nada.",
+    contactEmailBtn: "Prefiero el correo",
+    contactLinkedinBtn: "Hablemos por LinkedIn",
+    contactEmailNote: "O escríbeme a",
     contactMailSubject: "Primera reunión sobre la mentoría de IA",
     // Cookie banner
     cookieMessage:

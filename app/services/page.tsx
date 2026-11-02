@@ -31,9 +31,25 @@ export default async function Page() {
     name: c.metaTitle,
     description: c.metaDescription,
     url: `${SITE_URL}/services`,
-    serviceType: "AI mentoring",
+    serviceType: "Mentoría de inteligencia artificial para pymes y autónomos",
     provider: { "@id": `${SITE_URL}/#organization` },
-    areaServed: "ES",
+    // Online sessions: all of Spain.
+    areaServed: { "@type": "Country", name: "España" },
+    availableChannel: { "@type": "ServiceChannel", name: "Online (videollamada)" },
+    audience: {
+      "@type": "BusinessAudience",
+      audienceType: "Pymes y autónomos sin perfil tecnológico interno",
+      numberOfEmployees: { "@type": "QuantitativeValue", minValue: 1, maxValue: 50 },
+    },
+    termsOfService: `${SITE_URL}/terms-conditions`,
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: c.outcomesTitle,
+      itemListElement: c.outcomes.map((o) => ({
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: o.title, description: o.text },
+      })),
+    },
     offers: {
       "@type": "Offer",
       price: PRICE_EUR,

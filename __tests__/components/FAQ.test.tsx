@@ -15,15 +15,16 @@ describe("FAQ", () => {
     expect(q1).toBeInTheDocument();
 
     // Answer to Q1 should be visible
-    const a1 = screen.getByText(/pensada para negocios sin perfil tecnológico/i);
+    expect(screen.getAllByRole("button")).toHaveLength(6);
+    const a1 = screen.getByText(/pensada para autónomos y pymes sin perfil tecnológico/i);
     expect(a1).toBeInTheDocument();
 
     // Click q2 to open it
-    const q2 = screen.getByText("¿Sirve también para autónomos?");
+    const q2 = screen.getByText("¿Las sesiones son online?");
     fireEvent.click(q2);
 
     // Q2 answer becomes visible (testing presence in document)
-    const a2 = screen.getByText(/Un autónomo es un negocio de una persona/i);
+    const a2 = screen.getByText(/Todas las sesiones son online, por videollamada/i);
     expect(a2).toBeInTheDocument();
   });
 });

@@ -1,22 +1,75 @@
+/**
+ * Site-wide schema.org data: the organization, its founder (who gives the mentoring) and the
+ * website. Search engines and AI assistants use it to understand who offers what. Each page
+ * adds its own block (FAQPage on the home page, Service on /services, ProfilePage on /about).
+ */
+import { LINKEDIN_URL } from "@/content/contact";
+
 const SITE_URL = "https://1to1digital.solutions";
 const SITE_NAME = "1to1 Digital Solutions";
 const LEGAL_NAME = "1TO1 DIGITAL SOLUTIONS SL.";
-const SLOGAN = "Understand and bring AI into your business, safely";
-const DESCRIPTION =
-  "An 8-week mentoring for small businesses and freelancers to understand and bring AI into their business safely, with a system adapted to their company.";
 
-export function StructuredData() {
+const COPY = {
+  es: {
+    slogan: "Entiende e integra la IA en tu negocio, de forma segura",
+    description:
+      "Mentoría online de 8 semanas para pymes y autónomos: entender e integrar la IA en el negocio de forma segura, con un sistema adaptado a la empresa para crear sus propias herramientas sin depender de nadie.",
+    jobTitle: "Ingeniero informático y mentor de IA para pymes y autónomos",
+    knowsAbout: [
+      "Inteligencia artificial",
+      "Integración de IA en empresas",
+      "Uso seguro de la IA",
+      "Desarrollo de software",
+      "Automatización de procesos",
+      "Transformación digital",
+    ],
+  },
+  en: {
+    slogan: "Understand and bring AI into your business, safely",
+    description:
+      "An 8-week online mentoring for small businesses and freelancers: understand and bring AI into the business safely, with a system adapted to the company to build their own tools without depending on anyone.",
+    jobTitle: "Computer engineer and AI mentor for small businesses and freelancers",
+    knowsAbout: [
+      "Artificial intelligence",
+      "AI integration in businesses",
+      "Safe use of AI",
+      "Software development",
+      "Process automation",
+      "Digital transformation",
+    ],
+  },
+} as const;
+
+export function StructuredData({ lang = "es" }: { lang?: "es" | "en" }) {
+  const c = COPY[lang];
+
+  const founder = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `${SITE_URL}/#cesar`,
+    name: "César Peón",
+    url: `${SITE_URL}/about`,
+    image: `${SITE_URL}/images/profilePicture.jpg`,
+    jobTitle: c.jobTitle,
+    worksFor: { "@id": `${SITE_URL}/#organization` },
+    alumniOf: { "@type": "CollegeOrUniversity", name: "Universidad de Alcalá" },
+    knowsAbout: c.knowsAbout,
+    sameAs: [LINKEDIN_URL],
+  };
+
   const organization = {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "ProfessionalService",
     "@id": `${SITE_URL}/#organization`,
     name: SITE_NAME,
     legalName: LEGAL_NAME,
     url: SITE_URL,
     logo: `${SITE_URL}/logo-positive.svg`,
-    slogan: SLOGAN,
-    description: DESCRIPTION,
+    image: `${SITE_URL}/opengraph-image`,
+    slogan: c.slogan,
+    description: c.description,
     email: "info@1to1digital.solutions",
+    founder: { "@id": `${SITE_URL}/#cesar` },
     address: {
       "@type": "PostalAddress",
       streetAddress: "Avda. de Buendía, 11",
@@ -24,11 +77,11 @@ export function StructuredData() {
       addressLocality: "Guadalajara",
       addressCountry: "ES",
     },
+    // Sessions are online: the service covers all of Spain.
+    areaServed: { "@type": "Country", name: "España" },
+    priceRange: "1.900 € + IVA",
     taxID: "B27630136",
-    sameAs: [
-      "https://github.com/1to1-Digital-Solutions",
-      "https://www.linkedin.com/in/c%C3%A9sar-pe%C3%B3n-lamparero/",
-    ],
+    sameAs: ["https://github.com/1to1-Digital-Solutions", LINKEDIN_URL],
   };
 
   const website = {
@@ -37,21 +90,20 @@ export function StructuredData() {
     "@id": `${SITE_URL}/#website`,
     url: SITE_URL,
     name: SITE_NAME,
-    description: DESCRIPTION,
-    inLanguage: ["es-ES", "en-US"],
+    description: c.description,
+    inLanguage: lang === "es" ? "es-ES" : "en-US",
     publisher: { "@id": `${SITE_URL}/#organization` },
   };
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(website) }}
-      />
+      {[organization, founder, website].map((data) => (
+        <script
+          key={data["@id"]}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+        />
+      ))}
     </>
   );
 }
