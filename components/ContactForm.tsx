@@ -83,7 +83,7 @@ export function ContactForm() {
       name: String(data.get("name") || "").trim(),
       email: String(data.get("email") || "").trim(),
       projectType: String(data.get("projectType") || ""),
-      tech: String(data.get("tech") || ""),
+      businessSize: String(data.get("businessSize") || ""),
       timeline: String(data.get("timeline") || ""),
       source: String(data.get("source") || ""),
       message: String(data.get("message") || "").trim(),
@@ -252,7 +252,7 @@ export function ContactForm() {
             </div>
           </div>
 
-          {/* Rows 2-3: what, which tech, when, how they found us — all optional */}
+          {/* Rows 2-3: goal, business size, when, how they found us. All optional */}
           <div className="grid gap-6 md:grid-cols-2">
             <ChoiceSelect
               field="projectType"
@@ -260,8 +260,8 @@ export function ContactForm() {
               disabled={isBusy || isDone}
             />
             <ChoiceSelect
-              field="tech"
-              label={t("contTech") as string}
+              field="businessSize"
+              label={t("contSize") as string}
               disabled={isBusy || isDone}
             />
           </div>

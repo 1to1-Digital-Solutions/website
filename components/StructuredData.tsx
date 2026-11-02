@@ -1,9 +1,9 @@
 const SITE_URL = "https://1to1digital.solutions";
 const SITE_NAME = "1to1 Digital Solutions";
 const LEGAL_NAME = "1TO1 DIGITAL SOLUTIONS SL.";
-const SLOGAN = "We build your technology, you build your business";
+const SLOGAN = "Understand and bring AI into your business, safely";
 const DESCRIPTION =
-  "Custom software development: project rescue, digital products from scratch and business digitalisation. Specialists in browser-based mixed reality and Web3.";
+  "An 8-week mentoring for small businesses and freelancers to understand and bring AI into their business safely, with a system adapted to their company.";
 
 export function StructuredData() {
   const organization = {

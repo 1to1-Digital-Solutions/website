@@ -26,9 +26,9 @@ const outfit = Outfit({
 
 const siteUrl = "https://1to1digital.solutions";
 const siteName = "1to1 Digital Solutions";
-const siteTagline = "We build your technology, you build your business";
+const siteTagline = "Understand and bring AI into your business, safely";
 const siteDescription =
-  "Custom software development: we rescue stuck projects, launch digital products from scratch in 6-8 weeks and digitalise businesses. Specialists in browser-based mixed reality and Web3.";
+  "An 8-week mentoring for small businesses and freelancers to understand and bring AI into their business safely, and finish with their own system to build their tools without depending on anyone.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -42,21 +42,18 @@ export const metadata: Metadata = {
   creator: siteName,
   publisher: siteName,
   keywords: [
-    "software a medida",
-    "desarrollo de MVP",
-    "digitalización de empresas",
-    "transformación digital",
-    "rescate de proyectos",
-    "freelance developer",
-    "MVP development",
-    "Web3",
-    "Blockchain",
-    "Mixed Reality",
-    "VR",
-    "Next.js",
-    "React",
-    "Three.js",
-    "tech rescue",
+    "IA para empresas",
+    "IA para pymes",
+    "IA para autónomos",
+    "integrar la IA en mi negocio",
+    "integrar IA de forma segura",
+    "mentoría de IA",
+    "formación en IA para empresas",
+    "automatizar tareas con IA",
+    "herramientas de IA para negocios",
+    "AI for small businesses",
+    "AI mentoring",
+    "Guadalajara",
     "España",
   ],
   alternates: {

@@ -1,13 +1,13 @@
 /**
  * The contact form options, shared by the form (which renders them) and by `/api/contact`
- * (which validates them and puts them in the email). The engagements and technologies are
- * the ones in `content/services.ts`. The budget is not asked: the internal notification
- * suggests an indicative price range by project type (`content/pricing.ts`).
+ * (which validates them and puts them in the email). Since November 2026 they are aimed at
+ * the mentoring client: what they want to achieve and how big their business is. The key
+ * `projectType` is kept so the Google Sheet column keeps working. The budget is not asked.
  */
 
 export const LEAD_OPTIONS = {
-  projectType: ["rescue", "launch", "digitalize", "other"],
-  tech: ["none", "xr", "web3"],
+  projectType: ["understand", "manual", "tools", "team", "other"],
+  businessSize: ["solo", "2-10", "11-50", "50+"],
   timeline: ["now", "1m", "2-3m", "exploring"],
   source: ["linkedin", "google", "referral", "other"],
 } as const;
@@ -20,15 +20,17 @@ type Labels = { [F in LeadField]: Record<LeadValue<F>, string> };
 export const LEAD_LABELS: Record<"es" | "en", Labels> = {
   es: {
     projectType: {
-      rescue: "Rescatar un proyecto atascado",
-      launch: "Lanzar un producto desde cero",
-      digitalize: "Digitalizar mi negocio",
+      understand: "Entender qué puede hacer la IA por mi negocio",
+      manual: "Quitarme tareas manuales que me comen horas",
+      tools: "Crear mis propias herramientas",
+      team: "Que mi equipo aprenda a trabajar con IA",
       other: "Otra cosa",
     },
-    tech: {
-      none: "Ninguna en concreto o no lo sé",
-      xr: "Realidad mixta o 3D",
-      web3: "Web3 o blockchain",
+    businessSize: {
+      solo: "Soy autónomo",
+      "2-10": "De 2 a 10 personas",
+      "11-50": "De 11 a 50 personas",
+      "50+": "Más de 50 personas",
     },
     timeline: {
       now: "Cuanto antes",
@@ -45,15 +47,17 @@ export const LEAD_LABELS: Record<"es" | "en", Labels> = {
   },
   en: {
     projectType: {
-      rescue: "Rescue a stuck project",
-      launch: "Launch a product from scratch",
-      digitalize: "Digitalise my business",
+      understand: "Understand what AI can do for my business",
+      manual: "Get rid of manual tasks that eat up my hours",
+      tools: "Build my own tools",
+      team: "Have my team learn to work with AI",
       other: "Something else",
     },
-    tech: {
-      none: "None in particular, or not sure",
-      xr: "Mixed reality or 3D",
-      web3: "Web3 or blockchain",
+    businessSize: {
+      solo: "I'm a freelancer",
+      "2-10": "2 to 10 people",
+      "11-50": "11 to 50 people",
+      "50+": "More than 50 people",
     },
     timeline: {
       now: "As soon as possible",

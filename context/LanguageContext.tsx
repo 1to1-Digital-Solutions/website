@@ -10,51 +10,51 @@ const LANG_COOKIE_MAX_AGE = 60 * 60 * 24 * 365; // 1 year
 export const translations = {
   en: {
     // Navbar
-    navServices: "Services",
+    navServices: "Mentoring",
     navAbout: "About",
     navCTA: "Let's talk",
 
     // Hero
-    heroTitle1: "We build the tech",
-    heroTitle2: "behind your idea.",
+    heroTitle1: "Understand and bring AI",
+    heroTitle2: "into your business, safely.",
     heroSub:
-      "We rescue stuck projects, launch digital products from scratch and digitalise businesses that still run on spreadsheets and paper. With a special focus on mixed reality and Web3.",
-    heroBtnStart: "Start your project",
-    heroBtnWork: "See our work",
+      "I'll guide you through an 8-week mentoring, one session a week, to set up a system adapted to your company and build your own tools without depending on anyone.",
+    heroBtnStart: "Write to me",
+    heroBtnWork: "How we'll work",
 
     // Success Cases
-    casesTitle1: "Selected ",
-    casesTitle2: "work.",
-    casesSub: "Real projects, real results. A glimpse of what we can build together.",
-    case1Cat: "Web3",
+    casesTitle1: "Projects I've ",
+    casesTitle2: "worked on.",
+    casesSub:
+      "Before the mentoring I spent years building software for other companies. This is part of that experience.",
+    case1Cat: "Blockchain",
     case1Title: "Firefly: IOTA & Shimmer wallet",
     case1Desc:
-      "I was a senior developer on Firefly, the official wallet of IOTA and Shimmer. For years I shipped critical features across the IOTA ecosystem for an application that thousands of users trust to manage real digital assets: always with a focus on security, performance, and UX.",
-    case2Cat: "Mixed Reality",
+      "I was a senior developer on Firefly, the official IOTA and Shimmer wallet: an application that thousands of users trust to manage real digital assets, where security came before everything else.",
+    case2Cat: "Virtual Reality",
     case2Title: "Numen Games: VR platform",
     case2Desc:
-      "I built a platform that deploys virtual worlds in minutes. The worlds themselves run on Three.js and Hyperfy, with integrated AI for dynamic content generation, so anyone can launch immersive experiences without writing code.",
-    case3Cat: "MVP",
+      "Deploying their virtual worlds was done by hand. I built them a platform so it now takes one button, with AI integrated to generate the content.",
+    case3Cat: "Mobile app",
     case3Title: "Moovle: screen tourism app",
     case3Desc:
-      "I rescued a half-built screen tourism MVP: redesigned the visuals, implemented the responsive design, and built the native iOS and Android apps with Capacitor. From stalled to shipped on the stores.",
+      "After trying several development teams, Moovle had a screen tourism app half built. I redesigned it and took it to the iOS and Android stores.",
 
     // Own products (inside the work section)
-    ownTitle: "Our own products",
-    ownSub: "We also build and run products of our own.",
+    ownTitle: "My own products",
+    ownSub: "I also build and run products of my own.",
     own1Cat: "Fitness",
     own1Title: "Hoy Entreno",
     own1Desc:
       "A strength and running plan made for each person, with workout logging, offline use and an app for Garmin watches.",
     own2Cat: "AI",
     own2Title: "Scoura",
-    own2Desc:
-      "Personalised newsletters that a team of AI agents researches, cross-checks, fact-checks and writes.",
+    own2Desc: "Personalised newsletters that AI researches, cross-checks, fact-checks and writes.",
 
     // Testimonials
-    testTitle1: "Client ",
-    testTitle2: "stories.",
-    testSub: "Don't just take our word for it.",
+    testTitle1: "What they say about ",
+    testTitle2: "working with me.",
+    testSub: "Clients from my years as a developer.",
     test1Quote:
       "A real pleasure working with César. He delivered an interactive web header in record time, precisely replicating the look & feel of a pre-rendered 3D video, but with real-time interactivity, complex animations, and cross-device optimization. For his attitude, drive, and commitment, a 10. It’s a delight to collaborate with someone who quickly understands what’s needed and executes it with judgment and autonomy.",
     test1Author: "David Torrico",
@@ -67,37 +67,37 @@ export const translations = {
     // FAQ
     faqTitle1: "Common ",
     faqTitle2: "questions.",
-    faqSub: "Everything you need to know before we start.",
-    faq1Q: "How fast can we build an MVP?",
+    faqSub: "What people usually ask me before we start.",
+    faq1Q: "Do I need to know about technology?",
     faq1A:
-      "Depending on the complexity, a standard MVP takes 6 to 8 weeks. We prioritize core features to get you to market as quickly as possible.",
-    faq2Q: "Do you only work with mixed reality and Web3?",
+      "No. The mentoring is designed for businesses with no in-house tech profile. We start from what you already do and I explain each concept as we use it.",
+    faq2Q: "Is it for freelancers too?",
     faq2A:
-      "No. They're the technologies we know best, but most of our work is custom software: web platforms, mobile apps, internal tools and the automations that take manual processes off your plate.",
-    faq3Q: "How do we calculate your budget?",
+      "Yes. I work with freelancers and small businesses with 1 to 50 employees. A freelancer is a business of one.",
+    faq3Q: "How much does it cost?",
     faq3A:
-      "It depends on the kind of project. We work on fixed projects paid by milestones, or by the hour if we join your team. After your first message I\'ll send you a ballpark range, and after our call, a fixed quote in writing.",
-    faq4Q: "Will I own the code?",
+      "It depends on your company and what we need to set up. After the first 15-minute meeting, which is free, I send you a plan adapted to your company together with the quote.",
+    faq4Q: "What happens when the 8 weeks are over?",
     faq4A:
-      "100%. Upon completion and final payment, all intellectual property and source code are transferred directly to you.",
+      "You keep the system and the first tools, with their documentation. The idea is that from then on you can build your own tools without depending on anyone, me included.",
 
     // Contact
-    contactTitle1: "Ready to ",
-    contactTitle2: "start?",
-    contactSub: "Let's discuss how we can build your next big idea.",
+    contactTitle1: "Shall we ",
+    contactTitle2: "talk?",
+    contactSub: "Write to me and we'll find a slot for the first 15-minute meeting. It's free.",
     contName: "Name",
     contEmail: "Email",
     contBudgetNote:
-      "The budget depends on the kind of project. I'll write back with a ballpark range for yours, and a fixed quote after we talk.",
-    contType: "What do you need?",
-    contTech: "Any technology in particular?",
+      "I don't publish prices: I send you the quote together with the plan adapted to your company, after the first meeting.",
+    contType: "What would you like to achieve?",
+    contSize: "How big is your business?",
     contTimeline: "When would you like to start?",
-    contSource: "How did you hear about us?",
+    contSource: "How did you hear about me?",
     contOptional: "optional",
     contSelectPlaceholder: "Choose…",
-    contMessage: "Tell me about your idea",
+    contMessage: "Tell me about your business",
     contSuccessNote:
-      "Thanks. I'll read your message and get back to you within one or two working days with a ballpark range and to set up a video call.",
+      "Thanks. I'll read your message and get back to you within one or two working days to find a slot for the 15-minute meeting.",
     // Cookie banner
     cookieMessage:
       "We use cookies to improve your experience and analyze traffic. By accepting, you consent to our use of cookies.",
@@ -105,7 +105,8 @@ export const translations = {
     cookieDecline: "Decline",
     cookiePolicy: "Cookie policy",
     contPrivacy: "I have read and accept the",
-    contMessagePlaceholder: "Tell me about your project, goals, and timeline...",
+    contMessagePlaceholder:
+      "What you do, how you work today and what you'd like AI to help you with...",
     contBtnIdle: "Send message",
     contBtnLoading: "Sending...",
     contBtnSuccess: "Message sent!",
@@ -113,11 +114,11 @@ export const translations = {
     contErrorMsg: "Something went wrong. Please try again.",
     contErrName: "Please enter your name.",
     contErrEmail: "Please enter a valid email address.",
-    contErrMessage: "Tell us briefly about your idea.",
+    contErrMessage: "Tell me briefly about your business.",
     contErrPrivacy: "You must accept the privacy policy.",
 
     // Footer
-    footDesc: "We build your technology, you build your business.",
+    footDesc: "I guide you to understand and bring AI into your business, safely.",
     footRights: "All rights reserved.",
     footTerms: "Terms & conditions",
     footPrivacy: "Privacy policy",
@@ -126,19 +127,19 @@ export const translations = {
     footIncibeCaption:
       "Participant in the INCIBE Emprende incubation programme. Not a certification or accreditation.",
 
-    // Process (migrated from inline ternaries in Process.tsx)
-    procTitle1: "How it ",
-    procTitle2: "works.",
-    procSub: "Through a streamlined process designed for founders who need results, not excuses.",
-    proc1Title: "Discovery & architecture",
-    proc1Desc:
-      "We understand your vision, define the strict MVP technical scope, and design the optimal architecture to scale from day one.",
-    proc2Title: "Rapid execution",
+    // Process: the 4 steps of the mentoring
+    procTitle1: "How we'll ",
+    procTitle2: "work.",
+    procSub: "An 8-week mentoring with one 1-hour session a week.",
+    proc1Title: "A first 15-minute meeting, free",
+    proc1Desc: "To look at your situation: how you work today and where your hours go.",
+    proc2Title: "A plan adapted to your company",
     proc2Desc:
-      "No bureaucracy. We write clean code, implement complex integrations (Web3, 3D, AI), and provide weekly updates.",
-    proc3Title: "Handoff & scale",
-    proc3Desc:
-      "We deploy your product to production, transfer 100% of the source code, and provide continuous support if needed.",
+      "I send it to you together with the quote, so you know what we'll do before we start.",
+    proc3Title: "We put it in motion together",
+    proc3Desc: "You learn the concepts and we set up the first tools, one session a week.",
+    proc4Title: "You finish with your own system",
+    proc4Desc: "To build your applications without depending on anyone.",
 
     // Aria labels
     ariaToggleLangToEn: "Switch to English",
@@ -147,59 +148,56 @@ export const translations = {
     ariaCloseMenu: "Close menu",
     srOpensInNewTab: "(opens in new tab)",
 
-    // TechStackMarquee
-    techStackTitle: "OUR TECH STACK",
-
     // HeroCanvas
     heroDragHint: "Drag each shape to its slot",
   },
   es: {
     // Navbar
-    navServices: "Servicios",
+    navServices: "Mentoría",
     navAbout: "Sobre mí",
     navCTA: "Hablemos",
 
     // Hero
-    heroTitle1: "Construimos la tecnología",
-    heroTitle2: "detrás de tu idea.",
+    heroTitle1: "Entiende e integra la IA",
+    heroTitle2: "en tu negocio, de forma segura.",
     heroSub:
-      "Rescatamos proyectos atascados, lanzamos productos digitales desde cero y digitalizamos negocios que siguen funcionando a base de Excel y papel. Con especial foco en realidad mixta y Web3.",
-    heroBtnStart: "Inicia tu proyecto",
-    heroBtnWork: "Ver nuestro trabajo",
+      "Te acompaño en una mentoría de 8 semanas, una sesión a la semana, para montar un sistema adaptado a tu empresa y crear tus propias herramientas sin depender de nadie.",
+    heroBtnStart: "Escríbeme",
+    heroBtnWork: "Cómo trabajaremos",
 
     // Success Cases
-    casesTitle1: "Proyectos ",
-    casesTitle2: "destacados.",
-    casesSub: "Proyectos reales, resultados reales. Un vistazo de lo que podemos construir juntos.",
-    case1Cat: "Web3",
+    casesTitle1: "Proyectos en los que ",
+    casesTitle2: "he trabajado.",
+    casesSub:
+      "Antes de la mentoría pasé años construyendo software para otras empresas. Esto es parte de esa experiencia.",
+    case1Cat: "Blockchain",
     case1Title: "Firefly: wallet de IOTA y Shimmer",
     case1Desc:
-      "Fui senior developer en Firefly, el wallet oficial de IOTA y Shimmer. Durante años construí funcionalidades críticas dentro del ecosistema IOTA para una aplicación en la que miles de usuarios confían para gestionar activos digitales reales: siempre con foco en seguridad, rendimiento y UX.",
-    case2Cat: "Realidad Mixta",
+      "Fui desarrollador senior en Firefly, el wallet oficial de IOTA y Shimmer: una aplicación en la que miles de usuarios confían para gestionar activos digitales reales, donde la seguridad iba por delante de todo.",
+    case2Cat: "Realidad Virtual",
     case2Title: "Numen Games: plataforma VR",
     case2Desc:
-      "Desarrollé una plataforma para desplegar mundos virtuales en minutos. Los mundos en sí se ejecutan sobre Three.js y Hyperfy, con IA integrada para la generación dinámica de contenido, pensada para que cualquiera pueda lanzar experiencias inmersivas sin escribir código.",
-    case3Cat: "MVP",
+      "Desplegar sus mundos virtuales se hacía a mano. Les construí una plataforma para que ahora se haga con un botón, con IA integrada para generar el contenido.",
+    case3Cat: "App móvil",
     case3Title: "Moovle: app de turismo de pantalla",
     case3Desc:
-      "Rescaté un MVP de turismo de pantalla a medio terminar: rediseñé la interfaz, implementé el diseño responsive y desarrollé las apps nativas iOS y Android con Capacitor. De estancado a desplegado en las stores.",
+      "Después de probar con varios equipos de desarrollo, Moovle tenía una app de turismo de pantalla a medio hacer. La rediseñé y la llevé hasta las tiendas de iOS y Android.",
 
     // Productos propios (dentro de la sección de proyectos)
     ownTitle: "Productos propios",
-    ownSub: "También construimos y mantenemos productos nuestros.",
+    ownSub: "También construyo y mantengo productos propios.",
     own1Cat: "Fitness",
     own1Title: "Hoy Entreno",
     own1Desc:
       "Un plan de fuerza y running hecho para cada persona, con registro de entrenos, uso sin conexión y app para relojes Garmin.",
     own2Cat: "IA",
     own2Title: "Scoura",
-    own2Desc:
-      "Newsletters personalizadas que un equipo de agentes de IA investiga, contrasta, verifica y redacta.",
+    own2Desc: "Newsletters personalizadas que la IA investiga, contrasta, verifica y redacta.",
 
     // Testimonials
-    testTitle1: "Historias de ",
-    testTitle2: "clientes.",
-    testSub: "No te quedes solo con nuestra palabra.",
+    testTitle1: "Lo que dicen de ",
+    testTitle2: "trabajar conmigo.",
+    testSub: "Clientes de mis años como desarrollador.",
     test1Quote:
       "Encantadísimo de haber trabajado con César. Ha resuelto en tiempo récord una cabecera interactiva para una web, replicando con precisión el look & feel de un vídeo 3D pre-renderizado, pero con interactividad en tiempo real, animaciones complejas y optimización para distintos dispositivos. Por su actitud, ganas y compromiso, un 10. Da gusto colaborar con alguien que entiende rápido lo que se necesita y lo ejecuta con criterio y autonomía.",
     test1Author: "David Torrico",
@@ -212,37 +210,37 @@ export const translations = {
     // FAQ
     faqTitle1: "Preguntas ",
     faqTitle2: "frecuentes.",
-    faqSub: "Todo lo que necesitas saber antes de empezar.",
-    faq1Q: "¿Cómo de rápido podemos construir un MVP?",
+    faqSub: "Lo que me suelen preguntar antes de empezar.",
+    faq1Q: "¿Necesito saber de tecnología?",
     faq1A:
-      "Dependiendo de la complejidad, un MVP estándar lleva de 6 a 8 semanas. Priorizamos las características principales para que salgas al mercado lo más rápido posible.",
-    faq2Q: "¿Solo trabajáis con realidad mixta y Web3?",
+      "No. La mentoría está pensada para negocios sin perfil tecnológico interno. Partimos de lo que ya haces y te explico cada concepto según lo vamos usando.",
+    faq2Q: "¿Sirve también para autónomos?",
     faq2A:
-      "No. Son las tecnologías en las que estamos más metidos, pero la mayor parte del trabajo es software a medida: plataformas web, apps móviles, herramientas internas y las automatizaciones que te quitan de encima los procesos que hoy se hacen a mano.",
-    faq3Q: "¿Cómo calculamos tu presupuesto?",
+      "Sí. Trabajo con autónomos y pymes de 1 a 50 empleados. Un autónomo es un negocio de una persona.",
+    faq3Q: "¿Cuánto cuesta?",
     faq3A:
-      "Depende del tipo de proyecto. Trabajamos por proyecto cerrado con pagos por hitos, o por horas si nos integramos en tu equipo. Tras tu primer mensaje te mando una horquilla orientativa y, después de la llamada, el presupuesto cerrado por escrito.",
-    faq4Q: "¿Seré dueño del código?",
+      "Depende de tu empresa y de lo que haya que montar. Después de la primera reunión de 15 minutos, que es gratis, te envío un plan adaptado a tu empresa junto con el presupuesto.",
+    faq4Q: "¿Qué pasa cuando terminan las 8 semanas?",
     faq4A:
-      "Al 100%. Tras la finalización y el pago final, toda la propiedad intelectual y el código fuente se transfieren directamente a ti.",
+      "Te quedas con el sistema y las primeras herramientas, con su documentación. La idea es que a partir de ahí puedas crear tus propias herramientas sin depender de nadie, tampoco de mí.",
 
     // Contact
-    contactTitle1: "¿Listo para ",
-    contactTitle2: "empezar?",
-    contactSub: "Hablemos sobre cómo podemos construir tu gran idea.",
+    contactTitle1: "¿",
+    contactTitle2: "Hablamos?",
+    contactSub: "Escríbeme y buscamos un hueco para la primera reunión de 15 minutos. Es gratis.",
     contName: "Nombre",
     contEmail: "Correo electrónico",
     contBudgetNote:
-      "El presupuesto depende del tipo de proyecto. Te escribo con una horquilla orientativa para el tuyo, y el presupuesto cerrado después de hablar.",
-    contType: "¿Qué necesitas?",
-    contTech: "¿Alguna tecnología en concreto?",
+      "No publico precios: el presupuesto te lo envío junto con el plan adaptado a tu empresa, después de la primera reunión.",
+    contType: "¿Qué te gustaría conseguir?",
+    contSize: "¿Qué tamaño tiene tu negocio?",
     contTimeline: "¿Cuándo quieres empezar?",
-    contSource: "¿Cómo nos has conocido?",
+    contSource: "¿Cómo me has conocido?",
     contOptional: "opcional",
     contSelectPlaceholder: "Selecciona…",
-    contMessage: "Cuéntame sobre tu idea",
+    contMessage: "Cuéntame sobre tu negocio",
     contSuccessNote:
-      "Gracias. Leo tu mensaje y te escribo en uno o dos días laborables con una horquilla orientativa y para buscar un hueco para una videollamada.",
+      "Gracias. Leo tu mensaje y te escribo en uno o dos días laborables para buscar un hueco para la reunión de 15 minutos.",
     // Cookie banner
     cookieMessage:
       "Usamos cookies para mejorar tu experiencia y analizar el tráfico. Al aceptar, consientes el uso de cookies.",
@@ -250,7 +248,8 @@ export const translations = {
     cookieDecline: "Rechazar",
     cookiePolicy: "Política de cookies",
     contPrivacy: "He leído y acepto la",
-    contMessagePlaceholder: "Cuéntame sobre tu proyecto, objetivos y plazos...",
+    contMessagePlaceholder:
+      "A qué te dedicas, cómo trabajáis hoy y en qué te gustaría que te ayudara la IA...",
     contBtnIdle: "Enviar mensaje",
     contBtnLoading: "Enviando...",
     contBtnSuccess: "¡Mensaje enviado!",
@@ -258,11 +257,11 @@ export const translations = {
     contErrorMsg: "Algo salió mal. Por favor, inténtalo de nuevo.",
     contErrName: "Por favor, indica tu nombre.",
     contErrEmail: "Introduce un correo electrónico válido.",
-    contErrMessage: "Cuéntanos brevemente tu idea.",
+    contErrMessage: "Cuéntame brevemente sobre tu negocio.",
     contErrPrivacy: "Debes aceptar la política de privacidad.",
 
     // Footer
-    footDesc: "Construimos tu tecnología, tú construyes tu negocio.",
+    footDesc: "Te acompaño a entender e integrar la IA en tu negocio, de forma segura.",
     footRights: "Todos los derechos reservados.",
     footTerms: "Términos y condiciones",
     footPrivacy: "Política de privacidad",
@@ -271,20 +270,20 @@ export const translations = {
     footIncibeCaption:
       "Participante en el programa de incubación INCIBE Emprende. No constituye certificación ni acreditación.",
 
-    // Process (migrated from inline ternaries in Process.tsx)
+    // Process: the 4 steps of the mentoring
     procTitle1: "Cómo ",
-    procTitle2: "trabajamos.",
-    procSub:
-      "A través de un proceso simplificado, diseñado para fundadores que necesitan resultados, no excusas.",
-    proc1Title: "Descubrimiento y arquitectura",
-    proc1Desc:
-      "Entendemos tu visión, definimos el alcance estricto del MVP tech y diseñamos la arquitectura óptima para escalar desde el día uno.",
-    proc2Title: "Ejecución rápida",
+    procTitle2: "trabajaremos.",
+    procSub: "Una mentoría de 8 semanas con una sesión de 1 hora semanal.",
+    proc1Title: "Una primera reunión de 15 minutos, gratis",
+    proc1Desc: "Para analizar tu situación: cómo trabajáis hoy y dónde se os van las horas.",
+    proc2Title: "Un plan adaptado a tu empresa",
     proc2Desc:
-      "Sin burocracia. Escribimos código limpio, implementamos integraciones complejas (Web3, 3D, IA) y te damos actualizaciones semanales.",
-    proc3Title: "Entrega y escala",
+      "Te lo envío junto con el presupuesto, para que sepas qué vamos a hacer antes de empezar.",
+    proc3Title: "Lo ponemos en marcha juntos",
     proc3Desc:
-      "Desplegamos tu producto en producción, transferimos todo el código fuente al 100% y te damos soporte continuo si lo necesitas.",
+      "Aprendes los conceptos y montamos las primeras herramientas, una sesión a la semana.",
+    proc4Title: "Terminas con un sistema propio",
+    proc4Desc: "Para crear tus aplicaciones sin depender de nadie.",
 
     // Aria labels
     ariaToggleLangToEn: "Cambiar a inglés",
@@ -292,9 +291,6 @@ export const translations = {
     ariaOpenMenu: "Abrir menú",
     ariaCloseMenu: "Cerrar menú",
     srOpensInNewTab: "(abre en nueva pestaña)",
-
-    // TechStackMarquee
-    techStackTitle: "NUESTRO STACK TÉCNICO",
 
     // HeroCanvas
     heroDragHint: "Arrastra cada objeto a su hueco",

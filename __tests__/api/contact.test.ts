@@ -21,9 +21,10 @@ function request(body: unknown, ip: string) {
 const valid = {
   name: "Ana Pérez",
   email: "ana@example.com",
-  message: "Quiero digitalizar los partes de trabajo.",
+  message: "Quiero quitarme los partes de trabajo en papel.",
   privacy: true,
-  projectType: "digitalize",
+  projectType: "manual",
+  businessSize: "2-10",
   timeline: "1m",
   source: "linkedin",
   lang: "es",
@@ -43,7 +44,7 @@ beforeEach(() => {
   delete process.env.GOOGLE_SHEETS_WEBHOOK_URL;
 });
 
-test("a valid submission notifies César with the suggested range and does not email the lead", async () => {
+test("a valid submission notifies César with the suggested text and does not email the lead", async () => {
   const res = await POST(request(valid, nextIp()));
   expect(res.status).toBe(200);
   // Only the internal notification: the first reply to the lead is manual.
@@ -52,28 +53,34 @@ test("a valid submission notifies César with the suggested range and does not e
   const [internal] = send.mock.calls[0];
   expect(internal.to).toBe("info@1to1digital.solutions");
   expect(internal.replyTo).toBe("ana@example.com");
-  expect(internal.subject).toContain("Digitalizar mi negocio");
+  expect(internal.subject).toContain("Quitarme tareas manuales que me comen horas");
   expect(internal.text).toContain("Cuándo empezar: En el próximo mes");
   expect(internal.text).toContain("utm_campaign: octubre");
   // Only the known attribution keys reach the email.
   expect(internal.text).not.toContain("evil");
-  expect(internal.text).toContain("Horquilla orientativa para tu respuesta");
-  expect(internal.text).toContain("acompañamiento mensual");
+  expect(internal.text).toContain("Tamaño del negocio: De 2 a 10 personas");
+  expect(internal.text).toContain("Texto sugerido sobre el precio");
+  expect(internal.text).toContain("junto con el plan adaptado a tu empresa");
 });
 
-test("with no type chosen it suggests the general range; with Web3, the specialist floor", async () => {
+test("prices are under review: the suggested text carries no figures", async () => {
   const { name, email, message, privacy } = valid;
-  await POST(request({ name, email, message, privacy, tech: "web3" }, nextIp()));
+  await POST(request({ name, email, message, privacy, lang: "en" }, nextIp()));
   const [internal] = send.mock.calls[0];
-  expect(internal.text).toContain("un MVP entre 12.000 € y 25.000 €");
-  expect(internal.text).toContain("parten de 15.000 €");
+  expect(internal.text).toContain("together with the plan adapted to your company");
+  expect(internal.text).not.toMatch(/€/);
+});
+
+test("the old options are no longer accepted", async () => {
+  const res = await POST(request({ ...valid, projectType: "rescue" }, nextIp()));
+  expect(res.status).toBe(400);
 });
 
 test("the dropdowns are optional", async () => {
   const { name, email, message, privacy } = valid;
   const res = await POST(request({ name, email, message, privacy }, nextIp()));
   expect(res.status).toBe(200);
-  expect(send.mock.calls[0][0].text).toContain("Qué necesita: —");
+  expect(send.mock.calls[0][0].text).toContain("Qué quiere conseguir: —");
 });
 
 test("a value that is not in the list is rejected", async () => {

@@ -3,14 +3,15 @@ import { ExternalLink } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 export function SuccessCases() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const es = lang === "es";
 
   const cases = [
     {
       title: t("case1Title"),
       category: t("case1Cat"),
       description: t("case1Desc"),
-      tags: ["Web3", "DeFi", "Svelte", "TypeScript", "Wallet"],
+      tags: ["Blockchain", "Wallet", es ? "Seguridad" : "Security"],
       url: "https://www.iota.org/",
       logo: "/images/cases/IOTA.png",
       logoAlt: "IOTA",
@@ -20,7 +21,11 @@ export function SuccessCases() {
       title: t("case2Title"),
       category: t("case2Cat"),
       description: t("case2Desc"),
-      tags: ["VR", "Next.js", "Three.js", "Hyperfy", "AI", "AWS", "Database"],
+      tags: [
+        es ? "Realidad Virtual" : "Virtual Reality",
+        es ? "Plataforma" : "Platform",
+        es ? "IA" : "AI",
+      ],
       url: "https://numen.games/en",
       logo: "/images/cases/NumenGames.png",
       logoAlt: "Numen Games",
@@ -30,7 +35,7 @@ export function SuccessCases() {
       title: t("case3Title"),
       category: t("case3Cat"),
       description: t("case3Desc"),
-      tags: ["Svelte", "Supabase", "Capacitor", "iOS", "Android"],
+      tags: [es ? "App móvil" : "Mobile app", "iOS", "Android"],
       url: "https://www.moovle.app/app.html",
       logo: "/images/cases/Moovle.png",
       logoAlt: "Moovle",

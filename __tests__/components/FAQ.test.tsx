@@ -11,19 +11,19 @@ describe("FAQ", () => {
     );
 
     // Check first question
-    const q1 = screen.getByText("¿Cómo de rápido podemos construir un MVP?");
+    const q1 = screen.getByText("¿Necesito saber de tecnología?");
     expect(q1).toBeInTheDocument();
 
     // Answer to Q1 should be visible
-    const a1 = screen.getByText(/Dependiendo de la complejidad/i);
+    const a1 = screen.getByText(/pensada para negocios sin perfil tecnológico/i);
     expect(a1).toBeInTheDocument();
 
     // Click q2 to open it
-    const q2 = screen.getByText("¿Solo trabajáis con realidad mixta y Web3?");
+    const q2 = screen.getByText("¿Sirve también para autónomos?");
     fireEvent.click(q2);
 
     // Q2 answer becomes visible (testing presence in document)
-    const a2 = screen.getByText(/Son las tecnologías en las que estamos más metidos/i);
+    const a2 = screen.getByText(/Un autónomo es un negocio de una persona/i);
     expect(a2).toBeInTheDocument();
   });
 });

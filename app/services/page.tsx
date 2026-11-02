@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { ServicesPage } from "@/components/services/ServicesPage";
-import { SERVICES, SERVICES_PAGE } from "@/content/services";
+import { MENTORSHIP } from "@/content/services";
 import { requestLang } from "@/lib/lang";
 
 const SITE_URL = "https://1to1digital.solutions";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const c = SERVICES_PAGE[await requestLang()];
+  const c = MENTORSHIP[await requestLang()];
   return {
     title: c.metaTitle,
     description: c.metaDescription,
@@ -22,24 +22,18 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Page() {
-  const lang = await requestLang();
-  // Each service as a schema.org `Service`, provided by the organization declared in the layout.
+  const c = MENTORSHIP[await requestLang()];
+  // The mentoring as a schema.org `Service`, provided by the organization declared in the layout.
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "ItemList",
-    itemListElement: SERVICES.map((s, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      item: {
-        "@type": "Service",
-        "@id": `${SITE_URL}/services#${s.slug}`,
-        name: s[lang].title,
-        description: s[lang].summary,
-        url: `${SITE_URL}/services#${s.slug}`,
-        provider: { "@id": `${SITE_URL}/#organization` },
-        areaServed: "ES",
-      },
-    })),
+    "@type": "Service",
+    "@id": `${SITE_URL}/services#mentoring`,
+    name: c.metaTitle,
+    description: c.metaDescription,
+    url: `${SITE_URL}/services`,
+    serviceType: "AI mentoring",
+    provider: { "@id": `${SITE_URL}/#organization` },
+    areaServed: "ES",
   };
 
   return (

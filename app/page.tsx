@@ -3,7 +3,6 @@
 import { useEffect } from "react";
 import dynamic from "next/dynamic";
 import { Hero } from "@/components/Hero";
-import { TechStackMarquee } from "@/components/TechStackMarquee";
 import { Services } from "@/components/Services";
 import { SuccessCases } from "@/components/SuccessCases";
 import { Testimonials } from "@/components/Testimonials";
@@ -90,7 +89,7 @@ export default function Home() {
 
     // Dynamic import of GSAP + ScrollTrigger keeps ~45 KB of animation code out of the
     // initial bundle. We don't even kick it off until the first card-section is approaching
-    // the viewport, so Hero / TechStackMarquee paint without competing for JS parse time.
+    // the viewport, so the Hero paints without competing for JS parse time.
     const init = async () => {
       const [gsapModule, stModule] = await Promise.all([
         import("gsap"),
@@ -181,27 +180,26 @@ export default function Home() {
     };
   }, []);
 
-  // Persuasion arc: Services → Work → Testimonials → Process → FAQ → Contact.
+  // Persuasion arc: Mentoring → Process → Work (experience) → Testimonials → FAQ → Contact.
   // About and the service details live on their own pages (/about, /services).
   return (
     <div className="bg-background flex flex-col overflow-hidden">
       <Hero />
-      <TechStackMarquee />
 
       <div className="card-section bg-background relative z-10 w-full rounded-t-[3rem] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
         <Services />
       </div>
 
       <div className="card-section bg-anthracite relative z-20 w-full rounded-t-[3rem] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
-        <SuccessCases />
+        <Process />
       </div>
 
       <div className="card-section bg-background relative z-30 w-full rounded-t-[3rem] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
-        <Testimonials />
+        <SuccessCases />
       </div>
 
       <div className="card-section bg-anthracite relative z-40 w-full rounded-t-[3rem] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
-        <Process />
+        <Testimonials />
       </div>
 
       <div className="card-section bg-background relative z-50 w-full rounded-t-[3rem] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">

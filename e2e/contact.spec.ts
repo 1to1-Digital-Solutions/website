@@ -101,12 +101,12 @@ test("also sends where the visit came from and the dropdown choices", async ({ p
   const form = await goToForm(page);
 
   await fillIn(page);
-  await form.locator('select[name="projectType"]').selectOption("digitalize");
+  await form.locator('select[name="projectType"]').selectOption("manual");
   await form.locator('button[type="submit"]').click();
 
   await expect.poll(() => seen.body, { message: "it was never sent" }).not.toBeNull();
   expect(seen.body).toMatchObject({
-    projectType: "digitalize",
+    projectType: "manual",
     timeline: "",
     lang: "es",
     attribution: { utm_source: "linkedin", utm_campaign: "october", landing_page: "/about" },

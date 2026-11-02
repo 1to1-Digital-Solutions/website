@@ -53,19 +53,13 @@ test("about and services have their own pages", async ({ page }) => {
   }
 });
 
-test("the service cards lead to their detail", async ({ page }) => {
-  // The home page summary promises one section per service on /services.
+test("the mentoring summary leads to its detail", async ({ page }) => {
   await page.goto("/");
-  const targets = await page
-    .locator('#services a[href^="/services#"]')
-    .evaluateAll((as) => as.map((a) => (a as HTMLAnchorElement).getAttribute("href") ?? ""));
-  expect(targets.length).toBeGreaterThanOrEqual(5);
-
-  await page.goto("/services");
-  for (const target of targets) {
-    const anchor = target.split("#")[1];
-    await expect(page.locator(`#${anchor}`), `section #${anchor} is missing`).toHaveCount(1);
-  }
+  await page.locator('#services a[href="/services"]').click();
+  await expect(page).toHaveURL(/\/services$/);
+  // The detail shows the 4 steps and what the client takes away.
+  await expect(page.locator("#steps li")).toHaveCount(4);
+  await expect(page.locator("#outcomes li")).toHaveCount(5);
 });
 
 test("the contact button on another page lands on the form", async ({ page }) => {

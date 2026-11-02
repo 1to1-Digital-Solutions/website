@@ -110,7 +110,7 @@ export function Hero() {
             {t("heroBtnStart")}
           </a>
           <a
-            href="#work"
+            href="#process"
             className="border-foreground/20 bg-background/50 hover:bg-foreground/5 hover:text-primary hover:border-primary/50 focus-visible:ring-primary focus-visible:ring-offset-background pointer-events-auto rounded-full border px-8 py-4 text-lg font-bold backdrop-blur-md transition-all focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
           >
             {t("heroBtnWork")}

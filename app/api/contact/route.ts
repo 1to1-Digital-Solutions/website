@@ -34,12 +34,12 @@ const MAX_BODY_BYTES = 16_384; // 16 KB — generous for a short form
 const MAX_ATTRIBUTION_LEN = 200;
 
 // The email to César is always in Spanish; `lang` tells him which language to reply in.
-// Nothing automatic is sent to the lead: the first reply, with the price range, is manual.
+// Nothing automatic is sent to the lead: the first reply is manual.
 const INTERNAL_LABELS = LEAD_LABELS.es;
 
 const FIELD_NAMES: Record<LeadField, string> = {
-  projectType: "Qué necesita",
-  tech: "Tecnología",
+  projectType: "Qué quiere conseguir",
+  businessSize: "Tamaño del negocio",
   timeline: "Cuándo empezar",
   source: "Cómo nos conoció",
 };
@@ -210,8 +210,8 @@ function emailHtml(lead: Lead): string {
       </table>
       <h3 style="margin: 24px 0 8px; font-size: 16px;">Mensaje</h3>
       <p style="margin: 0; padding: 16px; background: #f5f5f5; border-radius: 8px; white-space: pre-wrap;">${escapeHtml(lead.message)}</p>
-      <h3 style="margin: 24px 0 8px; font-size: 16px;">Horquilla orientativa para tu respuesta</h3>
-      ${priceGuide(lead.lang, lead.projectType, lead.tech)
+      <h3 style="margin: 24px 0 8px; font-size: 16px;">Texto sugerido sobre el precio</h3>
+      ${priceGuide(lead.lang)
         .map((p) => `<p style="margin: 0 0 8px; color: #444;">${escapeHtml(p)}</p>`)
         .join("")}
       ${
@@ -236,8 +236,8 @@ function emailText(lead: Lead): string {
     "Mensaje:",
     lead.message,
     "",
-    "Horquilla orientativa para tu respuesta:",
-    ...priceGuide(lead.lang, lead.projectType, lead.tech),
+    "Texto sugerido sobre el precio:",
+    ...priceGuide(lead.lang),
     ...(origin.length ? ["", "Origen de la visita:", ...origin.map(([k, v]) => `${k}: ${v}`)] : []),
   ].join("\n");
 }
@@ -266,8 +266,9 @@ async function appendToSheet(lead: Lead, consentAt: string): Promise<void> {
         projectType: label("projectType"),
         message: lead.message,
         privacyConsent: lead.privacy,
-        // Fields added in September 2026: the Apps Script needs a column for each of them.
-        tech: label("tech"),
+        // Fields added since September 2026: the Apps Script needs a column for each of them.
+        // `businessSize` replaced `tech` in November 2026.
+        businessSize: label("businessSize"),
         timeline: label("timeline"),
         source: label("source"),
         lang: lead.lang,

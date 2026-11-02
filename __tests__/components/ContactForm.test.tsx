@@ -12,7 +12,7 @@ describe("ContactForm", () => {
 
     expect(screen.getByLabelText(/Nombre/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Correo electrónico/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/Cuéntame sobre tu idea/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/Cuéntame sobre tu negocio/i)).toBeInTheDocument();
 
     const submit = screen.getByRole("button", { name: /Enviar Mensaje/i });
     expect(submit).toBeDisabled();
@@ -32,12 +32,12 @@ describe("ContactForm", () => {
       </LanguageProvider>
     );
 
-    for (const name of ["projectType", "tech", "timeline", "source"]) {
+    for (const name of ["projectType", "businessSize", "timeline", "source"]) {
       const select = document.querySelector<HTMLSelectElement>(`select[name="${name}"]`);
       expect(select).not.toBeNull();
       expect(select!.value).toBe("");
     }
     expect(document.querySelector('select[name="budget"]')).toBeNull();
-    expect(screen.getByText(/horquilla orientativa para el tuyo/)).toBeInTheDocument();
+    expect(screen.getByText(/No publico precios/)).toBeInTheDocument();
   });
 });

@@ -20,15 +20,12 @@ describe("Hero", () => {
   it("renders title and buttons", () => {
     renderWithProviders(<Hero />);
 
-    expect(screen.getByText(/Rescatamos proyectos atascados/i)).toBeInTheDocument();
+    expect(screen.getByText(/mentoría de 8 semanas/i)).toBeInTheDocument();
 
-    expect(screen.getByRole("link", { name: /Inicia tu Proyecto/i })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: /Escríbeme/i })).toHaveAttribute("href", "#contact");
+    expect(screen.getByRole("link", { name: /Cómo trabajaremos/i })).toHaveAttribute(
       "href",
-      "#contact"
-    );
-    expect(screen.getByRole("link", { name: /Ver Nuestro Trabajo/i })).toHaveAttribute(
-      "href",
-      "#work"
+      "#process"
     );
   });
 });

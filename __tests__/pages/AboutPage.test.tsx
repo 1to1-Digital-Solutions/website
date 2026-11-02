@@ -8,6 +8,6 @@ describe("AboutPage", () => {
 
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Hola, soy César.");
     expect(screen.getByText("De dónde vengo")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /Hablemos/ })).toHaveAttribute("href", "/#contact");
+    expect(screen.getByRole("link", { name: /Escríbeme/ })).toHaveAttribute("href", "/#contact");
   });
 });
