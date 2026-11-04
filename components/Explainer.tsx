@@ -1,5 +1,6 @@
 import { useLanguage } from "@/context/LanguageContext";
 import { HOME } from "@/content/home";
+import { GlowBackground } from "@/components/GlowBackground";
 
 /**
  * StoryBrand "explanatory paragraph": the whole story in a few paragraphs (the client, the
@@ -12,11 +13,7 @@ export function Explainer() {
 
   return (
     <div className="relative w-full overflow-hidden rounded-t-[3rem]">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <div className="bg-primary/25 absolute -top-32 -left-32 h-[28rem] w-[28rem] rounded-full blur-3xl" />
-        <div className="bg-neon/20 absolute -right-40 -bottom-40 h-[32rem] w-[32rem] rounded-full blur-3xl" />
-        <div className="text-primary/45 absolute inset-0 bg-[radial-gradient(currentColor_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)] bg-[size:22px_22px]" />
-      </div>
+      <GlowBackground />
 
       <section id="explain" className="relative mx-auto w-full max-w-3xl px-6 py-28">
         <p className="text-primary text-sm font-semibold tracking-widest uppercase">

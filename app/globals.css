@@ -87,7 +87,8 @@ html {
 /* Stakes cards: a spark of current runs along the border, like an electric fence. Each
    card gets a random delay and speed from JS, so they never fire together. */
 .electric-border {
-  filter: drop-shadow(0 0 3px var(--neon)) drop-shadow(0 0 8px var(--neon));
+  filter: drop-shadow(0 0 2px var(--neon))
+    drop-shadow(0 0 5px color-mix(in srgb, var(--neon) 50%, transparent));
 }
 .electric-border rect {
   fill: none;
@@ -122,15 +123,15 @@ html {
   }
 }
 
-/* The moment the sparks land: the stakes cards flash once. */
+/* The moment the points land: the stakes cards glow once, softly. */
 .electric-flash {
   animation: electric-flash 0.9s ease-out;
 }
 @keyframes electric-flash {
   0% {
     box-shadow:
-      0 0 0 1px var(--neon),
-      0 0 24px var(--neon);
+      0 0 0 1px color-mix(in srgb, var(--neon) 50%, transparent),
+      0 0 14px color-mix(in srgb, var(--neon) 35%, transparent);
   }
   100% {
     box-shadow: 0 0 0 0 transparent;

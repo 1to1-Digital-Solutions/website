@@ -30,10 +30,14 @@ export function ForWho({
       <div className="grid gap-6 md:grid-cols-2">
         <div className="border-primary/30 bg-anthracite/50 rounded-3xl border p-8">
           <h3 className="font-outfit text-2xl font-bold tracking-tight">{c.forWhoTitle}</h3>
-          <p className="text-foreground/80 mt-6 flex items-start gap-3 text-lg leading-relaxed">
-            <Check size={22} aria-hidden="true" className="text-primary mt-1 shrink-0" />
-            <span>{c.forWho[0]}</span>
-          </p>
+          <ul className="mt-6 flex flex-col gap-4">
+            {c.forWhoList.map((item) => (
+              <li key={item} className="text-foreground/80 flex items-start gap-3 leading-relaxed">
+                <Check size={20} aria-hidden="true" className="text-primary mt-1 shrink-0" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
         </div>
         <div className="border-foreground/10 bg-anthracite/50 rounded-3xl border p-8">
           <h3 className="font-outfit text-2xl font-bold tracking-tight">{c.notForTitle}</h3>

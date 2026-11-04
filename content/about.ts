@@ -14,7 +14,7 @@ type AboutCopy = {
   eyebrow: string;
   title1: string;
   title2: string;
-  intro: string;
+  intro: string[];
   stats: Stat[];
   pathTitle: string;
   path: Milestone[];
@@ -41,8 +41,11 @@ export const ABOUT: Record<"es" | "en", AboutCopy> = {
     eyebrow: "Sobre mí",
     title1: "Hola, soy ",
     title2: "César.",
-    intro:
-      "Soy ingeniero informático, con más de 8 años de experiencia en desarrollo de software y un máster de transformación digital. Si eres autónomo o tienes una empresa, te acompaño a entender e integrar la inteligencia artificial en tu negocio de forma segura, pasando de 0 a 100 en 8 semanas y creando, uno a uno, un sistema adaptado a tu negocio, para que al terminar el control sea tuyo y no necesites a nadie externo para seguir avanzando con la IA.",
+    intro: [
+      "Soy ingeniero informático, con más de 8 años de experiencia en desarrollo de software y un máster de transformación digital. Me apasiona la tecnología desde pequeñito, cuando mi padre me daba un joystick para jugar al pac-man en lugar de un chupete.",
+      "He trabajado en proyectos con la última tecnología, desde Blockchain hasta Realidad Virtual, y por supuesto con Inteligencia Artificial desde sus inicios.",
+      "También soy scout, runner y me encantan los juegos de mesa, pero esto no creo que sirva para tu negocio (o sí, quién sabe).",
+    ],
     stats: [
       { value: "+8 años", label: "de experiencia en desarrollo de software" },
       { value: "+4 años", label: "desarrollando software con IA" },
@@ -50,27 +53,27 @@ export const ABOUT: Record<"es" | "en", AboutCopy> = {
     pathTitle: "De dónde vengo",
     path: [
       {
-        title: "Desde pequeñito",
-        text: "Soy un apasionado de la tecnología desde que mi padre me daba un joystick para jugar al pac-man en lugar de un chupete. Estudié Ingeniería Informática en la Universidad de Alcalá.",
+        title: "Ingeniería Informática",
+        text: "Estudié Ingeniería Informática en la Universidad de Alcalá.",
       },
       {
-        title: "Todos los roles",
-        text: "Pasé 7 años en empresa privada, de junior a desarrollador senior. Mi primer trabajo fue el software de pedidos entre clínicas dentales y laboratorios, con sus estados y sus roles.",
+        title: "De becario a senior",
+        text: "Empecé con unas prácticas y pasé a junior en una empresa de software de gestión para clínicas dentales. Después trabajé como middle en una gran consultora, en proyectos de banca y seguros, y luego 3 años como senior en una startup crypto, en proyectos de alto riesgo con criptomonedas.",
       },
       {
-        title: "La última tecnología",
-        text: "He trabajado en proyectos desde Blockchain, en el wallet oficial de IOTA, hasta Realidad Virtual, con los 13 juegos de Numen Games. Y por supuesto, con Inteligencia Artificial desde sus inicios.",
+        title: "Por mi cuenta",
+        text: "En agosto de 2025 decidí embarcarme solo. Como autónomo he desarrollado aplicaciones OTT de streaming, de Realidad Virtual, aplicaciones nativas de móvil y proyectos de transformación digital para empresas.",
       },
       {
         title: "1to1 Digital Solutions",
-        text: "Desde agosto de 2025 trabajo por mi cuenta y en abril de 2026 constituí la empresa. Tengo un máster de transformación digital (Industria 4.0, UNIR) y he participado en el programa de incubación INCIBE Emprende.",
+        text: "En abril de 2026 monté mi propia empresa para dedicarme solo a esto. En la era de la IA tiene más valor que una empresa pueda desarrollar su propio software que depender de alguien externo que no conoce su negocio por dentro. Tengo un máster de transformación digital (Industria 4.0, UNIR) y he participado en el programa de incubación INCIBE Emprende.",
       },
     ],
     whyTitle: "Por qué lo hago",
     why: [
-      'En los eventos de networking lo que más me piden es "quiero usar la IA y no sé de qué va". Cuanto más avanza la IA, más complicado es que una empresa se pueda adaptar por sí sola.',
-      "Yo también tuve que aprender lo que no dominaba, las ventas y el marketing, de la mano de profesionales que sabían más que yo. Ahora me toca a mí acompañar a otros. Lo que me motiva es adaptarme cada vez a un nuevo cliente, en un nuevo entorno.",
-      "También soy scout, runner y me encantan los juegos de mesa, pero esto no creo que sirva para tu negocio (o sí, quién sabe).",
+      "La IA está cambiando la industria del software y la está haciendo accesible a todos. Cada vez tiene menos sentido depender de software de terceros: se ha democratizado tanto que cualquiera puede crear el suyo propio.",
+      "Pero me encuentro con que no se hace bien. Faltan las bases de software necesarias, y el desarrollo lo guía lo que va recomendando la propia IA, sin una persona que dirija esas respuestas.",
+      "Bien usada, la inteligencia artificial tiene un potencial enorme. Pero si te dejas guiar por el camino que ella te marca, te lleva a donde ella quiere ir, no a donde quieres ir tú.",
     ],
     productsTitle: "Desarrollos propios",
     productsSub: "También construyo y mantengo desarrollos propios.",
@@ -86,7 +89,7 @@ export const ABOUT: Record<"es" | "en", AboutCopy> = {
       },
       {
         title: "Scoura",
-        category: "IA",
+        category: "Newsletters",
         text: "Newsletters personalizadas que la IA investiga, contrasta, verifica y redacta.",
         url: "https://scoura.app/",
       },
@@ -105,8 +108,11 @@ export const ABOUT: Record<"es" | "en", AboutCopy> = {
     eyebrow: "About",
     title1: "Hi, I'm ",
     title2: "César.",
-    intro:
-      "I'm a computer engineer with over 8 years of experience in software development and a master's degree in digital transformation. If you're a freelancer or run a company, I'll guide you to understand and bring artificial intelligence into your business safely, going from 0 to 100 in 8 weeks and building, one to one, a system adapted to your business, so that when it ends the control is yours and you don't need anyone external to keep moving forward with AI.",
+    intro: [
+      "I'm a computer engineer with over 8 years of experience in software development and a master's degree in digital transformation. I've loved technology since I was little, when my dad gave me a joystick to play pac-man instead of a dummy.",
+      "I've worked on projects with the latest technology, from Blockchain to Virtual Reality, and of course with Artificial Intelligence since its beginnings.",
+      "I'm also a scout, a runner and I love board games, but I don't think that helps your business (or maybe it does, who knows).",
+    ],
     stats: [
       { value: "8+ years", label: "of experience in software development" },
       { value: "4+ years", label: "building software with AI" },
@@ -114,27 +120,27 @@ export const ABOUT: Record<"es" | "en", AboutCopy> = {
     pathTitle: "Where I come from",
     path: [
       {
-        title: "Since I was little",
-        text: "I've loved technology ever since my dad gave me a joystick to play pac-man instead of a dummy. I studied Computer Engineering at the University of Alcalá.",
+        title: "Computer Engineering",
+        text: "I studied Computer Engineering at the University of Alcalá.",
       },
       {
-        title: "Every role",
-        text: "I spent 7 years in private companies, from junior to senior developer. My first job was the ordering software between dental clinics and labs, with their statuses and roles.",
+        title: "From intern to senior",
+        text: "I started with an internship and moved up to junior at a company making management software for dental clinics. Then I worked as a mid-level developer at a large consultancy, on banking and insurance projects, and then 3 years as a senior at a crypto startup, on high-risk cryptocurrency projects.",
       },
       {
-        title: "The latest technology",
-        text: "I've worked on projects from Blockchain, on the official IOTA wallet, to Virtual Reality, with the 13 games of Numen Games. And of course, with Artificial Intelligence since its beginnings.",
+        title: "On my own",
+        text: "In August 2025 I decided to go solo. As a freelancer I've built OTT streaming apps, Virtual Reality apps, native mobile apps and digital transformation projects for companies.",
       },
       {
         title: "1to1 Digital Solutions",
-        text: "I've worked on my own since August 2025, and in April 2026 I incorporated the company. I hold a master's degree in digital transformation (Industry 4.0, UNIR) and took part in the INCIBE Emprende incubation programme.",
+        text: "In April 2026 I set up my own company to focus only on this. In the age of AI it's worth more for a company to be able to build its own software than to depend on someone external who doesn't know its business from the inside. I hold a master's degree in digital transformation (Industry 4.0, UNIR) and took part in the INCIBE Emprende incubation programme.",
       },
     ],
     whyTitle: "Why I do it",
     why: [
-      "At networking events, what people ask me for most is \"I want to use AI and I don't know what it's about\". The further AI goes, the harder it is for a company to adapt on its own.",
-      "I also had to learn what I didn't know, sales and marketing, from professionals who knew more than me. Now it's my turn to guide others. What motivates me is adapting every time to a new client, in a new setting.",
-      "I'm also a scout and a runner, and I love board games, but I don't think that helps your business (or maybe it does, who knows).",
+      "AI is changing the software industry and making it accessible to everyone. It makes less and less sense to depend on third-party software: it has become so democratised that anyone can build their own.",
+      "But I find it isn't done well. The necessary software foundations are missing, and development is driven by whatever the AI itself keeps recommending, with no person steering those answers.",
+      "Used well, artificial intelligence has huge potential. But if you let yourself be guided down the path it sets, it takes you where it wants to go, not where you want to go.",
     ],
     productsTitle: "My own developments",
     productsSub: "I also build and run developments of my own.",
@@ -150,7 +156,7 @@ export const ABOUT: Record<"es" | "en", AboutCopy> = {
       },
       {
         title: "Scoura",
-        category: "AI",
+        category: "Newsletters",
         text: "Personalised newsletters that AI researches, cross-checks, fact-checks and writes.",
         url: "https://scoura.app/",
       },

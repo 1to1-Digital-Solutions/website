@@ -52,7 +52,7 @@ ${faq.items.map((f) => `### ${f.q}\n${f.a}`).join("\n\n")}
 
 ## Sobre César Peón
 
-${a.intro}
+${a.intro.join(" ")}
 
 ## Contacto
 

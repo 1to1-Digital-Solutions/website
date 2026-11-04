@@ -4,6 +4,7 @@ import { ShieldCheck, X } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { MENTORSHIP } from "@/content/services";
 import { PageCta } from "@/components/PageCta";
+import { GlowBackground } from "@/components/GlowBackground";
 import { PriceCard } from "@/components/PriceCard";
 
 export function ServicesPage() {
@@ -158,10 +159,19 @@ export function ServicesPage() {
       </section>
 
       {/* Why now */}
-      <section className="mx-auto w-full max-w-4xl px-6 py-20">
-        <h2 className="font-outfit text-3xl font-bold tracking-tight md:text-4xl">{c.waveTitle}</h2>
-        <p className="text-foreground/80 mt-6 text-lg leading-relaxed">{c.wave}</p>
-      </section>
+      <div className="relative mb-24 w-full overflow-hidden">
+        <GlowBackground />
+        <section className="relative mx-auto w-full max-w-4xl px-6 py-28">
+          <h2 className="font-outfit text-3xl font-bold tracking-tight md:text-4xl">
+            {c.waveTitle}
+          </h2>
+          <div className="text-foreground/85 mt-6 flex flex-col gap-4 text-lg leading-relaxed">
+            {c.wave.map((p) => (
+              <p key={p}>{p}</p>
+            ))}
+          </div>
+        </section>
+      </div>
 
       <PageCta
         title={c.ctaTitle}

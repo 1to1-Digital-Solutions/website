@@ -5,6 +5,7 @@ import { ExternalLink, Github } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { ABOUT } from "@/content/about";
 import { PageCta } from "@/components/PageCta";
+import { GlowBackground } from "@/components/GlowBackground";
 
 export function AboutPage() {
   const { lang, t } = useLanguage();
@@ -38,7 +39,11 @@ export function AboutPage() {
               {c.title1}
               <span className="text-primary">{c.title2}</span>
             </h1>
-            <p className="text-foreground/80 mt-6 text-lg leading-relaxed md:text-xl">{c.intro}</p>
+            <div className="text-foreground/80 mt-6 flex flex-col gap-4 text-lg leading-relaxed md:text-xl">
+              {c.intro.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
+            </div>
 
             <dl className="mt-10 grid gap-4 sm:grid-cols-2">
               {c.stats.map((stat) => (
@@ -81,14 +86,19 @@ export function AboutPage() {
       </section>
 
       {/* Why I do it */}
-      <section className="mx-auto w-full max-w-4xl px-6 py-24">
-        <h2 className="font-outfit text-3xl font-bold tracking-tight md:text-4xl">{c.whyTitle}</h2>
-        <div className="text-foreground/80 mt-6 flex flex-col gap-4 text-lg leading-relaxed">
-          {c.why.map((p) => (
-            <p key={p}>{p}</p>
-          ))}
-        </div>
-      </section>
+      <div className="relative w-full overflow-hidden">
+        <GlowBackground />
+        <section className="relative mx-auto w-full max-w-4xl px-6 py-28">
+          <h2 className="font-outfit text-3xl font-bold tracking-tight md:text-4xl">
+            {c.whyTitle}
+          </h2>
+          <div className="text-foreground/85 mt-6 flex flex-col gap-4 text-lg leading-relaxed">
+            {c.why.map((p) => (
+              <p key={p}>{p}</p>
+            ))}
+          </div>
+        </section>
+      </div>
 
       {/* Own developments */}
       <section className="bg-anthracite w-full py-20">

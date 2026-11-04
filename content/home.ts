@@ -57,8 +57,7 @@ export const HOME: Record<"es" | "en", HomeCopy> = {
     planLink: "Ver la mentoría en detalle",
     forWhoTitle1: "¿Es ",
     forWhoTitle2: "para ti?",
-    forWhoSub:
-      "La mentoría está pensada para un tipo de negocio muy concreto. Así sabes desde el principio si encaja con el tuyo.",
+    forWhoSub: "Si te sientes identificado con este perfil, la mentoría es para ti.",
     explainEyebrow: "En pocas palabras",
     explainTitle1: "Tu negocio, ",
     explainTitle2: "preparado para la IA.",
@@ -102,8 +101,7 @@ export const HOME: Record<"es" | "en", HomeCopy> = {
     planLink: "See the mentoring in detail",
     forWhoTitle1: "Is it ",
     forWhoTitle2: "for you?",
-    forWhoSub:
-      "The mentoring is designed for a very specific kind of business. That way you know from the start whether it fits yours.",
+    forWhoSub: "If you recognise yourself in this profile, the mentoring is for you.",
     explainEyebrow: "In a few words",
     explainTitle1: "Your business, ",
     explainTitle2: "ready for AI.",
