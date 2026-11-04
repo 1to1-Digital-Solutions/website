@@ -44,7 +44,7 @@ export const translations = {
     whoEyebrow: "Who guides you",
     whoTitle: "I'm César Peón.",
     whoText:
-      "I've loved technology since my dad handed me a joystick to play pac-man instead of a dummy. Since then I've built applications for very different companies, from Blockchain to Virtual Reality, adapting each time to a new setting. And I know what it's like to face something you don't master: I also had to learn sales and marketing alongside people who knew more than me.",
+      "I've loved technology since my dad handed me a joystick to play pac-man instead of a dummy. In my career I've jumped between completely different projects, from Blockchain to Virtual Reality, so I know how it feels when everything changes and you have to adapt.",
     who1: "Computer engineer (Universidad de Alcalá)",
     who2: "University master's in digital transformation (UNIR)",
     who3: "Over 8 years building applications, over 4 with AI",
@@ -142,7 +142,7 @@ export const translations = {
     whoEyebrow: "Quién te acompaña",
     whoTitle: "Soy César Peón.",
     whoText:
-      "Me apasiona la tecnología desde que mi padre me daba un joystick para jugar al pac-man en lugar de un chupete. Desde entonces he desarrollado aplicaciones para empresas muy distintas, de Blockchain a Realidad Virtual, adaptándome cada vez a un entorno nuevo. Y sé lo que es enfrentarse a algo que no dominas: yo también tuve que aprender ventas y marketing de la mano de quien sabía más que yo.",
+      "Me apasiona la tecnología desde que mi padre me daba un joystick para jugar al pac-man en lugar de un chupete. En mi carrera he saltado entre proyectos completamente distintos, de Blockchain a Realidad Virtual, así que sé lo que se siente cuando todo cambia y hay que adaptarse.",
     who1: "Ingeniero informático (Universidad de Alcalá)",
     who2: "Máster universitario en transformación digital (UNIR)",
     who3: "Más de 8 años desarrollando aplicaciones, más de 4 con IA",

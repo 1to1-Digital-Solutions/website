@@ -33,27 +33,17 @@ export function PriceCard({
             {c.price.tax}
           </span>
         </p>
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
-          <Link
-            href="/#contact"
-            className="group bg-primary focus-visible:ring-primary focus-visible:ring-offset-background inline-flex items-center gap-2 rounded-full px-7 py-3 font-semibold text-[var(--on-primary)] transition-transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
-          >
-            {c.ctaButton}
-            <ArrowRight
-              size={18}
-              aria-hidden="true"
-              className="transition-transform group-hover:translate-x-1"
-            />
-          </Link>
-          {compact && (
-            <Link
-              href="/services"
-              className="border-foreground/20 hover:border-primary/60 hover:text-primary focus-visible:ring-primary inline-flex items-center gap-2 rounded-full border px-6 py-3 font-semibold transition-colors focus-visible:ring-2 focus-visible:outline-none"
-            >
-              {c.homeLink}
-            </Link>
-          )}
-        </div>
+        <Link
+          href={compact ? "/services" : "/#contact"}
+          className="group bg-primary focus-visible:ring-primary focus-visible:ring-offset-background mt-6 inline-flex items-center gap-2 rounded-full px-7 py-3 font-semibold text-[var(--on-primary)] transition-transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+        >
+          {compact ? c.homeLink : c.ctaButton}
+          <ArrowRight
+            size={18}
+            aria-hidden="true"
+            className="transition-transform group-hover:translate-x-1"
+          />
+        </Link>
       </div>
 
       <div className="flex flex-col gap-4 lg:col-span-2">

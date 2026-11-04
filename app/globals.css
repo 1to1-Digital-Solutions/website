@@ -121,3 +121,18 @@ html {
     display: none;
   }
 }
+
+/* The moment the sparks land: the stakes cards flash once. */
+.electric-flash {
+  animation: electric-flash 0.9s ease-out;
+}
+@keyframes electric-flash {
+  0% {
+    box-shadow:
+      0 0 0 1px var(--neon),
+      0 0 24px var(--neon);
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}

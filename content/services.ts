@@ -8,7 +8,8 @@
  */
 
 type Step = { title: string; text: string };
-type Outcome = { title: string; text: string };
+/** `homeHidden`: shown on /services only. */
+type Outcome = { title: string; text: string; homeHidden?: boolean };
 type Price = {
   title: string;
   amount: string;
@@ -72,7 +73,7 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
     title1: "Entiende e integra la IA ",
     title2: "en tu negocio.",
     intro:
-      "Durante 8 semanas, con una sesión online de 1 hora a la semana, entiendes qué está pasando con la IA y la integras en tu negocio de forma segura. Creamos, uno a uno, un sistema adaptado a tu empresa, para que al terminar el control sea tuyo y no necesites a nadie externo para seguir avanzando con la IA.",
+      "Durante 8 semanas, con una sesión online de 1 hora a la semana, entiendes qué está pasando con la IA y la integras en tu negocio de forma segura. Creamos, uno a uno, un sistema adaptado a tu empresa, para que al terminar el control sea tuyo y no necesites a nadie externo para seguir avanzando con la IA. Y si después de la segunda sesión ves que no te está sirviendo, te devuelvo íntegro lo que hayas pagado.",
     facts: ["8 semanas", "1 sesión online de 1 hora a la semana", "Primera reunión gratis"],
     forWhoTitle: "¿Para quién es?",
     forWho: [
@@ -132,6 +133,7 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       },
       {
         title: "El control es tuyo",
+        homeHidden: true,
         text: "Cuando termina la mentoría no necesitas a nadie externo para seguir avanzando con la IA. El sistema y las herramientas son de tu negocio.",
       },
     ],
@@ -207,7 +209,7 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
     title1: "Understand and bring AI ",
     title2: "into your business.",
     intro:
-      "For 8 weeks, with one 1-hour online session a week, you understand what's happening with AI and bring it into your business safely. We build, one to one, a system adapted to your company, so that when it ends the control is yours and you don't need anyone external to keep moving forward with AI.",
+      "For 8 weeks, with one 1-hour online session a week, you understand what's happening with AI and bring it into your business safely. We build, one to one, a system adapted to your company, so that when it ends the control is yours and you don't need anyone external to keep moving forward with AI. And if after the second session you see it isn't helping you, I'll refund everything you've paid in full.",
     facts: ["8 weeks", "One 1-hour online session a week", "First meeting free"],
     forWhoTitle: "Who is it for?",
     forWho: [
@@ -267,6 +269,7 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       },
       {
         title: "The control is yours",
+        homeHidden: true,
         text: "When the mentoring ends you don't need anyone external to keep moving forward with AI. The system and the tools belong to your business.",
       },
     ],

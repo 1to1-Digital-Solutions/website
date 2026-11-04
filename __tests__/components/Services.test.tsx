@@ -9,7 +9,7 @@ describe("Services", () => {
 
     expect(screen.getByText("bajo tu control.")).toBeInTheDocument();
     expect(screen.getByText("Para autónomos y pymes sin perfil técnico")).toBeInTheDocument();
-    for (const outcome of MENTORSHIP.es.outcomes) {
+    for (const outcome of MENTORSHIP.es.outcomes.filter((o) => !o.homeHidden)) {
       expect(screen.getByText(outcome.title)).toBeInTheDocument();
     }
   });

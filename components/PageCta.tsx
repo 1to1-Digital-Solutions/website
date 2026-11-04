@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { CtaCard } from "@/components/CtaCard";
 
 type Props = {
   title: string;
@@ -12,8 +13,7 @@ type Props = {
 export function PageCta({ title, text, primary, secondary }: Props) {
   return (
     <section className="mx-auto w-full max-w-5xl px-6 pb-24">
-      <div className="border-foreground/10 bg-anthracite relative overflow-hidden rounded-3xl border px-8 py-14 text-center md:px-16">
-        <div className="bg-primary/15 pointer-events-none absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full blur-3xl" />
+      <CtaCard>
         <h2 className="font-outfit relative text-3xl font-bold tracking-tight md:text-4xl">
           {title}
         </h2>
@@ -39,7 +39,7 @@ export function PageCta({ title, text, primary, secondary }: Props) {
             </Link>
           )}
         </div>
-      </div>
+      </CtaCard>
     </section>
   );
 }

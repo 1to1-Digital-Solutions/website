@@ -30,7 +30,7 @@ export function Navbar() {
   const logoSrc = !mounted || theme === "dark" ? "/logo-negative.svg" : "/logo-positive.svg";
 
   return (
-    <nav className="bg-background/80 border-foreground/10 md:bg-background/40 fixed top-4 left-1/2 z-[90] w-[95%] max-w-7xl -translate-x-1/2 rounded-full border p-1 shadow-lg backdrop-blur-xl">
+    <nav className="bg-background/80 border-foreground/10 md:bg-background/40 fixed top-4 left-1/2 z-[200] w-[95%] max-w-7xl -translate-x-1/2 rounded-full border p-1 shadow-lg backdrop-blur-xl">
       <div className="flex items-center justify-between px-6 py-3 md:py-2">
         {/* Logo */}
         <Link
