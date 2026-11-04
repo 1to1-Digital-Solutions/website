@@ -151,8 +151,8 @@ export function HomePage() {
 
   // StoryBrand order (November 2026): hero (problem and solution) → stakes (what doing
   // nothing costs) → value (what the client takes away) → the guide (empathy and authority:
-  // who I am, projects, testimonials) → the plan (steps, price, link to /services) →
-  // explanatory paragraph (with who it is and isn't for) → FAQ → the closing call to action.
+  // who I am, projects, testimonials) → who it is and isn't for → the plan (steps, price,
+  // link to /services) → explanatory paragraph → FAQ → the closing call to action.
   // The footer is the "junk drawer". About and the service detail live on their own pages.
   const sections: { id?: string; node: ReactNode }[] = [
     { node: <Stakes /> },
@@ -160,19 +160,24 @@ export function HomePage() {
     { node: <WhoGuides /> },
     { node: <SuccessCases /> },
     { node: <Testimonials /> },
+    { node: <ForWho /> },
     { node: <Process /> },
-    {
-      node: (
-        <>
-          <Explainer />
-          <ForWho className="pt-12 pb-24" />
-        </>
-      ),
-    },
+    { node: <Explainer /> },
     { node: <FAQ /> },
     { id: "contact", node: <Contact /> },
   ];
-  const Z = ["z-10", "z-20", "z-30", "z-40", "z-50", "z-[60]", "z-[70]", "z-[80]", "z-[90]"];
+  const Z = [
+    "z-10",
+    "z-20",
+    "z-30",
+    "z-40",
+    "z-50",
+    "z-[60]",
+    "z-[70]",
+    "z-[80]",
+    "z-[90]",
+    "z-[100]",
+  ];
 
   return (
     <div className="bg-background flex flex-col overflow-hidden">

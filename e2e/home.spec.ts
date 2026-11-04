@@ -16,9 +16,9 @@ const SECTIONS = [
   "who",
   "work",
   "testimonials",
+  "for-who",
   "process",
   "explain",
-  "for-who",
   "faq",
   "contact",
 ] as const;
@@ -70,7 +70,7 @@ test("the plan leads to the mentoring detail", async ({ page }) => {
   await expect(page).toHaveURL(/\/services$/);
   // The detail shows the 4 steps and what the client takes away.
   await expect(page.locator("#steps li")).toHaveCount(4);
-  await expect(page.locator("#outcomes li")).toHaveCount(6);
+  await expect(page.locator("#outcomes li")).toHaveCount(7);
 });
 
 test("the contact button on another page lands on the contact block", async ({ page }) => {

@@ -54,7 +54,9 @@ export function Contact() {
           </a>
         </div>
 
-        <p className="text-foreground/75 mx-auto mt-8 flex max-w-xl items-start justify-center gap-2 text-sm leading-relaxed">
+        <p className="text-foreground/70 mt-6 text-sm">{c.ctaLinkedin}</p>
+
+        <p className="text-foreground/75 mx-auto mt-6 flex max-w-xl items-start justify-center gap-2 text-sm leading-relaxed">
           <ShieldCheck size={18} aria-hidden="true" className="text-primary mt-0.5 shrink-0" />
           <span className="text-left">{c.ctaGuarantee}</span>
         </p>

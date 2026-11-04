@@ -83,3 +83,41 @@ html {
     scroll-behavior: auto !important;
   }
 }
+
+/* Stakes cards: a spark of current runs along the border, like an electric fence. Each
+   card gets a random delay and speed from JS, so they never fire together. */
+.electric-border {
+  filter: drop-shadow(0 0 3px var(--neon)) drop-shadow(0 0 8px var(--neon));
+}
+.electric-border rect {
+  fill: none;
+  stroke-dasharray: 14 86;
+  stroke-linecap: round;
+  opacity: 0;
+  animation: electric-run var(--electric-dur, 6s) linear var(--electric-delay, 0s) infinite;
+}
+@keyframes electric-run {
+  0% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+  3% {
+    opacity: 1;
+  }
+  42% {
+    opacity: 1;
+  }
+  46% {
+    stroke-dashoffset: -100;
+    opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: -100;
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .electric-border {
+    display: none;
+  }
+}

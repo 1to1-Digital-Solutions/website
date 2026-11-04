@@ -18,7 +18,7 @@ export const translations = {
     heroTitle1: "Understand and bring AI",
     heroTitle2: "into your business, safely.",
     heroSub:
-      "Your competitors already use AI, there's something new every week and you don't even know where to start. I'll guide you to build a system adapted to your business, one to one, so that when it ends the control is yours.",
+      "Your competitors already use AI, there's something new every week and you don't even know where to start. I'll guide you to build a system adapted to your business, one to one.",
     heroBtnStart: "Let's talk",
     heroBtnWork: "How we'll work",
 
@@ -44,10 +44,10 @@ export const translations = {
     whoEyebrow: "Who guides you",
     whoTitle: "I'm César Peón.",
     whoText:
-      "A computer engineer with over 8 years of experience building software for others, and over 4 working hand in hand with AI.",
-    who1: "Senior developer on Blockchain, Virtual Reality and AI projects",
-    who2: "Master's in digital transformation (Industry 4.0, UNIR)",
-    who3: "Took part in the INCIBE Emprende incubation programme",
+      "I've loved technology since my dad handed me a joystick to play pac-man instead of a dummy. Since then I've built applications for very different companies, from Blockchain to Virtual Reality, adapting each time to a new setting. And I know what it's like to face something you don't master: I also had to learn sales and marketing alongside people who knew more than me.",
+    who1: "Computer engineer (Universidad de Alcalá)",
+    who2: "University master's in digital transformation (UNIR)",
+    who3: "Over 8 years building applications, over 4 with AI",
     whoLink: "Get to know me",
     whoImgAlt: "Portrait of César Peón",
 
@@ -90,14 +90,14 @@ export const translations = {
     procTitle1: "How we'll ",
     procTitle2: "work.",
     procSub: "An 8-week mentoring with one 1-hour session a week.",
-    proc1Title: "A first 15-minute meeting, free",
+    proc1Title: "A free first 15-minute meeting",
     proc1Desc: "To look at your situation: how you work today and where your hours go.",
     proc2Title: "A plan adapted to your company",
     proc2Desc: "I send it to you in writing, so you know what we'll do before we start.",
     proc3Title: "We put it in motion together",
     proc3Desc: "You learn the concepts and we set up the first tools, one session a week.",
     proc4Title: "You finish with your own system",
-    proc4Desc: "To build your applications.",
+    proc4Desc: "To build the tools your business needs.",
 
     // Aria labels
     ariaToggleLangToEn: "Switch to English",
@@ -116,7 +116,7 @@ export const translations = {
     heroTitle1: "Entiende e integra la\u00a0IA",
     heroTitle2: "en tu negocio, de forma segura.",
     heroSub:
-      "Tu competencia ya usa la IA, cada semana sale algo nuevo y no sabes ni por dónde empezar. Te acompaño a crear un sistema adaptado a tu negocio, uno a uno, para que al terminar el control sea tuyo.",
+      "Tu competencia ya usa la IA, cada semana sale algo nuevo y no sabes ni por dónde empezar. Te acompaño a crear un sistema adaptado a tu negocio, uno a uno.",
     heroBtnStart: "Hablemos",
     heroBtnWork: "Cómo trabajaremos",
 
@@ -142,10 +142,10 @@ export const translations = {
     whoEyebrow: "Quién te acompaña",
     whoTitle: "Soy César Peón.",
     whoText:
-      "Ingeniero informático, con más de 8 años de experiencia construyendo software para otros y más de 4 trabajando de la mano con la IA.",
-    who1: "Desarrollador senior en proyectos de Blockchain, Realidad Virtual e IA",
-    who2: "Máster en transformación digital (Industria 4.0, UNIR)",
-    who3: "Participante en el programa de incubación INCIBE Emprende",
+      "Me apasiona la tecnología desde que mi padre me daba un joystick para jugar al pac-man en lugar de un chupete. Desde entonces he desarrollado aplicaciones para empresas muy distintas, de Blockchain a Realidad Virtual, adaptándome cada vez a un entorno nuevo. Y sé lo que es enfrentarse a algo que no dominas: yo también tuve que aprender ventas y marketing de la mano de quien sabía más que yo.",
+    who1: "Ingeniero informático (Universidad de Alcalá)",
+    who2: "Máster universitario en transformación digital (UNIR)",
+    who3: "Más de 8 años desarrollando aplicaciones, más de 4 con IA",
     whoLink: "Conóceme mejor",
     whoImgAlt: "Retrato de César Peón",
 
@@ -188,7 +188,7 @@ export const translations = {
     procTitle1: "Cómo ",
     procTitle2: "trabajaremos.",
     procSub: "Una mentoría de 8 semanas con una sesión de 1 hora semanal.",
-    proc1Title: "Una primera reunión de 15 minutos, gratis",
+    proc1Title: "Primera reunión de 15 minutos gratuita",
     proc1Desc: "Para analizar tu situación: cómo trabajáis hoy y dónde se os van las horas.",
     proc2Title: "Un plan adaptado a tu empresa",
     proc2Desc: "Te lo envío por escrito, para que sepas qué vamos a hacer antes de empezar.",
@@ -196,7 +196,7 @@ export const translations = {
     proc3Desc:
       "Aprendes los conceptos y montamos las primeras herramientas, una sesión a la semana.",
     proc4Title: "Terminas con un sistema propio",
-    proc4Desc: "Para crear tus aplicaciones.",
+    proc4Desc: "Para crear las herramientas que tu negocio necesita.",
 
     // Aria labels
     ariaToggleLangToEn: "Cambiar a inglés",

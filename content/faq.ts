@@ -31,12 +31,12 @@ export const FAQ: Record<"es" | "en", FaqCopy> = {
         a: "Si después de la segunda sesión no estás conforme o ves que no te está sirviendo, te devuelvo íntegro lo que hayas pagado.",
       },
       {
-        q: "¿Tengo que pagar alguna herramienta aparte?",
-        a: "No es obligatorio. Eso sí, te recomiendo una suscripción de pago a Claude o a ChatGPT, porque las versiones gratuitas tienen límites que se notan en el día a día.",
+        q: "¿Necesito alguna herramienta externa para construir el sistema?",
+        a: "No hace falta contratar ninguna herramienta concreta. Eso sí, te recomiendo una suscripción de pago a Claude o a ChatGPT, porque las versiones gratuitas tienen límites que se notan en el día a día.",
       },
       {
         q: "¿Qué pasa cuando terminan las 8 semanas?",
-        a: "Te quedas con el sistema y las primeras herramientas, con su documentación. El control es tuyo: no necesitas a nadie externo para seguir avanzando con la IA, tampoco a mí.",
+        a: "Te quedas con el sistema y las primeras herramientas, con su documentación. El control es tuyo: no necesitas a nadie externo para seguir avanzando con la IA, tampoco a mí. Aun así, seguimos en contacto para cualquier problema que te pueda surgir más adelante.",
       },
     ],
   },
@@ -62,12 +62,12 @@ export const FAQ: Record<"es" | "en", FaqCopy> = {
         a: "If after the second session you're not satisfied or you see it isn't helping you, I'll refund everything you've paid in full.",
       },
       {
-        q: "Do I have to pay for any tools on top?",
-        a: "It isn't required. That said, I recommend a paid Claude or ChatGPT subscription, because the free versions have limits you notice in your day to day.",
+        q: "Do I need any external tool to build the system?",
+        a: "You don't need to sign up for any specific tool. That said, I recommend a paid Claude or ChatGPT subscription, because the free versions have limits you notice in your day to day.",
       },
       {
         q: "What happens when the 8 weeks are over?",
-        a: "You keep the system and the first tools, with their documentation. The control is yours: you don't need anyone external to keep moving forward with AI, me included.",
+        a: "You keep the system and the first tools, with their documentation. The control is yours: you don't need anyone external to keep moving forward with AI, me included. Even so, we stay in touch for any problem that may come up later on.",
       },
     ],
   },

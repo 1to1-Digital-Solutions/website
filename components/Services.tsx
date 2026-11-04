@@ -27,10 +27,10 @@ export function Services() {
         {c.outcomesTitle}
       </h3>
       <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {c.outcomes.map((o) => (
+        {c.outcomes.map((o, i) => (
           <li
             key={o.title}
-            className="border-foreground/10 bg-anthracite/50 flex items-start gap-4 rounded-2xl border p-6"
+            className={`${i === c.outcomes.length - 1 && c.outcomes.length % 3 === 1 ? "md:col-span-2 lg:col-span-3" : ""} border-foreground/10 bg-anthracite/50 flex items-start gap-4 rounded-2xl border p-6`}
           >
             <Check size={22} aria-hidden="true" className="text-primary mt-1 shrink-0" />
             <div>

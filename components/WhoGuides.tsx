@@ -2,14 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-import { HOME } from "@/content/home";
 
 /**
- * StoryBrand guide: empathy first, then competence. Little on purpose; the rest lives in
+ * StoryBrand guide: a short personal story (empathy), then the competence. Little on purpose; the rest lives in
  * /about, and the projects and testimonials right after back it up.
  */
 export function WhoGuides() {
-  const { t, lang } = useLanguage();
+  const { t } = useLanguage();
   const points = [t("who1"), t("who2"), t("who3")];
 
   return (
@@ -33,7 +32,6 @@ export function WhoGuides() {
           <h2 className="font-outfit mt-3 text-3xl font-bold tracking-tight md:text-4xl">
             {t("whoTitle")}
           </h2>
-          <p className="text-foreground/90 mt-4 text-lg leading-relaxed">{HOME[lang].whoEmpathy}</p>
           <p className="text-foreground/75 mt-4 text-lg leading-relaxed">{t("whoText")}</p>
           <ul className="mt-6 flex flex-col items-center gap-2 md:items-start">
             {points.map((point) => (

@@ -14,6 +14,8 @@ type Price = {
   amount: string;
   tax: string;
   includes: string;
+  /** Short version for the home page; the full list lives on /services. */
+  homeIncludes: string;
   payment: string;
   guaranteeTitle: string;
   guarantee: string;
@@ -86,7 +88,7 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
     stepsTitle: "¿Cómo trabajaremos?",
     steps: [
       {
-        title: "Una primera reunión de 15 minutos, gratis",
+        title: "Primera reunión de 15 minutos gratuita",
         text: "Para analizar tu situación: cómo trabajáis hoy y dónde se os van las horas.",
       },
       {
@@ -99,13 +101,13 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       },
       {
         title: "Terminas con un sistema propio",
-        text: "Para crear tus aplicaciones.",
+        text: "Para crear las herramientas que tu negocio necesita.",
       },
     ],
     outcomesTitle: "¿Qué te llevas?",
     outcomes: [
       {
-        title: "Formar parte de la revolución de la IA",
+        title: "Convertirte en una empresa innovadora",
         text: "Qué es la IA, qué está ocurriendo y cómo afecta a tu empresa.",
       },
       {
@@ -115,6 +117,10 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       {
         title: "Una política de uso seguro de la IA",
         text: "Por escrito y adaptada a tu empresa: qué herramientas se usan, con qué datos y cómo, para que nadie ponga en riesgo la información de tu negocio ni la de tus clientes.",
+      },
+      {
+        title: "La privacidad de tus datos",
+        text: "Tus herramientas viven dentro de tu empresa, en lugar de dejar la información de tu negocio repartida en aplicaciones de terceros.",
       },
       {
         title: "Un sistema seguro, verificado por un ingeniero",
@@ -135,6 +141,8 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       tax: "+ IVA",
       includes:
         "Incluye todo lo anterior: las 8 sesiones, el plan, el sistema, las primeras herramientas, la formación del equipo y la política de uso seguro.",
+      homeIncludes:
+        "Incluye el acompañamiento, la formación y un sistema personalizado integrado en tu empresa.",
       payment:
         "En 2 pagos de 1.250 €: la mitad al firmar y la otra mitad a mitad de la mentoría, después de la cuarta sesión.",
       guaranteeTitle: "Garantía",
@@ -215,7 +223,7 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
     stepsTitle: "How will we work?",
     steps: [
       {
-        title: "A first 15-minute meeting, free",
+        title: "A free first 15-minute meeting",
         text: "To look at your situation: how you work today and where your hours go.",
       },
       {
@@ -228,13 +236,13 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       },
       {
         title: "You finish with your own system",
-        text: "To build your applications.",
+        text: "To build the tools your business needs.",
       },
     ],
     outcomesTitle: "What do you take away?",
     outcomes: [
       {
-        title: "Being part of the AI revolution",
+        title: "Becoming an innovative company",
         text: "What AI is, what's happening and how it affects your company.",
       },
       {
@@ -244,6 +252,10 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       {
         title: "A policy for using AI safely",
         text: "In writing and adapted to your company: which tools are used, with what data and how, so nobody puts your business's information or your clients' at risk.",
+      },
+      {
+        title: "Your data stays private",
+        text: "Your tools live inside your company, instead of leaving your business's information scattered across third-party apps.",
       },
       {
         title: "A safe system, verified by an engineer",
@@ -264,6 +276,8 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       tax: "+ VAT",
       includes:
         "It includes everything above: the 8 sessions, the plan, the system, the first tools, the team training and the safe use policy.",
+      homeIncludes:
+        "It includes the guidance, the training and a personalised system built into your company.",
       payment:
         "In 2 payments of €1,250: half when we sign and the other half halfway through the mentoring, after the fourth session.",
       guaranteeTitle: "Guarantee",
