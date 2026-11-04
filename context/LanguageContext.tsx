@@ -65,10 +65,6 @@ export const translations = {
     test2Role: "CEO at Moovle",
 
     // Contact
-    contactTitle1: "Shall we ",
-    contactTitle2: "talk?",
-    contactSub:
-      "Message me on LinkedIn and we'll find a slot for the first 15-minute meeting. It's free and commits you to nothing.",
     contactEmailBtn: "I'd rather email",
     contactLinkedinBtn: "Let's talk on LinkedIn",
     contactEmailNote: "Or write to me at",
@@ -167,10 +163,6 @@ export const translations = {
     test2Role: "CEO de Moovle",
 
     // Contact
-    contactTitle1: "¿Lo ",
-    contactTitle2: "hablamos?",
-    contactSub:
-      "Escríbeme por LinkedIn y buscamos un hueco para la primera reunión de 15 minutos. Es gratis y no te compromete a nada.",
     contactEmailBtn: "Prefiero el correo",
     contactLinkedinBtn: "Hablemos por LinkedIn",
     contactEmailNote: "O escríbeme a",

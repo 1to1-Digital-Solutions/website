@@ -11,12 +11,14 @@ import { expect, test } from "@playwright/test";
 
 /** The home page sections, with their anchors. About and the services detail are separate. */
 const SECTIONS = [
+  "stakes",
   "services",
   "who",
-  "for-who",
-  "process",
   "work",
   "testimonials",
+  "process",
+  "explain",
+  "for-who",
   "faq",
   "contact",
 ] as const;
@@ -62,9 +64,9 @@ test("about and services have their own pages", async ({ page }) => {
   }
 });
 
-test("the mentoring summary leads to its detail", async ({ page }) => {
+test("the plan leads to the mentoring detail", async ({ page }) => {
   await page.goto("/");
-  await page.locator('#services a[href="/services"]').click();
+  await page.locator('#process a[href="/services"]').click();
   await expect(page).toHaveURL(/\/services$/);
   // The detail shows the 4 steps and what the client takes away.
   await expect(page.locator("#steps li")).toHaveCount(4);

@@ -1,10 +1,11 @@
 "use client";
 
-import { Mail, Linkedin } from "lucide-react";
+import { Mail, Linkedin, ShieldCheck } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { trackEvent } from "@/components/GoogleAnalytics";
 
 import { CONTACT_EMAIL, LINKEDIN_URL } from "@/content/contact";
+import { HOME } from "@/content/home";
 
 export { CONTACT_EMAIL, LINKEDIN_URL };
 
@@ -13,18 +14,22 @@ export { CONTACT_EMAIL, LINKEDIN_URL };
  * site supports his LinkedIn); email stays as the second way.
  */
 export function Contact() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const c = HOME[lang];
   const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(t("contactMailSubject") as string)}`;
 
   return (
-    <section className="bg-anthracite/30 w-full py-24">
+    <section className="bg-anthracite/30 w-full py-28">
       <div className="mx-auto max-w-3xl px-6 text-center">
-        <h2 className="font-outfit text-4xl font-bold tracking-tight md:text-5xl">
-          {t("contactTitle1")}
-          <span className="text-primary">{t("contactTitle2")}</span>
+        <p className="text-primary text-sm font-semibold tracking-widest uppercase">
+          {c.ctaEyebrow}
+        </p>
+        <h2 className="font-outfit mt-3 text-4xl font-bold tracking-tight md:text-5xl">
+          {c.ctaTitle1}
+          <span className="text-primary">{c.ctaTitle2}</span>
         </h2>
-        <p className="text-foreground/75 mx-auto mt-4 max-w-2xl text-lg leading-relaxed">
-          {t("contactSub")}
+        <p className="text-foreground/75 mx-auto mt-6 max-w-2xl text-lg leading-relaxed">
+          {c.ctaSub}
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -49,7 +54,12 @@ export function Contact() {
           </a>
         </div>
 
-        <p className="text-foreground/60 mt-8 text-sm">
+        <p className="text-foreground/75 mx-auto mt-8 flex max-w-xl items-start justify-center gap-2 text-sm leading-relaxed">
+          <ShieldCheck size={18} aria-hidden="true" className="text-primary mt-0.5 shrink-0" />
+          <span className="text-left">{c.ctaGuarantee}</span>
+        </p>
+
+        <p className="text-foreground/60 mt-6 text-sm">
           {t("contactEmailNote")}{" "}
           <a
             href={mailto}

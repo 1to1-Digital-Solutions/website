@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, type ReactNode } from "react";
 import { Hero } from "@/components/Hero";
 import { Services } from "@/components/Services";
 import { SuccessCases } from "@/components/SuccessCases";
@@ -10,6 +10,8 @@ import { FAQ } from "@/components/FAQ";
 import { Contact } from "@/components/Contact";
 import { WhoGuides } from "@/components/WhoGuides";
 import { ForWho } from "@/components/ForWho";
+import { Stakes } from "@/components/Stakes";
+import { Explainer } from "@/components/Explainer";
 
 /** The home page (client side: GSAP scroll effects). app/page.tsx adds the structured data. */
 export function HomePage() {
@@ -147,47 +149,44 @@ export function HomePage() {
     };
   }, []);
 
-  // Same arc as César's LinkedIn About: Hero (the client's pain) → summary of the service +
-  // price → who I am → who it is for → how we'll work → work and reviews → FAQ → contact.
-  // About and the service details live on their own pages (/about, /services).
+  // StoryBrand order (November 2026): hero (problem and solution) → stakes (what doing
+  // nothing costs) → value (what the client takes away) → the guide (empathy and authority:
+  // who I am, projects, testimonials) → the plan (steps, price, link to /services) →
+  // explanatory paragraph (with who it is and isn't for) → FAQ → the closing call to action.
+  // The footer is the "junk drawer". About and the service detail live on their own pages.
+  const sections: { id?: string; node: ReactNode }[] = [
+    { node: <Stakes /> },
+    { node: <Services /> },
+    { node: <WhoGuides /> },
+    { node: <SuccessCases /> },
+    { node: <Testimonials /> },
+    { node: <Process /> },
+    {
+      node: (
+        <>
+          <Explainer />
+          <ForWho className="pt-12 pb-24" />
+        </>
+      ),
+    },
+    { node: <FAQ /> },
+    { id: "contact", node: <Contact /> },
+  ];
+  const Z = ["z-10", "z-20", "z-30", "z-40", "z-50", "z-[60]", "z-[70]", "z-[80]", "z-[90]"];
+
   return (
     <div className="bg-background flex flex-col overflow-hidden">
       <Hero />
 
-      <div className="card-section bg-background relative z-10 w-full rounded-t-[3rem] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
-        <Services />
-      </div>
-
-      <div className="card-section bg-anthracite relative z-20 w-full rounded-t-[3rem] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
-        <WhoGuides />
-      </div>
-
-      <div className="card-section bg-background relative z-30 w-full rounded-t-[3rem] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
-        <ForWho />
-      </div>
-
-      <div className="card-section bg-anthracite relative z-40 w-full rounded-t-[3rem] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
-        <Process />
-      </div>
-
-      <div className="card-section bg-background relative z-50 w-full rounded-t-[3rem] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
-        <SuccessCases />
-      </div>
-
-      <div className="card-section bg-anthracite relative z-[60] w-full rounded-t-[3rem] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
-        <Testimonials />
-      </div>
-
-      <div className="card-section bg-background relative z-[70] w-full rounded-t-[3rem] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
-        <FAQ />
-      </div>
-
-      <div
-        id="contact"
-        className="card-section bg-anthracite relative z-[80] w-full scroll-mt-24 rounded-t-[3rem] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]"
-      >
-        <Contact />
-      </div>
+      {sections.map((s, i) => (
+        <div
+          key={s.id ?? i}
+          id={s.id}
+          className={`card-section ${i % 2 ? "bg-anthracite" : "bg-background"} relative ${Z[i]} w-full ${s.id ? "scroll-mt-24" : ""} rounded-t-[3rem] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]`}
+        >
+          {s.node}
+        </div>
+      ))}
     </div>
   );
 }

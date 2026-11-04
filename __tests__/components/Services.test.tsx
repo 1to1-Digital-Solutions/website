@@ -13,11 +13,4 @@ describe("Services", () => {
       expect(screen.getByText(outcome.title)).toBeInTheDocument();
     }
   });
-
-  it("links to the detail on /services", () => {
-    renderWithProviders(<Services />);
-
-    const hrefs = screen.getAllByRole("link").map((a) => a.getAttribute("href"));
-    expect(hrefs).toContain("/services");
-  });
 });

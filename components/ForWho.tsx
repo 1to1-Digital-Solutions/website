@@ -3,12 +3,12 @@ import { useLanguage } from "@/context/LanguageContext";
 import { MENTORSHIP } from "@/content/services";
 
 /** Home block: who the mentoring is for and who it is not for. Detail on /services. */
-export function ForWho() {
+export function ForWho({ className = "py-24" }: { className?: string }) {
   const { lang } = useLanguage();
   const c = MENTORSHIP[lang];
 
   return (
-    <section id="for-who" className="mx-auto w-full max-w-6xl px-6 py-24">
+    <section id="for-who" className={`mx-auto w-full max-w-6xl px-6 ${className}`}>
       <div className="grid gap-6 md:grid-cols-2">
         <div className="border-primary/30 bg-anthracite/50 rounded-3xl border p-8">
           <h2 className="font-outfit text-3xl font-bold tracking-tight">{c.forWhoTitle}</h2>

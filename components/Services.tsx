@@ -1,10 +1,8 @@
-import Link from "next/link";
-import { ArrowRight, Check } from "lucide-react";
+import { Check } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { MENTORSHIP } from "@/content/services";
-import { PriceCard } from "@/components/PriceCard";
 
-/** Home page summary of the mentoring: what you take away, with a link to /services. */
+/** StoryBrand value proposition: what the client takes away. The price lives in the plan. */
 export function Services() {
   const { lang } = useLanguage();
   const c = MENTORSHIP[lang];
@@ -42,18 +40,6 @@ export function Services() {
           </li>
         ))}
       </ul>
-
-      <PriceCard />
-
-      <div className="mt-12 text-center">
-        <Link
-          href="/services"
-          className="border-foreground/20 hover:border-primary/60 hover:text-primary focus-visible:ring-primary inline-flex items-center gap-2 rounded-full border px-6 py-3 font-semibold transition-colors focus-visible:ring-2 focus-visible:outline-none"
-        >
-          {c.homeLink}
-          <ArrowRight size={18} aria-hidden="true" />
-        </Link>
-      </div>
     </section>
   );
 }

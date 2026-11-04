@@ -1,7 +1,12 @@
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { HOME } from "@/content/home";
+import { PriceCard } from "@/components/PriceCard";
 
+/** StoryBrand plan: the 4 steps, the price and the way to the full detail on /services. */
 export function Process() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
 
   const steps = [
     { number: "01", title: t("proc1Title"), desc: t("proc1Desc") },
@@ -42,6 +47,18 @@ export function Process() {
             <p className="text-foreground/70 leading-relaxed">{step.desc as string}</p>
           </div>
         ))}
+      </div>
+
+      <PriceCard className="mt-16" />
+
+      <div className="mt-12 text-center">
+        <Link
+          href="/services"
+          className="border-foreground/20 hover:border-primary/60 hover:text-primary focus-visible:ring-primary inline-flex items-center gap-2 rounded-full border px-6 py-3 font-semibold transition-colors focus-visible:ring-2 focus-visible:outline-none"
+        >
+          {HOME[lang].planLink}
+          <ArrowRight size={18} aria-hidden="true" />
+        </Link>
       </div>
     </section>
   );
