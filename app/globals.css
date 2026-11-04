@@ -137,3 +137,76 @@ html {
     box-shadow: 0 0 0 0 transparent;
   }
 }
+
+/* "Is it for you?": the profile is ticked off item by item, then the card lights up and the
+   "not for" side comes in. Before that the items wait dimmed, still readable. */
+.for-who-item {
+  opacity: 0.35;
+  transform: translateX(-6px);
+  transition:
+    opacity 0.5s ease-out var(--for-who-delay, 0ms),
+    transform 0.5s ease-out var(--for-who-delay, 0ms);
+}
+.for-who-item path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.45s cubic-bezier(0.65, 0, 0.35, 1)
+    calc(var(--for-who-delay, 0ms) + 120ms);
+}
+.for-who-box {
+  transition:
+    background-color 0.4s ease-out var(--for-who-delay, 0ms),
+    border-color 0.4s ease-out var(--for-who-delay, 0ms);
+}
+.for-who-no {
+  opacity: 0.4;
+  transform: translateY(12px);
+  transition:
+    opacity 0.7s ease-out var(--for-who-delay, 0ms),
+    transform 0.7s ease-out var(--for-who-delay, 0ms);
+}
+.for-who-yes {
+  transition: border-color 0.6s ease-out var(--for-who-delay, 0ms);
+}
+.for-who[data-shown="true"] .for-who-item {
+  opacity: 1;
+  transform: none;
+}
+.for-who[data-shown="true"] .for-who-item path {
+  stroke-dashoffset: 0;
+}
+.for-who[data-shown="true"] .for-who-box {
+  border-color: var(--primary);
+  background-color: color-mix(in srgb, var(--primary) 15%, transparent);
+}
+.for-who[data-shown="true"] .for-who-no {
+  opacity: 1;
+  transform: none;
+}
+.for-who[data-shown="true"] .for-who-yes {
+  border-color: color-mix(in srgb, var(--primary) 60%, transparent);
+  animation: for-who-glow 1.4s ease-out var(--for-who-delay, 0ms) both;
+}
+@keyframes for-who-glow {
+  0% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+  35% {
+    box-shadow: 0 0 32px color-mix(in srgb, var(--primary) 30%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 18px color-mix(in srgb, var(--primary) 12%, transparent);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .for-who-item,
+  .for-who-no {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .for-who-item path {
+    stroke-dashoffset: 0;
+    transition: none;
+  }
+}
