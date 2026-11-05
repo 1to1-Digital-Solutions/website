@@ -73,11 +73,12 @@ test("the plan leads to the mentoring detail", async ({ page }) => {
   await expect(page.locator("#outcomes li")).toHaveCount(7);
 });
 
-test("the contact button on another page lands on the contact block", async ({ page }) => {
-  await page.goto("/about");
-  await page.getByRole("link", { name: "Hablemos" }).last().click();
-  await expect(page).toHaveURL(/\/#contact$/);
-  await expect(page.locator("#contact")).toBeInViewport();
+test("the inner pages close with the same contact block as the home page", async ({ page }) => {
+  for (const route of ["/about", "/services"]) {
+    await page.goto(route);
+    await expect(page.getByRole("link", { name: /Hablemos por LinkedIn/ })).toHaveCount(1);
+    await expect(page.locator('a[href^="mailto:"]').first()).toBeVisible();
+  }
 });
 
 test("the three legal pages are served", async ({ page }) => {

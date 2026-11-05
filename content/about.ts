@@ -26,10 +26,6 @@ type AboutCopy = {
   githubPersonal: string;
   githubCompany: string;
   products: Product[];
-  ctaTitle: string;
-  ctaText: string;
-  ctaButton: string;
-  ctaServices: string;
   imgAlt: string;
 };
 
@@ -94,11 +90,6 @@ export const ABOUT: Record<"es" | "en", AboutCopy> = {
         url: "https://scoura.app/",
       },
     ],
-    ctaTitle: "¿Hacemos esa primera llamada?",
-    ctaText:
-      "Escríbeme por LinkedIn y buscamos un hueco para la reunión de 15 minutos. Es gratis y vemos juntos tu situación.",
-    ctaButton: "Hablemos",
-    ctaServices: "Ver la mentoría",
     imgAlt: "Retrato de César Peón, fundador de 1to1 Digital Solutions",
   },
   en: {
@@ -161,11 +152,6 @@ export const ABOUT: Record<"es" | "en", AboutCopy> = {
         url: "https://scoura.app/",
       },
     ],
-    ctaTitle: "Shall we have that first call?",
-    ctaText:
-      "Message me on LinkedIn and we'll find a slot for the 15-minute meeting. It's free and we'll look at your situation together.",
-    ctaButton: "Let's talk",
-    ctaServices: "See the mentoring",
     imgAlt: "Portrait of César Peón, founder of 1to1 Digital Solutions",
   },
 };

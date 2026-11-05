@@ -65,9 +65,16 @@ export function ForWho({
   const delay = (ms: number) => ({ "--for-who-delay": `${ms}ms` }) as React.CSSProperties;
 
   return (
-    <section id="for-who" className={`mx-auto w-full max-w-6xl px-6 ${className}`}>
+    <section id="for-who" className={`relative mx-auto w-full max-w-6xl px-6 ${className}`}>
+      {/* A soft turquoise glow behind the cards, which brightens once the profile is ticked. */}
+      <div
+        aria-hidden="true"
+        data-shown={shown}
+        className="for-who-glow bg-primary/20 pointer-events-none absolute top-[62%] left-1/2 h-[24rem] w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[110px]"
+        style={delay(200 + count * STEP)}
+      />
       {heading && (
-        <div className="mb-14 text-center">
+        <div className="relative mb-14 text-center">
           <h2 className="font-outfit text-4xl font-bold tracking-tight md:text-5xl">
             {HOME[lang].forWhoTitle1}
             <span className="text-primary">{HOME[lang].forWhoTitle2}</span>
@@ -77,7 +84,7 @@ export function ForWho({
           </p>
         </div>
       )}
-      <div ref={ref} data-shown={shown} className="for-who grid gap-6 md:grid-cols-2">
+      <div ref={ref} data-shown={shown} className="for-who relative grid gap-6 md:grid-cols-2">
         <div
           className="for-who-yes border-primary/30 bg-anthracite/50 rounded-3xl border p-8"
           style={delay(200 + count * STEP)}

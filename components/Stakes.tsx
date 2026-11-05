@@ -10,7 +10,8 @@ const ICONS = [TrendingDown, Clock, ShieldAlert, KeyRound];
 type Timing = { delay: number; dur: number };
 
 /**
- * The spark that runs along a card's border. Two strokes (neon glow and a white core) with a
+ * The spark that runs once around a card's border, starting at a random moment. Two strokes
+ * (neon glow and a white core) with a
  * displacement filter that makes the line jagged and flicker, like current on a fence.
  */
 function ElectricBorder({ timing }: { timing: Timing }) {
@@ -50,12 +51,17 @@ function ElectricBorder({ timing }: { timing: Timing }) {
 }
 
 /**
- * Points of the hero's cloud travelling to the cards. Each point follows a gentle curve from
- * the cloud (the top of the viewport, on the right on wide screens) to a point on a card's
- * border. Calls `onDone` near the end, and returns a
+ * Points of the hero's cloud travelling to the cards ("down") or back to the cloud ("up").
+ * Each point follows a gentle curve between the cloud (the top of the viewport, on the right
+ * on wide screens) and a point on a card's border. Calls `onDone` near the end, and returns a
  * function that stops the animation.
  */
-function flyDots(canvas: HTMLCanvasElement, list: HTMLElement, onDone: () => void) {
+function flyDots(
+  canvas: HTMLCanvasElement,
+  list: HTMLElement,
+  dir: "down" | "up",
+  onDone: () => void
+) {
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
   const W = canvas.clientWidth;
   const H = canvas.clientHeight;
@@ -93,8 +99,8 @@ function flyDots(canvas: HTMLCanvasElement, list: HTMLElement, onDone: () => voi
     const a = Math.random() * Math.PI * 2;
     const rad = Math.sqrt(Math.random()) * Math.min(W, H) * 0.2;
     const inCloud = { x: cloud.x + Math.cos(a) * rad, y: cloud.y + Math.sin(a) * rad * 0.7 };
-    const from = inCloud;
-    const to = onBorder(cards[i % cards.length]);
+    const onCard = onBorder(cards[i % cards.length]);
+    const [from, to] = dir === "down" ? [inCloud, onCard] : [onCard, inCloud];
     const ctrl = {
       x: (from.x + to.x) / 2 + (Math.random() - 0.5) * W * 0.25,
       y: (from.y + to.y) / 2,
@@ -124,9 +130,12 @@ function flyDots(canvas: HTMLCanvasElement, list: HTMLElement, onDone: () => voi
       const u = 1 - k;
       const x = u * u * d.from.x + 2 * u * k * d.ctrl.x + k * k * d.to.x;
       const y = u * u * d.from.y + 2 * u * k * d.ctrl.y + k * k * d.to.y;
-      // Soft: fade in as they leave the cloud, fade out once they reach the border.
+      // Soft: fade in as they leave, fade out as they arrive (into the border or the cloud).
       const after = Math.max(0, el - d.start - d.dur);
-      const alpha = Math.min(1, t * 5) * (t < 1 ? 1 : Math.max(0, 1 - after / 350));
+      const alpha =
+        dir === "down"
+          ? Math.min(1, t * 5) * (t < 1 ? 1 : Math.max(0, 1 - after / 350))
+          : Math.min(1, t * 5) * (1 - Math.pow(t, 3));
       if (alpha <= 0) continue;
       ctx.globalAlpha = alpha * 0.55;
       ctx.beginPath();
@@ -164,10 +173,14 @@ export function Stakes() {
       setLit(true);
       setTimings(
         Array.from({ length: count }, () => ({
-          delay: Math.random() * 2.5,
-          dur: 4.5 + Math.random() * 3,
+          delay: Math.random(),
+          dur: 2.2 + Math.random() * 0.8,
         }))
       );
+    };
+    const douse = () => {
+      setLit(false);
+      setTimings(null);
     };
     const list = listRef.current;
     const canvas = canvasRef.current;
@@ -177,14 +190,22 @@ export function Stakes() {
       return;
     }
 
-    // The first time the cards come into view, the points fly to them and light them up.
-    // It happens once per visit: scrolling back up leaves the cards as they are.
+    // Scrolling down to the cards: the points fly to them and light them up. Scrolling back
+    // up past them: the current goes off and the points return to the cloud.
+    let at: "cloud" | "cards" = "cloud";
     let stop = () => {};
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (!entry.isIntersecting) return;
-        observer.disconnect();
-        stop = flyDots(canvas, list, ignite);
+        if (entry.isIntersecting && at === "cloud") {
+          at = "cards";
+          stop();
+          stop = flyDots(canvas, list, "down", ignite);
+        } else if (!entry.isIntersecting && entry.boundingClientRect.top > 0 && at === "cards") {
+          at = "cloud";
+          stop();
+          douse();
+          stop = flyDots(canvas, list, "up", () => {});
+        }
       },
       { rootMargin: "0px 0px -25% 0px" }
     );
@@ -241,7 +262,7 @@ export function Stakes() {
             </li>
           );
         })}
-        {/* Where the points of the hero's cloud travel to the cards. */}
+        {/* Where the points of the hero's cloud travel to the cards and back. */}
         <canvas
           ref={canvasRef}
           aria-hidden="true"

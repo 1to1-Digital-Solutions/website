@@ -4,7 +4,7 @@ import Image from "next/image";
 import { ExternalLink, Github } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { ABOUT } from "@/content/about";
-import { PageCta } from "@/components/PageCta";
+import { Contact } from "@/components/Contact";
 import { GlowBackground } from "@/components/GlowBackground";
 
 export function AboutPage() {
@@ -161,12 +161,7 @@ export function AboutPage() {
 
       <div className="h-24" aria-hidden="true" />
 
-      <PageCta
-        title={c.ctaTitle}
-        text={c.ctaText}
-        primary={{ label: c.ctaButton, href: "/#contact" }}
-        secondary={{ label: c.ctaServices, href: "/services" }}
-      />
+      <Contact />
     </div>
   );
 }

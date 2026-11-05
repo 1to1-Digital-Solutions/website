@@ -95,22 +95,19 @@ html {
   stroke-dasharray: 14 86;
   stroke-linecap: round;
   opacity: 0;
-  animation: electric-run var(--electric-dur, 6s) linear var(--electric-delay, 0s) infinite;
+  animation: electric-run var(--electric-dur, 2.5s) linear var(--electric-delay, 0s) 1 both;
 }
+/* One lap around the card, fading in at the start and out at the end. */
 @keyframes electric-run {
   0% {
     stroke-dashoffset: 0;
     opacity: 0;
   }
-  3% {
+  6% {
     opacity: 1;
   }
-  42% {
+  90% {
     opacity: 1;
-  }
-  46% {
-    stroke-dashoffset: -100;
-    opacity: 0;
   }
   100% {
     stroke-dashoffset: -100;
@@ -186,6 +183,13 @@ html {
 .for-who[data-shown="true"] .for-who-yes {
   border-color: color-mix(in srgb, var(--primary) 60%, transparent);
   animation: for-who-glow 1.4s ease-out var(--for-who-delay, 0ms) both;
+}
+.for-who-glow {
+  opacity: 0.45;
+  transition: opacity 1.2s ease-out var(--for-who-delay, 0ms);
+}
+.for-who-glow[data-shown="true"] {
+  opacity: 1;
 }
 @keyframes for-who-glow {
   0% {

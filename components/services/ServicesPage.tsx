@@ -3,7 +3,7 @@
 import { ShieldCheck, X } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { MENTORSHIP } from "@/content/services";
-import { PageCta } from "@/components/PageCta";
+import { Contact } from "@/components/Contact";
 import { GlowBackground } from "@/components/GlowBackground";
 import { PriceCard } from "@/components/PriceCard";
 
@@ -142,7 +142,7 @@ export function ServicesPage() {
             {c.proofTitle}
           </h2>
           <p className="text-foreground/70 mt-3 text-lg">{c.proofIntro}</p>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
             {c.proofs.map((p) => (
               <div
                 key={p.title}
@@ -173,12 +173,7 @@ export function ServicesPage() {
         </section>
       </div>
 
-      <PageCta
-        title={c.ctaTitle}
-        text={c.ctaText}
-        primary={{ label: c.ctaButton, href: "/#contact" }}
-        secondary={{ label: c.ctaAbout, href: "/about" }}
-      />
+      <Contact />
     </div>
   );
 }

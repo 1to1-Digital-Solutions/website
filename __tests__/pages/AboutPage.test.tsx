@@ -23,6 +23,7 @@ describe("AboutPage", () => {
       "href",
       "https://hoy-entreno.app/"
     );
-    expect(screen.getByRole("link", { name: /^Hablemos$/ })).toHaveAttribute("href", "/#contact");
+    // It closes with the same call to action as the home page: LinkedIn first.
+    expect(screen.getByRole("link", { name: /Hablemos por LinkedIn/ })).toBeInTheDocument();
   });
 });
