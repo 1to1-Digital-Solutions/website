@@ -11,12 +11,14 @@ import { expect, test } from "@playwright/test";
 
 /** The home page sections, with their anchors. About and the services detail are separate. */
 const SECTIONS = [
+  "stakes",
   "services",
   "who",
-  "for-who",
-  "process",
   "work",
   "testimonials",
+  "for-who",
+  "process",
+  "explain",
   "faq",
   "contact",
 ] as const;
@@ -62,20 +64,21 @@ test("about and services have their own pages", async ({ page }) => {
   }
 });
 
-test("the mentoring summary leads to its detail", async ({ page }) => {
+test("the plan leads to the mentoring detail", async ({ page }) => {
   await page.goto("/");
-  await page.locator('#services a[href="/services"]').click();
+  await page.locator('#process a[href="/services"]').click();
   await expect(page).toHaveURL(/\/services$/);
   // The detail shows the 4 steps and what the client takes away.
   await expect(page.locator("#steps li")).toHaveCount(4);
-  await expect(page.locator("#outcomes li")).toHaveCount(6);
+  await expect(page.locator("#outcomes li")).toHaveCount(7);
 });
 
-test("the contact button on another page lands on the contact block", async ({ page }) => {
-  await page.goto("/about");
-  await page.getByRole("link", { name: "Hablemos" }).last().click();
-  await expect(page).toHaveURL(/\/#contact$/);
-  await expect(page.locator("#contact")).toBeInViewport();
+test("the inner pages close with the same contact block as the home page", async ({ page }) => {
+  for (const route of ["/about", "/services"]) {
+    await page.goto(route);
+    await expect(page.getByRole("link", { name: /Hablemos por LinkedIn/ })).toHaveCount(1);
+    await expect(page.locator('a[href^="mailto:"]').first()).toBeVisible();
+  }
 });
 
 test("the three legal pages are served", async ({ page }) => {

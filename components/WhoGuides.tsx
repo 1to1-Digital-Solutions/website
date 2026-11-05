@@ -3,7 +3,10 @@ import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
-/** Home block: who gives the mentoring. Little on purpose; the rest lives in /about. */
+/**
+ * StoryBrand guide: a short personal story (empathy), then the competence. Little on purpose; the rest lives in
+ * /about, and the projects and testimonials right after back it up.
+ */
 export function WhoGuides() {
   const { t } = useLanguage();
   const points = [t("who1"), t("who2"), t("who3")];
@@ -11,7 +14,11 @@ export function WhoGuides() {
   return (
     <section id="who" className="mx-auto w-full max-w-5xl px-6 py-24">
       <div className="flex flex-col items-center gap-10 md:flex-row md:gap-14">
-        <div className="bg-anthracite/80 relative aspect-square w-48 shrink-0 overflow-hidden rounded-3xl md:w-64">
+        <div
+          data-bolt-card
+          data-bolt-trigger
+          className="bg-anthracite/80 relative aspect-square w-48 shrink-0 overflow-hidden rounded-3xl md:w-64"
+        >
           <Image
             src="/images/profilePicture.jpg"
             alt={t("whoImgAlt") as string}

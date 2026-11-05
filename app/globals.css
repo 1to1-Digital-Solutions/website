@@ -83,3 +83,128 @@ html {
     scroll-behavior: auto !important;
   }
 }
+
+/* Stakes cards: a spark of current runs along the border, like an electric fence. Each
+   card gets a random delay and speed from JS, so they never fire together. */
+.electric-border {
+  filter: drop-shadow(0 0 2px var(--neon))
+    drop-shadow(0 0 5px color-mix(in srgb, var(--neon) 50%, transparent));
+}
+.electric-border rect {
+  fill: none;
+  stroke-dasharray: 14 86;
+  stroke-linecap: round;
+  opacity: 0;
+  animation: electric-run var(--electric-dur, 2.5s) linear var(--electric-delay, 0s) 1 both;
+}
+/* One lap around the card, fading in at the start and out at the end. */
+@keyframes electric-run {
+  0% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+  6% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: -100;
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .electric-border {
+    display: none;
+  }
+}
+
+/* The moment the points land: the stakes cards glow once, softly. */
+.electric-flash,
+.bolt-flash {
+  animation: electric-flash 0.9s ease-out;
+}
+@keyframes electric-flash {
+  0% {
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--neon) 50%, transparent),
+      0 0 14px color-mix(in srgb, var(--neon) 35%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+/* "Is it for you?": the profile is ticked off item by item, then the card lights up and the
+   "not for" side comes in. Before that the items wait dimmed, still readable. */
+.for-who-item {
+  opacity: 0.35;
+  transform: translateX(-6px);
+  transition:
+    opacity 0.5s ease-out var(--for-who-delay, 0ms),
+    transform 0.5s ease-out var(--for-who-delay, 0ms);
+}
+.for-who-item path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.45s cubic-bezier(0.65, 0, 0.35, 1)
+    calc(var(--for-who-delay, 0ms) + 120ms);
+}
+.for-who-box {
+  transition:
+    background-color 0.4s ease-out var(--for-who-delay, 0ms),
+    border-color 0.4s ease-out var(--for-who-delay, 0ms);
+}
+.for-who-no {
+  opacity: 0.4;
+  transform: translateY(12px);
+  transition:
+    opacity 0.7s ease-out var(--for-who-delay, 0ms),
+    transform 0.7s ease-out var(--for-who-delay, 0ms);
+}
+.for-who-yes {
+  transition: border-color 0.6s ease-out var(--for-who-delay, 0ms);
+}
+.for-who[data-shown="true"] .for-who-item {
+  opacity: 1;
+  transform: none;
+}
+.for-who[data-shown="true"] .for-who-item path {
+  stroke-dashoffset: 0;
+}
+.for-who[data-shown="true"] .for-who-box {
+  border-color: var(--primary);
+  background-color: color-mix(in srgb, var(--primary) 15%, transparent);
+}
+.for-who[data-shown="true"] .for-who-no {
+  opacity: 1;
+  transform: none;
+}
+.for-who[data-shown="true"] .for-who-yes {
+  border-color: color-mix(in srgb, var(--primary) 60%, transparent);
+  animation: for-who-glow 1.4s ease-out var(--for-who-delay, 0ms) both;
+}
+@keyframes for-who-glow {
+  0% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+  35% {
+    box-shadow: 0 0 32px color-mix(in srgb, var(--primary) 30%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 18px color-mix(in srgb, var(--primary) 12%, transparent);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .for-who-item,
+  .for-who-no {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .for-who-item path {
+    stroke-dashoffset: 0;
+    transition: none;
+  }
+}

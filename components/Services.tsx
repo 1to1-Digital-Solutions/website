@@ -1,10 +1,8 @@
-import Link from "next/link";
-import { ArrowRight, Check } from "lucide-react";
+import { Check } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { MENTORSHIP } from "@/content/services";
-import { PriceCard } from "@/components/PriceCard";
 
-/** Home page summary of the mentoring: what you take away, with a link to /services. */
+/** StoryBrand value proposition: what the client takes away. The price lives in the plan. */
 export function Services() {
   const { lang } = useLanguage();
   const c = MENTORSHIP[lang];
@@ -28,32 +26,24 @@ export function Services() {
       <h3 className="font-outfit text-foreground/80 mb-8 text-center text-xl font-semibold">
         {c.outcomesTitle}
       </h3>
-      <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {c.outcomes.map((o) => (
-          <li
-            key={o.title}
-            className="border-foreground/10 bg-anthracite/50 flex items-start gap-4 rounded-2xl border p-6"
-          >
-            <Check size={22} aria-hidden="true" className="text-primary mt-1 shrink-0" />
-            <div>
-              <p className="font-outfit text-lg font-semibold">{o.title}</p>
-              <p className="text-foreground/70 mt-1 leading-relaxed">{o.text}</p>
-            </div>
-          </li>
-        ))}
+      <ul data-bolt-trigger className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {c.outcomes
+          .filter((o) => !o.homeHidden)
+          .map((o, i) => (
+            <li
+              key={o.title}
+              data-bolt-card
+              data-bolt-entry={i === 1 ? "" : undefined}
+              className="border-foreground/10 bg-anthracite/50 flex items-start gap-4 rounded-2xl border p-6"
+            >
+              <Check size={22} aria-hidden="true" className="text-primary mt-1 shrink-0" />
+              <div>
+                <p className="font-outfit text-lg font-semibold">{o.title}</p>
+                <p className="text-foreground/70 mt-1 leading-relaxed">{o.text}</p>
+              </div>
+            </li>
+          ))}
       </ul>
-
-      <PriceCard />
-
-      <div className="mt-12 text-center">
-        <Link
-          href="/services"
-          className="border-foreground/20 hover:border-primary/60 hover:text-primary focus-visible:ring-primary inline-flex items-center gap-2 rounded-full border px-6 py-3 font-semibold transition-colors focus-visible:ring-2 focus-visible:outline-none"
-        >
-          {c.homeLink}
-          <ArrowRight size={18} aria-hidden="true" />
-        </Link>
-      </div>
     </section>
   );
 }

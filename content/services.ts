@@ -8,12 +8,15 @@
  */
 
 type Step = { title: string; text: string };
-type Outcome = { title: string; text: string };
+/** `homeHidden`: shown on /services only. */
+type Outcome = { title: string; text: string; homeHidden?: boolean };
 type Price = {
   title: string;
   amount: string;
   tax: string;
   includes: string;
+  /** Short version for the home page; the full list lives on /services. */
+  homeIncludes: string;
   payment: string;
   guaranteeTitle: string;
   guarantee: string;
@@ -33,6 +36,8 @@ type MentorshipCopy = {
   facts: string[];
   forWhoTitle: string;
   forWho: string[];
+  /** Home page: the profile as a checklist. */
+  forWhoList: string[];
   notForTitle: string;
   notFor: string[];
   stepsTitle: string;
@@ -48,11 +53,8 @@ type MentorshipCopy = {
   proofIntro: string;
   proofs: Step[];
   waveTitle: string;
-  wave: string;
-  ctaTitle: string;
-  ctaText: string;
+  wave: string[];
   ctaButton: string;
-  ctaAbout: string;
   /** Home page block. */
   homeTitle1: string;
   homeTitle2: string;
@@ -70,12 +72,18 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
     title1: "Entiende e integra la IA ",
     title2: "en tu negocio.",
     intro:
-      "Durante 8 semanas, con una sesión online de 1 hora a la semana, entiendes qué está pasando con la IA y la integras en tu negocio de forma segura. Creamos, uno a uno, un sistema adaptado a tu empresa, para que al terminar el control sea tuyo y no necesites a nadie externo para seguir avanzando con la IA.",
+      "Durante 8 semanas, con una sesión online de 1 hora a la semana, entiendes qué está pasando con la IA y la integras en tu negocio de forma segura. Creamos, uno a uno, un sistema adaptado a tu empresa, para que al terminar el control sea tuyo y no necesites a nadie externo para seguir avanzando con la IA. Y si después de la segunda sesión ves que no te está sirviendo, te devuelvo íntegro lo que hayas pagado.",
     facts: ["8 semanas", "1 sesión online de 1 hora a la semana", "Primera reunión gratis"],
     forWhoTitle: "¿Para quién es?",
     forWho: [
       "Autónomos y pymes de 1 a 50 empleados, sin perfil tecnológico interno, que llevan años con el mismo sistema de trabajo y sienten que la IA va más rápido de lo que pueden seguir.",
       "Ves cómo tu competencia ya usa la IA y no sabes ni por dónde empezar. Cada semana sale una noticia nueva, todo tu círculo habla de inteligencia artificial y mientras tanto hay tareas manuales que le siguen comiendo horas a tu gente.",
+    ],
+    forWhoList: [
+      "Eres autónomo o tienes una pyme de 1 a 50 empleados",
+      "No tienes perfiles tecnológicos en plantilla",
+      "Llevas años con el mismo sistema de trabajo",
+      "Sientes que la IA va más rápido de lo que puedes seguir",
     ],
     notForTitle: "¿Para quién no es?",
     notFor: [
@@ -86,7 +94,7 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
     stepsTitle: "¿Cómo trabajaremos?",
     steps: [
       {
-        title: "Una primera reunión de 15 minutos, gratis",
+        title: "Primera reunión de 15 minutos gratuita",
         text: "Para analizar tu situación: cómo trabajáis hoy y dónde se os van las horas.",
       },
       {
@@ -99,13 +107,13 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       },
       {
         title: "Terminas con un sistema propio",
-        text: "Para crear tus aplicaciones.",
+        text: "Para crear las herramientas que tu negocio necesita.",
       },
     ],
     outcomesTitle: "¿Qué te llevas?",
     outcomes: [
       {
-        title: "Formar parte de la revolución de la IA",
+        title: "Convertirte en una empresa innovadora",
         text: "Qué es la IA, qué está ocurriendo y cómo afecta a tu empresa.",
       },
       {
@@ -117,6 +125,10 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
         text: "Por escrito y adaptada a tu empresa: qué herramientas se usan, con qué datos y cómo, para que nadie ponga en riesgo la información de tu negocio ni la de tus clientes.",
       },
       {
+        title: "La privacidad de tus datos",
+        text: "Tus herramientas viven dentro de tu empresa, en lugar de dejar la información de tu negocio repartida en aplicaciones de terceros.",
+      },
+      {
         title: "Un sistema seguro, verificado por un ingeniero",
         text: "Montado uno a uno sobre cómo trabaja tu empresa, para que construyas tus propias herramientas (o mejores las que ya tienes) explicándolas con tus palabras.",
       },
@@ -126,6 +138,7 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       },
       {
         title: "El control es tuyo",
+        homeHidden: true,
         text: "Cuando termina la mentoría no necesitas a nadie externo para seguir avanzando con la IA. El sistema y las herramientas son de tu negocio.",
       },
     ],
@@ -135,6 +148,8 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       tax: "+ IVA",
       includes:
         "Incluye todo lo anterior: las 8 sesiones, el plan, el sistema, las primeras herramientas, la formación del equipo y la política de uso seguro.",
+      homeIncludes:
+        "Incluye el acompañamiento, la formación y un sistema personalizado integrado en tu empresa.",
       payment:
         "En 2 pagos de 1.250 €: la mitad al firmar y la otra mitad a mitad de la mentoría, después de la cuarta sesión.",
       guaranteeTitle: "Garantía",
@@ -165,25 +180,21 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       "Antes de la mentoría he pasado años convirtiendo procesos anticuados en herramientas. Algunos ejemplos:",
     proofs: [
       {
-        title: "NFConnect",
-        text: "Cobraban con un Word y una transferencia bancaria. Les construí una pasarela de pago.",
+        title: "Venta de productos físicos a empresas",
+        text: "Una empresa cobraba con un Word y una transferencia bancaria. Le construí una pasarela de pago.",
       },
       {
-        title: "Numen Games",
-        text: "Desplegar sus mundos virtuales se hacía a mano. Ahora es una plataforma y se hace con un botón.",
-      },
-      {
-        title: "Clínicas dentales",
-        text: "Mi primer trabajo: el software para gestionar los pedidos entre clínica y laboratorio, con sus estados y sus roles.",
+        title: "Realidad Virtual",
+        text: "Un estudio desplegaba sus mundos virtuales a mano. Ahora es una plataforma y se hace con un botón.",
       },
     ],
     waveTitle: "¿Por qué ahora?",
-    wave: "El mejor momento para adaptarse era hace un año, cuando empezó la ola de la IA. El segundo mejor momento es ahora, que estamos en la cresta. Si esperas a mañana, puede que la ola ya te haya arrastrado a la orilla.",
-    ctaTitle: "¿Hacemos esa primera llamada?",
-    ctaText:
-      "Escríbeme por LinkedIn y buscamos un hueco para la reunión de 15 minutos. Es gratis y te sirve para ver por dónde empezar.",
+    wave: [
+      "El mejor momento para adaptarse era hace un año, cuando empezó la ola de la IA. El segundo mejor momento es ahora, que estamos en la cresta. Si esperas a mañana, puede que la ola ya te haya arrastrado a la orilla.",
+      "Cada semana sale algo nuevo y cuanto más avanza la IA, más complicado es que una empresa se pueda adaptar por sí sola. Lo que hoy es una ventaja para quien ya la usa, mañana será lo mínimo para seguir compitiendo. Cuanto antes empieces, antes podrás adaptarte y superar a tu competencia.",
+      "Empezar ahora no significa hacerlo todo de golpe. En 8 semanas entiendes la IA, la integras en tu negocio de forma segura y te quedas con un sistema propio para seguir avanzando a tu ritmo.",
+    ],
     ctaButton: "Hablemos",
-    ctaAbout: "Quién soy",
     homeTitle1: "La IA en tu negocio, ",
     homeTitle2: "bajo tu control.",
     homeSub:
@@ -199,12 +210,18 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
     title1: "Understand and bring AI ",
     title2: "into your business.",
     intro:
-      "For 8 weeks, with one 1-hour online session a week, you understand what's happening with AI and bring it into your business safely. We build, one to one, a system adapted to your company, so that when it ends the control is yours and you don't need anyone external to keep moving forward with AI.",
+      "For 8 weeks, with one 1-hour online session a week, you understand what's happening with AI and bring it into your business safely. We build, one to one, a system adapted to your company, so that when it ends the control is yours and you don't need anyone external to keep moving forward with AI. And if after the second session you see it isn't helping you, I'll refund everything you've paid in full.",
     facts: ["8 weeks", "One 1-hour online session a week", "First meeting free"],
     forWhoTitle: "Who is it for?",
     forWho: [
       "Freelancers and small businesses with 1 to 50 employees, with no in-house tech profile, that have used the same way of working for years and feel AI is moving faster than they can keep up.",
       "You see your competitors already using AI and you don't even know where to start. Every week there's new news, everyone around you is talking about artificial intelligence, and meanwhile there are manual tasks still eating up your people's hours.",
+    ],
+    forWhoList: [
+      "You're a freelancer or run a small business with 1 to 50 employees",
+      "You have no tech profiles on staff",
+      "You've used the same way of working for years",
+      "You feel AI is moving faster than you can keep up with",
     ],
     notForTitle: "Who is it not for?",
     notFor: [
@@ -215,7 +232,7 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
     stepsTitle: "How will we work?",
     steps: [
       {
-        title: "A first 15-minute meeting, free",
+        title: "A free first 15-minute meeting",
         text: "To look at your situation: how you work today and where your hours go.",
       },
       {
@@ -228,13 +245,13 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       },
       {
         title: "You finish with your own system",
-        text: "To build your applications.",
+        text: "To build the tools your business needs.",
       },
     ],
     outcomesTitle: "What do you take away?",
     outcomes: [
       {
-        title: "Being part of the AI revolution",
+        title: "Becoming an innovative company",
         text: "What AI is, what's happening and how it affects your company.",
       },
       {
@@ -246,6 +263,10 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
         text: "In writing and adapted to your company: which tools are used, with what data and how, so nobody puts your business's information or your clients' at risk.",
       },
       {
+        title: "Your data stays private",
+        text: "Your tools live inside your company, instead of leaving your business's information scattered across third-party apps.",
+      },
+      {
         title: "A safe system, verified by an engineer",
         text: "Set up one to one around how your company works, so you can build your own tools (or improve the ones you already have) by describing them in your own words.",
       },
@@ -255,6 +276,7 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       },
       {
         title: "The control is yours",
+        homeHidden: true,
         text: "When the mentoring ends you don't need anyone external to keep moving forward with AI. The system and the tools belong to your business.",
       },
     ],
@@ -264,6 +286,8 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       tax: "+ VAT",
       includes:
         "It includes everything above: the 8 sessions, the plan, the system, the first tools, the team training and the safe use policy.",
+      homeIncludes:
+        "It includes the guidance, the training and a personalised system built into your company.",
       payment:
         "In 2 payments of €1,250: half when we sign and the other half halfway through the mentoring, after the fourth session.",
       guaranteeTitle: "Guarantee",
@@ -294,25 +318,21 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       "Before the mentoring I spent years turning outdated processes into tools. Some examples:",
     proofs: [
       {
-        title: "NFConnect",
-        text: "They took payments with a Word document and a bank transfer. I built them a payment gateway.",
+        title: "Selling physical products to businesses",
+        text: "A company took payments with a Word document and a bank transfer. I built it a payment gateway.",
       },
       {
-        title: "Numen Games",
-        text: "Deploying their virtual worlds was done by hand. Now it's a platform and it takes one button.",
-      },
-      {
-        title: "Dental clinics",
-        text: "My first job: the software to manage orders between clinic and lab, with their statuses and roles.",
+        title: "Virtual Reality",
+        text: "A studio deployed its virtual worlds by hand. Now it's a platform and it takes one button.",
       },
     ],
     waveTitle: "Why now?",
-    wave: "The best time to adapt was a year ago, when the AI wave started. The second best time is now, while we're on the crest. If you wait until tomorrow, the wave may already have dragged you to the shore.",
-    ctaTitle: "Shall we have that first call?",
-    ctaText:
-      "Message me on LinkedIn and we'll find a slot for the 15-minute meeting. It's free and it helps you see where to start.",
+    wave: [
+      "The best time to adapt was a year ago, when the AI wave began. The second best time is now, while we're on the crest. If you wait until tomorrow, the wave may already have dragged you to the shore.",
+      "Something new comes out every week, and the further AI moves, the harder it is for a company to adapt on its own. What's an advantage today for those already using it will tomorrow be the bare minimum to keep competing. The sooner you start, the sooner you can adapt and get ahead of your competitors.",
+      "Starting now doesn't mean doing everything at once. In 8 weeks you understand AI, bring it into your business safely and keep your own system to keep moving forward at your own pace.",
+    ],
     ctaButton: "Let's talk",
-    ctaAbout: "Who I am",
     homeTitle1: "AI in your business, ",
     homeTitle2: "under your control.",
     homeSub:
