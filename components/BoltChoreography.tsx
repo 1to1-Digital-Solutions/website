@@ -10,7 +10,6 @@ import {
   rnd,
   shape,
   strokeBolt,
-  strokeSoft,
   type Pt,
 } from "@/lib/bolt";
 
@@ -18,8 +17,8 @@ import {
  * The light that leads the visitor down the home page. After the stakes, every section that
  * comes into view receives it from the one above:
  *
- * - "Under your control": the points of the stakes flow down onto the middle card, and a soft
- *   light runs around it and passes, gently, from card to card.
+ * - "Under your control": a dimmer bolt comes down to the middle card, runs around it and,
+ *   as it passes the side next to another card, a mini bolt jumps to it; each card passes it on.
  * - Who I am: a bolt comes down from the section above and runs around the photo.
  * - Projects: it comes down to the middle card and spreads to the sides.
  * - Testimonials: it comes down and forks, into both cards at once.
@@ -38,10 +37,16 @@ type Actor = { token: number; draw: (now: number) => boolean };
 type Timing = {
   lap: number;
   hop: number;
-  soft?: boolean;
+  /** A dimmer tone, so it doesn't weigh on a section full of cards. */
+  dim?: boolean;
   chain?: boolean;
   onLapEnd?: (i: number) => void;
 };
+
+/** How bright the dimmer bolt is, against the full one. */
+const DIM = 0.5;
+
+const ORDER: StageId[] = ["services", "who", "work", "testimonials", "forwho", "process"];
 
 const SECTIONS: Record<StageId, string> = {
   services: "#services",
@@ -170,8 +175,8 @@ export function BoltChoreography() {
     };
 
     /**
-     * A light running once around an element's border, from `s0`. The bolt flickers; the soft
-     * version is a smooth trail. `fade` makes it flicker out at the end, like it's going off.
+     * A bolt running once around an element's border, from `s0`. `fade` makes it flicker out
+     * at the end, like it's going off.
      */
     const lap = (
       token: number,
@@ -179,14 +184,14 @@ export function BoltChoreography() {
       s0: number,
       dur: number,
       o: {
-        soft?: boolean;
+        dim?: boolean;
         fade?: boolean;
         passes?: { d: number; fn: () => void; done?: boolean }[];
         onEnd?: () => void;
       } = {}
     ): Actor => {
       const radius = radiusOf(el);
-      const seg = o.soft ? 0.24 : 0.16;
+      const seg = 0.16;
       const t0 = performance.now();
       let ended = false;
       flash(el);
@@ -217,16 +222,15 @@ export function BoltChoreography() {
             const s = s0 + tail + ((head - tail) * i) / n;
             const q = sh.at(s);
             const k = Math.round(((((s % 1) + 1) % 1) * sh.len) / 4);
-            const j = o.soft ? 0 : (rnd(k * 1.7 + tick * 7.3) - 0.5) * 4;
+            const j = (rnd(k * 1.7 + tick * 7.3) - 0.5) * 4;
             pts.push({ x: q.x + q.nx * j, y: q.y + q.ny * j });
           }
-          let alpha = Math.min(1, p * 8);
+          let alpha = Math.min(1, p * 8) * (o.dim ? DIM : 1);
           // Going off: it flickers and dims over the last stretch.
           if (o.fade && p > 0.65) {
             alpha *= (0.3 + 0.7 * rnd(tick * 3.7)) * Math.max(0.2, 1 - (p - 0.65) * 1.6);
           }
-          if (o.soft) strokeSoft(ctx, pts, neon, alpha);
-          else strokeBolt(ctx, pts, neon, alpha);
+          strokeBolt(ctx, pts, neon, alpha);
           return true;
         },
       };
@@ -239,8 +243,9 @@ export function BoltChoreography() {
       to: () => Pt,
       dur: number,
       onArrive: () => void,
-      /** How far it zigzags: wide between sections, tight between cards, 0 for the soft light. */
-      wild = 0.09
+      /** How far it zigzags: wide between sections, tight for the mini bolts between cards. */
+      wild = 0.09,
+      dim = false
     ): Actor => {
       const t0 = performance.now();
       const seed = Math.random() * 1000;
@@ -279,8 +284,7 @@ export function BoltChoreography() {
           const pts = [pos(tail)];
           for (let k = 1; k < K; k++) if (k / K > tail && k / K < head) pts.push(pos(k / K));
           pts.push(pos(head));
-          if (wild === 0) strokeSoft(ctx, pts, neon);
-          else strokeBolt(ctx, pts, neon);
+          strokeBolt(ctx, pts, neon, dim ? DIM : 1);
           return true;
         },
       };
@@ -446,14 +450,15 @@ export function BoltChoreography() {
                     onBorder(cards[j], sIn),
                     t.hop,
                     () => add(lapCard(j, sIn)),
-                    t.soft ? 0 : 0.04
+                    0.04,
+                    t.dim
                   )
                 );
               },
             };
           });
         return lap(token, cards[i], s0, t.lap, {
-          soft: t.soft,
+          dim: t.dim,
           passes,
           onEnd: () => t.onLapEnd?.(i),
         });
@@ -466,7 +471,7 @@ export function BoltChoreography() {
       const lapCard = spreader(token, cards, t);
       const s = topMid(cards[i]);
       const to = onBorder(cards[i], s);
-      add(travel(token, above(to, section), to, 750, () => add(lapCard(i, s))));
+      add(travel(token, above(to, section), to, 750, () => add(lapCard(i, s)), 0.09, t.dim));
     };
 
     // ---- The stages, in order. ----
@@ -492,26 +497,7 @@ export function BoltChoreography() {
       const cards = cardsIn(section);
 
       if (id === "services" && cards.length) {
-        // The stakes' points flow down onto the middle card, which lights up softly.
-        const entry = entryOf(cards);
-        const marks = Array.from({ length: 340 }, () => Math.random());
-        const lapCard = spreader(token, cards, { lap: 2600, hop: 650, soft: true });
-        add(
-          flight(
-            token,
-            startsOn(Array.from(stakes.querySelectorAll("li")), marks.length),
-            () => {
-              const sh = shapeOf(cards[entry]);
-              return (i) => sh.at(marks[i]);
-            },
-            {
-              dur: [1100, 1700],
-              stagger: 450,
-              alpha: 0.6,
-              onDone: () => add(lapCard(entry, topMid(cards[entry]))),
-            }
-          )
-        );
+        comeDown(token, section, cards, entryOf(cards), { lap: 1400, hop: 300, dim: true });
       } else if ((id === "who" || id === "work") && cards.length) {
         comeDown(token, section, cards, entryOf(cards), {
           lap: id === "who" ? 1700 : 1500,
@@ -667,10 +653,13 @@ export function BoltChoreography() {
         for (const e of entries) {
           const id = idOf.get(e.target);
           if (!id || !e.isIntersecting || !down || played.has(id)) continue;
-          played.add(id);
-          queue.push(id);
-          // The stage on screen has been left behind: don't keep the new one waiting.
-          if (running && !near(document.querySelector(SECTIONS[running]))) stop();
+          // Moving on cuts what's playing: the sections left behind count as seen, and only
+          // this one plays.
+          const upTo = ORDER.slice(0, ORDER.indexOf(id) + 1);
+          for (const x of upTo) played.add(x);
+          if (id !== "forwho" && upTo.includes("forwho")) boltState.cloudPending = false;
+          stop();
+          queue = [id];
           void pump();
         }
       },

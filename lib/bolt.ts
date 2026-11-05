@@ -118,27 +118,6 @@ export function strokeBolt(ctx: CanvasRenderingContext2D, pts: Pt[], neon: strin
   ctx.globalAlpha = 1;
 }
 
-/** A smooth trail that fades towards its tail: the gentle version of the bolt. */
-export function strokeSoft(ctx: CanvasRenderingContext2D, pts: Pt[], neon: string, alpha = 1) {
-  if (pts.length < 2) return;
-  ctx.lineJoin = "round";
-  ctx.lineCap = "round";
-  ctx.strokeStyle = neon;
-  ctx.shadowColor = neon;
-  ctx.shadowBlur = 6;
-  ctx.lineWidth = 1.6;
-  const n = pts.length - 1;
-  for (let i = 1; i <= n; i++) {
-    ctx.globalAlpha = 0.85 * alpha * Math.pow(i / n, 1.5);
-    ctx.beginPath();
-    ctx.moveTo(pts[i - 1].x, pts[i - 1].y);
-    ctx.lineTo(pts[i].x, pts[i].y);
-    ctx.stroke();
-  }
-  ctx.shadowBlur = 0;
-  ctx.globalAlpha = 1;
-}
-
 export const easeInOut = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 export const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
 export const easeIn = (t: number) => t * t * t;

@@ -222,9 +222,10 @@ export function ForWhoCloud() {
         mouse = null;
         return;
       }
-      // The points are on their way: wait for them, but don't leave it empty if they never come.
-      if (!anyVisible() && !emptied) {
-        fallback = window.setTimeout(showAll, boltState.cloudPending ? 4000 : 800);
+      // The points are on their way: only their flight fills the cloud. Otherwise (reloaded
+      // further down, or the section was skipped) the cloud is just there.
+      if (!anyVisible() && !emptied && !boltState.cloudPending) {
+        fallback = window.setTimeout(showAll, 800);
       }
       start();
     });
