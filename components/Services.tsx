@@ -29,10 +29,11 @@ export function Services() {
       <ul data-bolt-trigger className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {c.outcomes
           .filter((o) => !o.homeHidden)
-          .map((o) => (
+          .map((o, i) => (
             <li
               key={o.title}
               data-bolt-card
+              data-bolt-entry={i === 1 ? "" : undefined}
               className="border-foreground/10 bg-anthracite/50 flex items-start gap-4 rounded-2xl border p-6"
             >
               <Check size={22} aria-hidden="true" className="text-primary mt-1 shrink-0" />

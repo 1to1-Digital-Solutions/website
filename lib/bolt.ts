@@ -7,19 +7,27 @@
 export type Pt = { x: number; y: number };
 type Edge = Pt & { nx: number; ny: number };
 
+/** What the "Is it for you?" cloud lets the choreography do with its points. */
+export type CloudApi = {
+  count: () => number;
+  /** Where point `i` rests, in viewport coordinates (read once per frame). */
+  homes: () => (i: number) => Pt;
+  /** Point `i` has landed: it shows and stays in the cloud. */
+  reveal: (i: number) => void;
+  /** All the points leave the cloud: returns where they were, in viewport coordinates. */
+  release: () => Pt[];
+};
+
 /** Shared between the choreography and the "Is it for you?" cloud. */
-export const boltState = {
-  /** The bolt is expected to land in the cloud: it waits for it instead of appearing alone. */
+export const boltState: { cloudPending: boolean; cloud: CloudApi | null } = {
+  /** The points are expected to arrive in the cloud: it waits for them instead of appearing. */
   cloudPending: true,
+  cloud: null,
 };
 
 export const BOLT_EVENTS = {
   /** Back at the hero: the bolt can run again on the next way down. */
   reset: "bolt:reset",
-  /** The bolt lands in the cloud. detail: viewport point. */
-  cloudArrive: "bolt:cloud-arrive",
-  /** Part of the cloud gathers into a point to become the bolt again. detail: viewport point. */
-  cloudGather: "bolt:cloud-gather",
 } as const;
 
 /** Deterministic noise in [0, 1). */
@@ -107,6 +115,27 @@ export function strokeBolt(ctx: CanvasRenderingContext2D, pts: Pt[], neon: strin
   ctx.strokeStyle = "#ffffff";
   ctx.lineWidth = 0.8;
   ctx.stroke();
+  ctx.globalAlpha = 1;
+}
+
+/** A smooth trail that fades towards its tail: the gentle version of the bolt. */
+export function strokeSoft(ctx: CanvasRenderingContext2D, pts: Pt[], neon: string, alpha = 1) {
+  if (pts.length < 2) return;
+  ctx.lineJoin = "round";
+  ctx.lineCap = "round";
+  ctx.strokeStyle = neon;
+  ctx.shadowColor = neon;
+  ctx.shadowBlur = 6;
+  ctx.lineWidth = 1.6;
+  const n = pts.length - 1;
+  for (let i = 1; i <= n; i++) {
+    ctx.globalAlpha = 0.85 * alpha * Math.pow(i / n, 1.5);
+    ctx.beginPath();
+    ctx.moveTo(pts[i - 1].x, pts[i - 1].y);
+    ctx.lineTo(pts[i].x, pts[i].y);
+    ctx.stroke();
+  }
+  ctx.shadowBlur = 0;
   ctx.globalAlpha = 1;
 }
 

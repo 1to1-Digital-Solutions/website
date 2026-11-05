@@ -82,7 +82,8 @@ export function ForWho({
       )}
       <div ref={ref} data-shown={shown} className="for-who relative grid gap-6 md:grid-cols-2">
         <div
-          className="for-who-yes border-primary/30 bg-anthracite/50 rounded-3xl border p-8"
+          data-cloud-solid
+          className="for-who-yes border-primary/30 bg-anthracite rounded-3xl border p-8"
           style={delay(200 + count * STEP)}
         >
           <h3 className="font-outfit text-2xl font-bold tracking-tight">{c.forWhoTitle}</h3>
@@ -100,7 +101,8 @@ export function ForWho({
           </ul>
         </div>
         <div
-          className="for-who-no border-foreground/10 bg-anthracite/50 rounded-3xl border p-8"
+          data-cloud-solid
+          className="for-who-no border-foreground/10 bg-anthracite rounded-3xl border p-8"
           style={delay(400 + count * STEP)}
         >
           <h3 className="font-outfit text-2xl font-bold tracking-tight">{c.notForTitle}</h3>

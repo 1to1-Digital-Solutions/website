@@ -96,7 +96,8 @@ function flyDots(
     x: W * (W > 1024 ? 0.72 : 0.5),
     y: Math.max(40, -box.top + window.innerHeight * 0.2),
   };
-  const dots = Array.from({ length: 260 }, (_, i) => {
+  // More points on the way back, so it shows that they return to the cloud.
+  const dots = Array.from({ length: dir === "down" ? 260 : 700 }, (_, i) => {
     const a = Math.random() * Math.PI * 2;
     const rad = Math.sqrt(Math.random()) * Math.min(W, H) * 0.2;
     const inCloud = { x: cloud.x + Math.cos(a) * rad, y: cloud.y + Math.sin(a) * rad * 0.7 };
@@ -138,7 +139,7 @@ function flyDots(
           ? Math.min(1, t * 5) * (t < 1 ? 1 : Math.max(0, 1 - after / 350))
           : Math.min(1, t * 5) * (1 - Math.pow(t, 3));
       if (alpha <= 0) continue;
-      ctx.globalAlpha = alpha * 0.55;
+      ctx.globalAlpha = alpha * (dir === "down" ? 0.55 : 0.75);
       ctx.beginPath();
       ctx.arc(x, y, d.r, 0, Math.PI * 2);
       ctx.fill();
