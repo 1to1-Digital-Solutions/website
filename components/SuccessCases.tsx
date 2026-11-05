@@ -53,10 +53,12 @@ export function SuccessCases() {
           <p className="text-foreground/70 mx-auto mt-4 max-w-2xl text-lg">{t("casesSub")}</p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div data-bolt-trigger className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {cases.map((project, idx) => (
             <a
               key={idx}
+              data-bolt-card
+              data-bolt-entry={idx === 1 ? "" : undefined}
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"

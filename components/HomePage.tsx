@@ -12,6 +12,7 @@ import { WhoGuides } from "@/components/WhoGuides";
 import { ForWho } from "@/components/ForWho";
 import { Stakes } from "@/components/Stakes";
 import { Explainer } from "@/components/Explainer";
+import { BoltChoreography } from "@/components/BoltChoreography";
 
 /** The home page (client side: GSAP scroll effects). app/page.tsx adds the structured data. */
 export function HomePage() {
@@ -192,6 +193,8 @@ export function HomePage() {
           {s.node}
         </div>
       ))}
+
+      <BoltChoreography />
     </div>
   );
 }

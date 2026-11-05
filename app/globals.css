@@ -121,7 +121,8 @@ html {
 }
 
 /* The moment the points land: the stakes cards glow once, softly. */
-.electric-flash {
+.electric-flash,
+.bolt-flash {
   animation: electric-flash 0.9s ease-out;
 }
 @keyframes electric-flash {
@@ -183,13 +184,6 @@ html {
 .for-who[data-shown="true"] .for-who-yes {
   border-color: color-mix(in srgb, var(--primary) 60%, transparent);
   animation: for-who-glow 1.4s ease-out var(--for-who-delay, 0ms) both;
-}
-.for-who-glow {
-  opacity: 0.45;
-  transition: opacity 1.2s ease-out var(--for-who-delay, 0ms);
-}
-.for-who-glow[data-shown="true"] {
-  opacity: 1;
 }
 @keyframes for-who-glow {
   0% {

@@ -35,6 +35,7 @@ export function PriceCard({
         </p>
         <Link
           href={compact ? "/services" : "/#contact"}
+          data-bolt-end={compact ? "" : undefined}
           className="group bg-primary focus-visible:ring-primary focus-visible:ring-offset-background mt-6 inline-flex items-center gap-2 rounded-full px-7 py-3 font-semibold text-[var(--on-primary)] transition-transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
         >
           {compact ? c.homeLink : c.ctaButton}

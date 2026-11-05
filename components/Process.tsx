@@ -22,7 +22,7 @@ export function Process() {
         <p className="text-foreground/70 mt-4 text-lg md:mx-auto md:max-w-2xl">{t("procSub")}</p>
       </div>
 
-      <div className="relative grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+      <div data-bolt-trigger className="relative grid gap-8 md:grid-cols-2 lg:grid-cols-4">
         {/* Line joining the 4 numbers when they sit in one row: from the centre of the first
             to the centre of the last, at the height of their middle, solid all the way. */}
         <div
@@ -35,7 +35,10 @@ export function Process() {
             key={idx}
             className="relative flex flex-col items-start md:items-center md:text-center"
           >
-            <div className="bg-anthracite border-primary/40 text-primary relative z-10 mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border text-2xl font-black shadow-[0_0_15px_rgba(64,224,208,0.1)]">
+            <div
+              data-bolt-card
+              className="bg-anthracite border-primary/40 text-primary relative z-10 mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border text-2xl font-black shadow-[0_0_15px_rgba(64,224,208,0.1)]"
+            >
               {step.number}
             </div>
             <h3 className="font-outfit text-foreground mb-3 text-xl font-bold">

@@ -5,6 +5,7 @@ import { X } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { MENTORSHIP } from "@/content/services";
 import { HOME } from "@/content/home";
+import { ForWhoCloud } from "@/components/ForWhoCloud";
 
 /** Time between one item and the next, in ms. */
 const STEP = 380;
@@ -65,14 +66,9 @@ export function ForWho({
   const delay = (ms: number) => ({ "--for-who-delay": `${ms}ms` }) as React.CSSProperties;
 
   return (
-    <section id="for-who" className={`relative mx-auto w-full max-w-6xl px-6 ${className}`}>
-      {/* A soft turquoise glow behind the cards, which brightens once the profile is ticked. */}
-      <div
-        aria-hidden="true"
-        data-shown={shown}
-        className="for-who-glow bg-primary/20 pointer-events-none absolute top-[62%] left-1/2 h-[24rem] w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[110px]"
-        style={delay(200 + count * STEP)}
-      />
+    <section id="for-who" className={`mx-auto w-full max-w-6xl px-6 ${className}`}>
+      {/* The point cloud the bolt breaks into, behind the cards. */}
+      <ForWhoCloud />
       {heading && (
         <div className="relative mb-14 text-center">
           <h2 className="font-outfit text-4xl font-bold tracking-tight md:text-5xl">

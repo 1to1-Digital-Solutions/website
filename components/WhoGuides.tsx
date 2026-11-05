@@ -14,7 +14,11 @@ export function WhoGuides() {
   return (
     <section id="who" className="mx-auto w-full max-w-5xl px-6 py-24">
       <div className="flex flex-col items-center gap-10 md:flex-row md:gap-14">
-        <div className="bg-anthracite/80 relative aspect-square w-48 shrink-0 overflow-hidden rounded-3xl md:w-64">
+        <div
+          data-bolt-card
+          data-bolt-trigger
+          className="bg-anthracite/80 relative aspect-square w-48 shrink-0 overflow-hidden rounded-3xl md:w-64"
+        >
           <Image
             src="/images/profilePicture.jpg"
             alt={t("whoImgAlt") as string}

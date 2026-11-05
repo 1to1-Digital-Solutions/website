@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { Clock, KeyRound, ShieldAlert, TrendingDown } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { HOME } from "@/content/home";
+import { BOLT_EVENTS } from "@/lib/bolt";
 
 const ICONS = [TrendingDown, Clock, ShieldAlert, KeyRound];
 
@@ -194,6 +195,14 @@ export function Stakes() {
     // up past them: the current goes off and the points return to the cloud.
     let at: "cloud" | "cards" = "cloud";
     let stop = () => {};
+    const backToHero = () => {
+      at = "cloud";
+      stop();
+      douse();
+      // Back at the hero: the bolt down the page can play again.
+      window.dispatchEvent(new Event(BOLT_EVENTS.reset));
+      stop = flyDots(canvas, list, "up", () => {});
+    };
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && at === "cloud") {
@@ -201,17 +210,22 @@ export function Stakes() {
           stop();
           stop = flyDots(canvas, list, "down", ignite);
         } else if (!entry.isIntersecting && entry.boundingClientRect.top > 0 && at === "cards") {
-          at = "cloud";
-          stop();
-          douse();
-          stop = flyDots(canvas, list, "up", () => {});
+          backToHero();
         }
       },
       { rootMargin: "0px 0px -25% 0px" }
     );
     observer.observe(list);
+    // A jump straight to the top (the logo, Home key) skips the observer: check it here too.
+    const onScroll = () => {
+      if (at === "cards" && list.getBoundingClientRect().top > window.innerHeight * 0.75) {
+        backToHero();
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
       observer.disconnect();
+      window.removeEventListener("scroll", onScroll);
       stop();
     };
   }, [count]);

@@ -26,12 +26,13 @@ export function Services() {
       <h3 className="font-outfit text-foreground/80 mb-8 text-center text-xl font-semibold">
         {c.outcomesTitle}
       </h3>
-      <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <ul data-bolt-trigger className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {c.outcomes
           .filter((o) => !o.homeHidden)
           .map((o) => (
             <li
               key={o.title}
+              data-bolt-card
               className="border-foreground/10 bg-anthracite/50 flex items-start gap-4 rounded-2xl border p-6"
             >
               <Check size={22} aria-hidden="true" className="text-primary mt-1 shrink-0" />
