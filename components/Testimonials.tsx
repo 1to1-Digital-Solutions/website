@@ -26,10 +26,11 @@ export function Testimonials() {
         <p className="text-foreground/70 mt-4 text-lg">{t("testSub")}</p>
       </div>
 
-      <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2">
+      <div data-bolt-trigger className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2">
         {testimonials.map((test, idx) => (
           <div
             key={idx}
+            data-bolt-card
             className="bg-anthracite/50 border-foreground/5 relative flex h-full flex-col overflow-hidden rounded-2xl border p-8 shadow-sm"
           >
             {/* Decorative quote — primary-tinted, clipped to the bottom-right so it never sits under the text. */}

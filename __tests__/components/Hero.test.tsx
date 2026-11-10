@@ -14,7 +14,7 @@ describe("Hero", () => {
     renderWithProviders(<Hero />);
 
     expect(screen.getByText(/no sabes ni por dónde empezar/i)).toBeInTheDocument();
-    expect(screen.getByText(/el control sea tuyo/i)).toBeInTheDocument();
+    expect(screen.getByText(/uno a uno\./i)).toBeInTheDocument();
     expect(screen.queryByText(/8 semanas/i)).toBeNull();
 
     expect(screen.getByRole("link", { name: /^Hablemos$/i })).toHaveAttribute("href", "#contact");

@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Linkedin, Github } from "lucide-react";
+import { Linkedin, Github, Mail } from "lucide-react";
+import { CONTACT_EMAIL, LINKEDIN_URL } from "@/content/contact";
+import { HOME } from "@/content/home";
 import { useLanguage } from "@/context/LanguageContext";
 import { useTheme } from "@/context/ThemeContext";
 import { useConsent } from "@/context/ConsentContext";
@@ -11,7 +13,10 @@ import { useState, useEffect } from "react";
 const CURRENT_YEAR = new Date().getFullYear();
 
 export function Footer() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const c = HOME[lang];
+  const linkClass =
+    "hover:text-primary focus-visible:ring-primary rounded transition-colors focus-visible:ring-2 focus-visible:outline-none";
   const { theme } = useTheme();
   const { reset: resetConsent } = useConsent();
   const [mounted, setMounted] = useState(false);
@@ -59,26 +64,53 @@ export function Footer() {
           <p className="text-foreground/70 mt-3 text-xs leading-snug">{t("footIncibeCaption")}</p>
         </div>
 
-        {/* Social Links */}
-        <div className="flex items-center gap-6">
-          <Link
-            href="https://www.linkedin.com/in/c%C3%A9sar-pe%C3%B3n-lamparero/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-foreground/70 hover:text-primary focus-visible:ring-primary rounded transition-colors focus-visible:ring-2 focus-visible:outline-none"
-          >
-            <Linkedin size={24} />
-            <span className="sr-only">LinkedIn</span>
+        {/* Pages */}
+        <nav
+          aria-label={c.footNav}
+          className="flex flex-col items-center gap-2 text-sm md:items-start"
+        >
+          <p className="text-foreground font-semibold">{c.footNav}</p>
+          <Link href="/services" className={linkClass}>
+            {t("navServices")}
           </Link>
-          <Link
-            href="https://github.com/1to1-Digital-Solutions"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-foreground/70 hover:text-primary focus-visible:ring-primary rounded transition-colors focus-visible:ring-2 focus-visible:outline-none"
-          >
-            <Github size={24} />
-            <span className="sr-only">GitHub</span>
+          <Link href="/about" className={linkClass}>
+            {t("navAbout")}
           </Link>
+          <Link href="/#faq" className={linkClass}>
+            FAQ
+          </Link>
+          <Link href="/#contact" className={linkClass}>
+            {t("navCTA")}
+          </Link>
+        </nav>
+
+        {/* Contact and social links */}
+        <div className="flex flex-col items-center gap-3 text-sm md:items-start">
+          <p className="text-foreground font-semibold">{c.footContact}</p>
+          <a href={`mailto:${CONTACT_EMAIL}`} className={`${linkClass} flex items-center gap-2`}>
+            <Mail size={16} aria-hidden="true" />
+            {CONTACT_EMAIL}
+          </a>
+          <div className="mt-1 flex items-center gap-6">
+            <Link
+              href={LINKEDIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground/70 hover:text-primary focus-visible:ring-primary rounded transition-colors focus-visible:ring-2 focus-visible:outline-none"
+            >
+              <Linkedin size={24} />
+              <span className="sr-only">LinkedIn</span>
+            </Link>
+            <Link
+              href="https://github.com/1to1-Digital-Solutions"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground/70 hover:text-primary focus-visible:ring-primary rounded transition-colors focus-visible:ring-2 focus-visible:outline-none"
+            >
+              <Github size={24} />
+              <span className="sr-only">GitHub</span>
+            </Link>
+          </div>
         </div>
       </div>
 

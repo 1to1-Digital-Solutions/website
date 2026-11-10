@@ -7,7 +7,14 @@ import { MENTORSHIP } from "@/content/services";
  * The single public price, right after what the client takes away. As wide as the cards above
  * it: on desktop the amount and the CTA on the left, the details on the right.
  */
-export function PriceCard({ className = "mt-6" }: { className?: string }) {
+export function PriceCard({
+  className = "mt-6",
+  compact = false,
+}: {
+  className?: string;
+  /** Home page: short "includes" line and the link to the full detail on /services. */
+  compact?: boolean;
+}) {
   const { lang } = useLanguage();
   const c = MENTORSHIP[lang];
 
@@ -27,10 +34,11 @@ export function PriceCard({ className = "mt-6" }: { className?: string }) {
           </span>
         </p>
         <Link
-          href="/#contact"
+          href={compact ? "/services" : "/#contact"}
+          data-bolt-end={compact ? "" : undefined}
           className="group bg-primary focus-visible:ring-primary focus-visible:ring-offset-background mt-6 inline-flex items-center gap-2 rounded-full px-7 py-3 font-semibold text-[var(--on-primary)] transition-transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
         >
-          {c.ctaButton}
+          {compact ? c.homeLink : c.ctaButton}
           <ArrowRight
             size={18}
             aria-hidden="true"
@@ -41,7 +49,9 @@ export function PriceCard({ className = "mt-6" }: { className?: string }) {
 
       <div className="flex flex-col gap-4 lg:col-span-2">
         <p className="text-foreground/85 text-lg leading-relaxed">{c.price.payment}</p>
-        <p className="text-foreground/60 leading-relaxed">{c.price.includes}</p>
+        <p className="text-foreground/60 leading-relaxed">
+          {compact ? c.price.homeIncludes : c.price.includes}
+        </p>
         <p className="border-primary/20 bg-primary/5 text-foreground/85 flex items-start gap-3 rounded-2xl border p-4 text-left text-sm leading-relaxed">
           <ShieldCheck size={20} aria-hidden="true" className="text-primary mt-0.5 shrink-0" />
           <span>
