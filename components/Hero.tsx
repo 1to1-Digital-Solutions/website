@@ -87,7 +87,7 @@ export function Hero() {
           <h1 className="hero-text-line font-display text-foreground mx-auto max-w-5xl text-4xl leading-none font-black tracking-[-0.04em] [word-spacing:0.08em] sm:text-5xl md:text-7xl lg:mx-0 lg:text-6xl xl:text-7xl">
             <Bracketed>{t("heroKeyword") as string}</Bracketed> {t("heroTitleRest")}
           </h1>
-          <p className="hero-text-line text-text-muted pointer-events-none mx-auto mt-6 max-w-2xl text-base md:text-lg lg:mx-0">
+          <p className="hero-text-line text-text-muted pointer-events-none mx-auto mt-6 max-w-2xl text-lg md:text-xl lg:mx-0">
             {t("heroSub")}
           </p>
         </div>
