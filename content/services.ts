@@ -68,7 +68,7 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
     metaTitle: "Mentoría de IA para tu negocio",
     metaDescription:
       "Mentoría de 8 semanas para pymes y autónomos: entiende e integra la IA en tu negocio de forma segura y termina con un sistema propio para crear tus herramientas sin depender de nadie.",
-    eyebrow: "La mentoría",
+    eyebrow: "la mentoría",
     title1: "Entiende e integra la IA ",
     title2: "en tu negocio.",
     intro:
@@ -143,7 +143,7 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       },
     ],
     price: {
-      title: "Precio",
+      title: "precio",
       amount: "2.500 €",
       tax: "+ IVA",
       includes:
@@ -199,14 +199,14 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
     homeTitle2: "bajo tu control.",
     homeSub:
       "De 0 a 100 en 8 semanas: entiendes la IA, la integras en tu negocio y terminas con un sistema para construir tus propias aplicaciones de forma segura.",
-    homeAudience: "Para autónomos y pymes sin perfil técnico",
+    homeAudience: "para autónomos y pymes sin perfil técnico",
     homeLink: "Ver la mentoría en detalle",
   },
   en: {
     metaTitle: "AI mentoring for your business",
     metaDescription:
       "An 8-week mentoring programme for small businesses and freelancers: understand and bring AI into your business safely, and finish with your own system to build your tools without depending on anyone.",
-    eyebrow: "The mentoring",
+    eyebrow: "the mentoring",
     title1: "Understand and bring AI ",
     title2: "into your business.",
     intro:
@@ -281,7 +281,7 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
       },
     ],
     price: {
-      title: "Price",
+      title: "price",
       amount: "€2,500",
       tax: "+ VAT",
       includes:
@@ -337,7 +337,7 @@ export const MENTORSHIP: Record<"es" | "en", MentorshipCopy> = {
     homeTitle2: "under your control.",
     homeSub:
       "From 0 to 100 in 8 weeks: you understand AI, bring it into your business and finish with a system to build your own applications safely.",
-    homeAudience: "For freelancers and small businesses with no tech profile",
+    homeAudience: "for freelancers and small businesses with no tech profile",
     homeLink: "See the mentoring in detail",
   },
 };

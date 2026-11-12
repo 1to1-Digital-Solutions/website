@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
+import { SectionHeading } from "@1to1/ui";
 import { useLanguage } from "@/context/LanguageContext";
 
 export function SuccessCases() {
@@ -44,13 +45,14 @@ export function SuccessCases() {
   ];
 
   return (
-    <section id="work" className="bg-anthracite/30 w-full py-24">
+    <section id="work" className="w-full py-24">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-16 text-center">
-          <h2 className="font-outfit text-4xl font-bold tracking-tight md:text-5xl">
-            {t("casesTitle1")} <span className="text-primary">{t("casesTitle2")}</span>
-          </h2>
-          <p className="text-foreground/70 mx-auto mt-4 max-w-2xl text-lg">{t("casesSub")}</p>
+        <div className="mb-14">
+          <SectionHeading
+            title={t("casesTitle1") as string}
+            accent={t("casesTitle2") as string}
+            lead={t("casesSub")}
+          />
         </div>
 
         <div data-bolt-trigger className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -62,10 +64,9 @@ export function SuccessCases() {
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-background hover:shadow-primary/10 focus-visible:ring-primary flex flex-col overflow-hidden rounded-2xl transition-transform hover:-translate-y-2 hover:shadow-2xl focus-visible:ring-2 focus-visible:outline-none"
+              className="group bg-background border-border-default hover:border-primary/50 focus-visible:ring-primary flex flex-col overflow-hidden rounded-2xl border transition-colors focus-visible:ring-2 focus-visible:outline-none"
             >
               <div className="bg-anthracite relative aspect-video w-full overflow-hidden">
-                <div className="from-primary/20 absolute inset-0 bg-gradient-to-br to-transparent mix-blend-overlay" />
                 <div className="absolute inset-0 flex items-center justify-center p-6">
                   <div
                     className={`relative ${project.logoSize} brightness-0 transition-transform duration-500 group-hover:scale-105 dark:invert`}
@@ -83,27 +84,27 @@ export function SuccessCases() {
 
               <div className="flex flex-1 flex-col p-6">
                 <div className="mb-2 flex items-center justify-between">
-                  <span className="text-primary text-xs font-semibold tracking-wider uppercase">
+                  <span className="text-primary text-sm font-semibold">
                     {project.category as string}
                   </span>
                   <ExternalLink
                     size={16}
                     aria-hidden="true"
-                    className="text-foreground/40 group-hover:text-primary transition-colors"
+                    className="text-text-subtle group-hover:text-primary transition-colors"
                   />
                 </div>
-                <h3 className="font-outfit group-hover:text-primary mb-3 text-xl font-bold transition-colors">
+                <h3 className="font-display group-hover:text-primary mb-3 text-xl font-bold transition-colors">
                   {project.title as string}
                   <span className="sr-only"> {t("srOpensInNewTab") as string}</span>
                 </h3>
-                <p className="text-foreground/70 mb-6 flex-1 text-sm">
+                <p className="text-text-muted mb-6 flex-1 text-sm">
                   {project.description as string}
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag, i) => (
                     <span
                       key={i}
-                      className="bg-foreground/5 text-foreground/70 rounded-full px-3 py-1 text-xs font-medium"
+                      className="border-border-default text-text-muted rounded-full border px-3 py-1 text-xs font-medium"
                     >
                       {tag}
                     </span>

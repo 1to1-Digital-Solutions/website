@@ -1,72 +1,22 @@
 "use client";
 
-import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { Accordion, SectionHeading } from "@1to1/ui";
 import { useLanguage } from "@/context/LanguageContext";
 import { FAQ as FAQ_COPY } from "@/content/faq";
 
+/** The design system's accordion: native <details>, one open at a time, the first one open. */
 export function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
   const { lang } = useLanguage();
   const c = FAQ_COPY[lang];
-  const faqs = c.items.map((item) => ({ question: item.q, answer: item.a }));
 
   return (
     <section id="faq" className="mx-auto w-full max-w-3xl px-6 py-24">
-      <div className="mb-12 text-center">
-        <h2 className="font-outfit text-4xl font-bold tracking-tight md:text-5xl">
-          {c.title1} <span className="text-primary">{c.title2}</span>
-        </h2>
-        <p className="text-foreground/70 mt-4 text-lg">{c.sub}</p>
+      <div className="mb-12">
+        <SectionHeading title={c.title1} accent={c.title2} lead={c.sub} />
       </div>
 
-      <div className="flex flex-col gap-4">
-        {faqs.map((faq, idx) => {
-          const isOpen = openIndex === idx;
-
-          return (
-            <div
-              key={idx}
-              className={`overflow-hidden rounded-2xl border transition-colors ${
-                isOpen
-                  ? "border-primary/50 bg-anthracite/50"
-                  : "border-foreground/10 bg-background hover:bg-anthracite/30"
-              }`}
-            >
-              <button
-                onClick={() => setOpenIndex(isOpen ? null : idx)}
-                className="focus-visible:ring-primary flex w-full cursor-pointer items-center justify-between p-6 text-left focus-visible:ring-2 focus-visible:outline-none"
-                aria-expanded={isOpen}
-                aria-controls={`faq-answer-${idx}`}
-                id={`faq-question-${idx}`}
-              >
-                <span className="font-outfit text-lg font-semibold md:text-xl">{faq.question}</span>
-                <ChevronDown
-                  className={`text-primary transition-transform duration-300 ${
-                    isOpen ? "rotate-180" : ""
-                  }`}
-                  size={24}
-                />
-              </button>
-
-              <div
-                id={`faq-answer-${idx}`}
-                role="region"
-                aria-labelledby={`faq-question-${idx}`}
-                aria-hidden={!isOpen}
-                inert={!isOpen}
-                className={`grid transition-all duration-300 ease-in-out ${
-                  isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                }`}
-              >
-                <div className="overflow-hidden">
-                  <p className="text-foreground/70 px-6 pb-6">{faq.answer}</p>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+      {/* Keyed by language so the open item resets when the copy changes. */}
+      <Accordion key={lang} items={c.items.map((item) => ({ question: item.q, answer: item.a }))} />
     </section>
   );
 }

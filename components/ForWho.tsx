@@ -6,6 +6,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { MENTORSHIP } from "@/content/services";
 import { HOME } from "@/content/home";
 import { ForWhoCloud } from "@/components/ForWhoCloud";
+import { SectionHeading } from "@1to1/ui";
 
 /** Time between one item and the next, in ms. */
 const STEP = 380;
@@ -13,8 +14,8 @@ const STEP = 380;
 /** A check drawn with a stroke, so it can be "ticked" with an animation. */
 function DrawnCheck() {
   return (
-    <span className="for-who-box border-primary/40 mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md border">
-      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" className="text-primary">
+    <span className="for-who-box oto-check oto-check--off">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
         <path
           d="M20 6 9 17l-5-5"
           pathLength={1}
@@ -70,30 +71,22 @@ export function ForWho({
       {/* The point cloud the bolt breaks into, behind the cards. */}
       <ForWhoCloud />
       {heading && (
-        <div className="relative mb-14 text-center">
-          <h2 className="font-outfit text-4xl font-bold tracking-tight md:text-5xl">
-            {HOME[lang].forWhoTitle1}
-            <span className="text-primary">{HOME[lang].forWhoTitle2}</span>
-          </h2>
-          <p className="text-foreground/70 mx-auto mt-4 max-w-2xl text-lg">
-            {HOME[lang].forWhoSub}
-          </p>
+        <div className="relative mb-14">
+          <SectionHeading
+            title={HOME[lang].forWhoTitle1}
+            accent={HOME[lang].forWhoTitle2}
+            lead={HOME[lang].forWhoSub}
+          />
         </div>
       )}
+      {/* The design system's checklists (oto-panel): the "for" card with the green border, the
+          "not for" one neutral and without fill. */}
       <div ref={ref} data-shown={shown} className="for-who relative grid gap-6 md:grid-cols-2">
-        <div
-          data-cloud-solid
-          className="for-who-yes border-primary/30 bg-anthracite rounded-3xl border p-8"
-          style={delay(200 + count * STEP)}
-        >
-          <h3 className="font-outfit text-2xl font-bold tracking-tight">{c.forWhoTitle}</h3>
-          <ul className="mt-6 flex flex-col gap-4">
+        <div data-cloud-solid className="for-who-yes oto-panel" style={delay(200 + count * STEP)}>
+          <h3 className="oto-panel__title">{c.forWhoTitle}</h3>
+          <ul className="oto-checklist">
             {c.forWhoList.map((item, i) => (
-              <li
-                key={item}
-                className="for-who-item text-foreground/80 flex items-start gap-3 leading-relaxed"
-                style={delay(200 + i * STEP)}
-              >
+              <li key={item} className="for-who-item" style={delay(200 + i * STEP)}>
                 <DrawnCheck />
                 <span>{item}</span>
               </li>
@@ -102,14 +95,16 @@ export function ForWho({
         </div>
         <div
           data-cloud-solid
-          className="for-who-no border-foreground/10 bg-anthracite rounded-3xl border p-8"
+          className="for-who-no oto-panel oto-panel--plain"
           style={delay(400 + count * STEP)}
         >
-          <h3 className="font-outfit text-2xl font-bold tracking-tight">{c.notForTitle}</h3>
-          <ul className="mt-6 flex flex-col gap-4">
+          <h3 className="oto-panel__title">{c.notForTitle}</h3>
+          <ul className="oto-checklist">
             {c.notFor.map((item) => (
-              <li key={item} className="text-foreground/80 flex items-start gap-3 leading-relaxed">
-                <X size={20} aria-hidden="true" className="text-foreground/50 mt-1 shrink-0" />
+              <li key={item}>
+                <span className="oto-check oto-check--no" aria-hidden="true">
+                  <X />
+                </span>
                 <span>{item}</span>
               </li>
             ))}

@@ -25,7 +25,7 @@ export function Footer() {
   const logoSrc = !mounted || theme === "dark" ? "/logo-negative.svg" : "/logo-positive.svg";
 
   return (
-    <footer className="border-foreground/10 bg-anthracite text-foreground/80 border-t py-12">
+    <footer className="border-border-default bg-anthracite text-foreground/80 border-t py-12">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-10 px-6 md:flex-row md:items-start">
         {/* Brand */}
         <div className="flex flex-col items-center md:items-start">
@@ -61,7 +61,7 @@ export function Footer() {
               className="h-36 w-auto md:h-24"
             />
           </a>
-          <p className="text-foreground/70 mt-3 text-xs leading-snug">{t("footIncibeCaption")}</p>
+          <p className="text-text-muted mt-3 text-xs leading-snug">{t("footIncibeCaption")}</p>
         </div>
 
         {/* Pages */}
@@ -96,7 +96,7 @@ export function Footer() {
               href={LINKEDIN_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground/70 hover:text-primary focus-visible:ring-primary rounded transition-colors focus-visible:ring-2 focus-visible:outline-none"
+              className="text-text-muted hover:text-primary focus-visible:ring-primary rounded transition-colors focus-visible:ring-2 focus-visible:outline-none"
             >
               <Linkedin size={24} />
               <span className="sr-only">LinkedIn</span>
@@ -105,7 +105,7 @@ export function Footer() {
               href="https://github.com/1to1-Digital-Solutions"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground/70 hover:text-primary focus-visible:ring-primary rounded transition-colors focus-visible:ring-2 focus-visible:outline-none"
+              className="text-text-muted hover:text-primary focus-visible:ring-primary rounded transition-colors focus-visible:ring-2 focus-visible:outline-none"
             >
               <Github size={24} />
               <span className="sr-only">GitHub</span>
@@ -114,7 +114,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="text-foreground/70 mx-auto mt-12 flex w-full max-w-7xl flex-col items-center justify-between gap-4 px-6 text-xs md:flex-row">
+      <div className="text-text-muted mx-auto mt-12 flex w-full max-w-7xl flex-col items-center justify-between gap-4 px-6 text-xs md:flex-row">
         <p>
           &copy; {CURRENT_YEAR} 1to1 Digital Solutions. {t("footRights")}
         </p>

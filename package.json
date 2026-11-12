@@ -15,6 +15,7 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
+    "@1to1/ui": "github:1to1-Digital-Solutions/design-system#v0.1.1",
     "clsx": "^2.1.1",
     "gsap": "^3.15.0",
     "lucide-react": "^0.575.0",

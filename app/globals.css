@@ -1,77 +1,29 @@
+/* Fonts first: the Google Fonts url @import only survives at the very top of the bundle. */
+@import "@1to1/ui/fonts.css";
 @import "tailwindcss";
+/* 1to1 design system: Tailwind mapping (bg-primary, font-display, text-on-primary…), tokens
+   (dark and light) and the oto- component classes. */
+@import "@1to1/ui/theme.css";
+@import "@1to1/ui/tokens.css";
+@import "@1to1/ui/components.css";
 
 /* Use .dark/.light class on <html> for dark mode variants */
 @custom-variant dark (&:where(.dark, .dark *));
 
-@theme {
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-outfit: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
-
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-secondary: var(--secondary);
-  --color-anthracite: var(--anthracite);
-  --color-neon: var(--neon);
-
-  /* Brand palette — tokens. Same in both themes (semantic colors live in :root/.light). */
-  --color-primary-100: #14ffbc;
-  --color-primary-200: #1ac89a;
-  --color-primary-300: #1f957a;
-  --color-primary-400: #188169;
-  --color-primary-500: #116e57;
-  --color-primary-600: #0a5a46;
-  --color-primary-700: #084939;
-}
-
-/* Theme-invariant token: accessible foreground color for text/icons on `primary` bg. Tested vs WCAG AA. */
-:root {
-  --on-primary: #1c1c1f;
-}
-
-/* Neon turquoise of the hero cloud, for the one CTA that has to stand out (navbar). */
-:root,
-.dark {
-  --neon: #3ff8ec;
-}
-.light {
-  --neon: #14c8d4;
-}
-
-/* Dark mode (default + .dark class) */
-:root,
-.dark {
-  --background: #27272a;
-  --foreground: #ededed;
-  --primary: #1f957a;
-  --secondary: #ffffff;
-  --anthracite: #1e1e21;
-}
-
-/* Light mode */
-.light {
-  --background: #ffffff;
-  --foreground: #1a1a1a;
-  --primary: #1f957a;
-  --secondary: #27272a;
-  --anthracite: #f4f4f5;
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
   overflow-x: hidden;
 }
 
-/* Base utility classes for smooth scrolling and selection */
 html {
   scroll-behavior: smooth;
 }
 
 ::selection {
   background-color: var(--primary);
-  color: var(--background);
+  color: var(--on-primary);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -84,15 +36,21 @@ html {
   }
 }
 
-/* Stakes cards: a spark of current runs along the border, like an electric fence. Each
-   card gets a random delay and speed from JS, so they never fire together. */
+/* Stakes cards: a spark of current runs along the icon chip's border, like an electric fence.
+   Each chip gets a random delay and speed from JS, so they never fire together. The chip
+   sizes its own icon to 22px, so the spark's svg is set back to the chip's full size. */
+.oto-icon-chip .electric-border {
+  width: 100%;
+  height: 100%;
+}
 .electric-border {
   filter: drop-shadow(0 0 2px var(--neon))
     drop-shadow(0 0 5px color-mix(in srgb, var(--neon) 50%, transparent));
 }
 .electric-border rect {
   fill: none;
-  stroke-dasharray: 14 86;
+  /* A quarter of the chip's outline: on a 44px chip a shorter dash reads as a dot. */
+  stroke-dasharray: 24 76;
   stroke-linecap: round;
   opacity: 0;
   animation: electric-run var(--electric-dur, 2.5s) linear var(--electric-delay, 0s) 1 both;
@@ -134,6 +92,12 @@ html {
   100% {
     box-shadow: 0 0 0 0 transparent;
   }
+}
+
+/* The "not for" checklist card: neutral border like the design system's Checklist kind="no",
+   but it keeps the solid fill so the point cloud behind (ForWhoCloud) doesn't show through. */
+.oto-panel--plain {
+  border-color: var(--border-default);
 }
 
 /* "Is it for you?": the profile is ticked off item by item, then the card lights up and the

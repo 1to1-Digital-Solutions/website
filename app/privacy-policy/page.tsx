@@ -14,12 +14,12 @@ export default function PrivacyPolicy() {
       <div className="mx-auto max-w-3xl">
         <Link
           href="/"
-          className="text-foreground/70 hover:text-primary mb-8 inline-flex items-center gap-2 text-sm font-semibold transition-colors"
+          className="text-text-muted hover:text-primary mb-8 inline-flex items-center gap-2 text-sm font-semibold transition-colors"
         >
           <ArrowLeft size={16} /> Volver a Inicio
         </Link>
 
-        <h1 className="font-outfit mb-8 text-4xl font-bold tracking-tight">
+        <h1 className="font-display mb-8 text-4xl font-bold tracking-tight">
           Política de <span className="text-primary">Privacidad</span>
         </h1>
 
@@ -34,7 +34,7 @@ export default function PrivacyPolicy() {
               informamos de que el responsable del tratamiento de los datos personales recogidos a
               través de este sitio web es:
             </p>
-            <ul className="text-foreground/70 mt-3 list-disc space-y-1 pl-5">
+            <ul className="text-text-muted mt-3 list-disc space-y-1 pl-5">
               <li>
                 <strong className="text-foreground/90">Razón social:</strong> 1TO1 DIGITAL SOLUTIONS
                 SL.
@@ -65,7 +65,7 @@ export default function PrivacyPolicy() {
               electrónico o por LinkedIn, tratamos exclusivamente los datos que usted nos facilita
               voluntariamente en ese mensaje:
             </p>
-            <ul className="text-foreground/70 mt-3 list-disc space-y-1 pl-5">
+            <ul className="text-text-muted mt-3 list-disc space-y-1 pl-5">
               <li>Nombre y, en su caso, la empresa para la que trabaja</li>
               <li>Dirección de correo electrónico o perfil de LinkedIn desde el que nos escribe</li>
               <li>El contenido del mensaje y de la conversación posterior</li>
@@ -85,7 +85,7 @@ export default function PrivacyPolicy() {
               3. Finalidades y base legal del tratamiento
             </h2>
             <p>Tratamos sus datos con las siguientes finalidades:</p>
-            <ul className="text-foreground/70 mt-3 list-disc space-y-1 pl-5">
+            <ul className="text-text-muted mt-3 list-disc space-y-1 pl-5">
               <li>
                 Responder a su mensaje, organizar la primera reunión, preparar el plan y el
                 presupuesto y gestionar la relación precontractual y, en su caso, contractual.
@@ -112,7 +112,7 @@ export default function PrivacyPolicy() {
               (encargados del tratamiento según el Art. 28 RGPD), que tratan sus datos únicamente
               siguiendo nuestras instrucciones:
             </p>
-            <ul className="text-foreground/70 mt-3 list-disc space-y-1 pl-5">
+            <ul className="text-text-muted mt-3 list-disc space-y-1 pl-5">
               <li>
                 <strong className="text-foreground/90">Vercel Inc.</strong>: hosting y entrega del
                 sitio web.
@@ -183,7 +183,7 @@ export default function PrivacyPolicy() {
           <section>
             <h2 className="text-foreground mb-3 text-xl font-semibold">8. Sus derechos</h2>
             <p>Como interesado, le asisten los siguientes derechos:</p>
-            <ul className="text-foreground/70 mt-3 list-disc space-y-1 pl-5">
+            <ul className="text-text-muted mt-3 list-disc space-y-1 pl-5">
               <li>
                 <strong className="text-foreground/90">Acceso</strong> a sus datos personales.
               </li>
@@ -242,7 +242,7 @@ export default function PrivacyPolicy() {
             </p>
           </section>
 
-          <p className="text-foreground/70 border-foreground/10 border-t pt-8 text-xs">
+          <p className="text-text-muted border-border-default border-t pt-8 text-xs">
             Última actualización: Noviembre 2026
           </p>
         </div>

@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@1to1/ui':
+        specifier: github:1to1-Digital-Solutions/design-system#v0.1.1
+        version: https://codeload.github.com/1to1-Digital-Solutions/design-system/tar.gz/204d977ca44de226e249b60d9b2465cf1ccce5c0(lucide-react@0.575.0(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -98,6 +101,14 @@ importers:
         version: 5.9.3
 
 packages:
+
+  '@1to1/ui@https://codeload.github.com/1to1-Digital-Solutions/design-system/tar.gz/204d977ca44de226e249b60d9b2465cf1ccce5c0':
+    resolution: {gitHosted: true, integrity: sha512-iL4UQMXIriPfBFpu38EIWIdFzJ1Q/Xx8AE30zSjE4Jo4TY99jOW9/Xv6wFt+0oVoTlQZRF+a+A+fQ7J6jubBjg==, tarball: https://codeload.github.com/1to1-Digital-Solutions/design-system/tar.gz/204d977ca44de226e249b60d9b2465cf1ccce5c0}
+    version: 0.1.0
+    peerDependencies:
+      lucide-react: '>=0.400.0'
+      react: '>=18'
+      react-dom: '>=18'
 
   '@adobe/css-tools@4.5.0':
     resolution: {integrity: sha512-6OzddxPio9UiWTCemp4N8cYLV2ZN1ncRnV1cVGtve7dhPOtRkleRyx32GQCYSwDYgaHU3USMm84tNsvKzRCa1Q==}
@@ -3437,6 +3448,12 @@ packages:
     resolution: {integrity: sha512-v5l/aFXZQeai4awLbOpSoHecE9UiMrnfx75tEXLjNonXVARxQ5mOeipTjROUchszUNCqnE+hqAMujRsRHsut2Q==}
 
 snapshots:
+
+  '@1to1/ui@https://codeload.github.com/1to1-Digital-Solutions/design-system/tar.gz/204d977ca44de226e249b60d9b2465cf1ccce5c0(lucide-react@0.575.0(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
+    dependencies:
+      lucide-react: 0.575.0(react@19.3.0)
+      react: 19.3.0
+      react-dom: 19.3.0(react@19.3.0)
 
   '@adobe/css-tools@4.5.0': {}
 

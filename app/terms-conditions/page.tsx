@@ -14,12 +14,12 @@ export default function TermsConditions() {
       <div className="mx-auto max-w-3xl">
         <Link
           href="/"
-          className="text-foreground/70 hover:text-primary mb-8 inline-flex items-center gap-2 text-sm font-semibold transition-colors"
+          className="text-text-muted hover:text-primary mb-8 inline-flex items-center gap-2 text-sm font-semibold transition-colors"
         >
           <ArrowLeft size={16} /> Volver a Inicio
         </Link>
 
-        <h1 className="font-outfit mb-8 text-4xl font-bold tracking-tight">
+        <h1 className="font-display mb-8 text-4xl font-bold tracking-tight">
           Términos y <span className="text-primary">Condiciones</span>
         </h1>
 
@@ -33,7 +33,7 @@ export default function TermsConditions() {
               Información y de Comercio Electrónico (LSSI-CE), se informa de que el titular de este
               sitio web es:
             </p>
-            <ul className="text-foreground/70 mt-3 list-disc space-y-1 pl-5">
+            <ul className="text-text-muted mt-3 list-disc space-y-1 pl-5">
               <li>
                 <strong className="text-foreground/90">Razón social:</strong> 1TO1 DIGITAL SOLUTIONS
                 SL.
@@ -186,7 +186,7 @@ export default function TermsConditions() {
             </p>
           </section>
 
-          <p className="text-foreground/70 border-foreground/10 border-t pt-8 text-xs">
+          <p className="text-text-muted border-border-default border-t pt-8 text-xs">
             Última actualización: Noviembre 2026
           </p>
         </div>

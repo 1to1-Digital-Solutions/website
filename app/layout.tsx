@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -10,18 +9,6 @@ import { ConsentProvider } from "@/context/ConsentContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { requestLang } from "@/lib/lang";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const outfit = Outfit({
-  variable: "--font-outfit",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 const siteUrl = "https://1to1digital.solutions";
 const siteName = "1to1 Digital Solutions";
@@ -120,7 +107,7 @@ export default async function RootLayout({
         <StructuredData lang={lang} />
       </head>
       <body
-        className={`${inter.variable} ${outfit.variable} bg-background text-foreground selection:bg-primary/30 min-h-screen font-sans antialiased`}
+        className="bg-background text-foreground selection:bg-primary/30 min-h-screen font-sans antialiased"
         suppressHydrationWarning
       >
         <ThemeProvider>
@@ -128,7 +115,7 @@ export default async function RootLayout({
             <LanguageProvider initialLang={lang}>
               <a
                 href="#main-content"
-                className="bg-primary sr-only fixed top-2 left-2 z-[100] rounded-lg px-4 py-2 font-bold text-[var(--on-primary)] focus:not-sr-only focus:outline-none"
+                className="bg-primary text-on-primary sr-only fixed top-2 left-2 z-[100] rounded-lg px-4 py-2 font-bold focus:not-sr-only focus:outline-none"
               >
                 {lang === "es" ? "Saltar al contenido principal" : "Skip to main content"}
               </a>
