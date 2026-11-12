@@ -17,8 +17,9 @@ import {
  * The light that leads the visitor down the home page. After the stakes, every section that
  * comes into view receives it from the one above:
  *
- * - "Under your control": a dimmer bolt comes down to the middle card, runs around it and,
- *   as it passes the side next to another card, a mini bolt jumps to it; each card passes it on.
+ * - "Under your control": the cards have no box, so the light goes from icon to icon, like a
+ *   circuit. A bolt comes down to the middle card's icon chip, runs around it and, as it passes
+ *   the side facing a neighbouring chip, a mini bolt jumps across to it; each chip passes it on.
  * - Who I am: a bolt comes down from the section above and runs around the photo.
  * - Projects: it comes down to the middle card and spreads to the sides.
  * - Testimonials: it comes down and forks, into both cards at once.
@@ -40,6 +41,9 @@ type Timing = {
   /** A dimmer tone, so it doesn't weigh on a section full of cards. */
   dim?: boolean;
   chain?: boolean;
+  /** How far apart two elements can be and still pass the bolt on (90px for cards side by
+   * side; more for the icon chips of boxless cards, which sit a card's width apart). */
+  reach?: number;
   onLapEnd?: (i: number) => void;
 };
 
@@ -57,15 +61,15 @@ const SECTIONS: Record<StageId, string> = {
   process: "#process",
 };
 
-/** Cards side by side or one above the other, with only a gap between them. */
-function adjacent(a: DOMRect, b: DOMRect) {
+/** Cards side by side or one above the other, with only a gap (up to `reach`) between them. */
+function adjacent(a: DOMRect, b: DOMRect, reach = 90) {
   const vOverlap = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
   const hOverlap = Math.min(a.right, b.right) - Math.max(a.left, b.left);
   const hGap = Math.max(b.left - a.right, a.left - b.right);
   const vGap = Math.max(b.top - a.bottom, a.top - b.bottom);
   return (
-    (vOverlap > 0.5 * Math.min(a.height, b.height) && hGap > -2 && hGap < 90) ||
-    (hOverlap > 0.5 * Math.min(a.width, b.width) && vGap > -2 && vGap < 90)
+    (vOverlap > 0.5 * Math.min(a.height, b.height) && hGap > -2 && hGap < reach) ||
+    (hOverlap > 0.5 * Math.min(a.width, b.width) && vGap > -2 && vGap < reach)
   );
 }
 
@@ -427,7 +431,7 @@ export function BoltChoreography() {
         const a = cards[i].getBoundingClientRect();
         return cards
           .map((_, j) => j)
-          .filter((j) => j !== i && adjacent(a, cards[j].getBoundingClientRect()));
+          .filter((j) => j !== i && adjacent(a, cards[j].getBoundingClientRect(), t.reach));
       };
       const lapCard = (i: number, s0: number): Actor => {
         taken.add(i);
@@ -450,7 +454,7 @@ export function BoltChoreography() {
                     onBorder(cards[j], sIn),
                     t.hop,
                     () => add(lapCard(j, sIn)),
-                    0.04,
+                    t.reach ? 0.05 : 0.04,
                     t.dim
                   )
                 );
@@ -497,7 +501,8 @@ export function BoltChoreography() {
       const cards = cardsIn(section);
 
       if (id === "services" && cards.length) {
-        comeDown(token, section, cards, entryOf(cards), { lap: 1400, hop: 300, dim: true });
+        // Icon chips a card's width apart: short laps, longer hops across the gaps.
+        comeDown(token, section, cards, entryOf(cards), { lap: 650, hop: 420, reach: 480 });
       } else if ((id === "who" || id === "work") && cards.length) {
         comeDown(token, section, cards, entryOf(cards), {
           lap: id === "who" ? 1700 : 1500,

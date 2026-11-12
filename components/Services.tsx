@@ -25,19 +25,19 @@ export function Services() {
       <h3 className="font-display text-foreground/85 mb-10 text-center text-xl font-semibold">
         {c.outcomesTitle}
       </h3>
-      {/* Boxless cards, as in the design system. The bolt still runs around each item's area
-          (rounded like the big cards) and jumps between neighbours. */}
+      {/* Boxless cards, as in the design system. The bolt goes from icon chip to icon chip,
+          like a circuit, instead of around boxes that aren't there. */}
       <ul data-bolt-trigger className="grid gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
         {c.outcomes
           .filter((o) => !o.homeHidden)
           .map((o, i) => (
-            <li
-              key={o.title}
-              data-bolt-card
-              data-bolt-entry={i === 1 ? "" : undefined}
-              className="oto-card rounded-2xl"
-            >
-              <span className="oto-icon-chip" aria-hidden="true">
+            <li key={o.title} className="oto-card">
+              <span
+                data-bolt-card
+                data-bolt-entry={i === 1 ? "" : undefined}
+                className="oto-icon-chip"
+                aria-hidden="true"
+              >
                 <Check />
               </span>
               <div>

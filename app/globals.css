@@ -49,7 +49,8 @@ html {
 }
 .electric-border rect {
   fill: none;
-  stroke-dasharray: 14 86;
+  /* A quarter of the chip's outline: on a 44px chip a shorter dash reads as a dot. */
+  stroke-dasharray: 24 76;
   stroke-linecap: round;
   opacity: 0;
   animation: electric-run var(--electric-dur, 2.5s) linear var(--electric-delay, 0s) 1 both;

@@ -10,7 +10,7 @@ import { useLanguage } from "@/context/LanguageContext";
  */
 export function WhoGuides() {
   const { t } = useLanguage();
-  const points = [t("who1"), t("who2"), t("who3")];
+  const points = [t("who1"), t("who2")];
 
   return (
     <section id="who" className="mx-auto w-full max-w-5xl px-6 py-24">

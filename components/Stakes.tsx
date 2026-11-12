@@ -36,7 +36,7 @@ function ElectricBorder({ timing }: { timing: Timing }) {
           pathLength={100}
           stroke="var(--neon)"
           strokeOpacity={0.75}
-          strokeWidth={1.8}
+          strokeWidth={1.5}
         />
         <rect
           width="100%"
@@ -45,7 +45,7 @@ function ElectricBorder({ timing }: { timing: Timing }) {
           pathLength={100}
           stroke="white"
           strokeOpacity={0.5}
-          strokeWidth={0.7}
+          strokeWidth={0.6}
         />
       </g>
     </svg>
@@ -234,7 +234,8 @@ export function Stakes() {
 
   return (
     <section id="stakes" className="mx-auto w-full max-w-6xl px-6 py-24">
-      {/* Shared filter: turbulence displaces the stroke and its frequency flickers. */}
+      {/* Shared filter: turbulence displaces the stroke and its frequency flickers. Kept
+          subtle: the spark runs around a 44px icon chip, not a whole card. */}
       <svg aria-hidden="true" className="absolute h-0 w-0">
         <filter id="electric-jitter" x="-5%" y="-5%" width="110%" height="110%">
           <feTurbulence type="turbulence" baseFrequency="0.09" numOctaves={2} seed={3}>
@@ -245,7 +246,7 @@ export function Stakes() {
               repeatCount="indefinite"
             />
           </feTurbulence>
-          <feDisplacementMap in="SourceGraphic" scale={5} />
+          <feDisplacementMap in="SourceGraphic" scale={2} />
         </filter>
       </svg>
 
