@@ -1,4 +1,5 @@
 import { Quote } from "lucide-react";
+import { SectionHeading } from "@1to1/ui";
 import { useLanguage } from "@/context/LanguageContext";
 
 export function Testimonials() {
@@ -19,11 +20,12 @@ export function Testimonials() {
 
   return (
     <section id="testimonials" className="mx-auto w-full max-w-7xl px-6 py-24">
-      <div className="mb-16 text-center">
-        <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
-          {t("testTitle1")} <span className="text-primary">{t("testTitle2")}</span>
-        </h2>
-        <p className="text-foreground/70 mt-4 text-lg">{t("testSub")}</p>
+      <div className="mb-14">
+        <SectionHeading
+          title={t("testTitle1") as string}
+          accent={t("testTitle2") as string}
+          lead={t("testSub")}
+        />
       </div>
 
       <div data-bolt-trigger className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2">
@@ -31,7 +33,7 @@ export function Testimonials() {
           <div
             key={idx}
             data-bolt-card
-            className="bg-anthracite/50 border-foreground/5 relative flex h-full flex-col overflow-hidden rounded-2xl border p-8 shadow-sm"
+            className="bg-anthracite border-border-default relative flex h-full flex-col overflow-hidden rounded-2xl border p-8"
           >
             {/* Decorative quote — primary-tinted, clipped to the bottom-right so it never sits under the text. */}
             <Quote

@@ -14,7 +14,7 @@ export default function CookiePolicy() {
       <div className="mx-auto max-w-3xl">
         <Link
           href="/"
-          className="text-foreground/70 hover:text-primary mb-8 inline-flex items-center gap-2 text-sm font-semibold transition-colors"
+          className="text-text-muted hover:text-primary mb-8 inline-flex items-center gap-2 text-sm font-semibold transition-colors"
         >
           <ArrowLeft size={16} /> Volver a Inicio
         </Link>
@@ -56,11 +56,11 @@ export default function CookiePolicy() {
               3. ¿Qué cookies utilizamos?
             </h2>
             <div className="space-y-4">
-              <div className="border-foreground/10 rounded-xl border p-4">
+              <div className="border-border-default rounded-xl border p-4">
                 <h3 className="text-foreground mb-1 font-semibold">
                   Cookies estrictamente necesarias
                 </h3>
-                <p className="text-foreground/70 text-sm">
+                <p className="text-text-muted text-sm">
                   Son esenciales para el funcionamiento del sitio. Sin ellas, servicios como la
                   navegación entre secciones o el guardado de preferencias de idioma no
                   funcionarían. No requieren consentimiento y no pueden desactivarse.
@@ -83,11 +83,11 @@ export default function CookiePolicy() {
                 </ul>
               </div>
 
-              <div className="border-foreground/10 rounded-xl border p-4">
+              <div className="border-border-default rounded-xl border p-4">
                 <h3 className="text-foreground mb-1 font-semibold">
                   Cookies analíticas (opcionales)
                 </h3>
-                <p className="text-foreground/70 text-sm">
+                <p className="text-text-muted text-sm">
                   Nos permiten medir, de forma agregada y anonimizada, cuántas personas visitan el
                   sitio, qué secciones consultan y cómo interactúan con la web, para mejorar la
                   experiencia. <strong>Solo se activan si aceptas las cookies</strong> en el banner
@@ -103,7 +103,7 @@ export default function CookiePolicy() {
                     4. Mantiene el estado de la sesión. Duración: 2 años.
                   </li>
                 </ul>
-                <p className="text-foreground/70 mt-3 text-sm">
+                <p className="text-text-muted mt-3 text-sm">
                   Tenemos activado el modo IP-anonymization y desactivadas las señales publicitarias
                   (<em>Google Signals</em> y <em>ad personalization</em>). Puedes retirar tu
                   consentimiento en cualquier momento desde el enlace{" "}
@@ -123,7 +123,7 @@ export default function CookiePolicy() {
               funcionalidad del sitio. A continuación encontrarás instrucciones para los navegadores
               más comunes:
             </p>
-            <ul className="text-foreground/70 mt-3 list-disc space-y-1 pl-5">
+            <ul className="text-text-muted mt-3 list-disc space-y-1 pl-5">
               <li>
                 <strong className="text-foreground/90">Chrome:</strong> Configuración → Privacidad y
                 seguridad → Cookies y otros datos de sitios.
@@ -191,7 +191,7 @@ export default function CookiePolicy() {
             </p>
           </section>
 
-          <p className="text-foreground/70 border-foreground/10 border-t pt-8 text-xs">
+          <p className="text-text-muted border-border-default border-t pt-8 text-xs">
             Última actualización: Mayo 2026
           </p>
         </div>

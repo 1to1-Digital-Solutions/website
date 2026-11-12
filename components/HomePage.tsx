@@ -188,7 +188,7 @@ export function HomePage() {
         <div
           key={s.id ?? i}
           id={s.id}
-          className={`card-section ${i % 2 ? "bg-anthracite" : "bg-background"} relative ${Z[i]} w-full ${s.id ? "scroll-mt-24" : ""} rounded-t-[3rem] border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]`}
+          className={`card-section ${i % 2 ? "bg-anthracite" : "bg-background"} relative ${Z[i]} w-full ${s.id ? "scroll-mt-24" : ""} border-border-default rounded-t-[3rem] border-t shadow-[0_-20px_50px_rgba(0,0,0,0.5)]`}
         >
           {s.node}
         </div>

@@ -15,8 +15,8 @@ export const translations = {
     navCTA: "Let's talk",
 
     // Hero
-    heroTitle1: "Understand and bring AI",
-    heroTitle2: "into your business, safely.",
+    heroKeyword: "Understand and bring",
+    heroTitleRest: "AI into your business, safely.",
     heroSub:
       "Your competitors already use AI, there's something new every week and you don't even know where to start. I'll guide you to build a system adapted to your business, one to one.",
     heroBtnStart: "Let's talk",
@@ -41,7 +41,7 @@ export const translations = {
       "After trying several development teams, Moovle had a screen tourism app half built. I redesigned it and took it to the iOS and Android stores.",
 
     // Who guides you (home)
-    whoEyebrow: "Who guides you",
+    whoEyebrow: "who guides you",
     whoTitle: "I'm César Peón.",
     whoText:
       "I've loved technology since my dad handed me a joystick to play pac-man instead of a dummy. In my career I've jumped between completely different projects, from Blockchain to Virtual Reality, so I know how it feels when everything changes and you have to adapt.",
@@ -113,8 +113,8 @@ export const translations = {
     navCTA: "Hablemos",
 
     // Hero
-    heroTitle1: "Entiende e integra la\u00a0IA",
-    heroTitle2: "en tu negocio, de forma segura.",
+    heroKeyword: "Entiende e integra",
+    heroTitleRest: "la\u00a0IA en tu negocio, de forma segura.",
     heroSub:
       "Tu competencia ya usa la IA, cada semana sale algo nuevo y no sabes ni por dónde empezar. Te acompaño a crear un sistema adaptado a tu negocio, uno a uno.",
     heroBtnStart: "Hablemos",
@@ -139,7 +139,7 @@ export const translations = {
       "Después de probar con varios equipos de desarrollo, Moovle tenía una app de turismo de pantalla a medio hacer. La rediseñé y la llevé hasta las tiendas de iOS y Android.",
 
     // Quién te acompaña (home)
-    whoEyebrow: "Quién te acompaña",
+    whoEyebrow: "quién te acompaña",
     whoTitle: "Soy César Peón.",
     whoText:
       "Me apasiona la tecnología desde que mi padre me daba un joystick para jugar al pac-man en lugar de un chupete. En mi carrera he saltado entre proyectos completamente distintos, de Blockchain a Realidad Virtual, así que sé lo que se siente cuando todo cambia y hay que adaptarse.",

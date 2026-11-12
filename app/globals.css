@@ -36,8 +36,13 @@ html {
   }
 }
 
-/* Stakes cards: a spark of current runs along the border, like an electric fence. Each
-   card gets a random delay and speed from JS, so they never fire together. */
+/* Stakes cards: a spark of current runs along the icon chip's border, like an electric fence.
+   Each chip gets a random delay and speed from JS, so they never fire together. The chip
+   sizes its own icon to 22px, so the spark's svg is set back to the chip's full size. */
+.oto-icon-chip .electric-border {
+  width: 100%;
+  height: 100%;
+}
 .electric-border {
   filter: drop-shadow(0 0 2px var(--neon))
     drop-shadow(0 0 5px color-mix(in srgb, var(--neon) 50%, transparent));
@@ -86,6 +91,12 @@ html {
   100% {
     box-shadow: 0 0 0 0 transparent;
   }
+}
+
+/* The "not for" checklist card: neutral border like the design system's Checklist kind="no",
+   but it keeps the solid fill so the point cloud behind (ForWhoCloud) doesn't show through. */
+.oto-panel--plain {
+  border-color: var(--border-default);
 }
 
 /* "Is it for you?": the profile is ticked off item by item, then the card lights up and the

@@ -31,7 +31,7 @@ type HomeCopy = {
 
 export const HOME: Record<"es" | "en", HomeCopy> = {
   es: {
-    stakesEyebrow: "Lo que te juegas",
+    stakesEyebrow: "lo que te juegas",
     stakesTitle1: "¿Y si lo dejas ",
     stakesTitle2: "para más adelante?",
     stakes: [
@@ -58,7 +58,7 @@ export const HOME: Record<"es" | "en", HomeCopy> = {
     forWhoTitle1: "¿Es ",
     forWhoTitle2: "para ti?",
     forWhoSub: "Si te sientes identificado con este perfil, la mentoría es para ti.",
-    explainEyebrow: "En pocas palabras",
+    explainEyebrow: "en pocas palabras",
     explainTitle1: "Tu negocio, ",
     explainTitle2: "preparado para la IA.",
     explain: [
@@ -75,7 +75,7 @@ export const HOME: Record<"es" | "en", HomeCopy> = {
     footContact: "Contacto",
   },
   en: {
-    stakesEyebrow: "What's at stake",
+    stakesEyebrow: "what's at stake",
     stakesTitle1: "What if you leave it ",
     stakesTitle2: "for later?",
     stakes: [
@@ -102,7 +102,7 @@ export const HOME: Record<"es" | "en", HomeCopy> = {
     forWhoTitle1: "Is it ",
     forWhoTitle2: "for you?",
     forWhoSub: "If you recognise yourself in this profile, the mentoring is for you.",
-    explainEyebrow: "In a few words",
+    explainEyebrow: "in a few words",
     explainTitle1: "Your business, ",
     explainTitle2: "ready for AI.",
     explain: [

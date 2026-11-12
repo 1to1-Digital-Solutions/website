@@ -1,6 +1,7 @@
 import { Check } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { MENTORSHIP } from "@/content/services";
+import { SectionHeading } from "@1to1/ui";
 
 /** StoryBrand value proposition: what the client takes away. The price lives in the plan. */
 export function Services() {
@@ -12,21 +13,21 @@ export function Services() {
       id="services"
       className="relative mx-auto w-full max-w-7xl overflow-visible px-6 py-24"
     >
-      <div className="mb-16 text-center">
-        <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
-          {c.homeTitle1}
-          <span className="text-primary">{c.homeTitle2}</span>
-        </h2>
-        <p className="text-primary mt-4 text-sm font-semibold tracking-widest uppercase md:text-base">
-          {c.homeAudience}
-        </p>
-        <p className="text-foreground/70 mx-auto mt-4 max-w-2xl text-lg">{c.homeSub}</p>
+      <div className="mb-14">
+        <SectionHeading
+          eyebrow={c.homeAudience}
+          title={c.homeTitle1}
+          accent={c.homeTitle2}
+          lead={c.homeSub}
+        />
       </div>
 
-      <h3 className="font-display text-foreground/80 mb-8 text-center text-xl font-semibold">
+      <h3 className="font-display text-foreground/85 mb-10 text-center text-xl font-semibold">
         {c.outcomesTitle}
       </h3>
-      <ul data-bolt-trigger className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {/* Boxless cards, as in the design system. The bolt still runs around each item's area
+          (rounded like the big cards) and jumps between neighbours. */}
+      <ul data-bolt-trigger className="grid gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
         {c.outcomes
           .filter((o) => !o.homeHidden)
           .map((o, i) => (
@@ -34,12 +35,14 @@ export function Services() {
               key={o.title}
               data-bolt-card
               data-bolt-entry={i === 1 ? "" : undefined}
-              className="border-foreground/10 bg-anthracite/50 flex items-start gap-4 rounded-2xl border p-6"
+              className="oto-card rounded-2xl"
             >
-              <Check size={22} aria-hidden="true" className="text-primary mt-1 shrink-0" />
+              <span className="oto-icon-chip" aria-hidden="true">
+                <Check />
+              </span>
               <div>
-                <p className="font-display text-lg font-semibold">{o.title}</p>
-                <p className="text-foreground/70 mt-1 leading-relaxed">{o.text}</p>
+                <p className="oto-card__title">{o.title}</p>
+                <p className="oto-card__text">{o.text}</p>
               </div>
             </li>
           ))}

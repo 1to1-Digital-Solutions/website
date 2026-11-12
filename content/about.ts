@@ -34,7 +34,7 @@ export const ABOUT: Record<"es" | "en", AboutCopy> = {
     metaTitle: "Sobre mí",
     metaDescription:
       "Soy César Peón, ingeniero informático con más de 8 años de experiencia en desarrollo de software. Acompaño a empresas y autónomos a entender e integrar la IA en su negocio de forma segura.",
-    eyebrow: "Sobre mí",
+    eyebrow: "sobre mí",
     title1: "Hola, soy ",
     title2: "César.",
     intro: [
@@ -96,7 +96,7 @@ export const ABOUT: Record<"es" | "en", AboutCopy> = {
     metaTitle: "About",
     metaDescription:
       "I'm César Peón, a computer engineer with over 8 years of experience in software development. I guide companies and freelancers to understand and bring AI into their business safely.",
-    eyebrow: "About",
+    eyebrow: "about",
     title1: "Hi, I'm ",
     title2: "César.",
     intro: [

@@ -5,13 +5,14 @@ import { Clock, KeyRound, ShieldAlert, TrendingDown } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { HOME } from "@/content/home";
 import { BOLT_EVENTS } from "@/lib/bolt";
+import { SectionHeading } from "@1to1/ui";
 
 const ICONS = [TrendingDown, Clock, ShieldAlert, KeyRound];
 
 type Timing = { delay: number; dur: number };
 
 /**
- * The spark that runs once around a card's border, starting at a random moment. Two strokes
+ * The spark that runs once around the border of a card's icon chip, starting at a random moment. Two strokes
  * (neon glow and a white core) with a
  * displacement filter that makes the line jagged and flicker, like current on a fence.
  */
@@ -31,7 +32,7 @@ function ElectricBorder({ timing }: { timing: Timing }) {
         <rect
           width="100%"
           height="100%"
-          rx="16"
+          rx="10"
           pathLength={100}
           stroke="var(--neon)"
           strokeOpacity={0.75}
@@ -40,7 +41,7 @@ function ElectricBorder({ timing }: { timing: Timing }) {
         <rect
           width="100%"
           height="100%"
-          rx="16"
+          rx="10"
           pathLength={100}
           stroke="white"
           strokeOpacity={0.5}
@@ -76,12 +77,12 @@ function flyDots(
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   const neon = getComputedStyle(document.documentElement).getPropertyValue("--neon").trim();
   const box = canvas.getBoundingClientRect();
-  const cards = Array.from(list.querySelectorAll("li")).map((li) => {
-    const r = li.getBoundingClientRect();
+  const cards = Array.from(list.querySelectorAll(".oto-icon-chip")).map((chip) => {
+    const r = chip.getBoundingClientRect();
     return { x: r.left - box.left, y: r.top - box.top, w: r.width, h: r.height };
   });
 
-  // A random point on the border of a card.
+  // A random point on the border of a card's icon chip.
   const onBorder = (c: (typeof cards)[number]) => {
     let d = Math.random() * 2 * (c.w + c.h);
     if (d < c.w) return { x: c.x + d, y: c.y };
@@ -248,31 +249,25 @@ export function Stakes() {
         </filter>
       </svg>
 
-      <div className="mb-14 text-center">
-        <p className="text-primary text-sm font-semibold tracking-widest uppercase">
-          {c.stakesEyebrow}
-        </p>
-        <h2 className="font-display mt-3 text-4xl font-bold tracking-tight md:text-5xl">
-          {c.stakesTitle1}
-          <span className="text-primary">{c.stakesTitle2}</span>
-        </h2>
+      <div className="mb-14">
+        <SectionHeading eyebrow={c.stakesEyebrow} title={c.stakesTitle1} accent={c.stakesTitle2} />
       </div>
 
-      <ul ref={listRef} className="relative grid gap-6 md:grid-cols-2">
+      <ul ref={listRef} className="relative grid gap-x-8 gap-y-10 md:grid-cols-2">
         {c.stakes.map((s, i) => {
           const Icon = ICONS[i % ICONS.length];
           return (
-            <li
-              key={s.title}
-              className={`${lit ? "electric-flash" : ""} border-foreground/10 bg-anthracite/50 relative flex items-center gap-4 rounded-2xl border p-6`}
-            >
-              {timings && <ElectricBorder timing={timings[i]} />}
-              <span className="bg-foreground/5 text-neon flex h-11 w-11 shrink-0 items-center justify-center rounded-xl">
-                <Icon size={22} aria-hidden="true" />
+            <li key={s.title} className="oto-card">
+              <span
+                className={`oto-icon-chip relative ${lit ? "electric-flash" : ""}`}
+                aria-hidden="true"
+              >
+                {timings && <ElectricBorder timing={timings[i]} />}
+                <Icon />
               </span>
               <div>
-                <p className="font-display text-lg font-semibold">{s.title}</p>
-                <p className="text-foreground/70 mt-1 leading-relaxed">{s.text}</p>
+                <p className="oto-card__title">{s.title}</p>
+                <p className="oto-card__text">{s.text}</p>
               </div>
             </li>
           );

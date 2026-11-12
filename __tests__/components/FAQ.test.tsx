@@ -14,8 +14,10 @@ describe("FAQ", () => {
     const q1 = screen.getByText("¿Necesito algún conocimiento previo de IA?");
     expect(q1).toBeInTheDocument();
 
-    // Answer to Q1 should be visible
-    expect(screen.getAllByRole("button")).toHaveLength(6);
+    // Six questions, as native <details>; the first one starts open
+    const items = document.querySelectorAll("details");
+    expect(items).toHaveLength(6);
+    expect(items[0]).toHaveAttribute("open");
     const a1 = screen.getByText(/Partimos de cero/i);
     expect(a1).toBeInTheDocument();
 
@@ -23,8 +25,9 @@ describe("FAQ", () => {
     const q2 = screen.getByText("¿Las sesiones son online?");
     fireEvent.click(q2);
 
-    // Q2 answer becomes visible (testing presence in document)
+    // Q2 answer is there and its item opens
     const a2 = screen.getByText(/Todas las sesiones son online, por videollamada/i);
     expect(a2).toBeInTheDocument();
+    expect(items[1]).toHaveAttribute("open");
   });
 });
