@@ -20,7 +20,7 @@ export function Testimonials() {
   return (
     <section id="testimonials" className="mx-auto w-full max-w-7xl px-6 py-24">
       <div className="mb-16 text-center">
-        <h2 className="font-outfit text-4xl font-bold tracking-tight md:text-5xl">
+        <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
           {t("testTitle1")} <span className="text-primary">{t("testTitle2")}</span>
         </h2>
         <p className="text-foreground/70 mt-4 text-lg">{t("testSub")}</p>
@@ -43,7 +43,7 @@ export function Testimonials() {
               {test.quote as string}
             </p>
             <div className="relative z-10 mt-auto pt-8">
-              <p className="font-outfit text-foreground font-bold">{test.author as string}</p>
+              <p className="font-display text-foreground font-bold">{test.author as string}</p>
               <p className="text-primary text-sm">{test.role as string}</p>
             </div>
           </div>

@@ -82,10 +82,7 @@ export function Navbar() {
             <Globe size={14} /> {lang}
           </button>
 
-          <Link
-            href="/#contact"
-            className="bg-neon focus-visible:ring-neon focus-visible:ring-offset-background rounded-full px-5 py-2 text-sm font-bold text-[var(--on-primary)] shadow-[0_0_18px_color-mix(in_srgb,var(--neon)_45%,transparent)] transition-all hover:scale-105 hover:shadow-[0_0_28px_color-mix(in_srgb,var(--neon)_70%,transparent)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
-          >
+          <Link href="/#contact" className="oto-btn oto-btn--neon oto-btn--sm">
             {t("navCTA")}
           </Link>
         </div>
@@ -145,7 +142,7 @@ export function Navbar() {
             <li>
               <Link
                 href="/#contact"
-                className="bg-neon focus-visible:ring-neon focus-visible:ring-offset-background mt-4 block rounded-full px-8 py-3 text-base font-bold text-[var(--on-primary)] shadow-[0_0_18px_color-mix(in_srgb,var(--neon)_45%,transparent)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+                className="oto-btn oto-btn--neon mt-4 w-full"
                 onClick={() => setIsOpen(false)}
               >
                 {t("navCTA")}

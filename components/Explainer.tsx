@@ -19,7 +19,7 @@ export function Explainer() {
         <p className="text-primary text-sm font-semibold tracking-widest uppercase">
           {c.explainEyebrow}
         </p>
-        <h2 className="font-outfit mt-3 text-4xl font-bold tracking-tight md:text-5xl">
+        <h2 className="font-display mt-3 text-4xl font-bold tracking-tight md:text-5xl">
           {c.explainTitle1}
           <span className="text-primary">{c.explainTitle2}</span>
         </h2>

@@ -33,7 +33,7 @@ export function WhoGuides() {
           <p className="text-primary text-sm font-semibold tracking-widest uppercase">
             {t("whoEyebrow")}
           </p>
-          <h2 className="font-outfit mt-3 text-3xl font-bold tracking-tight md:text-4xl">
+          <h2 className="font-display mt-3 text-3xl font-bold tracking-tight md:text-4xl">
             {t("whoTitle")}
           </h2>
           <p className="text-foreground/75 mt-4 text-lg leading-relaxed">{t("whoText")}</p>
@@ -45,10 +45,7 @@ export function WhoGuides() {
               </li>
             ))}
           </ul>
-          <Link
-            href="/about"
-            className="border-foreground/20 hover:border-primary/60 hover:text-primary focus-visible:ring-primary mt-8 inline-flex items-center gap-2 rounded-full border px-6 py-3 font-semibold transition-colors focus-visible:ring-2 focus-visible:outline-none"
-          >
+          <Link href="/about" className="oto-btn oto-btn--secondary mt-8">
             {t("whoLink")}
             <ArrowRight size={18} aria-hidden="true" />
           </Link>

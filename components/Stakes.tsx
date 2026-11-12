@@ -252,7 +252,7 @@ export function Stakes() {
         <p className="text-primary text-sm font-semibold tracking-widest uppercase">
           {c.stakesEyebrow}
         </p>
-        <h2 className="font-outfit mt-3 text-4xl font-bold tracking-tight md:text-5xl">
+        <h2 className="font-display mt-3 text-4xl font-bold tracking-tight md:text-5xl">
           {c.stakesTitle1}
           <span className="text-primary">{c.stakesTitle2}</span>
         </h2>
@@ -271,7 +271,7 @@ export function Stakes() {
                 <Icon size={22} aria-hidden="true" />
               </span>
               <div>
-                <p className="font-outfit text-lg font-semibold">{s.title}</p>
+                <p className="font-display text-lg font-semibold">{s.title}</p>
                 <p className="text-foreground/70 mt-1 leading-relaxed">{s.text}</p>
               </div>
             </li>
@@ -285,7 +285,7 @@ export function Stakes() {
         />
       </ul>
 
-      <p className="font-outfit text-foreground/85 mx-auto mt-14 max-w-3xl text-center text-xl leading-relaxed md:text-2xl">
+      <p className="font-display text-foreground/85 mx-auto mt-14 max-w-3xl text-center text-xl leading-relaxed md:text-2xl">
         {c.stakesWave}
       </p>
     </section>

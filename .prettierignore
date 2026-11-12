@@ -22,3 +22,6 @@ next-env.d.ts
 
 # Local notes (gitignored)
 TODO.md
+
+# Vendored design system (synced from ../design-system)
+packages/ui/

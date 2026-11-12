@@ -13,7 +13,7 @@ export function Services() {
       className="relative mx-auto w-full max-w-7xl overflow-visible px-6 py-24"
     >
       <div className="mb-16 text-center">
-        <h2 className="font-outfit text-4xl font-bold tracking-tight md:text-5xl">
+        <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
           {c.homeTitle1}
           <span className="text-primary">{c.homeTitle2}</span>
         </h2>
@@ -23,7 +23,7 @@ export function Services() {
         <p className="text-foreground/70 mx-auto mt-4 max-w-2xl text-lg">{c.homeSub}</p>
       </div>
 
-      <h3 className="font-outfit text-foreground/80 mb-8 text-center text-xl font-semibold">
+      <h3 className="font-display text-foreground/80 mb-8 text-center text-xl font-semibold">
         {c.outcomesTitle}
       </h3>
       <ul data-bolt-trigger className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -38,7 +38,7 @@ export function Services() {
             >
               <Check size={22} aria-hidden="true" className="text-primary mt-1 shrink-0" />
               <div>
-                <p className="font-outfit text-lg font-semibold">{o.title}</p>
+                <p className="font-display text-lg font-semibold">{o.title}</p>
                 <p className="text-foreground/70 mt-1 leading-relaxed">{o.text}</p>
               </div>
             </li>

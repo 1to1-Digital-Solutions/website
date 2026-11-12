@@ -35,7 +35,7 @@ export function AboutPage() {
             <p className="text-primary text-sm font-semibold tracking-widest uppercase">
               {c.eyebrow}
             </p>
-            <h1 className="font-outfit mt-3 text-5xl font-bold tracking-tight md:text-6xl">
+            <h1 className="font-display mt-3 text-5xl font-bold tracking-tight md:text-6xl">
               {c.title1}
               <span className="text-primary">{c.title2}</span>
             </h1>
@@ -54,7 +54,7 @@ export function AboutPage() {
                   <dt className="text-foreground/70 order-2 mt-1 text-sm leading-snug">
                     {stat.label}
                   </dt>
-                  <dd className="font-outfit text-primary order-1 text-2xl font-bold">
+                  <dd className="font-display text-primary order-1 text-2xl font-bold">
                     {stat.value}
                   </dd>
                 </div>
@@ -67,7 +67,7 @@ export function AboutPage() {
       {/* Trayectoria */}
       <section className="bg-anthracite w-full py-20">
         <div className="mx-auto max-w-5xl px-6">
-          <h2 className="font-outfit text-3xl font-bold tracking-tight md:text-4xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
             {c.pathTitle}
           </h2>
           <ol className="border-primary/30 mt-10 flex flex-col gap-10 border-l pl-8">
@@ -77,7 +77,7 @@ export function AboutPage() {
                   aria-hidden="true"
                   className="bg-primary ring-anthracite absolute top-1.5 -left-[2.4rem] h-3 w-3 rounded-full ring-4"
                 />
-                <h3 className="font-outfit text-xl font-semibold">{step.title}</h3>
+                <h3 className="font-display text-xl font-semibold">{step.title}</h3>
                 <p className="text-foreground/75 mt-2 leading-relaxed">{step.text}</p>
               </li>
             ))}
@@ -89,7 +89,7 @@ export function AboutPage() {
       <div className="relative w-full overflow-hidden">
         <GlowBackground />
         <section className="relative mx-auto w-full max-w-4xl px-6 py-28">
-          <h2 className="font-outfit text-3xl font-bold tracking-tight md:text-4xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
             {c.whyTitle}
           </h2>
           <div className="text-foreground/85 mt-6 flex flex-col gap-4 text-lg leading-relaxed">
@@ -103,7 +103,7 @@ export function AboutPage() {
       {/* Own developments */}
       <section className="bg-anthracite w-full py-20">
         <div className="mx-auto max-w-5xl px-6">
-          <h2 className="font-outfit text-3xl font-bold tracking-tight md:text-4xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
             {c.productsTitle}
           </h2>
           <p className="text-foreground/70 mt-3 text-lg">{c.productsSub}</p>
@@ -126,7 +126,7 @@ export function AboutPage() {
                     className="text-foreground/40 group-hover:text-primary transition-colors"
                   />
                 </div>
-                <h3 className="font-outfit group-hover:text-primary mb-2 text-xl font-bold transition-colors">
+                <h3 className="font-display group-hover:text-primary mb-2 text-xl font-bold transition-colors">
                   {product.title}
                   <span className="sr-only"> {t("srOpensInNewTab") as string}</span>
                 </h3>
@@ -147,7 +147,7 @@ export function AboutPage() {
                   href={link.href}
                   target="_blank"
                   rel="noopener"
-                  className="border-foreground/20 hover:border-primary/60 hover:text-primary focus-visible:ring-primary inline-flex items-center gap-2 rounded-full border px-5 py-2.5 font-semibold transition-colors focus-visible:ring-2 focus-visible:outline-none"
+                  className="oto-btn oto-btn--secondary"
                 >
                   <Github size={18} aria-hidden="true" />
                   {link.label}

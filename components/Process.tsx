@@ -15,7 +15,7 @@ export function Process() {
   return (
     <section id="process" className="mx-auto w-full max-w-7xl px-6 py-24">
       <div className="mb-16 md:text-center">
-        <h2 className="font-outfit text-4xl font-bold tracking-tight md:text-5xl">
+        <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
           {t("procTitle1")}
           <span className="text-primary">{t("procTitle2")}</span>
         </h2>
@@ -41,7 +41,7 @@ export function Process() {
             >
               {step.number}
             </div>
-            <h3 className="font-outfit text-foreground mb-3 text-xl font-bold">
+            <h3 className="font-display text-foreground mb-3 text-xl font-bold">
               {step.title as string}
             </h3>
             <p className="text-foreground/70 leading-relaxed">{step.desc as string}</p>

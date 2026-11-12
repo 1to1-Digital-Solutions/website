@@ -71,7 +71,7 @@ export function ForWho({
       <ForWhoCloud />
       {heading && (
         <div className="relative mb-14 text-center">
-          <h2 className="font-outfit text-4xl font-bold tracking-tight md:text-5xl">
+          <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
             {HOME[lang].forWhoTitle1}
             <span className="text-primary">{HOME[lang].forWhoTitle2}</span>
           </h2>
@@ -86,7 +86,7 @@ export function ForWho({
           className="for-who-yes border-primary/30 bg-anthracite rounded-3xl border p-8"
           style={delay(200 + count * STEP)}
         >
-          <h3 className="font-outfit text-2xl font-bold tracking-tight">{c.forWhoTitle}</h3>
+          <h3 className="font-display text-2xl font-bold tracking-tight">{c.forWhoTitle}</h3>
           <ul className="mt-6 flex flex-col gap-4">
             {c.forWhoList.map((item, i) => (
               <li
@@ -105,7 +105,7 @@ export function ForWho({
           className="for-who-no border-foreground/10 bg-anthracite rounded-3xl border p-8"
           style={delay(400 + count * STEP)}
         >
-          <h3 className="font-outfit text-2xl font-bold tracking-tight">{c.notForTitle}</h3>
+          <h3 className="font-display text-2xl font-bold tracking-tight">{c.notForTitle}</h3>
           <ul className="mt-6 flex flex-col gap-4">
             {c.notFor.map((item) => (
               <li key={item} className="text-foreground/80 flex items-start gap-3 leading-relaxed">

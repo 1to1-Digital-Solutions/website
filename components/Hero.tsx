@@ -81,7 +81,7 @@ export function Hero() {
         className="pointer-events-none z-10 mx-auto flex h-full w-full max-w-7xl flex-col justify-center px-6 text-center lg:items-start lg:text-left"
       >
         <div className="pointer-events-none select-none lg:max-w-[56%]">
-          <h1 className="hero-text-line font-outfit text-foreground mx-auto max-w-5xl text-4xl font-black tracking-tighter drop-shadow-[0_2px_6px_rgba(0,0,0,0.12)] sm:text-5xl md:text-7xl lg:mx-0 lg:text-6xl xl:text-7xl dark:drop-shadow-[0_4px_15px_rgba(0,0,0,0.8)]">
+          <h1 className="hero-text-line font-display text-foreground mx-auto max-w-5xl text-4xl font-black tracking-tighter drop-shadow-[0_2px_6px_rgba(0,0,0,0.12)] sm:text-5xl md:text-7xl lg:mx-0 lg:text-6xl xl:text-7xl dark:drop-shadow-[0_4px_15px_rgba(0,0,0,0.8)]">
             {t("heroTitle1")} <br />
             {/* Clone decoration + a little right padding: with tight tracking the last glyph of
                 each line overhangs its box, and bg-clip-text would cut it off. */}
@@ -95,15 +95,12 @@ export function Hero() {
         </div>
 
         <div className="hero-btn pointer-events-none mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start">
-          <a
-            href="#contact"
-            className="bg-primary/90 hover:bg-primary focus-visible:ring-primary focus-visible:ring-offset-background pointer-events-auto rounded-full px-8 py-4 text-lg font-bold text-[var(--on-primary)] backdrop-blur-md transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(64,224,208,0.4)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
-          >
+          <a href="#contact" className="oto-btn oto-btn--primary oto-btn--lg pointer-events-auto">
             {t("heroBtnStart")}
           </a>
           <a
             href="#process"
-            className="border-foreground/20 bg-background/50 hover:bg-foreground/5 hover:text-primary hover:border-primary/50 focus-visible:ring-primary focus-visible:ring-offset-background pointer-events-auto rounded-full border px-8 py-4 text-lg font-bold backdrop-blur-md transition-all focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+            className="oto-btn oto-btn--secondary oto-btn--lg pointer-events-auto backdrop-blur-md"
           >
             {t("heroBtnWork")}
           </a>

@@ -14,7 +14,7 @@ export function FAQ() {
   return (
     <section id="faq" className="mx-auto w-full max-w-3xl px-6 py-24">
       <div className="mb-12 text-center">
-        <h2 className="font-outfit text-4xl font-bold tracking-tight md:text-5xl">
+        <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
           {c.title1} <span className="text-primary">{c.title2}</span>
         </h2>
         <p className="text-foreground/70 mt-4 text-lg">{c.sub}</p>
@@ -40,7 +40,9 @@ export function FAQ() {
                 aria-controls={`faq-answer-${idx}`}
                 id={`faq-question-${idx}`}
               >
-                <span className="font-outfit text-lg font-semibold md:text-xl">{faq.question}</span>
+                <span className="font-display text-lg font-semibold md:text-xl">
+                  {faq.question}
+                </span>
                 <ChevronDown
                   className={`text-primary transition-transform duration-300 ${
                     isOpen ? "rotate-180" : ""

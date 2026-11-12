@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@1to1/ui':
+        specifier: link:packages/ui
+        version: link:packages/ui
       clsx:
         specifier: ^2.1.1
         version: 2.1.1

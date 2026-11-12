@@ -19,7 +19,7 @@ export default function TermsConditions() {
           <ArrowLeft size={16} /> Volver a Inicio
         </Link>
 
-        <h1 className="font-outfit mb-8 text-4xl font-bold tracking-tight">
+        <h1 className="font-display mb-8 text-4xl font-bold tracking-tight">
           Términos y <span className="text-primary">Condiciones</span>
         </h1>
 

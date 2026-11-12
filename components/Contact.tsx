@@ -22,7 +22,7 @@ export function Contact() {
   return (
     <section className="mx-auto w-full max-w-5xl px-6 py-28">
       <CtaCard>
-        <h2 className="font-outfit text-3xl font-bold tracking-tight md:text-4xl">
+        <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
           {c.ctaTitle1}
           <span className="text-primary">{c.ctaTitle2}</span>
         </h2>
@@ -34,7 +34,7 @@ export function Contact() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackEvent("contact_click", { channel: "linkedin" })}
-            className="bg-primary focus-visible:ring-primary focus-visible:ring-offset-background inline-flex items-center gap-2 rounded-full px-7 py-3 font-semibold text-[var(--on-primary)] transition-transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+            className="oto-btn oto-btn--primary"
           >
             <Linkedin size={18} aria-hidden="true" />
             {t("contactLinkedinBtn")}
@@ -43,7 +43,7 @@ export function Contact() {
           <a
             href={mailto}
             onClick={() => trackEvent("contact_click", { channel: "email" })}
-            className="border-foreground/20 hover:bg-foreground/5 focus-visible:ring-primary inline-flex items-center gap-2 rounded-full border px-7 py-3 font-semibold transition-colors focus-visible:ring-2 focus-visible:outline-none"
+            className="oto-btn oto-btn--secondary"
           >
             <Mail size={18} aria-hidden="true" />
             {t("contactEmailBtn")}

@@ -1,0 +1,52 @@
+/* Generado por scripts/build-tokens.mjs desde tokens/tokens.json. No editar a mano. */
+
+/* Tailwind 4: importa este archivo después de "tailwindcss" para tener bg-primary, text-foreground, rounded-control, font-display, etc. */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-anthracite: var(--anthracite);
+  --color-neon: var(--neon);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-active: var(--primary-active);
+  --color-on-primary: var(--on-primary);
+  --color-on-neon: var(--on-neon);
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-300: var(--primary-300);
+  --color-primary-400: var(--primary-400);
+  --color-primary-500: var(--primary-500);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
+  --color-neutral-black: var(--neutral-black);
+  --color-neutral-700: var(--neutral-700);
+  --color-neutral-500: var(--neutral-500);
+  --color-neutral-300: var(--neutral-300);
+  --color-neutral-100: var(--neutral-100);
+  --color-neutral-white: var(--neutral-white);
+  --color-text-muted: var(--text-muted);
+  --color-text-subtle: var(--text-subtle);
+  --color-surface-disabled: var(--surface-disabled);
+  --color-text-disabled: var(--text-disabled);
+  --color-field: var(--field);
+  --color-success: var(--success);
+  --color-success-surface: var(--success-surface);
+  --color-warning: var(--warning);
+  --color-warning-surface: var(--warning-surface);
+  --color-danger: var(--danger);
+  --color-danger-surface: var(--danger-surface);
+  --color-on-danger: var(--on-danger);
+  --color-info: var(--info);
+  --color-info-surface: var(--info-surface);
+  --color-border-default: var(--border-default);
+  --color-border-strong: var(--border-strong);
+  --color-border-primary: var(--border-primary);
+  --radius-control: var(--radius-control);
+  --shadow-nav: var(--shadow-nav);
+}
+
+@theme {
+  --font-sans: 'Atkinson Hyperlegible Next', ui-sans-serif, system-ui, sans-serif;
+  --font-display: Outfit, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+}

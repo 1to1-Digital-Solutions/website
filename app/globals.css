@@ -1,77 +1,29 @@
+/* Fonts first: the Google Fonts url @import only survives at the very top of the bundle. */
+@import "@1to1/ui/fonts.css";
 @import "tailwindcss";
+/* 1to1 design system: Tailwind mapping (bg-primary, font-display, text-on-primary…), tokens
+   (dark and light) and the oto- component classes. */
+@import "@1to1/ui/theme.css";
+@import "@1to1/ui/tokens.css";
+@import "@1to1/ui/components.css";
 
 /* Use .dark/.light class on <html> for dark mode variants */
 @custom-variant dark (&:where(.dark, .dark *));
 
-@theme {
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-outfit: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
-
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-secondary: var(--secondary);
-  --color-anthracite: var(--anthracite);
-  --color-neon: var(--neon);
-
-  /* Brand palette — tokens. Same in both themes (semantic colors live in :root/.light). */
-  --color-primary-100: #14ffbc;
-  --color-primary-200: #1ac89a;
-  --color-primary-300: #1f957a;
-  --color-primary-400: #188169;
-  --color-primary-500: #116e57;
-  --color-primary-600: #0a5a46;
-  --color-primary-700: #084939;
-}
-
-/* Theme-invariant token: accessible foreground color for text/icons on `primary` bg. Tested vs WCAG AA. */
-:root {
-  --on-primary: #1c1c1f;
-}
-
-/* Neon turquoise of the hero cloud, for the one CTA that has to stand out (navbar). */
-:root,
-.dark {
-  --neon: #3ff8ec;
-}
-.light {
-  --neon: #14c8d4;
-}
-
-/* Dark mode (default + .dark class) */
-:root,
-.dark {
-  --background: #27272a;
-  --foreground: #ededed;
-  --primary: #1f957a;
-  --secondary: #ffffff;
-  --anthracite: #1e1e21;
-}
-
-/* Light mode */
-.light {
-  --background: #ffffff;
-  --foreground: #1a1a1a;
-  --primary: #1f957a;
-  --secondary: #27272a;
-  --anthracite: #f4f4f5;
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
   overflow-x: hidden;
 }
 
-/* Base utility classes for smooth scrolling and selection */
 html {
   scroll-behavior: smooth;
 }
 
 ::selection {
   background-color: var(--primary);
-  color: var(--background);
+  color: var(--on-primary);
 }
 
 @media (prefers-reduced-motion: reduce) {

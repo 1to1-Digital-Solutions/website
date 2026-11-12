@@ -53,6 +53,8 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  // The design system ships TypeScript/TSX sources, so Next compiles it like app code.
+  transpilePackages: ["@1to1/ui"],
   async headers() {
     return [
       {

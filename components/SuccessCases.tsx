@@ -47,7 +47,7 @@ export function SuccessCases() {
     <section id="work" className="bg-anthracite/30 w-full py-24">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-16 text-center">
-          <h2 className="font-outfit text-4xl font-bold tracking-tight md:text-5xl">
+          <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
             {t("casesTitle1")} <span className="text-primary">{t("casesTitle2")}</span>
           </h2>
           <p className="text-foreground/70 mx-auto mt-4 max-w-2xl text-lg">{t("casesSub")}</p>
@@ -92,7 +92,7 @@ export function SuccessCases() {
                     className="text-foreground/40 group-hover:text-primary transition-colors"
                   />
                 </div>
-                <h3 className="font-outfit group-hover:text-primary mb-3 text-xl font-bold transition-colors">
+                <h3 className="font-display group-hover:text-primary mb-3 text-xl font-bold transition-colors">
                   {project.title as string}
                   <span className="sr-only"> {t("srOpensInNewTab") as string}</span>
                 </h3>

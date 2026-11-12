@@ -12,9 +12,11 @@
     "typecheck": "tsc --noEmit",
     "test": "jest",
     "test:e2e": "playwright test",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "sync:ui": "rsync -a --delete --exclude stories ../design-system/src ../design-system/assets ../design-system/tokens packages/ui/"
   },
   "dependencies": {
+    "@1to1/ui": "link:packages/ui",
     "clsx": "^2.1.1",
     "gsap": "^3.15.0",
     "lucide-react": "^0.575.0",

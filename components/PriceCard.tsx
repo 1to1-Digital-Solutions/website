@@ -27,7 +27,7 @@ export function PriceCard({
         <p className="text-primary text-sm font-semibold tracking-widest uppercase">
           {c.price.title}
         </p>
-        <p className="font-outfit mt-3 text-5xl font-black tracking-tight md:text-6xl">
+        <p className="font-display mt-3 text-5xl font-black tracking-tight md:text-6xl">
           {c.price.amount}{" "}
           <span className="text-foreground/60 text-2xl font-semibold md:text-3xl">
             {c.price.tax}
@@ -36,14 +36,12 @@ export function PriceCard({
         <Link
           href={compact ? "/services" : "/#contact"}
           data-bolt-end={compact ? "" : undefined}
-          className="group bg-primary focus-visible:ring-primary focus-visible:ring-offset-background mt-6 inline-flex items-center gap-2 rounded-full px-7 py-3 font-semibold text-[var(--on-primary)] transition-transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+          className="oto-btn oto-btn--primary mt-6"
         >
           {compact ? c.homeLink : c.ctaButton}
-          <ArrowRight
-            size={18}
-            aria-hidden="true"
-            className="transition-transform group-hover:translate-x-1"
-          />
+          <span className="oto-btn__arrow" aria-hidden="true">
+            <ArrowRight />
+          </span>
         </Link>
       </div>
 

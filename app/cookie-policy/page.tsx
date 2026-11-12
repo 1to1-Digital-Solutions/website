@@ -19,7 +19,7 @@ export default function CookiePolicy() {
           <ArrowLeft size={16} /> Volver a Inicio
         </Link>
 
-        <h1 className="font-outfit mb-8 text-4xl font-bold tracking-tight">
+        <h1 className="font-display mb-8 text-4xl font-bold tracking-tight">
           Política de <span className="text-primary">Cookies</span>
         </h1>
 

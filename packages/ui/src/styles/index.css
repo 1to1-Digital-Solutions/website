@@ -1,0 +1,4 @@
+/* Punto de entrada: fuentes + tokens (oscuro y claro) + componentes oto-. */
+@import "./fonts.css";
+@import "./tokens.css";
+@import "./components.css";

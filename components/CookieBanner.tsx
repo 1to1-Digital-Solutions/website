@@ -25,16 +25,10 @@ export function CookieBanner() {
         .
       </p>
       <div className="flex gap-3">
-        <button
-          onClick={accept}
-          className="bg-primary text-background hover:bg-primary/90 focus-visible:ring-primary flex-1 rounded-xl py-2 text-sm font-bold transition-colors focus-visible:ring-2 focus-visible:outline-none"
-        >
+        <button onClick={accept} className="oto-btn oto-btn--primary oto-btn--sm flex-1">
           {t("cookieAccept")}
         </button>
-        <button
-          onClick={decline}
-          className="border-foreground/20 text-foreground/70 hover:bg-foreground/5 focus-visible:ring-primary flex-1 rounded-xl border py-2 text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:outline-none"
-        >
+        <button onClick={decline} className="oto-btn oto-btn--secondary oto-btn--sm flex-1">
           {t("cookieDecline")}
         </button>
       </div>
