@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@1to1/ui':
-        specifier: github:1to1-Digital-Solutions/design-system#v0.1.1
-        version: https://codeload.github.com/1to1-Digital-Solutions/design-system/tar.gz/204d977ca44de226e249b60d9b2465cf1ccce5c0(lucide-react@0.575.0(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        specifier: github:1to1-Digital-Solutions/design-system#v0.2.1
+        version: https://codeload.github.com/1to1-Digital-Solutions/design-system/tar.gz/ee9c71118d1e1f4e7375d114bf0fc9321f3a42ed(lucide-react@0.575.0(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -102,9 +102,9 @@ importers:
 
 packages:
 
-  '@1to1/ui@https://codeload.github.com/1to1-Digital-Solutions/design-system/tar.gz/204d977ca44de226e249b60d9b2465cf1ccce5c0':
-    resolution: {gitHosted: true, integrity: sha512-iL4UQMXIriPfBFpu38EIWIdFzJ1Q/Xx8AE30zSjE4Jo4TY99jOW9/Xv6wFt+0oVoTlQZRF+a+A+fQ7J6jubBjg==, tarball: https://codeload.github.com/1to1-Digital-Solutions/design-system/tar.gz/204d977ca44de226e249b60d9b2465cf1ccce5c0}
-    version: 0.1.0
+  '@1to1/ui@https://codeload.github.com/1to1-Digital-Solutions/design-system/tar.gz/ee9c71118d1e1f4e7375d114bf0fc9321f3a42ed':
+    resolution: {gitHosted: true, integrity: sha512-Mce730ro3/C5S0ODFW3KJibMrQWokpeF2RARQvsrw00Qz55UmEZ/Xt4E7Zfc4f797dQdWTiG81xfZT+rhMnUfQ==, tarball: https://codeload.github.com/1to1-Digital-Solutions/design-system/tar.gz/ee9c71118d1e1f4e7375d114bf0fc9321f3a42ed}
+    version: 0.2.1
     peerDependencies:
       lucide-react: '>=0.400.0'
       react: '>=18'
@@ -3449,7 +3449,7 @@ packages:
 
 snapshots:
 
-  '@1to1/ui@https://codeload.github.com/1to1-Digital-Solutions/design-system/tar.gz/204d977ca44de226e249b60d9b2465cf1ccce5c0(lucide-react@0.575.0(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
+  '@1to1/ui@https://codeload.github.com/1to1-Digital-Solutions/design-system/tar.gz/ee9c71118d1e1f4e7375d114bf0fc9321f3a42ed(lucide-react@0.575.0(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
     dependencies:
       lucide-react: 0.575.0(react@19.3.0)
       react: 19.3.0

@@ -55,6 +55,8 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   // The design system ships TypeScript/TSX sources, so Next compiles it like app code.
   transpilePackages: ["@1to1/ui"],
+  // 90 for the portrait (a face shows compression), 75 for the rest.
+  images: { qualities: [75, 90] },
   async headers() {
     return [
       {
