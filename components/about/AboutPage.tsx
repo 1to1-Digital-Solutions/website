@@ -17,12 +17,15 @@ export function AboutPage() {
       <section className="mx-auto w-full max-w-7xl px-6 pb-20">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-20">
           <div className="relative w-full flex-1">
-            <div className="bg-anthracite relative aspect-square w-full max-w-md overflow-hidden rounded-3xl">
+            {/* Square crop of the original photo, so the image served matches the box (a
+                landscape photo in a square box was stretched and looked blurry). */}
+            <div className="bg-anthracite relative mx-auto aspect-square w-full max-w-[26rem] overflow-hidden rounded-3xl lg:mx-0">
               <Image
-                src="/images/profilePicture.jpg"
+                src="/images/profile-portrait.jpg"
                 alt={c.imgAlt}
                 fill
-                sizes="(min-width: 1024px) 28rem, 100vw"
+                quality={90}
+                sizes="(min-width: 464px) 26rem, calc(100vw - 3rem)"
                 className="object-cover object-top"
                 priority
               />

@@ -21,9 +21,10 @@ export function WhoGuides() {
           className="bg-anthracite relative aspect-square w-48 shrink-0 overflow-hidden rounded-3xl md:w-64"
         >
           <Image
-            src="/images/profilePicture.jpg"
+            src="/images/profile-portrait.jpg"
             alt={t("whoImgAlt") as string}
             fill
+            quality={90}
             sizes="(min-width: 768px) 16rem, 12rem"
             className="object-cover object-top"
           />

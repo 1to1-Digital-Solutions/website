@@ -21,7 +21,8 @@ import {
  *   circuit. A bolt comes down to the middle card's icon chip, runs around it and, as it passes
  *   the side facing a neighbouring chip, a mini bolt jumps across to it; each chip passes it on.
  * - Who I am: a bolt comes down from the section above and runs around the photo.
- * - Projects: it comes down to the middle card and spreads to the sides.
+ * - Projects: it comes down to the middle card, runs all the way around it and spreads to the
+ *   sides, where it only runs half way round (over the top) and goes out.
  * - Testimonials: it comes down and forks, into both cards at once.
  * - Is it for you?: the points flow from the testimonials into a cloud behind the section.
  * - The plan: the cloud flows down onto the first step and becomes the bolt again, which goes
@@ -44,6 +45,8 @@ type Timing = {
   /** How far apart two elements can be and still pass the bolt on (90px for cards side by
    * side; more for the icon chips of boxless cards, which sit a card's width apart). */
   reach?: number;
+  /** How much of the border the cards it spreads to run (the entry card always runs all of it). */
+  sideSpan?: number;
   onLapEnd?: (i: number) => void;
 };
 
@@ -179,8 +182,11 @@ export function BoltChoreography() {
     };
 
     /**
-     * A bolt running once around an element's border, from `s0`. `fade` makes it flicker out
-     * at the end, like it's going off.
+     * A bolt running around an element's border from `s0`: all the way round, or `span` of it,
+     * clockwise (`dir` 1) or the other way (-1). `dur` is the time for the whole run. `fade`
+     * makes it flicker out at the end, like it's going off. Each pass fires as the head goes
+     * by its point (`d`, the share of the border from `s0`); one beyond the run fires at the end,
+     * from where the bolt stopped.
      */
     const lap = (
       token: number,
@@ -190,12 +196,16 @@ export function BoltChoreography() {
       o: {
         dim?: boolean;
         fade?: boolean;
-        passes?: { d: number; fn: () => void; done?: boolean }[];
+        span?: number;
+        dir?: 1 | -1;
+        passes?: { d: number; fn: (from: number) => void; done?: boolean }[];
         onEnd?: () => void;
       } = {}
     ): Actor => {
       const radius = radiusOf(el);
       const seg = 0.16;
+      const span = o.span ?? 1;
+      const dir = o.dir ?? 1;
       const t0 = performance.now();
       let ended = false;
       flash(el);
@@ -203,27 +213,34 @@ export function BoltChoreography() {
         token,
         draw(now) {
           const p = (now - t0) / dur;
+          const run = p * span;
           for (const ps of o.passes ?? []) {
-            if (!ps.done && p >= ps.d) {
+            if (!ps.done && run >= ps.d) {
               ps.done = true;
-              ps.fn();
+              ps.fn(s0 + dir * ps.d);
             }
           }
           if (p >= 1 && !ended) {
             ended = true;
+            for (const ps of o.passes ?? []) {
+              if (!ps.done) {
+                ps.done = true;
+                ps.fn(s0 + dir * span);
+              }
+            }
             o.onEnd?.();
           }
-          if (p >= 1 + seg) return false;
-          const head = Math.min(p, 1);
-          const tail = Math.max(0, p - seg);
+          if (run >= span + seg) return false;
+          const head = Math.min(run, span);
+          const tail = Math.max(0, run - seg);
           if (head <= tail) return true;
           const sh = shape(el.getBoundingClientRect(), radius);
-          if (covered(el, sh.at(s0 + head))) return true;
+          if (covered(el, sh.at(s0 + dir * head))) return true;
           const n = Math.max(2, Math.ceil(((head - tail) * sh.len) / 4));
           const tick = Math.floor(now / 45);
           const pts: Pt[] = [];
           for (let i = 0; i <= n; i++) {
-            const s = s0 + tail + ((head - tail) * i) / n;
+            const s = s0 + dir * (tail + ((head - tail) * i) / n);
             const q = sh.at(s);
             const k = Math.round(((((s % 1) + 1) % 1) * sh.len) / 4);
             const j = (rnd(k * 1.7 + tick * 7.3) - 0.5) * 4;
@@ -426,6 +443,7 @@ export function BoltChoreography() {
      */
     const spreader = (token: number, cards: Element[], t: Timing) => {
       const taken = new Set<number>();
+      let entry = -1;
       const next = (i: number) => {
         if (t.chain) return i + 1 < cards.length ? [i + 1] : [];
         const a = cards[i].getBoundingClientRect();
@@ -435,17 +453,22 @@ export function BoltChoreography() {
       };
       const lapCard = (i: number, s0: number): Actor => {
         taken.add(i);
+        if (entry < 0) entry = i;
         const sh = shapeOf(cards[i]);
+        // The cards it spreads to may run only part of their border: over the top, the side
+        // that reads first.
+        const span = i === entry ? 1 : (t.sideSpan ?? 1);
+        const dir: 1 | -1 = span < 1 && sh.at(s0 - span / 2).y < sh.at(s0 + span / 2).y ? -1 : 1;
         const passes = next(i)
           .filter((j) => !taken.has(j))
           .map((j) => {
             const sOut = sh.nearest(center(cards[j].getBoundingClientRect()));
             return {
-              d: (((sOut - s0) % 1) + 1) % 1,
-              fn: () => {
+              d: (((dir * (sOut - s0)) % 1) + 1) % 1,
+              fn: (from: number) => {
                 if (taken.has(j)) return;
                 taken.add(j);
-                const out = onBorder(cards[i], sOut);
+                const out = onBorder(cards[i], from);
                 const sIn = shapeOf(cards[j]).nearest(out());
                 add(
                   travel(
@@ -461,8 +484,11 @@ export function BoltChoreography() {
               },
             };
           });
-        return lap(token, cards[i], s0, t.lap, {
+        return lap(token, cards[i], s0, t.lap * span, {
           dim: t.dim,
+          span,
+          dir,
+          fade: span < 1,
           passes,
           onEnd: () => t.onLapEnd?.(i),
         });
@@ -507,6 +533,7 @@ export function BoltChoreography() {
         comeDown(token, section, cards, entryOf(cards), {
           lap: id === "who" ? 1700 : 1500,
           hop: 300,
+          sideSpan: id === "work" ? 0.5 : undefined,
         });
       } else if (id === "testimonials" && cards.length) {
         const tops = cards.map((c) => c.getBoundingClientRect().top);

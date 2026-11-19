@@ -177,7 +177,8 @@ export function Stakes() {
       setTimings(
         Array.from({ length: count }, () => ({
           delay: Math.random(),
-          dur: 2.2 + Math.random() * 0.8,
+          // One quick lap of a 44px chip, at the pace of the bolt in "¿Qué te llevas?".
+          dur: 0.75 + Math.random() * 0.2,
         }))
       );
     };
